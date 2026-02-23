@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heartopia - Guia de Captura</title>
     <style>
+        /* Reset para evitar cortes no layout */
+        * {
+            box-sizing: border-box;
+        }
+
         :root {
             --bg-base: #0f172a;      
             --bg-card: #1e293b;      
@@ -44,6 +49,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
+            gap: 10px;
         }
 
         h1 {
@@ -62,8 +68,9 @@
             padding: 10px 15px;
             border-radius: var(--radius-md);
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             transition: 0.3s;
+            white-space: nowrap;
         }
 
         .btn-menu:hover { background: var(--bg-hover); }
@@ -150,9 +157,14 @@
             background-size: 12px auto;
         }
 
+        select option {
+            background-color: var(--bg-card);
+            color: var(--text-main);
+        }
+
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
             width: 100%;
             max-width: 1000px;
@@ -188,14 +200,14 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            background: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.5);
             padding: 4px 8px;
             border-radius: 6px;
             font-size: 0.8rem;
             font-weight: bold;
         }
 
-        .card h3 { margin: 0; color: var(--text-main); font-size: 1.25rem; padding-right: 40px; }
+        .card h3 { margin: 0; color: var(--text-main); font-size: 1.2rem; padding-right: 45px; word-break: break-word; }
         .card .pt-name { margin: 0 0 10px 0; color: #60a5fa; font-size: 0.95rem; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
         .card p { margin: 0; font-size: 0.95rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 2px; }
         .card strong { color: var(--text-main); }
@@ -220,7 +232,7 @@
         }
 
         .sidebar {
-            position: fixed; top: 0; right: -350px; width: 300px; height: 100%;
+            position: fixed; top: 0; right: -350px; width: 320px; max-width: 85%; height: 100%;
             background: var(--bg-card); z-index: 100;
             box-shadow: -5px 0 15px rgba(0,0,0,0.5);
             transition: 0.3s ease-in-out; padding: 25px;
@@ -228,7 +240,7 @@
             overflow-y: auto;
         }
         .sidebar.open { right: 0; }
-        .sidebar-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
+        .sidebar-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 15px; gap: 10px; }
         .sidebar h2 { margin: 0; font-size: 1.3rem; }
         .close-btn { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 0; box-shadow: none; }
         .close-btn:hover { background: none; transform: scale(1.1); color: #ef4444; }
@@ -238,33 +250,43 @@
 
         .modal {
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9);
-            background: var(--bg-card); width: 90%; max-width: 500px; max-height: 80vh;
-            z-index: 101; border-radius: var(--radius-lg); padding: 25px;
+            background: var(--bg-card); width: 95%; max-width: 500px; max-height: 90vh;
+            z-index: 101; border-radius: var(--radius-lg); padding: 20px;
             display: none; flex-direction: column; opacity: 0; transition: 0.2s;
             border: 1px solid var(--border); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
         }
         .modal.open { display: flex; opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        .modal-body { overflow-y: auto; margin-top: 15px; display: flex; flex-direction: column; gap: 10px; padding-right: 5px; }
+        .modal-body { 
+            overflow-y: auto; 
+            margin-top: 15px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+            padding-right: 5px;
+            max-height: 50vh; 
+        }
         
+        #modal-search { margin-top: 15px; padding: 10px 15px; font-size: 14px; }
+
         .check-item {
             display: flex; align-items: center; gap: 10px; padding: 10px;
             background: var(--bg-base); border-radius: 8px; border: 1px solid var(--border);
             cursor: pointer;
         }
         .check-item:hover { border-color: var(--primary); }
-        .check-item input { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; }
-        .check-item span { flex: 1; }
-        .check-item small { color: var(--text-muted); font-size: 0.8rem; }
+        .check-item input { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; flex-shrink: 0; }
+        .check-item span { flex: 1; word-break: break-word; font-size: 0.9rem; }
+        .check-item small { color: var(--text-muted); font-size: 0.8rem; white-space: nowrap; }
 
         /* --- RESPONSIVIDADE --- */
         @media (max-width: 768px) {
             body { padding: 15px; }
             h1 { font-size: 1.8rem; }
+            .header-container { flex-direction: column; align-items: stretch; text-align: center; }
             .controls.tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
             .controls.filters { flex-direction: column; align-items: stretch; gap: 10px; }
             input[type="text"], button, select { width: 100%; max-width: none; }
             .grid { grid-template-columns: 1fr; }
-            .sidebar { width: 260px; }
         }
     </style>
 </head>
@@ -279,8 +301,13 @@
         </div>
         
         <div class="form-group">
-            <label for="char-level">Seu Nível de Captura/Pesca</label>
-            <input type="number" id="char-level" min="1" max="100" value="1" onchange="saveLevel()">
+            <label for="char-level-fish">🎣 Nível de Pesca</label>
+            <input type="number" id="char-level-fish" min="1" max="100" placeholder="Sem limite" onchange="saveLevels()">
+        </div>
+
+        <div class="form-group">
+            <label for="char-level-bug">🦋 Nível de Captura (Insetos)</label>
+            <input type="number" id="char-level-bug" min="1" max="100" placeholder="Sem limite" onchange="saveLevels()">
         </div>
 
         <hr style="border-color: var(--border); width: 100%; margin: 10px 0;">
@@ -298,11 +325,13 @@
 
     <div class="modal" id="modal">
         <div class="sidebar-header">
-            <h2 id="modal-title">Título</h2>
+            <h2 id="modal-title" style="font-size: 1.2rem;">Título</h2>
             <button class="close-btn" onclick="closeModal()">✖</button>
         </div>
-        <p id="modal-desc" style="color: var(--text-muted); font-size: 0.9rem; margin: 10px 0 0 0;"></p>
+        <p id="modal-desc" style="color: var(--text-muted); font-size: 0.85rem; margin: 10px 0 0 0;"></p>
         
+        <input type="text" id="modal-search" placeholder="🔍 Filtrar na lista..." oninput="filterModal()">
+
         <div class="modal-body" id="modal-list"></div>
         
         <button class="btn-save" onclick="saveModal()">Salvar Alterações</button>
@@ -310,7 +339,7 @@
 
     <div class="header-container">
         <h1>Guia Heartopia</h1>
-        <button class="btn-menu" onclick="toggleSidebar()">⚙️ Progresso</button>
+        <button class="btn-menu" onclick="toggleSidebar()">⚙️ Níveis e Progresso</button>
     </div>
 
     <div class="search-container">
@@ -351,7 +380,6 @@
     <div id="results" class="grid"></div>
 
     <script>
-        // Dados com níveis baseados nos dados oficiais
         const peixes = [
             { en: "Anglerfish", pt: "Tamboril", locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇", lvl: 2 },
             { en: "Arctic Char", pt: "Salvelino", locEn: "Forest Lake", locPt: "Lago Florestal", w: "🌧️, 🌈", t: "☀️, 🌇", lvl: 10 },
@@ -390,18 +418,24 @@
         ];
 
         let currentTab = 'peixes';
-        let charLevel = 1;
-        let caughtItems = []; // Array of English names
+        let fishLevel = null;
+        let bugLevel = null;
+        let caughtItems = []; 
         let currentModalMode = '';
 
         // --- INICIALIZAÇÃO E LOCAL STORAGE ---
         function init() {
-            const savedLevel = localStorage.getItem('ht_charLevel');
+            const savedFishLevel = localStorage.getItem('ht_fishLevel');
+            const savedBugLevel = localStorage.getItem('ht_bugLevel');
             const savedCaught = localStorage.getItem('ht_caughtItems');
             
-            if (savedLevel) {
-                charLevel = parseInt(savedLevel);
-                document.getElementById('char-level').value = charLevel;
+            if (savedFishLevel) {
+                document.getElementById('char-level-fish').value = savedFishLevel;
+                fishLevel = parseInt(savedFishLevel);
+            }
+            if (savedBugLevel) {
+                document.getElementById('char-level-bug').value = savedBugLevel;
+                bugLevel = parseInt(savedBugLevel);
             }
             if (savedCaught) {
                 caughtItems = JSON.parse(savedCaught);
@@ -409,9 +443,16 @@
             renderData();
         }
 
-        function saveLevel() {
-            charLevel = parseInt(document.getElementById('char-level').value) || 1;
-            localStorage.setItem('ht_charLevel', charLevel);
+        function saveLevels() {
+            const fVal = document.getElementById('char-level-fish').value;
+            const bVal = document.getElementById('char-level-bug').value;
+            
+            fishLevel = fVal ? parseInt(fVal) : null;
+            bugLevel = bVal ? parseInt(bVal) : null;
+
+            if(fVal) localStorage.setItem('ht_fishLevel', fVal); else localStorage.removeItem('ht_fishLevel');
+            if(bVal) localStorage.setItem('ht_bugLevel', bVal); else localStorage.removeItem('ht_bugLevel');
+            
             renderData();
         }
 
@@ -421,11 +462,17 @@
 
         function clearHistory() {
             if(confirm("Tem certeza que deseja apagar todo o seu progresso?")) {
-                localStorage.removeItem('ht_charLevel');
+                localStorage.removeItem('ht_fishLevel');
+                localStorage.removeItem('ht_bugLevel');
                 localStorage.removeItem('ht_caughtItems');
-                charLevel = 1;
+                
+                fishLevel = null;
+                bugLevel = null;
                 caughtItems = [];
-                document.getElementById('char-level').value = 1;
+                
+                document.getElementById('char-level-fish').value = '';
+                document.getElementById('char-level-bug').value = '';
+                
                 toggleSidebar();
                 renderData();
             }
@@ -474,14 +521,17 @@
             const modal = document.getElementById('modal');
             const listContainer = document.getElementById('modal-list');
             const dataToRender = currentTab === 'peixes' ? peixes : insetos;
+            const categoryName = currentTab === 'peixes' ? 'peixes' : 'insetos';
+            
+            // Reseta a busca do modal
+            document.getElementById('modal-search').value = '';
             
             listContainer.innerHTML = '';
             
             if (mode === 'acquired') {
                 document.getElementById('modal-title').innerText = "Marcar Adquiridos";
-                document.getElementById('modal-desc').innerText = "Selecione os itens que você JÁ PEGOU na sua conta.";
+                document.getElementById('modal-desc').innerText = "Selecione na lista abaixo o que você JÁ PEGOU.";
                 
-                // Mostra todos os itens para marcar quais já pegou
                 dataToRender.forEach(item => {
                     const isCaught = caughtItems.includes(item.en);
                     listContainer.innerHTML += `
@@ -494,18 +544,10 @@
                 });
             } else if (mode === 'missing') {
                 document.getElementById('modal-title').innerText = "Marcar Faltantes";
-                document.getElementById('modal-desc').innerText = `Selecione os itens que FALTAM. Ao salvar, todos os outros do nível ${charLevel} ou menor serão marcados como pegos.`;
+                document.getElementById('modal-desc').innerText = "Selecione o que FALTA. Ao salvar, todos os outros itens desta aba (mesmo os ocultos na busca) serão marcados como pegos.";
                 
-                // Mostra apenas itens disponíveis pro nível atual
-                const availableItems = dataToRender.filter(i => i.lvl <= charLevel);
-                
-                if(availableItems.length === 0) {
-                    listContainer.innerHTML = '<p style="color:var(--text-muted);text-align:center;">Não há itens disponíveis para o seu nível atual.</p>';
-                }
-
-                availableItems.forEach(item => {
+                dataToRender.forEach(item => {
                     const isCaught = caughtItems.includes(item.en);
-                    // Se não está pego, o checkbox "Faltante" vem marcado
                     listContainer.innerHTML += `
                         <label class="check-item">
                             <input type="checkbox" value="${item.en}" ${!isCaught ? 'checked' : ''}>
@@ -519,16 +561,28 @@
             modal.classList.add('open');
         }
 
+        function filterModal() {
+            const query = document.getElementById('modal-search').value.toLowerCase();
+            const items = document.querySelectorAll('#modal-list .check-item');
+            
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
         function closeModal() {
             document.getElementById('modal').classList.remove('open');
         }
 
         function saveModal() {
             const checkboxes = document.querySelectorAll('#modal-list input[type="checkbox"]');
-            const dataToRender = currentTab === 'peixes' ? peixes : insetos;
 
             if (currentModalMode === 'acquired') {
-                // Modo Existente: Adiciona marcados, remove desmarcados (apenas da aba atual)
                 checkboxes.forEach(cb => {
                     const index = caughtItems.indexOf(cb.value);
                     if (cb.checked && index === -1) caughtItems.push(cb.value);
@@ -536,18 +590,13 @@
                 });
             } 
             else if (currentModalMode === 'missing') {
-                // Modo Faltante: 
-                const availableItems = dataToRender.filter(i => i.lvl <= charLevel);
-                
                 checkboxes.forEach(cb => {
                     const itemName = cb.value;
                     const index = caughtItems.indexOf(itemName);
                     
                     if (cb.checked) {
-                        // Está faltando = Remove dos adquiridos se estivesse lá
                         if (index > -1) caughtItems.splice(index, 1);
                     } else {
-                        // NÃO está faltando (ou seja, foi pego) = Adiciona aos adquiridos
                         if (index === -1) caughtItems.push(itemName);
                     }
                 });
@@ -560,9 +609,15 @@
 
         // --- RENDERIZAÇÃO E FILTROS ---
         function getItemStatus(item) {
-            if (caughtItems.includes(item.en)) return 3; // 3 = Adquirido
-            if (item.lvl > charLevel) return 2;          // 2 = Indisponível (Nível alto)
-            return 1;                                    // 1 = Faltante/Disponível
+            if (caughtItems.includes(item.en)) return 3; // Adquirido
+            
+            // Verifica o nível respectivo à aba
+            const currentLevel = currentTab === 'peixes' ? fishLevel : bugLevel;
+            
+            // Se o nível não é nulo e o item é maior que o nível, bloqueia
+            if (currentLevel !== null && item.lvl > currentLevel) return 2; // Indisponível
+            
+            return 1; // Faltante/Disponível
         }
 
         function renderData() {
@@ -593,13 +648,13 @@
                 return matchSearch && matchWeather && matchTime && matchStatus;
             });
 
-            // 2. Ordenar: 1º Faltantes, 2º Indisponíveis, 3º Adquiridos. (Desempate por nível)
+            // 2. Ordenar
             filteredData.sort((a, b) => {
                 const statusA = getItemStatus(a);
                 const statusB = getItemStatus(b);
                 
                 if (statusA !== statusB) return statusA - statusB;
-                return a.lvl - b.lvl; // Desempate por nível
+                return a.lvl - b.lvl; 
             });
 
             // 3. Renderizar
