@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heartopia - Guia de Captura</title>
+    <style>
+        :root {
+            --bg-base: #0f172a;      
+            --bg-card: #1e293b;      
+            --bg-hover: #334155;     
+            --text-main: #f8fafc;    
+            --text-muted: #94a3b8;   
+            --primary: #3b82f6;      
+            --primary-hover: #2563eb;
+            --border: #334155;       
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 1000px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            max-width: 600px;
+            padding: 14px 20px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            font-size: 16px;
+            background: var(--bg-card);
+            color: var(--text-main);
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+        }
+
+        input[type="text"]::placeholder {
+            color: var(--text-muted);
+        }
+
+        button, select {
+            padding: 12px 20px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            font-size: 16px;
+            font-weight: 600;
+            background: var(--bg-card);
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover, select:hover {
+            background: var(--bg-hover);
+            transform: translateY(-2px);
+        }
+
+        button.active {
+            background-color: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-clear {
+            background-color: transparent;
+            color: var(--text-muted);
+            border: 1px dashed var(--border);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-clear:hover {
+            background-color: #ef4444; 
+            color: white;
+            border-color: #ef4444;
+        }
+
+        select {
+            appearance: none;
+            padding-right: 40px;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2394a3b8%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px top 50%;
+            background-size: 12px auto;
+        }
+
+        select option {
+            background-color: var(--bg-card);
+            color: var(--text-main);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+        }
+
+        .card h3 {
+            margin: 0;
+            color: var(--text-main);
+            font-size: 1.25rem;
+        }
+
+        .card .pt-name {
+            margin: 0 0 10px 0;
+            color: #60a5fa;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .card p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .card strong {
+            color: var(--text-main);
+        }
+
+        .loc-pt {
+            color: #60a5fa;
+            font-size: 0.85rem;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            margin-top: 4px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .controls.tabs {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .controls.filters {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            input[type="text"], button, select {
+                width: 100%;
+                max-width: none;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Guia Heartopia</h1>
+
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="🔍 Pesquisar nome ou local..." oninput="renderData()">
+    </div>
+
+    <div class="controls tabs">
+        <button id="btn-peixes" class="active" onclick="setTab('peixes')">🐟 Peixes</button>
+        <button id="btn-insetos" onclick="setTab('insetos')">🦋 Insetos</button>
+    </div>
+
+    <div class="controls filters">
+        <select id="filter-weather" onchange="renderData()">
+            <option value="all">⛅ Qualquer Clima</option>
+            <option value="🌞">🌞 Ensolarado</option>
+            <option value="🌧️">🌧️ Chuvoso</option>
+            <option value="🌈">🌈 Arco-íris</option>
+        </select>
+
+        <select id="filter-time" onchange="renderData()">
+            <option value="all">🕒 Qualquer Horário</option>
+            <option value="🌅">🌅 Madrugada</option>
+            <option value="☀️">☀️ Dia</option>
+            <option value="🌇">🌇 Entardecer</option>
+            <option value="🌙">🌙 Noite</option>
+        </select>
+
+        <button class="btn-clear" onclick="clearAll()" title="Limpar pesquisa e filtros">✖ Limpar Tudo</button>
+    </div>
+
+    <div id="results" class="grid"></div>
+
+    <script>
+        const peixes = [
+            { en: "Anglerfish", pt: "Tamboril", locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+            { en: "Arctic Char", pt: "Salvelino", locEn: "Forest Lake", locPt: "Lago Florestal", w: "🌧️, 🌈", t: "☀️, 🌇" },
+            { en: "Atlantic Mackerel", pt: "Cavala do Atlântico", locEn: "Whale Sea", locPt: "Mar da Baleia", w: "🌈, 🌞", t: "☀️, 🌇" },
+            { en: "Blackspot Seabream", pt: "Goraz", locEn: "Zephyr Sea", locPt: "Mar do Vento Brando", w: "🌧️, 🌈", t: "🌙, 🌇" },
+            { en: "Bluefin Tuna", pt: "Atum-rabilho", locEn: "Zephyr Sea", locPt: "Mar do Vento Brando", w: "🌈", t: "🌅, ☀️" },
+            { en: "Burbot", pt: "Peixe-bolha", locEn: "Tranquil River", locPt: "Rio Sereno", w: "🌞, 🌧️, 🌈", t: "☀️, 🌇" },
+            { en: "European Eel", pt: "Enguia Europeia", locEn: "Old Sea", locPt: "Mar Antigo", w: "🌈", t: "🌅, ☀️, 🌇" },
+            { en: "Giant Oarfish", pt: "Peixe-remo Gigante", locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌅, ☀️" },
+            { en: "Golden King Crab", pt: "Caranguejo-real Dourado", locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌈", t: "🌙, 🌅, ☀️, 🌇" },
+            { en: "King Crab", pt: "Caranguejo-real", locEn: "Whale Sea", locPt: "Mar da Baleia", w: "🌈", t: "🌅, ☀️, 🌇" },
+            { en: "Northern Pike", pt: "Lúcio do Norte", locEn: "Suburban Lake", locPt: "Lago Suburbano", w: "🌧️, 🌈", t: "🌙, 🌇" },
+            { en: "Ocean Sunfish", pt: "Peixe-lua Oceânico", locEn: "East Sea", locPt: "Mar Leste", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅" },
+            { en: "Shortfin Mako Shark", pt: "Tubarão-mako de Barbatana Curta", locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌈", t: "🌅, ☀️" },
+            { en: "Smooth Hammerhead", pt: "Tubarão-martelo Liso", locEn: "Old Sea", locPt: "Mar Antigo", w: "🌈", t: "🌙, 🌇" },
+            { en: "Swordfish", pt: "Peixe-espada", locEn: "Whale Sea", locPt: "Mar da Baleia", w: "🌈", t: "🌅, ☀️" },
+            { en: "Wels Catfish", pt: "Siluro Europeu", locEn: "Meadow Lake", locPt: "Lago da Campina", w: "🌞, 🌈", t: "🌙, 🌇" }
+        ];
+
+        const insetos = [
+            { en: "Alpine Longhorn Beetle", pt: "Besouro Longicorne Alpino", locEn: "Forest Island", locPt: "Ilha Florestal", w: "🌈", t: "🌙, 🌅, ☀️, 🌇" },
+            { en: "Amethyst Flower Beetle", pt: "Besouro de Flor Ametista", locEn: "Home (Rocks)", locPt: "Falésia Rochosa", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+            { en: "Ant", pt: "Formiga", locEn: "Fishing Village", locPt: "Vila dos Pescadores", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+            { en: "Bagworm Moth", pt: "Traça Bagworm", locEn: "Forest (Deer Tower)", locPt: "Torre do Cervo", w: "🌞, 🌈", t: "🌙, 🌇" },
+            { en: "Blue Morpho", pt: "Borboleta Morfo Azul", locEn: "Forest", locPt: "Floresta", w: "🌞, 🌈", t: "🌅, ☀️, 🌇" },
+            { en: "Comet Moth", pt: "Mariposa Cometa", locEn: "Suburbs", locPt: "Subúrbio", w: "🌞, 🌈", t: "🌇, 🌙" },
+            { en: "Conehead Mantis", pt: "Louva-a-deus Cabeça de Cone", locEn: "Onsen Mountain", locPt: "Monte Termal", w: "🌧️, 🌈", t: "☀️, 🌇" },
+            { en: "Elegant Flower Beetle", pt: "Besouro de Flor Elegante", locEn: "Flower Field", locPt: "Campo Floral", w: "🌧️, 🌈", t: "🌅, ☀️" },
+            { en: "Giant Asian Mantis", pt: "Louva-a-deus Gigante Asiático", locEn: "Onsen Mountain", locPt: "Monte Termal", w: "🌞, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+            { en: "Golden Jewel Scarab", pt: "Escaravelho Joia Dourado", locEn: "Forest", locPt: "Floresta", w: "🌞, 🌈", t: "☀️, 🌇" },
+            { en: "Golden Stag Beetle", pt: "Besouro Veado Dourado", locEn: "Forest", locPt: "Floresta", w: "🌧️, 🌈", t: "🌙, 🌇" },
+            { en: "Hercules Beetle", pt: "Besouro Hércules", locEn: "Onsen Mountain", locPt: "Monte Termal", w: "🌞, 🌈", t: "☀️, 🌇" },
+            { en: "Morpho Helena", pt: "Borboleta Morpho Helena", locEn: "Flower Field", locPt: "Campo Floral", w: "🌈", t: "🌅, ☀️" },
+            { en: "Rainbow Stag Beetle", pt: "Besouro Veado Arco-Íris", locEn: "Bait Event", locPt: "Evento de Isca", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+            { en: "Sunset Morpho", pt: "Borboleta Morpho do Pôr do Sol", locEn: "Forest (Deer Tower)", locPt: "Torre do Cervo", w: "🌈", t: "🌅, ☀️" }
+        ];
+
+        let currentTab = 'peixes';
+
+        function setTab(tab) {
+            currentTab = tab;
+            document.getElementById('btn-peixes').classList.toggle('active', tab === 'peixes');
+            document.getElementById('btn-insetos').classList.toggle('active', tab === 'insetos');
+            
+            document.getElementById('search-input').value = '';
+            renderData();
+        }
+
+        function clearAll() {
+            document.getElementById('search-input').value = '';
+            document.getElementById('filter-weather').value = 'all';
+            document.getElementById('filter-time').value = 'all';
+            renderData();
+        }
+
+        function renderData() {
+            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+            const weatherFilter = document.getElementById('filter-weather').value;
+            const timeFilter = document.getElementById('filter-time').value;
+            const resultsContainer = document.getElementById('results');
+            
+            const dataToRender = currentTab === 'peixes' ? peixes : insetos;
+            
+            const filteredData = dataToRender.filter(item => {
+                const matchSearch = item.en.toLowerCase().includes(searchQuery) || 
+                                    item.pt.toLowerCase().includes(searchQuery) ||
+                                    item.locEn.toLowerCase().includes(searchQuery) ||
+                                    item.locPt.toLowerCase().includes(searchQuery);
+                                    
+                const matchWeather = weatherFilter === 'all' || item.w.includes(weatherFilter);
+                const matchTime = timeFilter === 'all' || item.t.includes(timeFilter);
+                return matchSearch && matchWeather && matchTime;
+            });
+
+            resultsContainer.innerHTML = '';
+
+            if (filteredData.length === 0) {
+                resultsContainer.innerHTML = '<div class="empty-state">Nenhum resultado encontrado para esses filtros.</div>';
+                return;
+            }
+
+            filteredData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <h3>${item.en}</h3>
+                    <div class="pt-name">${item.pt}</div>
+                    <p>
+                        <span>📍 <strong>Local:</strong> ${item.locEn}</span>
+                        <span class="loc-pt">(${item.locPt})</span>
+                    </p>
+                    <div class="info-row">
+                        <span title="Clima">☁️ ${item.w}</span>
+                    </div>
+                    <div class="info-row">
+                        <span title="Horário">🕒 ${item.t}</span>
+                    </div>
+                `;
+                resultsContainer.appendChild(card);
+            });
+        }
+
+        // Renderiza a tela inicial
+        renderData();
+    </script>
+</body>
+</html>
