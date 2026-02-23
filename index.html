@@ -16,6 +16,12 @@
             --border: #334155;       
             --radius-md: 12px;
             --radius-lg: 16px;
+            
+            /* Status Colors */
+            --status-acquired-bg: rgba(34, 197, 94, 0.08);
+            --status-acquired-border: rgba(34, 197, 94, 0.4);
+            --status-unavailable-bg: rgba(239, 68, 68, 0.08);
+            --status-unavailable-border: rgba(239, 68, 68, 0.4);
         }
 
         body {
@@ -28,17 +34,39 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .header-container {
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
         }
 
         h1 {
-            text-align: center;
             font-size: 2.5rem;
             font-weight: 800;
-            margin-bottom: 30px;
+            margin: 0;
             background: linear-gradient(135deg, #60a5fa, #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        .btn-menu {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 10px 15px;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .btn-menu:hover { background: var(--bg-hover); }
 
         .controls {
             display: flex;
@@ -58,9 +86,8 @@
             justify-content: center;
         }
 
-        input[type="text"] {
+        input[type="text"], input[type="number"] {
             width: 100%;
-            max-width: 600px;
             padding: 14px 20px;
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
@@ -69,17 +96,14 @@
             color: var(--text-main);
             outline: none;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
-        input[type="text"]:focus {
+        input[type="text"]:focus, input[type="number"]:focus {
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
         }
 
-        input[type="text"]::placeholder {
-            color: var(--text-muted);
-        }
+        #search-input { max-width: 600px; }
 
         button, select {
             padding: 12px 20px;
@@ -92,7 +116,6 @@
             cursor: pointer;
             transition: all 0.3s ease;
             outline: none;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         button:hover, select:hover {
@@ -104,23 +127,19 @@
             background-color: var(--primary);
             color: #ffffff;
             border-color: var(--primary);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
         }
 
         .btn-clear {
             background-color: transparent;
             color: var(--text-muted);
             border: 1px dashed var(--border);
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
+        .btn-clear:hover { background-color: #ef4444; color: white; border-color: #ef4444; }
 
-        .btn-clear:hover {
-            background-color: #ef4444; 
-            color: white;
-            border-color: #ef4444;
-        }
+        .btn-action { width: 100%; margin-bottom: 10px; text-align: left; }
+        .btn-danger { color: #fca5a5; border-color: #7f1d1d; background: rgba(127, 29, 29, 0.2); }
+        .btn-danger:hover { background: #ef4444; color: white; }
+        .btn-save { background: var(--primary); color: white; width: 100%; margin-top: 15px; }
 
         select {
             appearance: none;
@@ -129,11 +148,6 @@
             background-repeat: no-repeat;
             background-position: right 15px top 50%;
             background-size: 12px auto;
-        }
-
-        select option {
-            background-color: var(--bg-card);
-            color: var(--text-main);
         }
 
         .grid {
@@ -149,53 +163,44 @@
             padding: 20px;
             border-radius: var(--radius-lg);
             border: 1px solid var(--border);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             gap: 8px;
+            position: relative;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+        .card:hover { transform: translateY(-3px); }
+
+        .card.acquired {
+            background: var(--status-acquired-bg);
+            border-color: var(--status-acquired-border);
+            opacity: 0.75;
+        }
+        
+        .card.unavailable {
+            background: var(--status-unavailable-bg);
+            border-color: var(--status-unavailable-border);
+            opacity: 0.6;
         }
 
-        .card h3 {
-            margin: 0;
-            color: var(--text-main);
-            font-size: 1.25rem;
+        .card-lvl-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.4);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: bold;
         }
 
-        .card .pt-name {
-            margin: 0 0 10px 0;
-            color: #60a5fa;
-            font-size: 0.95rem;
-            font-weight: 500;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 10px;
-        }
-
-        .card p {
-            margin: 0;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            display: flex;
-            align-items: flex-start;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .card strong {
-            color: var(--text-main);
-        }
-
-        .loc-pt {
-            color: #60a5fa;
-            font-size: 0.85rem;
-        }
-
+        .card h3 { margin: 0; color: var(--text-main); font-size: 1.25rem; padding-right: 40px; }
+        .card .pt-name { margin: 0 0 10px 0; color: #60a5fa; font-size: 0.95rem; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+        .card p { margin: 0; font-size: 0.95rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 2px; }
+        .card strong { color: var(--text-main); }
+        .loc-pt { color: #60a5fa; font-size: 0.85rem; }
+        
         .info-row {
             display: flex;
             align-items: center;
@@ -207,41 +212,106 @@
             margin-top: 4px;
         }
 
+        /* --- SIDEBAR & MODAL --- */
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); z-index: 99; display: none;
+            backdrop-filter: blur(3px);
+        }
+
+        .sidebar {
+            position: fixed; top: 0; right: -350px; width: 300px; height: 100%;
+            background: var(--bg-card); z-index: 100;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            transition: 0.3s ease-in-out; padding: 25px;
+            display: flex; flex-direction: column; gap: 20px;
+            overflow-y: auto;
+        }
+        .sidebar.open { right: 0; }
+        .sidebar-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
+        .sidebar h2 { margin: 0; font-size: 1.3rem; }
+        .close-btn { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 0; box-shadow: none; }
+        .close-btn:hover { background: none; transform: scale(1.1); color: #ef4444; }
+
+        .form-group { display: flex; flex-direction: column; gap: 8px; }
+        .form-group label { font-size: 0.9rem; color: var(--text-muted); }
+
+        .modal {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9);
+            background: var(--bg-card); width: 90%; max-width: 500px; max-height: 80vh;
+            z-index: 101; border-radius: var(--radius-lg); padding: 25px;
+            display: none; flex-direction: column; opacity: 0; transition: 0.2s;
+            border: 1px solid var(--border); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+        }
+        .modal.open { display: flex; opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        .modal-body { overflow-y: auto; margin-top: 15px; display: flex; flex-direction: column; gap: 10px; padding-right: 5px; }
+        
+        .check-item {
+            display: flex; align-items: center; gap: 10px; padding: 10px;
+            background: var(--bg-base); border-radius: 8px; border: 1px solid var(--border);
+            cursor: pointer;
+        }
+        .check-item:hover { border-color: var(--primary); }
+        .check-item input { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; }
+        .check-item span { flex: 1; }
+        .check-item small { color: var(--text-muted); font-size: 0.8rem; }
+
+        /* --- RESPONSIVIDADE --- */
         @media (max-width: 768px) {
-            body {
-                padding: 15px;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .controls.tabs {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-
-            .controls.filters {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 10px;
-            }
-
-            input[type="text"], button, select {
-                width: 100%;
-                max-width: none;
-            }
-
-            .grid {
-                grid-template-columns: 1fr;
-            }
+            body { padding: 15px; }
+            h1 { font-size: 1.8rem; }
+            .controls.tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+            .controls.filters { flex-direction: column; align-items: stretch; gap: 10px; }
+            input[type="text"], button, select { width: 100%; max-width: none; }
+            .grid { grid-template-columns: 1fr; }
+            .sidebar { width: 260px; }
         }
     </style>
 </head>
 <body>
 
-    <h1>Guia Heartopia</h1>
+    <div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>👤 Personagem</h2>
+            <button class="close-btn" onclick="toggleSidebar()">✖</button>
+        </div>
+        
+        <div class="form-group">
+            <label for="char-level">Seu Nível de Captura/Pesca</label>
+            <input type="number" id="char-level" min="1" max="100" value="1" onchange="saveLevel()">
+        </div>
+
+        <hr style="border-color: var(--border); width: 100%; margin: 10px 0;">
+
+        <div class="form-group">
+            <label>Gerenciar Coleção (Aba Atual)</label>
+            <button class="btn-action" onclick="openModal('acquired')">✅ Marcar Existentes</button>
+            <button class="btn-action" onclick="openModal('missing')">❌ Marcar Faltantes</button>
+        </div>
+
+        <div style="flex-grow: 1;"></div>
+
+        <button class="btn-action btn-danger" onclick="clearHistory()">🗑 Limpar Histórico</button>
+    </aside>
+
+    <div class="modal" id="modal">
+        <div class="sidebar-header">
+            <h2 id="modal-title">Título</h2>
+            <button class="close-btn" onclick="closeModal()">✖</button>
+        </div>
+        <p id="modal-desc" style="color: var(--text-muted); font-size: 0.9rem; margin: 10px 0 0 0;"></p>
+        
+        <div class="modal-body" id="modal-list"></div>
+        
+        <button class="btn-save" onclick="saveModal()">Salvar Alterações</button>
+    </div>
+
+    <div class="header-container">
+        <h1>Guia Heartopia</h1>
+        <button class="btn-menu" onclick="toggleSidebar()">⚙️ Progresso</button>
+    </div>
 
     <div class="search-container">
         <input type="text" id="search-input" placeholder="🔍 Pesquisar nome ou local..." oninput="renderData()">
@@ -253,6 +323,13 @@
     </div>
 
     <div class="controls filters">
+        <select id="filter-status" onchange="renderData()">
+            <option value="all">📦 Todos os Status</option>
+            <option value="missing">❌ Apenas Faltantes</option>
+            <option value="acquired">✅ Apenas Adquiridos</option>
+            <option value="unavailable">🔒 Indisponível (Nível Alto)</option>
+        </select>
+
         <select id="filter-weather" onchange="renderData()">
             <option value="all">⛅ Qualquer Clima</option>
             <option value="🌞">🌞 Ensolarado</option>
@@ -268,76 +345,237 @@
             <option value="🌙">🌙 Noite</option>
         </select>
 
-        <button class="btn-clear" onclick="clearAll()" title="Limpar pesquisa e filtros">✖ Limpar Tudo</button>
+        <button class="btn-clear" onclick="clearAllFilters()" title="Limpar pesquisa e filtros">✖ Limpar</button>
     </div>
 
     <div id="results" class="grid"></div>
 
     <script>
+        // Dados com níveis baseados nos dados oficiais
         const peixes = [
-            { en: "Anglerfish", pt: "Tamboril", locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Arctic Char", pt: "Salvelino", locEn: "Forest Lake", locPt: "Lago Florestal", w: "🌧️, 🌈", t: "☀️, 🌇" },
-            { en: "Atlantic Mackerel", pt: "Cavala do Atlântico", locEn: "Whale Sea", locPt: "Mar da Baleia", w: "🌈, 🌞", t: "☀️, 🌇" },
-            { en: "Blackspot Seabream", pt: "Goraz", locEn: "Zephyr Sea", locPt: "Mar do Vento Brando", w: "🌧️, 🌈", t: "🌙, 🌇" },
-            { en: "Bluefin Tuna", pt: "Atum-rabilho", locEn: "Zephyr Sea", locPt: "Mar do Vento Brando", w: "🌈", t: "🌅, ☀️" },
-            { en: "Burbot", pt: "Peixe-bolha", locEn: "Tranquil River", locPt: "Rio Sereno", w: "🌞, 🌧️, 🌈", t: "☀️, 🌇" },
-            { en: "European Eel", pt: "Enguia Europeia", locEn: "Old Sea", locPt: "Mar Antigo", w: "🌈", t: "🌅, ☀️, 🌇" },
-            { en: "Giant Oarfish", pt: "Peixe-remo Gigante", locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌅, ☀️" },
-            { en: "Golden King Crab", pt: "Caranguejo-real Dourado", locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "King Crab", pt: "Caranguejo-real", locEn: "Whale Sea", locPt: "Mar da Baleia", w: "🌈", t: "🌅, ☀️, 🌇" },
-            { en: "Northern Pike", pt: "Lúcio do Norte", locEn: "Suburban Lake", locPt: "Lago Suburbano", w: "🌧️, 🌈", t: "🌙, 🌇" },
-            { en: "Ocean Sunfish", pt: "Peixe-lua Oceânico", locEn: "East Sea", locPt: "Mar Leste", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅" },
-            { en: "Shortfin Mako Shark", pt: "Tubarão-mako de Barbatana Curta", locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌈", t: "🌅, ☀️" },
-            { en: "Smooth Hammerhead", pt: "Tubarão-martelo Liso", locEn: "Old Sea", locPt: "Mar Antigo", w: "🌈", t: "🌙, 🌇" },
-            { en: "Swordfish", pt: "Peixe-espada", locEn: "Whale Sea", locPt: "Mar da Baleia", w: "🌈", t: "🌅, ☀️" },
-            { en: "Wels Catfish", pt: "Siluro Europeu", locEn: "Meadow Lake", locPt: "Lago da Campina", w: "🌞, 🌈", t: "🌙, 🌇" }
+            { en: "Anglerfish", pt: "Tamboril", locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇", lvl: 2 },
+            { en: "Arctic Char", pt: "Salvelino", locEn: "Forest Lake", locPt: "Lago Florestal", w: "🌧️, 🌈", t: "☀️, 🌇", lvl: 10 },
+            { en: "Atlantic Mackerel", pt: "Cavala do Atlântico", locEn: "Whale Sea", locPt: "Mar da Baleia", w: "🌈, 🌞", t: "☀️, 🌇", lvl: 5 },
+            { en: "Blackspot Seabream", pt: "Goraz", locEn: "Zephyr Sea", locPt: "Mar do Vento Brando", w: "🌧️, 🌈", t: "🌙, 🌇", lvl: 7 },
+            { en: "Bluefin Tuna", pt: "Atum-rabilho", locEn: "Zephyr Sea", locPt: "Mar do Vento Brando", w: "🌈", t: "🌅, ☀️", lvl: 9 },
+            { en: "Burbot", pt: "Peixe-bolha", locEn: "Tranquil River", locPt: "Rio Sereno", w: "🌞, 🌧️, 🌈", t: "☀️, 🌇", lvl: 4 },
+            { en: "European Eel", pt: "Enguia Europeia", locEn: "Old Sea", locPt: "Mar Antigo", w: "🌈", t: "🌅, ☀️, 🌇", lvl: 7 },
+            { en: "Giant Oarfish", pt: "Peixe-remo Gigante", locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌅, ☀️", lvl: 7 },
+            { en: "Golden King Crab", pt: "Caranguejo-real Dourado", locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌈", t: "🌙, 🌅, ☀️, 🌇", lvl: 8 },
+            { en: "King Crab", pt: "Caranguejo-real", locEn: "Whale Sea", locPt: "Mar da Baleia", w: "🌈", t: "🌅, ☀️, 🌇", lvl: 8 },
+            { en: "Northern Pike", pt: "Lúcio do Norte", locEn: "Suburban Lake", locPt: "Lago Suburbano", w: "🌧️, 🌈", t: "🌙, 🌇", lvl: 9 },
+            { en: "Ocean Sunfish", pt: "Peixe-lua Oceânico", locEn: "East Sea", locPt: "Mar Leste", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅", lvl: 9 },
+            { en: "Shortfin Mako Shark", pt: "Tubarão-mako de Barbatana Curta", locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌈", t: "🌅, ☀️", lvl: 10 },
+            { en: "Smooth Hammerhead", pt: "Tubarão-martelo Liso", locEn: "Old Sea", locPt: "Mar Antigo", w: "🌈", t: "🌙, 🌇", lvl: 10 },
+            { en: "Swordfish", pt: "Peixe-espada", locEn: "Whale Sea", locPt: "Mar da Baleia", w: "🌈", t: "🌅, ☀️", lvl: 10 },
+            { en: "Wels Catfish", pt: "Siluro Europeu", locEn: "Meadow Lake", locPt: "Lago da Campina", w: "🌞, 🌈", t: "🌙, 🌇", lvl: 10 }
         ];
 
         const insetos = [
-            { en: "Alpine Longhorn Beetle", pt: "Besouro Longicorne Alpino", locEn: "Forest Island", locPt: "Ilha Florestal", w: "🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Amethyst Flower Beetle", pt: "Besouro de Flor Ametista", locEn: "Home (Rocks)", locPt: "Falésia Rochosa", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Ant", pt: "Formiga", locEn: "Fishing Village", locPt: "Vila dos Pescadores", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Bagworm Moth", pt: "Traça Bagworm", locEn: "Forest (Deer Tower)", locPt: "Torre do Cervo", w: "🌞, 🌈", t: "🌙, 🌇" },
-            { en: "Blue Morpho", pt: "Borboleta Morfo Azul", locEn: "Forest", locPt: "Floresta", w: "🌞, 🌈", t: "🌅, ☀️, 🌇" },
-            { en: "Comet Moth", pt: "Mariposa Cometa", locEn: "Suburbs", locPt: "Subúrbio", w: "🌞, 🌈", t: "🌇, 🌙" },
-            { en: "Conehead Mantis", pt: "Louva-a-deus Cabeça de Cone", locEn: "Onsen Mountain", locPt: "Monte Termal", w: "🌧️, 🌈", t: "☀️, 🌇" },
-            { en: "Elegant Flower Beetle", pt: "Besouro de Flor Elegante", locEn: "Flower Field", locPt: "Campo Floral", w: "🌧️, 🌈", t: "🌅, ☀️" },
-            { en: "Giant Asian Mantis", pt: "Louva-a-deus Gigante Asiático", locEn: "Onsen Mountain", locPt: "Monte Termal", w: "🌞, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Golden Jewel Scarab", pt: "Escaravelho Joia Dourado", locEn: "Forest", locPt: "Floresta", w: "🌞, 🌈", t: "☀️, 🌇" },
-            { en: "Golden Stag Beetle", pt: "Besouro Veado Dourado", locEn: "Forest", locPt: "Floresta", w: "🌧️, 🌈", t: "🌙, 🌇" },
-            { en: "Hercules Beetle", pt: "Besouro Hércules", locEn: "Onsen Mountain", locPt: "Monte Termal", w: "🌞, 🌈", t: "☀️, 🌇" },
-            { en: "Morpho Helena", pt: "Borboleta Morpho Helena", locEn: "Flower Field", locPt: "Campo Floral", w: "🌈", t: "🌅, ☀️" },
-            { en: "Rainbow Stag Beetle", pt: "Besouro Veado Arco-Íris", locEn: "Bait Event", locPt: "Evento de Isca", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Sunset Morpho", pt: "Borboleta Morpho do Pôr do Sol", locEn: "Forest (Deer Tower)", locPt: "Torre do Cervo", w: "🌈", t: "🌅, ☀️" }
+            { en: "Alpine Longhorn Beetle", pt: "Besouro Longicorne Alpino", locEn: "Forest Island", locPt: "Ilha Florestal", w: "🌈", t: "🌙, 🌅, ☀️, 🌇", lvl: 5 },
+            { en: "Amethyst Flower Beetle", pt: "Besouro de Flor Ametista", locEn: "Home (Rocks)", locPt: "Falésia Rochosa", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇", lvl: 2 },
+            { en: "Ant", pt: "Formiga", locEn: "Fishing Village", locPt: "Vila dos Pescadores", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇", lvl: 3 },
+            { en: "Bagworm Moth", pt: "Traça Bagworm", locEn: "Forest (Deer Tower)", locPt: "Torre do Cervo", w: "🌞, 🌈", t: "🌙, 🌇", lvl: 10 },
+            { en: "Blue Morpho", pt: "Borboleta Morfo Azul", locEn: "Forest", locPt: "Floresta", w: "🌞, 🌈", t: "🌅, ☀️, 🌇", lvl: 7 },
+            { en: "Comet Moth", pt: "Mariposa Cometa", locEn: "Suburbs", locPt: "Subúrbio", w: "🌞, 🌈", t: "🌇, 🌙", lvl: 8 },
+            { en: "Conehead Mantis", pt: "Louva-a-deus Cabeça de Cone", locEn: "Onsen Mountain", locPt: "Monte Termal", w: "🌧️, 🌈", t: "☀️, 🌇", lvl: 9 },
+            { en: "Elegant Flower Beetle", pt: "Besouro de Flor Elegante", locEn: "Flower Field", locPt: "Campo Floral", w: "🌧️, 🌈", t: "🌅, ☀️", lvl: 7 },
+            { en: "Giant Asian Mantis", pt: "Louva-a-deus Gigante Asiático", locEn: "Onsen Mountain", locPt: "Monte Termal", w: "🌞, 🌈", t: "🌙, 🌅, ☀️, 🌇", lvl: 5 },
+            { en: "Golden Jewel Scarab", pt: "Escaravelho Joia Dourado", locEn: "Forest", locPt: "Floresta", w: "🌞, 🌈", t: "☀️, 🌇", lvl: 7 },
+            { en: "Golden Stag Beetle", pt: "Besouro Veado Dourado", locEn: "Forest", locPt: "Floresta", w: "🌧️, 🌈", t: "🌙, 🌇", lvl: 9 },
+            { en: "Hercules Beetle", pt: "Besouro Hércules", locEn: "Onsen Mountain", locPt: "Monte Termal", w: "🌞, 🌈", t: "☀️, 🌇", lvl: 10 },
+            { en: "Morpho Helena", pt: "Borboleta Morpho Helena", locEn: "Flower Field", locPt: "Campo Floral", w: "🌈", t: "🌅, ☀️", lvl: 10 },
+            { en: "Rainbow Stag Beetle", pt: "Besouro Veado Arco-Íris", locEn: "Bait Event", locPt: "Evento de Isca", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇", lvl: 9 },
+            { en: "Sunset Morpho", pt: "Borboleta Morpho do Pôr do Sol", locEn: "Forest (Deer Tower)", locPt: "Torre do Cervo", w: "🌈", t: "🌅, ☀️", lvl: 10 }
         ];
 
         let currentTab = 'peixes';
+        let charLevel = 1;
+        let caughtItems = []; // Array of English names
+        let currentModalMode = '';
 
+        // --- INICIALIZAÇÃO E LOCAL STORAGE ---
+        function init() {
+            const savedLevel = localStorage.getItem('ht_charLevel');
+            const savedCaught = localStorage.getItem('ht_caughtItems');
+            
+            if (savedLevel) {
+                charLevel = parseInt(savedLevel);
+                document.getElementById('char-level').value = charLevel;
+            }
+            if (savedCaught) {
+                caughtItems = JSON.parse(savedCaught);
+            }
+            renderData();
+        }
+
+        function saveLevel() {
+            charLevel = parseInt(document.getElementById('char-level').value) || 1;
+            localStorage.setItem('ht_charLevel', charLevel);
+            renderData();
+        }
+
+        function saveCaughtData() {
+            localStorage.setItem('ht_caughtItems', JSON.stringify(caughtItems));
+        }
+
+        function clearHistory() {
+            if(confirm("Tem certeza que deseja apagar todo o seu progresso?")) {
+                localStorage.removeItem('ht_charLevel');
+                localStorage.removeItem('ht_caughtItems');
+                charLevel = 1;
+                caughtItems = [];
+                document.getElementById('char-level').value = 1;
+                toggleSidebar();
+                renderData();
+            }
+        }
+
+        // --- INTERFACE (UI) ---
         function setTab(tab) {
             currentTab = tab;
             document.getElementById('btn-peixes').classList.toggle('active', tab === 'peixes');
             document.getElementById('btn-insetos').classList.toggle('active', tab === 'insetos');
-            
             document.getElementById('search-input').value = '';
             renderData();
         }
 
-        function clearAll() {
+        function clearAllFilters() {
             document.getElementById('search-input').value = '';
             document.getElementById('filter-weather').value = 'all';
             document.getElementById('filter-time').value = 'all';
+            document.getElementById('filter-status').value = 'all';
             renderData();
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const isOpen = sidebar.classList.contains('open');
+            
+            if (isOpen) {
+                sidebar.classList.remove('open');
+                overlay.style.display = 'none';
+            } else {
+                sidebar.classList.add('open');
+                overlay.style.display = 'block';
+            }
+        }
+
+        function closeAll() {
+            document.getElementById('sidebar').classList.remove('open');
+            closeModal();
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        // --- MODAL DE SELEÇÃO ---
+        function openModal(mode) {
+            currentModalMode = mode;
+            const modal = document.getElementById('modal');
+            const listContainer = document.getElementById('modal-list');
+            const dataToRender = currentTab === 'peixes' ? peixes : insetos;
+            
+            listContainer.innerHTML = '';
+            
+            if (mode === 'acquired') {
+                document.getElementById('modal-title').innerText = "Marcar Adquiridos";
+                document.getElementById('modal-desc').innerText = "Selecione os itens que você JÁ PEGOU na sua conta.";
+                
+                // Mostra todos os itens para marcar quais já pegou
+                dataToRender.forEach(item => {
+                    const isCaught = caughtItems.includes(item.en);
+                    listContainer.innerHTML += `
+                        <label class="check-item">
+                            <input type="checkbox" value="${item.en}" ${isCaught ? 'checked' : ''}>
+                            <span>${item.en} <small>(${item.pt})</small></span>
+                            <small>Nv. ${item.lvl}</small>
+                        </label>
+                    `;
+                });
+            } else if (mode === 'missing') {
+                document.getElementById('modal-title').innerText = "Marcar Faltantes";
+                document.getElementById('modal-desc').innerText = `Selecione os itens que FALTAM. Ao salvar, todos os outros do nível ${charLevel} ou menor serão marcados como pegos.`;
+                
+                // Mostra apenas itens disponíveis pro nível atual
+                const availableItems = dataToRender.filter(i => i.lvl <= charLevel);
+                
+                if(availableItems.length === 0) {
+                    listContainer.innerHTML = '<p style="color:var(--text-muted);text-align:center;">Não há itens disponíveis para o seu nível atual.</p>';
+                }
+
+                availableItems.forEach(item => {
+                    const isCaught = caughtItems.includes(item.en);
+                    // Se não está pego, o checkbox "Faltante" vem marcado
+                    listContainer.innerHTML += `
+                        <label class="check-item">
+                            <input type="checkbox" value="${item.en}" ${!isCaught ? 'checked' : ''}>
+                            <span>${item.en} <small>(${item.pt})</small></span>
+                            <small>Nv. ${item.lvl}</small>
+                        </label>
+                    `;
+                });
+            }
+
+            modal.classList.add('open');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('open');
+        }
+
+        function saveModal() {
+            const checkboxes = document.querySelectorAll('#modal-list input[type="checkbox"]');
+            const dataToRender = currentTab === 'peixes' ? peixes : insetos;
+
+            if (currentModalMode === 'acquired') {
+                // Modo Existente: Adiciona marcados, remove desmarcados (apenas da aba atual)
+                checkboxes.forEach(cb => {
+                    const index = caughtItems.indexOf(cb.value);
+                    if (cb.checked && index === -1) caughtItems.push(cb.value);
+                    else if (!cb.checked && index > -1) caughtItems.splice(index, 1);
+                });
+            } 
+            else if (currentModalMode === 'missing') {
+                // Modo Faltante: 
+                const availableItems = dataToRender.filter(i => i.lvl <= charLevel);
+                
+                checkboxes.forEach(cb => {
+                    const itemName = cb.value;
+                    const index = caughtItems.indexOf(itemName);
+                    
+                    if (cb.checked) {
+                        // Está faltando = Remove dos adquiridos se estivesse lá
+                        if (index > -1) caughtItems.splice(index, 1);
+                    } else {
+                        // NÃO está faltando (ou seja, foi pego) = Adiciona aos adquiridos
+                        if (index === -1) caughtItems.push(itemName);
+                    }
+                });
+            }
+
+            saveCaughtData();
+            closeAll();
+            renderData();
+        }
+
+        // --- RENDERIZAÇÃO E FILTROS ---
+        function getItemStatus(item) {
+            if (caughtItems.includes(item.en)) return 3; // 3 = Adquirido
+            if (item.lvl > charLevel) return 2;          // 2 = Indisponível (Nível alto)
+            return 1;                                    // 1 = Faltante/Disponível
         }
 
         function renderData() {
             const searchQuery = document.getElementById('search-input').value.toLowerCase();
             const weatherFilter = document.getElementById('filter-weather').value;
             const timeFilter = document.getElementById('filter-time').value;
+            const statusFilter = document.getElementById('filter-status').value;
             const resultsContainer = document.getElementById('results');
             
             const dataToRender = currentTab === 'peixes' ? peixes : insetos;
             
-            const filteredData = dataToRender.filter(item => {
+            // 1. Filtrar
+            let filteredData = dataToRender.filter(item => {
                 const matchSearch = item.en.toLowerCase().includes(searchQuery) || 
                                     item.pt.toLowerCase().includes(searchQuery) ||
                                     item.locEn.toLowerCase().includes(searchQuery) ||
@@ -345,9 +583,26 @@
                                     
                 const matchWeather = weatherFilter === 'all' || item.w.includes(weatherFilter);
                 const matchTime = timeFilter === 'all' || item.t.includes(timeFilter);
-                return matchSearch && matchWeather && matchTime;
+                
+                const statusNum = getItemStatus(item);
+                let matchStatus = true;
+                if (statusFilter === 'missing') matchStatus = (statusNum === 1);
+                if (statusFilter === 'unavailable') matchStatus = (statusNum === 2);
+                if (statusFilter === 'acquired') matchStatus = (statusNum === 3);
+
+                return matchSearch && matchWeather && matchTime && matchStatus;
             });
 
+            // 2. Ordenar: 1º Faltantes, 2º Indisponíveis, 3º Adquiridos. (Desempate por nível)
+            filteredData.sort((a, b) => {
+                const statusA = getItemStatus(a);
+                const statusB = getItemStatus(b);
+                
+                if (statusA !== statusB) return statusA - statusB;
+                return a.lvl - b.lvl; // Desempate por nível
+            });
+
+            // 3. Renderizar
             resultsContainer.innerHTML = '';
 
             if (filteredData.length === 0) {
@@ -356,10 +611,23 @@
             }
 
             filteredData.forEach(item => {
+                const statusNum = getItemStatus(item);
+                let cardClass = 'card';
+                let statusIcon = '';
+                
+                if (statusNum === 2) {
+                    cardClass += ' unavailable';
+                    statusIcon = '🔒 ';
+                } else if (statusNum === 3) {
+                    cardClass += ' acquired';
+                    statusIcon = '✅ ';
+                }
+
                 const card = document.createElement('div');
-                card.className = 'card';
+                card.className = cardClass;
                 card.innerHTML = `
-                    <h3>${item.en}</h3>
+                    <div class="card-lvl-badge">Nv. ${item.lvl}</div>
+                    <h3>${statusIcon}${item.en}</h3>
                     <div class="pt-name">${item.pt}</div>
                     <p>
                         <span>📍 <strong>Local:</strong> ${item.locEn}</span>
@@ -376,8 +644,8 @@
             });
         }
 
-        // Renderiza a tela inicial
-        renderData();
+        // Inicia a aplicação
+        init();
     </script>
 </body>
 </html>
