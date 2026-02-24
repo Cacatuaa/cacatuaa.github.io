@@ -1,502 +1,796 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heartopia - Guia de Captura</title>
-    <style>
-        :root {
-            --bg-base: #0f172a;      
-            --bg-card: #1e293b;      
-            --bg-hover: #334155;     
-            --text-main: #f8fafc;    
-            --text-muted: #94a3b8;   
-            --primary: #3b82f6;      
-            --primary-hover: #2563eb;
-            --border: #334155;       
-            --radius-md: 12px;
-            --radius-lg: 16px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heartopia - Guia de Captura</title>
+<style>
+:root {
+    --bg-base: #0f172a;      
+    --bg-card: #1e293b;      
+    --bg-hover: #334155;     
+    --text-main: #f8fafc;    
+    --text-muted: #94a3b8;   
+    --primary: #3b82f6;      
+    --primary-hover: #2563eb;
+    --success: #10b981;
+    --danger: #ef4444;
+    --border: #334155;       
+    --radius-md: 12px;
+    --radius-lg: 16px;
+}
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-base);
-            color: var(--text-main);
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+}
 
-        h1 {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 30px;
-            background: linear-gradient(135deg, #60a5fa, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+/* --- BARRA LATERAL --- */
+.sidebar {
+    width: 320px;
+    background-color: var(--bg-card);
+    border-right: 1px solid var(--border);
+    padding: 25px 20px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 10;
+}
 
-        .controls {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-            width: 100%;
-            max-width: 1000px;
-        }
+.main-content {
+    margin-left: 320px;
+    padding: 25px;
+    flex: 1;
+    box-sizing: border-box;
+}
 
-        .search-container {
-            width: 100%;
-            max-width: 1000px;
-            margin-bottom: 25px;
-            display: flex;
-            justify-content: center;
-        }
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 10px 0;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-        input[type="text"] {
-            width: 100%;
-            max-width: 600px;
-            padding: 14px 20px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            font-size: 16px;
-            background: var(--bg-card);
-            color: var(--text-main);
-            outline: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
+/* --- SISTEMA DE NÍVEIS --- */
+.level-container {
+    background: rgba(0,0,0,0.2);
+    padding: 15px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
-        input[type="text"]:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
-        }
+.level-container label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
 
-        input[type="text"]::placeholder {
-            color: var(--text-muted);
-        }
+.level-container input[type="number"] {
+    width: 60px;
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--bg-base);
+    color: var(--text-main);
+    text-align: center;
+    outline: none;
+}
 
-        button, select {
-            padding: 12px 20px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            font-size: 16px;
-            font-weight: 600;
-            background: var(--bg-card);
-            color: var(--text-main);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            outline: none;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
+.level-container input[type="number"]:focus {
+    border-color: var(--primary);
+}
 
-        button:hover, select:hover {
-            background: var(--bg-hover);
-            transform: translateY(-2px);
-        }
+.btn-batch {
+    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+    color: white;
+    border: none;
+    padding: 12px;
+}
+.btn-batch:hover {
+    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+}
 
-        button.active {
-            background-color: var(--primary);
-            color: #ffffff;
-            border-color: var(--primary);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
-        }
+/* --- CONTROLES DA SIDEBAR --- */
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
 
-        .btn-clear {
-            background-color: transparent;
-            color: var(--text-muted);
-            border: 1px dashed var(--border);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+.tabs {
+    flex-direction: row;
+}
+.tabs button { flex: 1; }
 
-        .btn-clear:hover {
-            background-color: #ef4444; 
-            color: white;
-            border-color: #ef4444;
-        }
+input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 15px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: 15px;
+    background: var(--bg-base);
+    color: var(--text-main);
+    outline: none;
+    transition: all 0.3s ease;
+}
+input[type="text"]:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
 
-        select {
-            appearance: none;
-            padding-right: 40px;
-            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2394a3b8%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
-            background-repeat: no-repeat;
-            background-position: right 15px top 50%;
-            background-size: 12px auto;
-        }
+button, select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 15px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: 15px;
+    font-weight: 600;
+    background: var(--bg-base);
+    color: var(--text-main);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+button:hover, select:hover { background: var(--bg-hover); transform: translateY(-2px); }
+button.active { background-color: var(--primary); color: #ffffff; border-color: var(--primary); }
 
-        select option {
-            background-color: var(--bg-card);
-            color: var(--text-main);
-        }
+.btn-clear {
+    background-color: transparent;
+    color: var(--text-muted);
+    border: 1px dashed var(--border);
+    margin-top: 5px;
+}
+.btn-clear:hover { background-color: #ef4444; color: white; border-color: #ef4444; }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            width: 100%;
-            max-width: 1000px;
-        }
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2394a3b8%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px top 50%;
+    background-size: 12px auto;
+}
 
-        .card {
-            background: var(--bg-card);
-            padding: 20px;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
+/* --- GRID DE CARTAS --- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
-        }
+.card {
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+}
 
-        .card h3 {
-            margin: 0;
-            color: var(--text-main);
-            font-size: 1.25rem;
-        }
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+}
 
-        .card .pt-name {
-            margin: 0 0 10px 0;
-            color: #60a5fa;
-            font-size: 0.95rem;
-            font-weight: 500;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 10px;
-        }
+/* ESTADOS DA CARTA */
+.card.caught {
+    border-color: var(--success);
+    background: rgba(16, 185, 129, 0.1);
+    opacity: 0.65;
+}
+.card.unavailable {
+    border-color: var(--danger);
+    background: rgba(239, 68, 68, 0.1);
+    opacity: 0.5;
+}
 
-        .card p {
-            margin: 0;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            display: flex;
-            align-items: flex-start;
-            flex-direction: column;
-            gap: 2px;
-        }
+.card-header { display: flex; justify-content: space-between; align-items: flex-start; }
+.card h3 { margin: 0; color: var(--text-main); font-size: 1.25rem; padding-right: 30px; }
+.card .pt-name { margin: 0 0 5px 0; color: #60a5fa; font-size: 0.95rem; font-weight: 500; }
 
-        .card strong {
-            color: var(--text-main);
-        }
+.level-badge {
+    display: inline-block;
+    background: #475569;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    align-self: flex-start;
+}
 
-        .loc-pt {
-            color: #60a5fa;
-            font-size: 0.85rem;
-        }
+.card.unavailable .level-badge { background: var(--danger); }
+.card.caught .level-badge { background: var(--success); }
 
-        .info-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            margin-top: 4px;
-        }
+.checkbox-container { position: absolute; top: 20px; right: 20px; cursor: pointer; }
+.checkbox-container input { cursor: pointer; width: 22px; height: 22px; accent-color: var(--success); }
 
-        @media (max-width: 768px) {
-            body {
-                padding: 15px;
-            }
+.card p { margin: 0; font-size: 0.95rem; color: var(--text-muted); display: flex; align-items: flex-start; flex-direction: column; gap: 2px; border-top: 1px solid var(--border); padding-top: 10px; }
+.loc-pt { color: #60a5fa; font-size: 0.85rem; }
+.info-row { display: flex; align-items: center; gap: 10px; background: rgba(0, 0, 0, 0.2); padding: 8px 12px; border-radius: 8px; font-size: 0.95rem; margin-top: 4px; }
 
-            h1 {
-                font-size: 2rem;
-            }
+/* --- MODAL DE BATCH --- */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+.modal-content {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    width: 90%; max-width: 500px; max-height: 85vh;
+    display: flex; flex-direction: column;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+.modal-header { padding: 20px; border-bottom: 1px solid var(--border); }
+.modal-header h2 { margin: 0; font-size: 1.5rem; }
+.modal-body { padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
 
-            .controls.tabs {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
+.batch-actions {
+    display: flex;
+    gap: 10px;
+}
+.batch-actions button {
+    padding: 8px;
+    font-size: 0.9rem;
+}
 
-            .controls.filters {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 10px;
-            }
+.batch-list { border: 1px solid var(--border); border-radius: var(--radius-md); max-height: 300px; overflow-y: auto; background: var(--bg-base); }
+.batch-item { display: flex; align-items: center; gap: 10px; padding: 10px 15px; border-bottom: 1px solid var(--border); }
+.batch-item:last-child { border-bottom: none; }
+.batch-item label { flex: 1; cursor: pointer; font-size: 0.95rem; }
+.batch-item span { color: var(--text-muted); font-size: 0.8rem; }
+.modal-footer { padding: 20px; border-top: 1px solid var(--border); display: flex; gap: 10px; justify-content: flex-end; }
+.modal-footer button { width: auto; padding: 10px 20px; }
 
-            input[type="text"], button, select {
-                width: 100%;
-                max-width: none;
-            }
-
-            .grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+/* Responsividade */
+@media (max-width: 768px) {
+    body { flex-direction: column; }
+    .sidebar { position: static; width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); padding: 20px; }
+    .main-content { margin-left: 0; }
+    .grid { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
 
-    <h1>Guia Heartopia</h1>
+    <aside class="sidebar">
+        <h1>Guia Heartopia</h1>
 
-    <div class="search-container">
-        <input type="text" id="search-input" placeholder="🔍 Pesquisar nome ou local..." oninput="renderData()">
+        <div class="level-container">
+            <label>🎣 Nível de Pesca: 
+                <input type="number" id="fish-level" min="1" max="99" placeholder="Ex: 5" oninput="updateLevels()">
+            </label>
+            <label>🦋 Nível de Insetos: 
+                <input type="number" id="bug-level" min="1" max="99" placeholder="Ex: 5" oninput="updateLevels()">
+            </label>
+            <button class="btn-batch" onclick="openBatchModal()">📦 Gerenciar em Lote</button>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="🔍 Pesquisar nome ou local..." oninput="renderData()">
+        </div>
+
+        <div class="controls tabs">
+            <button id="btn-peixes" class="active" onclick="setTab('peixes')">🐟 Peixes</button>
+            <button id="btn-insetos" onclick="setTab('insetos')">🦋 Insetos</button>
+        </div>
+
+        <div class="controls filters">
+            <select id="filter-caught" onchange="renderData()">
+                <option value="all">📦 Coleção: Todos</option>
+                <option value="caught">✅ Já peguei</option>
+                <option value="uncaught">❌ Falta pegar</option>
+            </select>
+
+            <select id="filter-weather" onchange="renderData()">
+                <option value="all">⛅ Qualquer Clima</option>
+                <option value="🌞">🌞 Ensolarado</option>
+                <option value="🌧️">🌧️ Chuvoso</option>
+                <option value="🌈">🌈 Arco-íris</option>
+            </select>
+
+            <select id="filter-time" onchange="renderData()">
+                <option value="all">🕒 Qualquer Horário</option>
+                <option value="🌅">🌅 Madrugada</option>
+                <option value="☀️">☀️ Dia</option>
+                <option value="🌇">🌇 Entardecer</option>
+                <option value="🌙">🌙 Noite</option>
+            </select>
+
+            <button class="btn-clear" onclick="clearAll()">✖ Limpar Tudo</button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div id="results" class="grid"></div>
+    </main>
+
+    <div id="batch-modal" class="modal-overlay" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Gerenciar em Lote</h2>
+            </div>
+            <div class="modal-body">
+                <select id="batch-category" onchange="renderBatchList()">
+                    <option value="peixes">🐟 Aba: Peixes</option>
+                    <option value="insetos">🦋 Aba: Insetos</option>
+                </select>
+                <select id="batch-mode" onchange="renderBatchList()">
+                    <option value="adquiridos">✅ Marcar APENAS os que eu JÁ TENHO</option>
+                    <option value="faltantes">❌ Marcar APENAS os que ME FALTAM</option>
+                </select>
+                
+                <input type="text" id="batch-search" placeholder="🔍 Filtrar itens nesta lista..." oninput="filterBatchList()">
+
+                <div class="batch-actions">
+                    <button onclick="selectAllBatch()">☑️ Selecionar Tudo</button>
+                    <button onclick="clearAllBatch()">🔲 Desmarcar Tudo</button>
+                </div>
+
+                <p id="batch-hint" style="font-size: 0.9rem; color: var(--text-muted); margin: 0;"></p>
+                <div id="batch-list" class="batch-list"></div>
+            </div>
+            <div class="modal-footer">
+                <button onclick="closeBatchModal()" style="background: transparent; color: var(--text-muted);">Cancelar</button>
+                <button class="active" onclick="saveBatch()">Salvar Alterações</button>
+            </div>
+        </div>
     </div>
 
-    <div class="controls tabs">
-        <button id="btn-peixes" class="active" onclick="setTab('peixes')">🐟 Peixes</button>
-        <button id="btn-insetos" onclick="setTab('insetos')">🦋 Insetos</button>
-    </div>
+<script>
+const peixes = [
+    { en: "Anglerfish", pt: "Tamboril", lvl: 2, locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Arctic Char", pt: "Salvelino", lvl: 10, locEn: "Forest Lake", locPt: "Lago Florestal", w: "🌧️, 🌈", t: "☀️, 🌇" },
+    { en: "Atlantic Mackerel", pt: "Cavala do Atlântico", lvl: 5, locEn: "Whale Sea", locPt: "Mar da Baleia", w: "🌈, 🌞", t: "☀️, 🌇" },
+    { en: "Atlantic Pygmy Octopus", pt: "Polvo Pigmeu", lvl: 2, locEn: "Zephyr Sea", locPt: "Mar do Vento Brando", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Atlantic Salmon", pt: "Salmão do Atlântico", lvl: 3, locEn: "Whale Sea", locPt: "Mar da Baleia", w: "🌞, 🌧️, 🌈", t: "☀️, 🌇, 🌙" },
+    { en: "Beltfish", pt: "Peixe-fita", lvl: 1, locEn: "Zephyr Sea", locPt: "Mar do Vento Brando", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Blackspot Seabream", pt: "Goraz", lvl: 7, locEn: "Zephyr Sea", locPt: "Mar do Vento Brando", w: "🌧️, 🌈", t: "🌙, 🌇" },
+    { en: "Bluegill", pt: "Perca-sol Bluegill", lvl: 10, locEn: "Onsen Mountain Lake", locPt: "Lago do Monte Termal", w: "🌞, 🌈", t: "🌙, 🌇" },
+    { en: "Blue Ero Crayfish", pt: "Lagostim Azul", lvl: 8, locEn: "Forest Lake", locPt: "Lago Florestal", w: "🌞, 🌧️, 🌈", t: "🌇, 🌙" },
+    { en: "Bluefin Tuna", pt: "Atum-rabilho", lvl: 9, locEn: "Zephyr Sea", locPt: "Mar do Vento Brando", w: "🌈", t: "🌅, ☀️" },
+    { en: "Burbot", pt: "Peixe-bolha", lvl: 4, locEn: "Tranquil River", locPt: "Rio Sereno", w: "🌞, 🌧️, 🌈", t: "☀️, 🌇" },
+    { en: "Butterfly Koi", pt: "Carpa Borboleta", lvl: 4, locEn: "Meadow Lake", locPt: "Lago da Campina", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Chum Salmon", pt: "Salmão Keta", lvl: 6, locEn: "Tranquil River", locPt: "Rio Sereno", w: "🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Clownfish", pt: "Peixe-palhaço", lvl: 3, locEn: "Old Sea", locPt: "Mar Antigo", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Common Barbel", pt: "Barbo Comum", lvl: 1, locEn: "Shallow River", locPt: "Rio Raso", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Common Bleak", pt: "Alburno Comum", lvl: 1, locEn: "Lake", locPt: "Lago", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Common Carp", pt: "Carpa Comum", lvl: 4, locEn: "Rosy River", locPt: "Rio Rosado", w: "🌞, 🌈", t: "☀️, 🌇" },
+    { en: "Common Chub", pt: "Escalo Comum", lvl: 1, locEn: "Lake", locPt: "Lago", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Common Octopus", pt: "Polvo Comum", lvl: 2, locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Common Rudd", pt: "Ruivaca Comum", lvl: 5, locEn: "Suburban Lake", locPt: "Lago Suburbano", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Common Shrimp", pt: "Camarão Comum", lvl: 1, locEn: "East Sea", locPt: "Mar Leste", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Common Whitefish", pt: "Corégono Comum", lvl: 1, locEn: "Onsen Mountain Lake", locPt: "Lago do Monte Termal", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Crucian Carp", pt: "Pimpão", lvl: 1, locEn: "Suburban Lake", locPt: "Lago Suburbano", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Edible Frog", pt: "Rã Comestível", lvl: 3, locEn: "Lake", locPt: "Lago", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "European Crayfish", pt: "Lagostim Europeu", lvl: 3, locEn: "Forest Lake", locPt: "Lago Florestal", w: "🌞, 🌧️, 🌈", t: "🌇, 🌙, 🌅" },
+    { en: "European Eel", pt: "Enguia Europeia", lvl: 7, locEn: "Old Sea", locPt: "Mar Antigo", w: "🌈", t: "🌅, ☀️, 🌇" },
+    { en: "European Flying Squid", pt: "Lula Voadora Europeia", lvl: 5, locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "European Lobster", pt: "Lagosta Europeia", lvl: 5, locEn: "Zephyr Sea", locPt: "Mar do Vento Brando", w: "🌞, 🌧️, 🌈", t: "🌇, 🌙" },
+    { en: "European Mudminnow", pt: "Bodelha Europeia", lvl: 8, locEn: "Suburban Lake", locPt: "Lago Suburbano", w: "🌞, 🌈", t: "🌙, 🌅" },
+    { en: "European Perch", pt: "Solha Europeia", lvl: 1, locEn: "River", locPt: "Rio", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "European Plaice", pt: "Solha Europeia", lvl: 4, locEn: "Old Sea", locPt: "Mar Antigo", w: "🌞, 🌧️, 🌈", t: "🌇, 🌙, 🌅" },
+    { en: "European Smelt", pt: "Enguia Europeia", lvl: 1, locEn: "Meadow Lake", locPt: "Lago da Campina", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "False Scad", pt: "Carapau Falso", lvl: 2, locEn: "Zephyr Sea", locPt: "Mar do Vento Brando", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Freshwater Blenny", pt: "Blenídeo de Água Doce", lvl: 5, locEn: "Rosy River", locPt: "Rio Rosado", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Giant Oarfish", pt: "Peixe-remo Gigante", lvl: 7, locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌅, ☀️" },
+    { en: "Goby", pt: "Caboz", lvl: 4, locEn: "East Sea", locPt: "Mar Leste", w: "🌞, 🌧️, 🌈", t: "🌅, ☀️" },
+    { en: "Golden King Crab", pt: "Caranguejo-real Dourado", lvl: 8, locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Goldfish", pt: "Peixe Dourado", lvl: 8, locEn: "Meadow Lake", locPt: "Lago da Campina", w: "🌧️, 🌈", t: "🌅, ☀️, 🌇" },
+    { en: "Grayling", pt: "Tímalo", lvl: 6, locEn: "Suburban Lake", locPt: "Lago Suburbano", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Haddock", pt: "Eglefino", lvl: 8, locEn: "East Sea", locPt: "Mar Leste", w: "🌞, 🌈", t: "☀️, 🌇, 🌙" },
+    { en: "Hermit Crab", pt: "Caranguejo Eremita", lvl: 3, locEn: "East Sea", locPt: "Mar Leste", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Horse Mackerel", pt: "Carapau", lvl: 1, locEn: "Whale Sea", locPt: "Mar da Baleia", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Huchen", pt: "Salmão do Danúbio", lvl: 9, locEn: "Giantwood River", locPt: "Rio da Madeira Gigante", w: "🌈", t: "🌙, ☀️, 🌇" },
+    { en: "King Crab", pt: "Caranguejo-real", lvl: 8, locEn: "Whale Sea", locPt: "Mar da Baleia", w: "🌈", t: "🌅, ☀️, 🌇" },
+    { en: "Large Pearl Mussel", pt: "Mexilhão de Pérola Grande", lvl: 6, locEn: "Forest Lake", locPt: "Lago Florestal", w: "🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Largemouth Bass", pt: "Achigã (Bass)", lvl: 2, locEn: "Forest Lake", locPt: "Lago Florestal", w: "🌞, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Mediterranean Killifish", pt: "Killifish do Mediterrâneo", lvl: 7, locEn: "Suburban Lake", locPt: "Lago Suburbano", w: "🌞, 🌈", t: "☀️, 🌇, 🌙" },
+    { en: "Minnow", pt: "Vairão", lvl: 1, locEn: "Tranquil River", locPt: "Rio Sereno", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Moonfish", pt: "Peixe-lua", lvl: 9, locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌙, 🌇" },
+    { en: "Mottled Sculpin", pt: "Caboz Marmoreado", lvl: 7, locEn: "Onsen Mountain Lake", locPt: "Lago do Monte Termal", w: "🌧️, 🌈", t: "🌅, ☀️, 🌇" },
+    { en: "Mud Sunfish", pt: "Perca-sol do Lodo", lvl: 3, locEn: "Forest Lake", locPt: "Lago Florestal", w: "🌞, 🌧️, 🌈", t: "🌅, ☀️, 🌇" },
+    { en: "Mussel", pt: "Marisco", lvl: 3, locEn: "Suburban Lake", locPt: "Lago Suburbano", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Northern Pike", pt: "Lúcio do Norte", lvl: 9, locEn: "Suburban Lake", locPt: "Lago Suburbano", w: "🌧️, 🌈", t: "🌙, 🌇" },
+    { en: "Nursehound", pt: "Pata-roxa Grande", lvl: 6, locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Ocean Sunfish", pt: "Peixe-lua Oceânico", lvl: 9, locEn: "East Sea", locPt: "Mar Leste", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅" },
+    { en: "Oriental Shrimp", pt: "Camarão Oriental", lvl: 1, locEn: "River", locPt: "Rio", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Puffer Fish", pt: "Baiacu", lvl: 6, locEn: "Old Sea", locPt: "Mar Antigo", w: "🌞, 🌧️, 🌈", t: "☀️, 🌇" },
+    { en: "Pumpkinseed", pt: "Perca-sol Abóbora", lvl: 9, locEn: "Onsen Mountain Lake", locPt: "Lago do Monte Termal", w: "🌞, 🌈", t: "🌅, ☀️, 🌇" },
+    { en: "Rabbit Fish", pt: "Peixe-coelho", lvl: 4, locEn: "Ocean", locPt: "Oceano", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Red-bellied Piranha", pt: "Piranha de Barriga Vermelha", lvl: 4, locEn: "Giantwood River", locPt: "Rio da Madeira Gigante", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "River Crab", pt: "Caranguejo de Rio", lvl: 4, locEn: "Suburban Lake", locPt: "Lago Suburbano", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Ruffe", pt: "Acerina", lvl: 3, locEn: "Onsen Mountain Lake", locPt: "Lago do Monte Termal", w: "🌞, 🌧️, 🌈", t: "☀️, 🌇" },
+    { en: "Sardine", pt: "Sardinha", lvl: 1, locEn: "Ocean", locPt: "Oceano", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Schneider", pt: "Peixe Schneider", lvl: 1, locEn: "Suburban Lake", locPt: "Lago Suburbano", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Sea Bass", pt: "Robalo", lvl: 1, locEn: "Ocean", locPt: "Oceano", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Sea Stickleback", pt: "Peixe-espinho", lvl: 1, locEn: "Old Sea", locPt: "Mar Antigo", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Seabream", pt: "Dourada", lvl: 10, locEn: "Zephyr Sea", locPt: "Mar do Vento Brando", w: "🌧️, 🌈", t: "🌇, 🌙" },
+    { en: "Seahorse", pt: "Cavalo-marinho", lvl: 1, locEn: "Whale Sea", locPt: "Mar da Baleia", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️" },
+    { en: "Shortfin Mako Shark", pt: "Tubarão-mako de Barbatana Curta", lvl: 10, locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌈", t: "🌅, ☀️" },
+    { en: "Skipjack Tuna", pt: "Bonito-listrado", lvl: 1, locEn: "Ocean", locPt: "Oceano", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Smooth Hammerhead", pt: "Tubarão-martelo Liso", lvl: 10, locEn: "Old Sea", locPt: "Mar Antigo", w: "🌈", t: "🌙, 🌇" },
+    { en: "Spined Loach", pt: "Verdemã de Pedra", lvl: 1, locEn: "Giantwood River", locPt: "Rio da Madeira Gigante", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Stone Loach", pt: "Verdemã de Pedra", lvl: 2, locEn: "Suburban Lake", locPt: "Lago Suburbano", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Streber", pt: "Peixe Streber", lvl: 3, locEn: "Rosy River", locPt: "Rio Rosado", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Striped Red Mullet", pt: "Salmonete Listrado", lvl: 1, locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Swordfish", pt: "Peixe-espada", lvl: 10, locEn: "Whale Sea", locPt: "Mar da Baleia", w: "🌈", t: "🌅, ☀️" },
+    { en: "Tadpole", pt: "Girino", lvl: 3, locEn: "Onsen Mountain Lake", locPt: "Lago do Monte Termal", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Tench", pt: "Tenca", lvl: 1, locEn: "Forest Lake", locPt: "Lago Florestal", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Three-spined Stickleback", pt: "Esgana-gata de Três Espinhos", lvl: 7, locEn: "Shallow River", locPt: "Rio Raso", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Tilapia", pt: "Tilápia", lvl: 3, locEn: "River", locPt: "Rio", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Trout", pt: "Truta", lvl: 5, locEn: "Meadow Lake", locPt: "Lago da Campina", w: "🌞, 🌈", t: "🌙, 🌇" },
+    { en: "Tub Gurnard", pt: "Ruivo", lvl: 6, locEn: "East Sea", locPt: "Mar Leste", w: "🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Turbot", pt: "Pregado", lvl: 4, locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Wels Catfish", pt: "Siluro Europeu", lvl: 10, locEn: "Meadow Lake", locPt: "Lago da Campina", w: "🌞, 🌈", t: "🌙, 🌇" },
+    { en: "Zander", pt: "Lucioperca", lvl: 3, locEn: "Giantwood River", locPt: "Rio da Madeira Gigante", w: "🌞, 🌈", t: "🌙, 🌅, ☀️, 🌇" }
+];
+        
+const insetos = [
+    { en: "Alpine Longhorn Beetle", pt: "Besouro Longicorne Alpino", lvl: 5, locEn: "Forest Island", locPt: "Ilha Florestal", w: "🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Amethyst Flower Beetle", pt: "Besouro de Flor Ametista", lvl: 2, locEn: "Home (Rocks)", locPt: "Falésia Rochosa", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Ant", pt: "Formiga", lvl: 3, locEn: "Fishing Village (Fishing Village Square)", locPt: "Vila dos Pescadores (Praça)", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Apollo", pt: "Borboleta Apolo", lvl: 1, locEn: "Bait the Insects Event", locPt: "Evento de Isca", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Asian Lady Beetle", pt: "Joaninha Asiática", lvl: 5, locEn: "Forest (Deer Tower)", locPt: "Torre do Cervo", w: "🌧️, 🌈", t: "☀️, 🌇, 🌙" },
+    { en: "Asparagus Beetle", pt: "Besouro do Espargo", lvl: 1, locEn: "Flower Field", locPt: "Campo Floral", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Bagworm Moth", pt: "Traça Bagworm", lvl: 10, locEn: "Forest (Deer Tower)", locPt: "Torre do Cervo", w: "🌞, 🌈", t: "🌙, 🌇" },
+    { en: "Beautiful Demoiselle", pt: "Libelinha Bela", lvl: 6, locEn: "Forest Lake Shore", locPt: "Margem do Lago Florestal", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Beautiful Leopard", pt: "Borboleta Leopardo Bela", lvl: 4, locEn: "Fishing Village (Wharf)", locPt: "Vila dos Pescadores (Cais)", w: "🌧️, 🌈", t: "🌙, 🌅, 🌇" },
+    { en: "Blue Morpho", pt: "Borboleta Morfo Azul", lvl: 7, locEn: "Forest (Spirit Oak Pine Forest)", locPt: "Floresta (Pinhal do Carvalho Espiritual)", w: "🌞, 🌈", t: "🌅, ☀️, 🌇" },
+    { en: "Blue Shieldbug", pt: "Percevejo Escudo Azul", lvl: 6, locEn: "Fishing Village (Lighthouse)", locPt: "Vila dos Pescadores (Farol)", w: "🌞, 🌧️, 🌈", t: "🌅, ☀️" },
+    { en: "Bumblebee", pt: "Mamangaba", lvl: 2, locEn: "Flower Field", locPt: "Campo Floral", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Cabbage White", pt: "Borboleta Branca da Couve", lvl: 1, locEn: "Fishing Village", locPt: "Vila dos Pescadores", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Cerulean Carpenter", pt: "Abelha Carpinteira Cerúlea", lvl: 9, locEn: "Fishing Village (Fishing Village Square)", locPt: "Vila dos Pescadores (Praça)", w: "🌈", t: "🌙, 🌇" },
+    { en: "Chestnut Tiger", pt: "Borboleta Tigre Castanha", lvl: 7, locEn: "Bait the Insects Event", locPt: "Evento de Isca", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Cicada", pt: "Cigarra", lvl: 4, locEn: "Forest (Spirit Oak Pine Forest)", locPt: "Floresta (Pinhal do Carvalho Espiritual)", w: "🌞, 🌧️, 🌈", t: "🌙, ☀️, 🌇" },
+    { en: "Comet Moth", pt: "Mariposa Cometa", lvl: 8, locEn: "Suburbs", locPt: "Subúrbio", w: "🌞, 🌈", t: "🌇, 🌙" },
+    { en: "Common Blue Butterfly", pt: "Borboleta Azul Comum", lvl: 2, locEn: "Central Area", locPt: "Área Central", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Common Brimstone", pt: "Borboleta Limão", lvl: 1, locEn: "Suburbs", locPt: "Subúrbio", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Common Whitetail", pt: "Libélula Cauda Branca Comum", lvl: 4, locEn: "River Bank", locPt: "Margem do Rio", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Conehead Mantis", pt: "Louva-a-deus Cabeça de Cone", lvl: 9, locEn: "Onsen Mountain (Ruins)", locPt: "Monte Termal (Ruínas)", w: "🌧️, 🌈", t: "☀️, 🌇" },
+    { en: "Crimson Marsh Glider", pt: "Libélula Carmesim", lvl: 7, locEn: "Onsen Mountain", locPt: "Monte Termal", w: "🌈", t: "🌙, ☀️, 🌇" },
+    { en: "Elegant Flower Beetle", pt: "Besouro de Flor Elegante", lvl: 7, locEn: "Flower Field (Whale Mountain)", locPt: "Campo Floral (Montanha da Baleia)", w: "🌧️, 🌈", t: "🌅, ☀️" },
+    { en: "European Firebug", pt: "Percevejo de Fogo Europeu", lvl: 1, locEn: "Home (Rocks)", locPt: "Falésia Rochosa", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Fire-colored Beetle", pt: "Besouro Cor de Fogo", lvl: 3, locEn: "Onsen Mountain (Onsen)", locPt: "Monte Termal (Fontes Termais)", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Four-spotted Ladybug", pt: "Joaninha de Quatro Pontos", lvl: 4, locEn: "Onsen Mountain (Crater Lake)", locPt: "Monte Termal (Lago da Cratera)", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Four-spotted Skimmer", pt: "Libélula de Quatro Pontos", lvl: 2, locEn: "Suburban Lakeshore", locPt: "Margem do Lago Suburbano", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Giant Asian Mantis", pt: "Louva-a-deus Gigante Asiático*", lvl: 5, locEn: "Onsen Mountain (Ruins)", locPt: "Monte Termal (Ruínas)", w: "🌞, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Gold Grasshopper", pt: "Gafanhoto Rosa", lvl: 1, locEn: "Onsen Mountain", locPt: "Monte Termal", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Golden Jewel Scarab", pt: "Escaravelho Joia Dourado", lvl: 7, locEn: "Forest (Jump Puzzle)", locPt: "Floresta (Puzzle de Salto)", w: "🌞, 🌈", t: "☀️, 🌇" },
+    { en: "Golden Stag Beetle", pt: "Besouro Veado Dourado", lvl: 9, locEn: "Forest (Spirit Oak Pine Forest)", locPt: "Floresta (Pinhal do Carvalho Espiritual)", w: "🌧️, 🌈", t: "🌙, 🌇" },
+    { en: "Green Birdwing", pt: "Borboleta Asa de Pássaro Verde", lvl: 6, locEn: "Suburbs", locPt: "Subúrbio", w: "🌞, 🌧️, 🌈", t: "🌅, ☀️, 🌇" },
+    { en: "Green Tiger Beetle", pt: "Cicindela Verde", lvl: 2, locEn: "Onsen Mountain", locPt: "Monte Termal", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Hercules Beetle", pt: "Besouro Hércules", lvl: 10, locEn: "Onsen Mountain (Crater Lake)", locPt: "Monte Termal (Lago da Cratera)", w: "🌞, 🌈", t: "☀️, 🌇" },
+    { en: "Horned Beetle", pt: "Besouro Chifrudo", lvl: 8, locEn: "Fishing Village (East Pier)", locPt: "Vila dos Pescadores (Píer Leste)", w: "🌞, 🌈", t: "🌙, 🌇" },
+    { en: "Katydid", pt: "Esperança", lvl: 3, locEn: "Flower Field (Amethyst Beach)", locPt: "Campo Floral (Praia de Ametista)", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Large Banded Grasshopper", pt: "Gafanhoto Listrado Grande", lvl: 4, locEn: "Suburbs", locPt: "Subúrbio", w: "🌞, 🌈", t: "🌇, 🌙" },
+    { en: "Large Red Damselfly", pt: "Libelinha Vermelha Grande", lvl: 1, locEn: "Waterside", locPt: "Beira d'água", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Mediterranean Mantis", pt: "Louva-a-deus Mediterrâneo", lvl: 4, locEn: "Onsen Mountain (Stone Cliff)", locPt: "Monte Termal (Penhasco de Pedra)", w: "🌞, 🌈", t: "☀️, 🌇, 🌙" },
+    { en: "Mini Moon Moth", pt: "Mariposa Luna Chinesa", lvl: 3, locEn: "Suburbs", locPt: "Subúrbio", w: "🌞, 🌈", t: "🌅, ☀️, 🌇" },
+    { en: "Minotaur Beetle", pt: "Besouro Minotauro", lvl: 7, locEn: "Onsen Mountain (Ruins)", locPt: "Monte Termal (Ruínas)", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️" },
+    { en: "Morpho Helena", pt: "Borboleta Morpho Helena", lvl: 10, locEn: "Flower Field (Amethyst Beach)", locPt: "Campo Floral (Praia de Ametista)", w: "🌈", t: "🌅, ☀️" },
+    { en: "Mother of Pearl", pt: "Borboleta Madrepérola", lvl: 9, locEn: "Flower Field (Windmill Flower Field)", locPt: "Campo Floral (Moinho de Vento)", w: "🌧️, 🌈", t: "🌙, 🌅" },
+    { en: "Mourning Cloak", pt: "Borboleta Manto de Luto", lvl: 5, locEn: "Onsen Mountain (Onsen)", locPt: "Monte Termal (Fontes Termais)", w: "🌞, 🌈", t: "🌙, 🌅, ☀️" },
+    { en: "Old World Swallowtail", pt: "Rabo de Andorinha do Velho Mundo", lvl: 1, locEn: "Forest", locPt: "Floresta", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Orange Tip", pt: "Borboleta Ponta Laranja", lvl: 1, locEn: "Central Area", locPt: "Área Central", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Peacock Butterfly", pt: "Borboleta Pavão", lvl: 5, locEn: "Flower Field (Windmill Flower Field)", locPt: "Campo Floral (Moinho de Vento)", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Picasso Bug", pt: "Percevejo Picasso", lvl: 8, locEn: "Flower Field (Amethyst Beach)", locPt: "Campo Floral (Praia de Ametista)", w: "🌞, 🌈", t: "🌙, 🌇" },
+    { en: "Pink Katydid", pt: "Esperança Rosa", lvl: 3, locEn: "Bait the Insects Event", locPt: "Evento de Isca", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Postman Butterfly", pt: "Borboleta Dourada", lvl: 1, locEn: "Bait the Insects Event", locPt: "Evento de Isca", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Purple Emperor", pt: "Imperador Roxo", lvl: 3, locEn: "Flower Field (Whale Mountain)", locPt: "Campo Floral (Montanha da Baleia)", w: "🌞, 🌈", t: "🌙, ☀️, 🌇" },
+    { en: "Rainbow Stag Beetle", pt: "Besouro Veado Arco-Íris", lvl: 9, locEn: "Bait the Insects Event (Ruins)", locPt: "Evento de Isca (Ruínas)", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Rajah Brooke's Birdwing", pt: "Borboleta Asa de Pássaro de Rajah Brooke", lvl: 3, locEn: "Home", locPt: "Casa", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, 🌇" },
+    { en: "Seven-spotted Ladybug", pt: "Joaninha de 7 Pontos", lvl: 2, locEn: "Suburbs", locPt: "Subúrbio", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Siberian Grasshopper", pt: "Gafanhoto Siberiano", lvl: 2, locEn: "Fishing Village", locPt: "Vila dos Pescadores", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Silver Jewel Scarab", pt: "Escaravelho Joia Prateado", lvl: 6, locEn: "Onsen Stone Cliff (Side of trees)", locPt: "Penhasco de Pedra do Onsen (Lado das árvores)", w: "🌞, 🌈", t: "🌙, 🌅, ☀️" },
+    { en: "Spanish Moon Moth", pt: "Mariposa Luna Chinesa", lvl: 8, locEn: "Forest (Spirit Oak Pine Forest)", locPt: "Floresta (Pinhal do Carvalho Espiritual)", w: "🌞, 🌈", t: "☀️, 🌇" },
+    { en: "Splay-footed Carpenter", pt: "Abelha Carpinteira de Pé Espalmado", lvl: 5, locEn: "Flower Field (Whale Mountain)", locPt: "Campo Floral (Montanha da Baleia)", w: "🌞, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Stag Beetle", pt: "Besouro Veado", lvl: 6, locEn: "Forest (Jump Puzzle)", locPt: "Floresta (Puzzle de Salto)", w: "🌧️, 🌈", t: "🌅, ☀️, 🌇" },
+    { en: "Sulkowsky's Morpho", pt: "Borboleta Morpho de Sulkowsky", lvl: 1, locEn: "Inflatable Insect Attractor Specialty", locPt: "Especialidade de Atrator de Insetos Inflável", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Sunset Morpho", pt: "Borboleta Morpho do Pôr do Sol", lvl: 10, locEn: "Forest (Deer Tower)", locPt: "Torre do Cervo", w: "🌈", t: "🌅, ☀️" },
+    { en: "Waroona Cuckoo Bee", pt: "Abelha Cuco de Waroona", lvl: 3, locEn: "Forest (Deer Tower)", locPt: "Torre do Cervo", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "Wasp Beetle", pt: "Besouro Vespa", lvl: 2, locEn: "Forest", locPt: "Floresta", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
+    { en: "White Witch", pt: "Mariposa Bruxa Branca", lvl: 5, locEn: "Bait the Insects Event", locPt: "Evento de Isca", w: "🌞, 🌈", t: "🌙, 🌅, ☀️, 🌇" }
+];
 
-    <div class="controls filters">
-        <select id="filter-weather" onchange="renderData()">
-            <option value="all">⛅ Qualquer Clima</option>
-            <option value="🌞">🌞 Ensolarado</option>
-            <option value="🌧️">🌧️ Chuvoso</option>
-            <option value="🌈">🌈 Arco-íris</option>
-        </select>
+let currentTab = 'peixes';
+let caughtItems = JSON.parse(localStorage.getItem('heartopia_caught')) || [];
 
-        <select id="filter-time" onchange="renderData()">
-            <option value="all">🕒 Qualquer Horário</option>
-            <option value="🌅">🌅 Madrugada</option>
-            <option value="☀️">☀️ Dia</option>
-            <option value="🌇">🌇 Entardecer</option>
-            <option value="🌙">🌙 Noite</option>
-        </select>
+document.getElementById('fish-level').value = localStorage.getItem('heartopia_fish_lvl') || '';
+document.getElementById('bug-level').value = localStorage.getItem('heartopia_bug_lvl') || '';
 
-        <button class="btn-clear" onclick="clearAll()" title="Limpar pesquisa e filtros">✖ Limpar Tudo</button>
-    </div>
+function updateLevels() {
+    const fLvl = document.getElementById('fish-level').value;
+    const bLvl = document.getElementById('bug-level').value;
+    
+    if (fLvl) localStorage.setItem('heartopia_fish_lvl', fLvl);
+    else localStorage.removeItem('heartopia_fish_lvl');
 
-    <div id="results" class="grid"></div>
+    if (bLvl) localStorage.setItem('heartopia_bug_lvl', bLvl);
+    else localStorage.removeItem('heartopia_bug_lvl');
+    
+    renderData();
+}
 
-    <script>
-// Listas atualizadas com os níveis baseados no arquivo JSON fornecido
-        const peixes = [
-            { en: "Anglerfish", pt: "Tamboril", lvl: 2, locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Arctic Char", pt: "Salvelino", lvl: 10, locEn: "Forest Lake", locPt: "Lago Florestal", w: "🌧️, 🌈", t: "☀️, 🌇" },
-            { en: "Atlantic Mackerel", pt: "Cavala do Atlântico", lvl: 5, locEn: "Whale Sea", locPt: "Mar da Baleia", w: "🌈, 🌞", t: "☀️, 🌇" },
-            { en: "Atlantic Pygmy Octopus", pt: "Polvo Pigmeu", lvl: 2, locEn: "Zephyr Sea", locPt: "Mar do Vento Brando", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Atlantic Salmon", pt: "Salmão do Atlântico", lvl: 3, locEn: "Whale Sea", locPt: "Mar da Baleia", w: "🌞, 🌧️, 🌈", t: "☀️, 🌇, 🌙" },
-            { en: "Beltfish", pt: "Peixe-fita", lvl: 1, locEn: "Zephyr Sea", locPt: "Mar do Vento Brando", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Blackspot Seabream", pt: "Goraz", lvl: 7, locEn: "Zephyr Sea", locPt: "Mar do Vento Brando", w: "🌧️, 🌈", t: "🌙, 🌇" },
-            { en: "Bluegill", pt: "Perca-sol Bluegill", lvl: 10, locEn: "Onsen Mountain Lake", locPt: "Lago do Monte Termal", w: "🌞, 🌈", t: "🌙, 🌇" },
-            { en: "Blue Ero Crayfish", pt: "Lagostim Azul", lvl: 8, locEn: "Forest Lake", locPt: "Lago Florestal", w: "🌞, 🌧️, 🌈", t: "🌇, 🌙" },
-            { en: "Bluefin Tuna", pt: "Atum-rabilho", lvl: 9, locEn: "Zephyr Sea", locPt: "Mar do Vento Brando", w: "🌈", t: "🌅, ☀️" },
-            { en: "Burbot", pt: "Peixe-bolha", lvl: 4, locEn: "Tranquil River", locPt: "Rio Sereno", w: "🌞, 🌧️, 🌈", t: "☀️, 🌇" },
-            { en: "Butterfly Koi", pt: "Carpa Borboleta", lvl: 4, locEn: "Meadow Lake", locPt: "Lago da Campina", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Chum Salmon", pt: "Salmão Keta", lvl: 6, locEn: "Tranquil River", locPt: "Rio Sereno", w: "🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Clownfish", pt: "Peixe-palhaço", lvl: 3, locEn: "Old Sea", locPt: "Mar Antigo", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Common Barbel", pt: "Barbo Comum", lvl: 1, locEn: "Shallow River", locPt: "Rio Raso", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Common Bleak", pt: "Alburno Comum", lvl: 1, locEn: "Lake", locPt: "Lago", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Common Carp", pt: "Carpa Comum", lvl: 4, locEn: "Rosy River", locPt: "Rio Rosado", w: "🌞, 🌈", t: "☀️, 🌇" },
-            { en: "Common Chub", pt: "Escalo Comum", lvl: 1, locEn: "Lake", locPt: "Lago", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Common Octopus", pt: "Polvo Comum", lvl: 2, locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Common Rudd", pt: "Ruivaca Comum", lvl: 5, locEn: "Suburban Lake", locPt: "Lago Suburbano", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Common Shrimp", pt: "Camarão Comum", lvl: 1, locEn: "East Sea", locPt: "Mar Leste", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Common Whitefish", pt: "Corégono Comum", lvl: 1, locEn: "Onsen Mountain Lake", locPt: "Lago do Monte Termal", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Crucian Carp", pt: "Pimpão", lvl: 1, locEn: "Suburban Lake", locPt: "Lago Suburbano", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Edible Frog", pt: "Rã Comestível", lvl: 3, locEn: "Lake", locPt: "Lago", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "European Crayfish", pt: "Lagostim Europeu", lvl: 3, locEn: "Forest Lake", locPt: "Lago Florestal", w: "🌞, 🌧️, 🌈", t: "🌇, 🌙, 🌅" },
-            { en: "European Eel", pt: "Enguia Europeia", lvl: 7, locEn: "Old Sea", locPt: "Mar Antigo", w: "🌈", t: "🌅, ☀️, 🌇" },
-            { en: "European Flying Squid", pt: "Lula Voadora Europeia", lvl: 5, locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "European Lobster", pt: "Lagosta Europeia", lvl: 5, locEn: "Zephyr Sea", locPt: "Mar do Vento Brando", w: "🌞, 🌧️, 🌈", t: "🌇, 🌙" },
-            { en: "European Mudminnow", pt: "Bodelha Europeia", lvl: 8, locEn: "Suburban Lake", locPt: "Lago Suburbano", w: "🌞, 🌈", t: "🌙, 🌅" },
-            { en: "European Perch", pt: "Solha Europeia", lvl: 1, locEn: "River", locPt: "Rio", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "European Plaice", pt: "Solha Europeia", lvl: 4, locEn: "Old Sea", locPt: "Mar Antigo", w: "🌞, 🌧️, 🌈", t: "🌇, 🌙, 🌅" },
-            { en: "European Smelt", pt: "Enguia Europeia", lvl: 1, locEn: "Meadow Lake", locPt: "Lago da Campina", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "False Scad", pt: "Carapau Falso", lvl: 2, locEn: "Zephyr Sea", locPt: "Mar do Vento Brando", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Freshwater Blenny", pt: "Blenídeo de Água Doce", lvl: 5, locEn: "Rosy River", locPt: "Rio Rosado", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Giant Oarfish", pt: "Peixe-remo Gigante", lvl: 7, locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌅, ☀️" },
-            { en: "Goby", pt: "Caboz", lvl: 4, locEn: "East Sea", locPt: "Mar Leste", w: "🌞, 🌧️, 🌈", t: "🌅, ☀️" },
-            { en: "Golden King Crab", pt: "Caranguejo-real Dourado", lvl: 8, locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Goldfish", pt: "Peixe Dourado", lvl: 8, locEn: "Meadow Lake", locPt: "Lago da Campina", w: "🌧️, 🌈", t: "🌅, ☀️, 🌇" },
-            { en: "Grayling", pt: "Tímalo", lvl: 6, locEn: "Suburban Lake", locPt: "Lago Suburbano", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Haddock", pt: "Eglefino", lvl: 8, locEn: "East Sea", locPt: "Mar Leste", w: "🌞, 🌈", t: "☀️, 🌇, 🌙" },
-            { en: "Hermit Crab", pt: "Caranguejo Eremita", lvl: 3, locEn: "East Sea", locPt: "Mar Leste", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Horse Mackerel", pt: "Carapau", lvl: 1, locEn: "Whale Sea", locPt: "Mar da Baleia", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Huchen", pt: "Salmão do Danúbio", lvl: 9, locEn: "Giantwood River", locPt: "Rio da Madeira Gigante", w: "🌈", t: "🌙, ☀️, 🌇" },
-            { en: "King Crab", pt: "Caranguejo-real", lvl: 8, locEn: "Whale Sea", locPt: "Mar da Baleia", w: "🌈", t: "🌅, ☀️, 🌇" },
-            { en: "Large Pearl Mussel", pt: "Mexilhão de Pérola Grande", lvl: 6, locEn: "Forest Lake", locPt: "Lago Florestal", w: "🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Largemouth Bass", pt: "Achigã (Bass)", lvl: 2, locEn: "Forest Lake", locPt: "Lago Florestal", w: "🌞, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Mediterranean Killifish", pt: "Killifish do Mediterrâneo", lvl: 7, locEn: "Suburban Lake", locPt: "Lago Suburbano", w: "🌞, 🌈", t: "☀️, 🌇, 🌙" },
-            { en: "Minnow", pt: "Vairão", lvl: 1, locEn: "Tranquil River", locPt: "Rio Sereno", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Moonfish", pt: "Peixe-lua", lvl: 9, locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌙, 🌇" },
-            { en: "Mottled Sculpin", pt: "Caboz Marmoreado", lvl: 7, locEn: "Onsen Mountain Lake", locPt: "Lago do Monte Termal", w: "🌧️, 🌈", t: "🌅, ☀️, 🌇" },
-            { en: "Mud Sunfish", pt: "Perca-sol do Lodo", lvl: 3, locEn: "Forest Lake", locPt: "Lago Florestal", w: "🌞, 🌧️, 🌈", t: "🌅, ☀️, 🌇" },
-            { en: "Mussel", pt: "Marisco", lvl: 3, locEn: "Suburban Lake", locPt: "Lago Suburbano", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Northern Pike", pt: "Lúcio do Norte", lvl: 9, locEn: "Suburban Lake", locPt: "Lago Suburbano", w: "🌧️, 🌈", t: "🌙, 🌇" },
-            { en: "Nursehound", pt: "Pata-roxa Grande", lvl: 6, locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Ocean Sunfish", pt: "Peixe-lua Oceânico", lvl: 9, locEn: "East Sea", locPt: "Mar Leste", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅" },
-            { en: "Oriental Shrimp", pt: "Camarão Oriental", lvl: 1, locEn: "River", locPt: "Rio", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Puffer Fish", pt: "Baiacu", lvl: 6, locEn: "Old Sea", locPt: "Mar Antigo", w: "🌞, 🌧️, 🌈", t: "☀️, 🌇" },
-            { en: "Pumpkinseed", pt: "Perca-sol Abóbora", lvl: 9, locEn: "Onsen Mountain Lake", locPt: "Lago do Monte Termal", w: "🌞, 🌈", t: "🌅, ☀️, 🌇" },
-            { en: "Rabbit Fish", pt: "Peixe-coelho", lvl: 4, locEn: "Ocean", locPt: "Oceano", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Red-bellied Piranha", pt: "Piranha de Barriga Vermelha", lvl: 4, locEn: "Giantwood River", locPt: "Rio da Madeira Gigante", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "River Crab", pt: "Caranguejo de Rio", lvl: 4, locEn: "Suburban Lake", locPt: "Lago Suburbano", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Ruffe", pt: "Acerina", lvl: 3, locEn: "Onsen Mountain Lake", locPt: "Lago do Monte Termal", w: "🌞, 🌧️, 🌈", t: "☀️, 🌇" },
-            { en: "Sardine", pt: "Sardinha", lvl: 1, locEn: "Ocean", locPt: "Oceano", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Schneider", pt: "Peixe Schneider", lvl: 1, locEn: "Suburban Lake", locPt: "Lago Suburbano", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Sea Bass", pt: "Robalo", lvl: 1, locEn: "Ocean", locPt: "Oceano", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Sea Stickleback", pt: "Peixe-espinho", lvl: 1, locEn: "Old Sea", locPt: "Mar Antigo", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Seabream", pt: "Dourada", lvl: 10, locEn: "Zephyr Sea", locPt: "Mar do Vento Brando", w: "🌧️, 🌈", t: "🌇, 🌙" },
-            { en: "Seahorse", pt: "Cavalo-marinho", lvl: 1, locEn: "Whale Sea", locPt: "Mar da Baleia", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️" },
-            { en: "Shortfin Mako Shark", pt: "Tubarão-mako de Barbatana Curta", lvl: 10, locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌈", t: "🌅, ☀️" },
-            { en: "Skipjack Tuna", pt: "Bonito-listrado", lvl: 1, locEn: "Ocean", locPt: "Oceano", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Smooth Hammerhead", pt: "Tubarão-martelo Liso", lvl: 10, locEn: "Old Sea", locPt: "Mar Antigo", w: "🌈", t: "🌙, 🌇" },
-            { en: "Spined Loach", pt: "Verdemã de Pedra", lvl: 1, locEn: "Giantwood River", locPt: "Rio da Madeira Gigante", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Stone Loach", pt: "Verdemã de Pedra", lvl: 2, locEn: "Suburban Lake", locPt: "Lago Suburbano", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Streber", pt: "Peixe Streber", lvl: 3, locEn: "Rosy River", locPt: "Rio Rosado", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Striped Red Mullet", pt: "Salmonete Listrado", lvl: 1, locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Swordfish", pt: "Peixe-espada", lvl: 10, locEn: "Whale Sea", locPt: "Mar da Baleia", w: "🌈", t: "🌅, ☀️" },
-            { en: "Tadpole", pt: "Girino", lvl: 3, locEn: "Onsen Mountain Lake", locPt: "Lago do Monte Termal", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Tench", pt: "Tenca", lvl: 1, locEn: "Forest Lake", locPt: "Lago Florestal", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Three-spined Stickleback", pt: "Esgana-gata de Três Espinhos", lvl: 7, locEn: "Shallow River", locPt: "Rio Raso", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Tilapia", pt: "Tilápia", lvl: 3, locEn: "River", locPt: "Rio", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Trout", pt: "Truta", lvl: 5, locEn: "Meadow Lake", locPt: "Lago da Campina", w: "🌞, 🌈", t: "🌙, 🌇" },
-            { en: "Tub Gurnard", pt: "Ruivo", lvl: 6, locEn: "East Sea", locPt: "Mar Leste", w: "🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Turbot", pt: "Pregado", lvl: 4, locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Wels Catfish", pt: "Siluro Europeu", lvl: 10, locEn: "Meadow Lake", locPt: "Lago da Campina", w: "🌞, 🌈", t: "🌙, 🌇" },
-            { en: "Zander", pt: "Lucioperca", lvl: 3, locEn: "Giantwood River", locPt: "Rio da Madeira Gigante", w: "🌞, 🌈", t: "🌙, 🌅, ☀️, 🌇" }
-        ];
+function getUserLevel(type) {
+    const val = localStorage.getItem(`heartopia_${type}_lvl`);
+    return val ? parseInt(val) : 999;
+}
 
-        const insetos = [
-            { en: "Alpine Longhorn Beetle", pt: "Besouro Longicorne Alpino", lvl: 5, locEn: "Forest Island", locPt: "Ilha Florestal", w: "🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Amethyst Flower Beetle", pt: "Besouro de Flor Ametista", lvl: 2, locEn: "Home (Rocks)", locPt: "Falésia Rochosa", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Ant", pt: "Formiga", lvl: 3, locEn: "Fishing Village (Fishing Village Square)", locPt: "Vila dos Pescadores (Praça)", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Apollo", pt: "Borboleta Apolo", lvl: 1, locEn: "Bait the Insects Event", locPt: "Evento de Isca", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Asian Lady Beetle", pt: "Joaninha Asiática", lvl: 5, locEn: "Forest (Deer Tower)", locPt: "Torre do Cervo", w: "🌧️, 🌈", t: "☀️, 🌇, 🌙" },
-            { en: "Asparagus Beetle", pt: "Besouro do Espargo", lvl: 1, locEn: "Flower Field", locPt: "Campo Floral", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Bagworm Moth", pt: "Traça Bagworm", lvl: 10, locEn: "Forest (Deer Tower)", locPt: "Torre do Cervo", w: "🌞, 🌈", t: "🌙, 🌇" },
-            { en: "Beautiful Demoiselle", pt: "Libelinha Bela", lvl: 6, locEn: "Forest Lake Shore", locPt: "Margem do Lago Florestal", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Beautiful Leopard", pt: "Borboleta Leopardo Bela", lvl: 4, locEn: "Fishing Village (Wharf)", locPt: "Vila dos Pescadores (Cais)", w: "🌧️, 🌈", t: "🌙, 🌅, 🌇" },
-            { en: "Blue Morpho", pt: "Borboleta Morfo Azul", lvl: 7, locEn: "Forest (Spirit Oak Pine Forest)", locPt: "Floresta (Pinhal do Carvalho Espiritual)", w: "🌞, 🌈", t: "🌅, ☀️, 🌇" },
-            { en: "Blue Shieldbug", pt: "Percevejo Escudo Azul", lvl: 6, locEn: "Fishing Village (Lighthouse)", locPt: "Vila dos Pescadores (Farol)", w: "🌞, 🌧️, 🌈", t: "🌅, ☀️" },
-            { en: "Bumblebee", pt: "Mamangaba", lvl: 2, locEn: "Flower Field", locPt: "Campo Floral", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Cabbage White", pt: "Borboleta Branca da Couve", lvl: 1, locEn: "Fishing Village", locPt: "Vila dos Pescadores", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Cerulean Carpenter", pt: "Abelha Carpinteira Cerúlea", lvl: 9, locEn: "Fishing Village (Fishing Village Square)", locPt: "Vila dos Pescadores (Praça)", w: "🌈", t: "🌙, 🌇" },
-            { en: "Chestnut Tiger", pt: "Borboleta Tigre Castanha", lvl: 7, locEn: "Bait the Insects Event", locPt: "Evento de Isca", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Cicada", pt: "Cigarra", lvl: 4, locEn: "Forest (Spirit Oak Pine Forest)", locPt: "Floresta (Pinhal do Carvalho Espiritual)", w: "🌞, 🌧️, 🌈", t: "🌙, ☀️, 🌇" },
-            { en: "Comet Moth", pt: "Mariposa Cometa", lvl: 8, locEn: "Suburbs", locPt: "Subúrbio", w: "🌞, 🌈", t: "🌇, 🌙" },
-            { en: "Common Blue Butterfly", pt: "Borboleta Azul Comum", lvl: 2, locEn: "Central Area", locPt: "Área Central", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Common Brimstone", pt: "Borboleta Limão", lvl: 1, locEn: "Suburbs", locPt: "Subúrbio", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Common Whitetail", pt: "Libélula Cauda Branca Comum", lvl: 4, locEn: "River Bank", locPt: "Margem do Rio", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Conehead Mantis", pt: "Louva-a-deus Cabeça de Cone", lvl: 9, locEn: "Onsen Mountain (Ruins)", locPt: "Monte Termal (Ruínas)", w: "🌧️, 🌈", t: "☀️, 🌇" },
-            { en: "Crimson Marsh Glider", pt: "Libélula Carmesim", lvl: 7, locEn: "Onsen Mountain", locPt: "Monte Termal", w: "🌈", t: "🌙, ☀️, 🌇" },
-            { en: "Elegant Flower Beetle", pt: "Besouro de Flor Elegante", lvl: 7, locEn: "Flower Field (Whale Mountain)", locPt: "Campo Floral (Montanha da Baleia)", w: "🌧️, 🌈", t: "🌅, ☀️" },
-            { en: "European Firebug", pt: "Percevejo de Fogo Europeu", lvl: 1, locEn: "Home (Rocks)", locPt: "Falésia Rochosa", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Fire-colored Beetle", pt: "Besouro Cor de Fogo", lvl: 3, locEn: "Onsen Mountain (Onsen)", locPt: "Monte Termal (Fontes Termais)", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Four-spotted Ladybug", pt: "Joaninha de Quatro Pontos", lvl: 4, locEn: "Onsen Mountain (Crater Lake)", locPt: "Monte Termal (Lago da Cratera)", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Four-spotted Skimmer", pt: "Libélula de Quatro Pontos", lvl: 2, locEn: "Suburban Lakeshore", locPt: "Margem do Lago Suburbano", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Giant Asian Mantis", pt: "Louva-a-deus Gigante Asiático*", lvl: 5, locEn: "Onsen Mountain (Ruins)", locPt: "Monte Termal (Ruínas)", w: "🌞, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Gold Grasshopper", pt: "Gafanhoto Rosa", lvl: 1, locEn: "Onsen Mountain", locPt: "Monte Termal", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Golden Jewel Scarab", pt: "Escaravelho Joia Dourado", lvl: 7, locEn: "Forest (Jump Puzzle)", locPt: "Floresta (Puzzle de Salto)", w: "🌞, 🌈", t: "☀️, 🌇" },
-            { en: "Golden Stag Beetle", pt: "Besouro Veado Dourado", lvl: 9, locEn: "Forest (Spirit Oak Pine Forest)", locPt: "Floresta (Pinhal do Carvalho Espiritual)", w: "🌧️, 🌈", t: "🌙, 🌇" },
-            { en: "Green Birdwing", pt: "Borboleta Asa de Pássaro Verde", lvl: 6, locEn: "Suburbs", locPt: "Subúrbio", w: "🌞, 🌧️, 🌈", t: "🌅, ☀️, 🌇" },
-            { en: "Green Tiger Beetle", pt: "Cicindela Verde", lvl: 2, locEn: "Onsen Mountain", locPt: "Monte Termal", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Hercules Beetle", pt: "Besouro Hércules", lvl: 10, locEn: "Onsen Mountain (Crater Lake)", locPt: "Monte Termal (Lago da Cratera)", w: "🌞, 🌈", t: "☀️, 🌇" },
-            { en: "Horned Beetle", pt: "Besouro Chifrudo", lvl: 8, locEn: "Fishing Village (East Pier)", locPt: "Vila dos Pescadores (Píer Leste)", w: "🌞, 🌈", t: "🌙, 🌇" },
-            { en: "Katydid", pt: "Esperança", lvl: 3, locEn: "Flower Field (Amethyst Beach)", locPt: "Campo Floral (Praia de Ametista)", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Large Banded Grasshopper", pt: "Gafanhoto Listrado Grande", lvl: 4, locEn: "Suburbs", locPt: "Subúrbio", w: "🌞, 🌈", t: "🌇, 🌙" },
-            { en: "Large Red Damselfly", pt: "Libelinha Vermelha Grande", lvl: 1, locEn: "Waterside", locPt: "Beira d'água", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Mediterranean Mantis", pt: "Louva-a-deus Mediterrâneo", lvl: 4, locEn: "Onsen Mountain (Stone Cliff)", locPt: "Monte Termal (Penhasco de Pedra)", w: "🌞, 🌈", t: "☀️, 🌇, 🌙" },
-            { en: "Mini Moon Moth", pt: "Mariposa Luna Chinesa", lvl: 3, locEn: "Suburbs", locPt: "Subúrbio", w: "🌞, 🌈", t: "🌅, ☀️, 🌇" },
-            { en: "Minotaur Beetle", pt: "Besouro Minotauro", lvl: 7, locEn: "Onsen Mountain (Ruins)", locPt: "Monte Termal (Ruínas)", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️" },
-            { en: "Morpho Helena", pt: "Borboleta Morpho Helena", lvl: 10, locEn: "Flower Field (Amethyst Beach)", locPt: "Campo Floral (Praia de Ametista)", w: "🌈", t: "🌅, ☀️" },
-            { en: "Mother of Pearl", pt: "Borboleta Madrepérola", lvl: 9, locEn: "Flower Field (Windmill Flower Field)", locPt: "Campo Floral (Moinho de Vento)", w: "🌧️, 🌈", t: "🌙, 🌅" },
-            { en: "Mourning Cloak", pt: "Borboleta Manto de Luto", lvl: 5, locEn: "Onsen Mountain (Onsen)", locPt: "Monte Termal (Fontes Termais)", w: "🌞, 🌈", t: "🌙, 🌅, ☀️" },
-            { en: "Old World Swallowtail", pt: "Rabo de Andorinha do Velho Mundo", lvl: 1, locEn: "Forest", locPt: "Floresta", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Orange Tip", pt: "Borboleta Ponta Laranja", lvl: 1, locEn: "Central Area", locPt: "Área Central", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Peacock Butterfly", pt: "Borboleta Pavão", lvl: 5, locEn: "Flower Field (Windmill Flower Field)", locPt: "Campo Floral (Moinho de Vento)", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Picasso Bug", pt: "Percevejo Picasso", lvl: 8, locEn: "Flower Field (Amethyst Beach)", locPt: "Campo Floral (Praia de Ametista)", w: "🌞, 🌈", t: "🌙, 🌇" },
-            { en: "Pink Katydid", pt: "Esperança Rosa", lvl: 3, locEn: "Bait the Insects Event", locPt: "Evento de Isca", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Postman Butterfly", pt: "Borboleta Dourada", lvl: 1, locEn: "Bait the Insects Event", locPt: "Evento de Isca", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Purple Emperor", pt: "Imperador Roxo", lvl: 3, locEn: "Flower Field (Whale Mountain)", locPt: "Campo Floral (Montanha da Baleia)", w: "🌞, 🌈", t: "🌙, ☀️, 🌇" },
-            { en: "Rainbow Stag Beetle", pt: "Besouro Veado Arco-Íris", lvl: 9, locEn: "Bait the Insects Event (Ruins)", locPt: "Evento de Isca (Ruínas)", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Rajah Brooke's Birdwing", pt: "Borboleta Asa de Pássaro de Rajah Brooke", lvl: 3, locEn: "Home", locPt: "Casa", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, 🌇" },
-            { en: "Seven-spotted Ladybug", pt: "Joaninha de 7 Pontos", lvl: 2, locEn: "Suburbs", locPt: "Subúrbio", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Siberian Grasshopper", pt: "Gafanhoto Siberiano", lvl: 2, locEn: "Fishing Village", locPt: "Vila dos Pescadores", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Silver Jewel Scarab", pt: "Escaravelho Joia Prateado", lvl: 6, locEn: "Onsen Stone Cliff (Side of trees)", locPt: "Penhasco de Pedra do Onsen (Lado das árvores)", w: "🌞, 🌈", t: "🌙, 🌅, ☀️" },
-            { en: "Spanish Moon Moth", pt: "Mariposa Luna Chinesa", lvl: 8, locEn: "Forest (Spirit Oak Pine Forest)", locPt: "Floresta (Pinhal do Carvalho Espiritual)", w: "🌞, 🌈", t: "☀️, 🌇" },
-            { en: "Splay-footed Carpenter", pt: "Abelha Carpinteira de Pé Espalmado", lvl: 5, locEn: "Flower Field (Whale Mountain)", locPt: "Campo Floral (Montanha da Baleia)", w: "🌞, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Stag Beetle", pt: "Besouro Veado", lvl: 6, locEn: "Forest (Jump Puzzle)", locPt: "Floresta (Puzzle de Salto)", w: "🌧️, 🌈", t: "🌅, ☀️, 🌇" },
-            { en: "Sulkowsky's Morpho", pt: "Borboleta Morpho de Sulkowsky", lvl: 1, locEn: "Inflatable Insect Attractor Specialty", locPt: "Especialidade de Atrator de Insetos Inflável", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Sunset Morpho", pt: "Borboleta Morpho do Pôr do Sol", lvl: 10, locEn: "Forest (Deer Tower)", locPt: "Torre do Cervo", w: "🌈", t: "🌅, ☀️" },
-            { en: "Waroona Cuckoo Bee", pt: "Abelha Cuco de Waroona", lvl: 3, locEn: "Forest (Deer Tower)", locPt: "Torre do Cervo", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "Wasp Beetle", pt: "Besouro Vespa", lvl: 2, locEn: "Forest", locPt: "Floresta", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
-            { en: "White Witch", pt: "Mariposa Bruxa Branca", lvl: 5, locEn: "Bait the Insects Event", locPt: "Evento de Isca", w: "🌞, 🌈", t: "🌙, 🌅, ☀️, 🌇" }
-        ];
+function toggleCaught(itemName) {
+    if (caughtItems.includes(itemName)) {
+        caughtItems = caughtItems.filter(i => i !== itemName);
+    } else {
+        caughtItems.push(itemName);
+    }
+    localStorage.setItem('heartopia_caught', JSON.stringify(caughtItems));
+    renderData();
+}
 
-        let currentTab = 'peixes';
+function setTab(tab) {
+    currentTab = tab;
+    document.getElementById('btn-peixes').classList.toggle('active', tab === 'peixes');
+    document.getElementById('btn-insetos').classList.toggle('active', tab === 'insetos');
+    document.getElementById('search-input').value = '';
+    renderData();
+}
 
-        function setTab(tab) {
-            currentTab = tab;
-            document.getElementById('btn-peixes').classList.toggle('active', tab === 'peixes');
-            document.getElementById('btn-insetos').classList.toggle('active', tab === 'insetos');
-            
-            document.getElementById('search-input').value = '';
-            renderData();
-        }
+function clearAll() {
+    document.getElementById('search-input').value = '';
+    document.getElementById('filter-weather').value = 'all';
+    document.getElementById('filter-time').value = 'all';
+    document.getElementById('filter-caught').value = 'all';
+    renderData();
+}
 
-        function clearAll() {
-            document.getElementById('search-input').value = '';
-            document.getElementById('filter-weather').value = 'all';
-            document.getElementById('filter-time').value = 'all';
-            renderData();
-        }
+function getItemStatus(item, type) {
+    if (caughtItems.includes(item.en)) return 2;
+    const userLvl = getUserLevel(type === 'peixes' ? 'fish' : 'bug');
+    if (item.lvl > userLvl) return 1;
+    return 0;
+}
 
-        function renderData() {
-            const searchQuery = document.getElementById('search-input').value.toLowerCase();
-            const weatherFilter = document.getElementById('filter-weather').value;
-            const timeFilter = document.getElementById('filter-time').value;
-            const resultsContainer = document.getElementById('results');
-            
-            const dataToRender = currentTab === 'peixes' ? peixes : insetos;
-            
-            const filteredData = dataToRender.filter(item => {
-                const matchSearch = item.en.toLowerCase().includes(searchQuery) || 
-                                    item.pt.toLowerCase().includes(searchQuery) ||
-                                    item.locEn.toLowerCase().includes(searchQuery) ||
-                                    item.locPt.toLowerCase().includes(searchQuery);
-                                    
-                const matchWeather = weatherFilter === 'all' || item.w.includes(weatherFilter);
-                const matchTime = timeFilter === 'all' || item.t.includes(timeFilter);
-                return matchSearch && matchWeather && matchTime;
-            });
+function renderData() {
+    const searchQuery = document.getElementById('search-input').value.toLowerCase();
+    const weatherFilter = document.getElementById('filter-weather').value;
+    const timeFilter = document.getElementById('filter-time').value;
+    const caughtFilter = document.getElementById('filter-caught').value;
+    const resultsContainer = document.getElementById('results');
 
-            resultsContainer.innerHTML = '';
+    const dataToRender = currentTab === 'peixes' ? peixes : insetos;
+    const typeKey = currentTab === 'peixes' ? 'fish' : 'bug';
+    const userLvl = getUserLevel(typeKey);
 
-            if (filteredData.length === 0) {
-                resultsContainer.innerHTML = '<div class="empty-state">Nenhum resultado encontrado para esses filtros.</div>';
-                return;
-            }
+    let filteredData = dataToRender.filter(item => {
+        const matchSearch = item.en.toLowerCase().includes(searchQuery) || 
+                            item.pt.toLowerCase().includes(searchQuery) ||
+                            item.locEn.toLowerCase().includes(searchQuery) ||
+                            item.locPt.toLowerCase().includes(searchQuery);
 
-            filteredData.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
+        const matchWeather = weatherFilter === 'all' || item.w.includes(weatherFilter);
+        const matchTime = timeFilter === 'all' || item.t.includes(timeFilter);
+        const isCaught = caughtItems.includes(item.en);
+        
+        let matchCaught = true;
+        if (caughtFilter === 'caught') matchCaught = isCaught;
+        if (caughtFilter === 'uncaught') matchCaught = !isCaught;
+
+        return matchSearch && matchWeather && matchTime && matchCaught;
+    });
+
+    filteredData.sort((a, b) => getItemStatus(a, currentTab) - getItemStatus(b, currentTab));
+
+    resultsContainer.innerHTML = '';
+
+    if (filteredData.length === 0) {
+        resultsContainer.innerHTML = '<div style="text-align: center; grid-column: 1 / -1; padding: 40px; color: var(--text-muted); border: 1px dashed var(--border); border-radius: var(--radius-lg);">Nenhum resultado encontrado.</div>';
+        return;
+    }
+
+    filteredData.forEach(item => {
+        const isCaught = caughtItems.includes(item.en);
+        const isUnavailable = !isCaught && (item.lvl > userLvl);
+        
+        let cardClass = 'card';
+        if (isCaught) cardClass += ' caught';
+        else if (isUnavailable) cardClass += ' unavailable';
+
+        const safeName = item.en.replace(/'/g, "\\'");
+
+        const card = document.createElement('div');
+        card.className = cardClass;
+        card.innerHTML = `
+            <div class="card-header">
+                <div>
                     <h3>${item.en}</h3>
                     <div class="pt-name">${item.pt}</div>
-                    <p>
-                        <span>📍 <strong>Local:</strong> ${item.locEn}</span>
-                        <span class="loc-pt">(${item.locPt})</span>
-                    </p>
-                    <div class="info-row">
-                        <span title="Clima">☁️ ${item.w}</span>
-                    </div>
-                    <div class="info-row">
-                        <span title="Horário">🕒 ${item.t}</span>
-                    </div>
-                `;
-                resultsContainer.appendChild(card);
-            });
+                </div>
+                <label class="checkbox-container" title="Marcar como adquirido">
+                    <input type="checkbox" ${isCaught ? 'checked' : ''} onchange="toggleCaught('${safeName}')">
+                </label>
+            </div>
+            
+            <span class="level-badge" title="${isUnavailable ? 'Acima do seu nível atual' : ''}">Nível: ${item.lvl} ${isUnavailable ? '⛔' : ''}</span>
+            
+            <p>
+                <span>📍 <strong>Local:</strong> ${item.locEn}</span>
+                <span class="loc-pt">(${item.locPt})</span>
+            </p>
+            <div class="info-row"><span title="Clima">☁️ ${item.w}</span></div>
+            <div class="info-row"><span title="Horário">🕒 ${item.t}</span></div>
+        `;
+        resultsContainer.appendChild(card);
+    });
+}
+
+// --- LÓGICA DO MODAL DE BATCH ---
+
+function openBatchModal() {
+    document.getElementById('batch-modal').style.display = 'flex';
+    document.getElementById('batch-category').value = currentTab;
+    document.getElementById('batch-search').value = ''; // Limpa a busca ao abrir
+    renderBatchList();
+}
+
+function closeBatchModal() {
+    document.getElementById('batch-modal').style.display = 'none';
+}
+
+// NOVO: Função para filtrar os itens dentro do modal
+function filterBatchList() {
+    const query = document.getElementById('batch-search').value.toLowerCase();
+    const items = document.querySelectorAll('.batch-item');
+    
+    items.forEach(item => {
+        const text = item.querySelector('label').innerText.toLowerCase();
+        if (text.includes(query)) {
+            item.style.display = 'flex';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+
+// NOVO: Função para Selecionar Tudo (apenas os visíveis)
+function selectAllBatch() {
+    const checkboxes = document.querySelectorAll('.batch-checkbox');
+    checkboxes.forEach(cb => {
+        const parent = cb.closest('.batch-item');
+        if (parent.style.display !== 'none') {
+            cb.checked = true;
+        }
+    });
+}
+
+// NOVO: Função para Desmarcar Tudo (apenas os visíveis)
+function clearAllBatch() {
+    const checkboxes = document.querySelectorAll('.batch-checkbox');
+    checkboxes.forEach(cb => {
+        const parent = cb.closest('.batch-item');
+        if (parent.style.display !== 'none') {
+            cb.checked = false;
+        }
+    });
+}
+
+function renderBatchList() {
+    const category = document.getElementById('batch-category').value;
+    const mode = document.getElementById('batch-mode').value;
+    const listContainer = document.getElementById('batch-list');
+    const hintText = document.getElementById('batch-hint');
+    
+    // Reseta o campo de busca sempre que trocar de aba ou modo
+    document.getElementById('batch-search').value = ''; 
+    
+    const dataList = category === 'peixes' ? peixes : insetos;
+    const currentLevel = getUserLevel(category === 'peixes' ? 'fish' : 'bug');
+
+    listContainer.innerHTML = '';
+
+    if (mode === 'adquiridos') {
+        hintText.innerText = "Selecione os itens que você JÁ POSSUI. Ao salvar, sua coleção será atualizada exatamente com o que estiver marcado.";
+    } else {
+        hintText.innerHTML = "Selecione os itens que <b>VOCÊ AINDA NÃO TEM</b>. Ao salvar, o sistema vai considerar todos os não marcados <i>(do seu nível ou inferior)</i> como ADQUIRIDOS.";
+    }
+
+    dataList.forEach(item => {
+        const isAboveLevel = item.lvl > currentLevel;
+        const isCaught = caughtItems.includes(item.en);
+        
+        let shouldCheck = false;
+        if (mode === 'adquiridos') {
+            shouldCheck = isCaught;
+        } else {
+            shouldCheck = !isCaught;
         }
 
-        // Renderiza a tela inicial
-        renderData();
-    </script>
+        const safeName = item.en.replace(/'/g, "\\'");
+        
+        const div = document.createElement('div');
+        div.className = 'batch-item';
+        
+        if (isAboveLevel && mode === 'faltantes') div.style.opacity = '0.5';
+
+        div.innerHTML = `
+            <input type="checkbox" id="batch_${safeName}" class="batch-checkbox" value="${safeName}" ${shouldCheck ? 'checked' : ''}>
+            <label for="batch_${safeName}">
+                ${item.pt} <br><span>${item.en} (Lvl ${item.lvl})</span>
+            </label>
+            ${isAboveLevel ? '<span style="color:var(--danger)">⛔ Acima do Nv.</span>' : ''}
+        `;
+        listContainer.appendChild(div);
+    });
+}
+
+function saveBatch() {
+    const category = document.getElementById('batch-category').value;
+    const mode = document.getElementById('batch-mode').value;
+    const dataList = category === 'peixes' ? peixes : insetos;
+    const currentLevel = getUserLevel(category === 'peixes' ? 'fish' : 'bug');
+
+    const checkboxes = document.querySelectorAll('.batch-checkbox');
+    const checkedNames = Array.from(checkboxes).filter(cb => cb.checked).map(cb => cb.value);
+
+    if (mode === 'adquiridos') {
+        dataList.forEach(item => {
+            const isChecked = checkedNames.includes(item.en);
+            const inCollection = caughtItems.includes(item.en);
+            
+            if (isChecked && !inCollection) caughtItems.push(item.en);
+            if (!isChecked && inCollection) caughtItems = caughtItems.filter(i => i !== item.en);
+        });
+    } else if (mode === 'faltantes') {
+        dataList.forEach(item => {
+            const isMissing = checkedNames.includes(item.en);
+            const inCollection = caughtItems.includes(item.en);
+            
+            if (isMissing) {
+                if (inCollection) caughtItems = caughtItems.filter(i => i !== item.en);
+            } else {
+                if (item.lvl <= currentLevel && !inCollection) {
+                    caughtItems.push(item.en);
+                }
+            }
+        });
+    }
+
+    localStorage.setItem('heartopia_caught', JSON.stringify(caughtItems));
+    closeBatchModal();
+    renderData();
+}
+
+renderData();
+</script>
 </body>
 </html>
