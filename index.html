@@ -13,7 +13,6 @@
             --text-muted: #94a3b8;   
             --primary: #3b82f6;      
             --primary-hover: #2563eb;
-            --success: #10b981;
             --border: #334155;       
             --radius-md: 12px;
             --radius-lg: 16px;
@@ -24,41 +23,18 @@
             background-color: var(--bg-base);
             color: var(--text-main);
             margin: 0;
-            padding: 0;
-            display: flex; /* Layout em linha para a barra lateral */
-            min-height: 100vh;
-        }
-
-        /* --- ESTILOS DA BARRA LATERAL --- */
-        .sidebar {
-            width: 300px;
-            background-color: var(--bg-card);
-            border-right: 1px solid var(--border);
-            padding: 25px 20px;
-            height: 100vh;
-            position: fixed; /* Fixa na tela */
-            top: 0;
-            left: 0;
-            overflow-y: auto;
-            box-sizing: border-box;
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            z-index: 10;
-        }
-
-        .main-content {
-            margin-left: 300px; /* Compensa a largura da sidebar */
-            padding: 25px;
-            flex: 1;
-            box-sizing: border-box;
+            align-items: center;
+            min-height: 100vh;
         }
 
         h1 {
             text-align: center;
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            margin: 0 0 10px 0;
+            margin-bottom: 30px;
             background: linear-gradient(135deg, #60a5fa, #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -66,34 +42,34 @@
 
         .controls {
             display: flex;
-            flex-direction: column; /* Filtros empilhados na lateral */
-            gap: 12px;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
             width: 100%;
-        }
-
-        .tabs {
-            flex-direction: row; /* Botões de abas lado a lado */
-        }
-        
-        .tabs button {
-            flex: 1;
+            max-width: 1000px;
         }
 
         .search-container {
             width: 100%;
+            max-width: 1000px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
         }
 
         input[type="text"] {
             width: 100%;
-            box-sizing: border-box;
-            padding: 12px 15px;
+            max-width: 600px;
+            padding: 14px 20px;
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            font-size: 15px;
-            background: var(--bg-base);
+            font-size: 16px;
+            background: var(--bg-card);
             color: var(--text-main);
             outline: none;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         input[type="text"]:focus {
@@ -101,19 +77,22 @@
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
         }
 
+        input[type="text"]::placeholder {
+            color: var(--text-muted);
+        }
+
         button, select {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 12px 15px;
+            padding: 12px 20px;
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 600;
-            background: var(--bg-base);
+            background: var(--bg-card);
             color: var(--text-main);
             cursor: pointer;
             transition: all 0.3s ease;
             outline: none;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         button:hover, select:hover {
@@ -125,13 +104,16 @@
             background-color: var(--primary);
             color: #ffffff;
             border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
         }
 
         .btn-clear {
             background-color: transparent;
             color: var(--text-muted);
             border: 1px dashed var(--border);
-            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .btn-clear:hover {
@@ -142,18 +124,24 @@
 
         select {
             appearance: none;
+            padding-right: 40px;
             background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2394a3b8%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
             background-repeat: no-repeat;
             background-position: right 15px top 50%;
             background-size: 12px auto;
         }
 
-        /* --- ESTILOS DOS RESULTADOS --- */
+        select option {
+            background-color: var(--bg-card);
+            color: var(--text-main);
+        }
+
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
             width: 100%;
+            max-width: 1000px;
         }
 
         .card {
@@ -166,63 +154,27 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
-            position: relative;
-        }
-
-        .card.caught {
-            border-color: var(--success);
-            background: rgba(16, 185, 129, 0.05);
         }
 
         .card:hover {
             transform: translateY(-5px);
+            border-color: var(--primary);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
         }
 
         .card h3 {
             margin: 0;
             color: var(--text-main);
             font-size: 1.25rem;
-            padding-right: 30px;
         }
 
         .card .pt-name {
-            margin: 0 0 5px 0;
+            margin: 0 0 10px 0;
             color: #60a5fa;
             font-size: 0.95rem;
             font-weight: 500;
-        }
-
-        .level-badge {
-            display: inline-block;
-            background: #475569;
-            color: white;
-            font-size: 0.75rem;
-            font-weight: bold;
-            padding: 2px 8px;
-            border-radius: 20px;
-            margin-bottom: 10px;
-            align-self: flex-start;
-        }
-
-        .checkbox-container {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            cursor: pointer;
-        }
-
-        .checkbox-container input {
-            cursor: pointer;
-            width: 20px;
-            height: 20px;
-            accent-color: var(--success);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
         }
 
         .card p {
@@ -233,8 +185,10 @@
             align-items: flex-start;
             flex-direction: column;
             gap: 2px;
-            border-top: 1px solid var(--border);
-            padding-top: 10px;
+        }
+
+        .card strong {
+            color: var(--text-main);
         }
 
         .loc-pt {
@@ -253,87 +207,74 @@
             margin-top: 4px;
         }
 
-        /* Responsividade para celulares */
         @media (max-width: 768px) {
             body {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .controls.tabs {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .controls.filters {
                 flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
             }
-            .sidebar {
-                position: static;
+
+            input[type="text"], button, select {
                 width: 100%;
-                height: auto;
-                border-right: none;
-                border-bottom: 1px solid var(--border);
-                padding: 20px;
+                max-width: none;
             }
-            .main-content {
-                margin-left: 0;
-            }
-            .grid { 
-                grid-template-columns: 1fr; 
+
+            .grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
 
-    <aside class="sidebar">
-        <h1>Guia Heartopia</h1>
+    <h1>Guia Heartopia</h1>
 
-        <div class="search-container">
-            <input type="text" id="search-input" placeholder="🔍 Pesquisar nome ou local..." oninput="renderData()">
-        </div>
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="🔍 Pesquisar nome ou local..." oninput="renderData()">
+    </div>
 
-        <div class="controls tabs">
-            <button id="btn-peixes" class="active" onclick="setTab('peixes')">🐟 Peixes</button>
-            <button id="btn-insetos" onclick="setTab('insetos')">🦋 Insetos</button>
-        </div>
+    <div class="controls tabs">
+        <button id="btn-peixes" class="active" onclick="setTab('peixes')">🐟 Peixes</button>
+        <button id="btn-insetos" onclick="setTab('insetos')">🦋 Insetos</button>
+    </div>
 
-        <div class="controls filters">
-            <select id="filter-caught" onchange="renderData()">
-                <option value="all">📦 Coleção: Todos</option>
-                <option value="caught">✅ Já peguei</option>
-                <option value="uncaught">❌ Falta pegar</option>
-            </select>
+    <div class="controls filters">
+        <select id="filter-weather" onchange="renderData()">
+            <option value="all">⛅ Qualquer Clima</option>
+            <option value="🌞">🌞 Ensolarado</option>
+            <option value="🌧️">🌧️ Chuvoso</option>
+            <option value="🌈">🌈 Arco-íris</option>
+        </select>
 
-            <select id="filter-weather" onchange="renderData()">
-                <option value="all">⛅ Qualquer Clima</option>
-                <option value="🌞">🌞 Ensolarado</option>
-                <option value="🌧️">🌧️ Chuvoso</option>
-                <option value="🌈">🌈 Arco-íris</option>
-            </select>
+        <select id="filter-time" onchange="renderData()">
+            <option value="all">🕒 Qualquer Horário</option>
+            <option value="🌅">🌅 Madrugada</option>
+            <option value="☀️">☀️ Dia</option>
+            <option value="🌇">🌇 Entardecer</option>
+            <option value="🌙">🌙 Noite</option>
+        </select>
 
-            <select id="filter-time" onchange="renderData()">
-                <option value="all">🕒 Qualquer Horário</option>
-                <option value="🌅">🌅 Madrugada</option>
-                <option value="☀️">☀️ Dia</option>
-                <option value="🌇">🌇 Entardecer</option>
-                <option value="🌙">🌙 Noite</option>
-            </select>
+        <button class="btn-clear" onclick="clearAll()" title="Limpar pesquisa e filtros">✖ Limpar Tudo</button>
+    </div>
 
-            <button class="btn-clear" onclick="clearAll()" title="Limpar pesquisa e filtros">✖ Limpar Tudo</button>
-        </div>
-    </aside>
-
-    <main class="main-content">
-        <div id="results" class="grid"></div>
-    </main>
+    <div id="results" class="grid"></div>
 
     <script>
-        // Carrega o progresso salvo no navegador
-        let caughtItems = JSON.parse(localStorage.getItem('heartopia_caught')) || [];
-
-        function toggleCaught(itemName) {
-            if (caughtItems.includes(itemName)) {
-                caughtItems = caughtItems.filter(i => i !== itemName);
-            } else {
-                caughtItems.push(itemName);
-            }
-            localStorage.setItem('heartopia_caught', JSON.stringify(caughtItems));
-            renderData();
-        }
-
-        // Listas atualizadas com os níveis baseados no arquivo JSON fornecido
+// Listas atualizadas com os níveis baseados no arquivo JSON fornecido
         const peixes = [
             { en: "Anglerfish", pt: "Tamboril", lvl: 2, locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
             { en: "Arctic Char", pt: "Salvelino", lvl: 10, locEn: "Forest Lake", locPt: "Lago Florestal", w: "🌧️, 🌈", t: "☀️, 🌇" },
@@ -495,6 +436,7 @@
             currentTab = tab;
             document.getElementById('btn-peixes').classList.toggle('active', tab === 'peixes');
             document.getElementById('btn-insetos').classList.toggle('active', tab === 'insetos');
+            
             document.getElementById('search-input').value = '';
             renderData();
         }
@@ -503,7 +445,6 @@
             document.getElementById('search-input').value = '';
             document.getElementById('filter-weather').value = 'all';
             document.getElementById('filter-time').value = 'all';
-            document.getElementById('filter-caught').value = 'all';
             renderData();
         }
 
@@ -511,7 +452,6 @@
             const searchQuery = document.getElementById('search-input').value.toLowerCase();
             const weatherFilter = document.getElementById('filter-weather').value;
             const timeFilter = document.getElementById('filter-time').value;
-            const caughtFilter = document.getElementById('filter-caught').value;
             const resultsContainer = document.getElementById('results');
             
             const dataToRender = currentTab === 'peixes' ? peixes : insetos;
@@ -524,42 +464,22 @@
                                     
                 const matchWeather = weatherFilter === 'all' || item.w.includes(weatherFilter);
                 const matchTime = timeFilter === 'all' || item.t.includes(timeFilter);
-                
-                const isItemCaught = caughtItems.includes(item.en);
-                let matchCaught = true;
-                if (caughtFilter === 'caught') matchCaught = isItemCaught;
-                if (caughtFilter === 'uncaught') matchCaught = !isItemCaught;
-
-                return matchSearch && matchWeather && matchTime && matchCaught;
+                return matchSearch && matchWeather && matchTime;
             });
 
             resultsContainer.innerHTML = '';
 
             if (filteredData.length === 0) {
-                resultsContainer.innerHTML = '<div class="empty-state" style="text-align: center; grid-column: 1 / -1; padding: 40px; color: var(--text-muted); border: 1px dashed var(--border); border-radius: var(--radius-lg);">Nenhum resultado encontrado.</div>';
+                resultsContainer.innerHTML = '<div class="empty-state">Nenhum resultado encontrado para esses filtros.</div>';
                 return;
             }
 
             filteredData.forEach(item => {
-                const isCaught = caughtItems.includes(item.en);
-                const cardClass = isCaught ? 'card caught' : 'card';
-                const safeName = item.en.replace(/'/g, "\\'");
-
                 const card = document.createElement('div');
-                card.className = cardClass;
+                card.className = 'card';
                 card.innerHTML = `
-                    <div class="card-header">
-                        <div>
-                            <h3>${item.en}</h3>
-                            <div class="pt-name">${item.pt}</div>
-                        </div>
-                        <label class="checkbox-container" title="Marcar como adquirido">
-                            <input type="checkbox" ${isCaught ? 'checked' : ''} onchange="toggleCaught('${safeName}')">
-                        </label>
-                    </div>
-                    
-                    <span class="level-badge">Nível: ${item.lvl}</span>
-                    
+                    <h3>${item.en}</h3>
+                    <div class="pt-name">${item.pt}</div>
                     <p>
                         <span>📍 <strong>Local:</strong> ${item.locEn}</span>
                         <span class="loc-pt">(${item.locPt})</span>
