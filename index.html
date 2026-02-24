@@ -24,18 +24,41 @@
             background-color: var(--bg-base);
             color: var(--text-main);
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            display: flex; /* Layout em linha para a barra lateral */
+            min-height: 100vh;
+        }
+
+        /* --- ESTILOS DA BARRA LATERAL --- */
+        .sidebar {
+            width: 300px;
+            background-color: var(--bg-card);
+            border-right: 1px solid var(--border);
+            padding: 25px 20px;
+            height: 100vh;
+            position: fixed; /* Fixa na tela */
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        .main-content {
+            margin-left: 300px; /* Compensa a largura da sidebar */
+            padding: 25px;
+            flex: 1;
+            box-sizing: border-box;
         }
 
         h1 {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 800;
-            margin-bottom: 30px;
+            margin: 0 0 10px 0;
             background: linear-gradient(135deg, #60a5fa, #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -43,34 +66,34 @@
 
         .controls {
             display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column; /* Filtros empilhados na lateral */
+            gap: 12px;
             width: 100%;
-            max-width: 1000px;
+        }
+
+        .tabs {
+            flex-direction: row; /* Botões de abas lado a lado */
+        }
+        
+        .tabs button {
+            flex: 1;
         }
 
         .search-container {
             width: 100%;
-            max-width: 1000px;
-            margin-bottom: 25px;
-            display: flex;
-            justify-content: center;
         }
 
         input[type="text"] {
             width: 100%;
-            max-width: 600px;
-            padding: 14px 20px;
+            box-sizing: border-box;
+            padding: 12px 15px;
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            font-size: 16px;
-            background: var(--bg-card);
+            font-size: 15px;
+            background: var(--bg-base);
             color: var(--text-main);
             outline: none;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         input[type="text"]:focus {
@@ -79,17 +102,18 @@
         }
 
         button, select {
-            padding: 12px 20px;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px 15px;
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
-            background: var(--bg-card);
+            background: var(--bg-base);
             color: var(--text-main);
             cursor: pointer;
             transition: all 0.3s ease;
             outline: none;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         button:hover, select:hover {
@@ -107,9 +131,7 @@
             background-color: transparent;
             color: var(--text-muted);
             border: 1px dashed var(--border);
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            margin-top: 10px;
         }
 
         .btn-clear:hover {
@@ -120,19 +142,18 @@
 
         select {
             appearance: none;
-            padding-right: 40px;
             background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2394a3b8%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
             background-repeat: no-repeat;
             background-position: right 15px top 50%;
             background-size: 12px auto;
         }
 
+        /* --- ESTILOS DOS RESULTADOS --- */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
             width: 100%;
-            max-width: 1000px;
         }
 
         .card {
@@ -232,55 +253,71 @@
             margin-top: 4px;
         }
 
+        /* Responsividade para celulares */
         @media (max-width: 768px) {
-            body { padding: 15px; }
-            h1 { font-size: 2rem; }
-            .controls.tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-            .controls.filters { flex-direction: column; align-items: stretch; gap: 10px; }
-            input[type="text"], button, select { width: 100%; max-width: none; }
-            .grid { grid-template-columns: 1fr; }
+            body {
+                flex-direction: column;
+            }
+            .sidebar {
+                position: static;
+                width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding: 20px;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .grid { 
+                grid-template-columns: 1fr; 
+            }
         }
     </style>
 </head>
 <body>
 
-    <h1>Guia Heartopia</h1>
+    <aside class="sidebar">
+        <h1>Guia Heartopia</h1>
 
-    <div class="search-container">
-        <input type="text" id="search-input" placeholder="🔍 Pesquisar nome ou local..." oninput="renderData()">
-    </div>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="🔍 Pesquisar nome ou local..." oninput="renderData()">
+        </div>
 
-    <div class="controls tabs">
-        <button id="btn-peixes" class="active" onclick="setTab('peixes')">🐟 Peixes</button>
-        <button id="btn-insetos" onclick="setTab('insetos')">🦋 Insetos</button>
-    </div>
+        <div class="controls tabs">
+            <button id="btn-peixes" class="active" onclick="setTab('peixes')">🐟 Peixes</button>
+            <button id="btn-insetos" onclick="setTab('insetos')">🦋 Insetos</button>
+        </div>
 
-    <div class="controls filters">
-        <select id="filter-caught" onchange="renderData()">
-            <option value="all">📦 Coleção: Todos</option>
-            <option value="caught">✅ Já peguei</option>
-            <option value="uncaught">❌ Falta pegar</option>
-        </select>
+        <div class="controls filters">
+            <select id="filter-caught" onchange="renderData()">
+                <option value="all">📦 Coleção: Todos</option>
+                <option value="caught">✅ Já peguei</option>
+                <option value="uncaught">❌ Falta pegar</option>
+            </select>
 
-        <select id="filter-weather" onchange="renderData()">
-            <option value="all">⛅ Qualquer Clima</option>
-            <option value="🌞">🌞 Ensolarado</option>
-            <option value="🌧️">🌧️ Chuvoso</option>
-            <option value="🌈">🌈 Arco-íris</option>
-        </select>
+            <select id="filter-weather" onchange="renderData()">
+                <option value="all">⛅ Qualquer Clima</option>
+                <option value="🌞">🌞 Ensolarado</option>
+                <option value="🌧️">🌧️ Chuvoso</option>
+                <option value="🌈">🌈 Arco-íris</option>
+            </select>
 
-        <select id="filter-time" onchange="renderData()">
-            <option value="all">🕒 Qualquer Horário</option>
-            <option value="🌅">🌅 Madrugada</option>
-            <option value="☀️">☀️ Dia</option>
-            <option value="🌇">🌇 Entardecer</option>
-            <option value="🌙">🌙 Noite</option>
-        </select>
+            <select id="filter-time" onchange="renderData()">
+                <option value="all">🕒 Qualquer Horário</option>
+                <option value="🌅">🌅 Madrugada</option>
+                <option value="☀️">☀️ Dia</option>
+                <option value="🌇">🌇 Entardecer</option>
+                <option value="🌙">🌙 Noite</option>
+            </select>
 
-        <button class="btn-clear" onclick="clearAll()" title="Limpar pesquisa e filtros">✖ Limpar Tudo</button>
-    </div>
+            <button class="btn-clear" onclick="clearAll()" title="Limpar pesquisa e filtros">✖ Limpar Tudo</button>
+        </div>
+    </aside>
 
-    <div id="results" class="grid"></div>
+    <main class="main-content">
+        <div id="results" class="grid"></div>
+    </main>
 
     <script>
         // Carrega o progresso salvo no navegador
@@ -293,9 +330,10 @@
                 caughtItems.push(itemName);
             }
             localStorage.setItem('heartopia_caught', JSON.stringify(caughtItems));
-            renderData(); // Atualiza a tela para refletir a mudança
+            renderData();
         }
 
+        // Listas atualizadas com os níveis baseados no arquivo JSON fornecido
         const peixes = [
             { en: "Anglerfish", pt: "Tamboril", lvl: 2, locEn: "Sea Fishing", locPt: "Pesca no Mar", w: "🌞, 🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
             { en: "Arctic Char", pt: "Salvelino", lvl: 10, locEn: "Forest Lake", locPt: "Lago Florestal", w: "🌧️, 🌈", t: "☀️, 🌇" },
@@ -383,7 +421,7 @@
             { en: "Wels Catfish", pt: "Siluro Europeu", lvl: 10, locEn: "Meadow Lake", locPt: "Lago da Campina", w: "🌞, 🌈", t: "🌙, 🌇" },
             { en: "Zander", pt: "Lucioperca", lvl: 3, locEn: "Giantwood River", locPt: "Rio da Madeira Gigante", w: "🌞, 🌈", t: "🌙, 🌅, ☀️, 🌇" }
         ];
-        
+
         const insetos = [
             { en: "Alpine Longhorn Beetle", pt: "Besouro Longicorne Alpino", lvl: 5, locEn: "Forest Island", locPt: "Ilha Florestal", w: "🌈", t: "🌙, 🌅, ☀️, 🌇" },
             { en: "Amethyst Flower Beetle", pt: "Besouro de Flor Ametista", lvl: 2, locEn: "Home (Rocks)", locPt: "Falésia Rochosa", w: "🌧️, 🌈", t: "🌙, 🌅, ☀️, 🌇" },
@@ -505,7 +543,6 @@
             filteredData.forEach(item => {
                 const isCaught = caughtItems.includes(item.en);
                 const cardClass = isCaught ? 'card caught' : 'card';
-                // Usando replace para lidar com aspas simples em nomes como "Rajah Brooke's Birdwing"
                 const safeName = item.en.replace(/'/g, "\\'");
 
                 const card = document.createElement('div');
