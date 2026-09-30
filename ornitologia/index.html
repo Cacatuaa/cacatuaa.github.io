@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ornitologia do zero</title>
+<meta name="description" content="Aulas ilustradas de ornitologia para quem nunca estudou aves, com espécies brasileiras, do esqueleto à aerodinâmica.">
+<script>
+  document.documentElement.className = "js";
+  (function () { var t; try { t = JSON.parse(localStorage.getItem("orn-theme")); } catch (e) {}
+    if (!t) t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    document.documentElement.dataset.theme = t; })();
+</script>
+<link rel="preload" href="assets/fonts/cormorant-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body data-root="">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand" href="index.html">Ornitologia do zero</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a class="link" href="#trilha">Aulas</a>
+      <a class="link" href="#como">Como funciona</a>
+      <a class="link" href="creditos.html">Créditos</a>
+    </nav>
+    <div class="nav-tools">
+      <button class="icon-btn" id="theme" type="button" aria-label="Mudar tema"></button>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mmenu"><span data-i="menu"></span></button>
+    </div>
+  </div>
+</header>
+<div class="mmenu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="mmenu-top"><span class="brand">Ornitologia do zero</span><button class="icon-btn" id="menu-close" type="button" aria-label="Fechar menu"><span data-i="x"></span></button></div>
+  <nav aria-label="Menu do celular"><a href="#trilha">Aulas</a><a href="#como">Como funciona</a><a href="creditos.html">Créditos</a></nav>
+</div>
+
+<main id="conteudo">
+  <section class="hero">
+    <div class="hero-flight" aria-hidden="true">
+      <svg viewBox="0 0 1200 800" preserveAspectRatio="none">
+        <path d="M-20 620 C 200 520, 360 640, 560 500 S 900 300, 1220 340"/>
+        <path d="M-20 700 C 240 600, 420 720, 640 580 S 960 400, 1220 430"/>
+        <path d="M-20 540 C 180 430, 380 560, 520 400 S 860 200, 1220 250"/>
+        <path d="M-20 780 C 260 690, 480 790, 720 660 S 1000 500, 1220 520"/>
+      </svg>
+    </div>
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="label rv" style="--i:0">Curso de ornitologia · para quem nunca estudou aves</p>
+        <h1 class="display" data-split style="margin-top:var(--space-6)">Ornitologia do zero</h1>
+        <p class="lede rv" style="--i:3">Começamos por uma pergunta simples, o que é uma ave, e chegamos ao esqueleto, ao voo e aos bicos, sempre com espécies brasileiras.</p>
+        <div class="hero-actions rv" style="--i:4">
+          <a class="btn btn-primary" href="aulas/01-o-que-e-uma-ave.html">Começar pela aula 1 <span data-i="arrow" data-cls="icon-arrow"></span></a>
+          <a class="btn btn-ghost" href="#trilha">Ver todas as aulas</a>
+        </div>
+      </div>
+      <figure class="hero-photo rv rv-grow" style="--i:2">
+        <img src="assets/img/photos/tucano.webp" width="1400" height="933" alt="Tucano-toco pousado em um galho, de perfil, com o grande bico laranja e o peito branco à mostra" fetchpriority="high">
+        <figcaption class="credit"><strong>Tucano-toco</strong> (<i>Ramphastos toco</i>) · <span data-credit="tucano"></span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section surface-band" id="trilha">
+    <div class="container">
+      <div class="trail-head">
+        <p class="label">A trilha</p>
+        <h2 class="h-section rv">Sete módulos, do básico à especialização</h2>
+        <div class="trail-progress rv"><span id="trail-count">0 aulas concluídas</span><div class="bar" aria-hidden="true"><i id="trail-bar" style="transform:scaleX(0)"></i></div></div>
+      </div>
+      <ol class="mods" id="trail"></ol>
+      <p class="muted" style="margin-top:var(--space-8)">Todas as 32 aulas estão prontas. O módulo 7 é uma especialização em cacatuas.</p>
+    </div>
+  </section>
+
+  <section class="section band" id="como">
+    <div class="container how">
+      <div><p class="label">Como funciona</p><h2 class="h-section rv" style="margin-top:var(--space-4)">Cada aula cabe em uma leitura</h2></div>
+      <ol>
+        <li class="rv" style="--i:0"><strong>Uma ave por aula.</strong> Uma espécie brasileira serve de exemplo para o assunto do dia.</li>
+        <li class="rv" style="--i:1"><strong>Toque para explorar.</strong> Fotos e desenhos com pontos clicáveis explicam cada parte.</li>
+        <li class="rv" style="--i:2"><strong>Palavras novas explicadas.</strong> Termos técnicos aparecem sublinhados e abrem uma definição curta.</li>
+        <li class="rv" style="--i:3"><strong>Teste rápido, sem nota.</strong> Três perguntas no fim, com explicação da resposta.</li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-in">
+    <div><div class="brand-big">Ornitologia do zero</div><p style="margin-top:var(--space-3)">Fotos com licença livre da Wikimedia Commons. <a href="creditos.html">Ver créditos</a></p></div>
+    <a class="btn btn-ghost" href="#conteudo"><span data-i="up"></span> Voltar ao topo</a>
+  </div>
+</footer>
+<div class="toasts" aria-live="polite"></div>
+
+<script src="assets/js/vendor/lenis.min.js"></script>
+<script src="assets/js/course.js"></script>
+<script src="assets/js/credits.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

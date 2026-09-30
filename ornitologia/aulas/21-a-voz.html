@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 21 · A voz · Ornitologia do zero</title>
+<meta name="description" content="A siringe, canto e chamado, aprendizado vocal e como ler um espectrograma, com gravações de aves brasileiras.">
+<script>
+  document.documentElement.className = "js";
+  (function () { var t; try { t = JSON.parse(localStorage.getItem("orn-theme")); } catch (e) {}
+    if (!t) t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    document.documentElement.dataset.theme = t; })();
+</script>
+<link rel="preload" href="../assets/fonts/cormorant-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/lessons.css"><style>.audio-grid { display: grid; gap: var(--space-4); margin-top: var(--space-6); }</style>
+</head>
+<body data-root="../">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand" href="../index.html">Ornitologia do zero</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a class="link" href="../index.html#trilha">Todas as aulas</a>
+      <a class="link" href="../creditos.html">Créditos</a>
+    </nav>
+    <div class="nav-tools">
+      <button class="icon-btn" id="theme" type="button" aria-label="Mudar tema"></button>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mmenu"><span data-i="menu"></span></button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+<div class="mmenu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="mmenu-top"><span class="brand">Ornitologia do zero</span><button class="icon-btn" id="menu-close" type="button" aria-label="Fechar menu"><span data-i="x"></span></button></div>
+  <nav aria-label="Menu do celular"><a href="../index.html#trilha">Todas as aulas</a><a href="../creditos.html">Créditos</a></nav>
+</div>
+
+<main id="conteudo">
+  <section class="l-hero">
+    <div class="container l-hero-grid">
+      <div>
+        <p class="crumbs label"><a href="../index.html#trilha">Módulo 5</a> <span aria-hidden="true">·</span> <span>Aula 21</span></p>
+        <h1 data-split>A voz</h1>
+        <p class="lede rv" style="--i:3">A ave canta com um órgão que só ela tem. E dá para ver o canto: o espectrograma desenha o som.</p>
+        <ul class="goals rv" style="--i:4" aria-label="O que você vai aprender">
+          <li><span data-i="check"></span>O que é a siringe e como ela produz som</li>
+          <li><span data-i="check"></span>A diferença entre canto e chamado</li>
+          <li><span data-i="check"></span>Como ouvir e “ler” o canto de três aves brasileiras</li>
+        </ul>
+      </div>
+      <figure class="ave-card rv rv-grow" style="--i:2">
+        <img src="../assets/img/photos/sabia.webp" width="1400" height="1050" alt="Sabiá-laranjeira de perfil, pousado em uma mureta" style="aspect-ratio:4 / 3;object-position:50% 50%" fetchpriority="high">
+        <figcaption>
+          <p class="ave-name"><span class="label">Ave da aula</span><br><strong>Sabiá-laranjeira</strong> <em>Turdus rufiventris</em></p>
+          <p class="credit" data-credit="sabia"></p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:var(--space-12)">
+    <div class="container l-body">
+      <aside class="toc" aria-label="Nesta aula">
+        <details open>
+          <summary>Nesta aula <span data-i="down"></span></summary>
+          <ol>
+            <li><a href="#siringe">A siringe</a></li>
+            <li><a href="#canto">Canto e chamado</a></li>
+            <li><a href="#ouvir">Ouvir e ver</a></li>
+            <li><a href="#palavras">Palavras novas</a></li>
+            <li><a href="#teste">Teste rápido</a></li>
+            <li><a href="#referencias">Referências</a></li>
+          </ol>
+        </details>
+      </aside>
+      <div>
+
+        <section class="block" id="siringe">
+          <div class="block-n">01</div>
+          <h2>A siringe</h2>
+          <p class="rv">A nossa voz sai da laringe. A da ave sai da <button class="term" data-def="Órgão de voz das aves, na base da traqueia, onde ela se divide nos brônquios.">siringe</button>, um órgão exclusivo das aves, que fica mais fundo no peito<sup class="cite">[<a href="#ref-2" aria-label="Referência 2">2</a>]</sup>. Nas aves canoras, a siringe tem duas fontes de som, uma em cada lado, que a ave controla de forma independente<sup class="cite">[<a href="#ref-2" aria-label="Referência 2">2</a>]</sup>. Em algumas espécies, o som pode sair só de um lado, dos dois ao mesmo tempo, ou trocar de lado durante o canto<sup class="cite">[<a href="#ref-3" aria-label="Referência 3">3</a>]</sup>. É isso que permite a algumas aves produzir duas notas ao mesmo tempo<sup class="cite">[<a href="#ref-2" aria-label="Referência 2">2</a>]</sup>.</p>
+        </section>
+
+        <section class="block" id="canto">
+          <div class="block-n">02</div>
+          <h2>Canto e chamado</h2>
+          <p class="rv">Os cientistas distinguem dois tipos de som. O <button class="term" data-def="Som mais longo e elaborado, muito ligado a demarcar território e a atrair parceiros.">canto</button> é mais elaborado. O <button class="term" data-def="Som curto e simples, usado para alertar, manter o contato e outras funções cotidianas.">chamado</button> é curto e simples. As aves canoras aprendem o canto ouvindo os adultos; a grande maioria das outras aves produz sons simples e instintivos, que não são aprendidos<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>]</sup>. Como acontece com a fala humana, algumas espécies desenvolvem dialetos locais, passados de pais para filhotes<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>]</sup>.</p>
+        </section>
+
+        <section class="block" id="ouvir">
+          <div class="block-n">03</div>
+          <h2>Ouvir e ver</h2>
+          <p class="rv">Toque nas três gravações. Depois, peça o espectrograma: ele mostra o tempo na horizontal e a altura do som (a frequência) na vertical. Manchas claras são sons; onde o som é agudo, a mancha sobe.</p>
+          <div class="audio-grid">
+
+          <div class="audio-card rv" data-src="../assets/audio/audio-sabia.ogg">
+            <h3>Sabiá-laranjeira <span class="muted" style="font:italic 400 var(--step-0) var(--font-sans)">Turdus rufiventris</span></h3>
+            <p style="margin:0">O canto da ave-símbolo do Brasil.</p>
+            <audio controls preload="none" src="../assets/audio/audio-sabia.ogg">Seu navegador não toca este áudio.</audio>
+            <canvas class="spec-canvas" width="900" height="128" role="img" aria-label="Espectrograma de Sabiá-laranjeira: frequência ao longo do tempo"></canvas>
+            <p class="spec-status" aria-live="polite"></p>
+            <button class="chip spec-btn" type="button">Desenhar o espectrograma</button>
+            <p class="credit" data-credit="audio-sabia"></p>
+          </div>
+
+          <div class="audio-card rv" data-src="../assets/audio/audio-bem-te-vi.ogg">
+            <h3>Bem-te-vi <span class="muted" style="font:italic 400 var(--step-0) var(--font-sans)">Pitangus sulphuratus</span></h3>
+            <p style="margin:0">O canto que deu nome à ave.</p>
+            <audio controls preload="none" src="../assets/audio/audio-bem-te-vi.ogg">Seu navegador não toca este áudio.</audio>
+            <canvas class="spec-canvas" width="900" height="128" role="img" aria-label="Espectrograma de Bem-te-vi: frequência ao longo do tempo"></canvas>
+            <p class="spec-status" aria-live="polite"></p>
+            <button class="chip spec-btn" type="button">Desenhar o espectrograma</button>
+            <p class="credit" data-credit="audio-bem-te-vi"></p>
+          </div>
+
+          <div class="audio-card rv" data-src="../assets/audio/audio-uirapuru.mp3">
+            <h3>Uirapuru-verdadeiro <span class="muted" style="font:italic 400 var(--step-0) var(--font-sans)">Cyphorhinus arada</span></h3>
+            <p style="margin:0">Ave da Amazônia, conhecida por um canto musical.</p>
+            <audio controls preload="none" src="../assets/audio/audio-uirapuru.mp3">Seu navegador não toca este áudio.</audio>
+            <canvas class="spec-canvas" width="900" height="128" role="img" aria-label="Espectrograma de Uirapuru-verdadeiro: frequência ao longo do tempo"></canvas>
+            <p class="spec-status" aria-live="polite"></p>
+            <button class="chip spec-btn" type="button">Desenhar o espectrograma</button>
+            <p class="credit" data-credit="audio-uirapuru"></p>
+          </div>
+          </div>
+          <p class="diagram-note">Gravações do Wikimedia Commons, muitas vindas do xeno-canto, um acervo aberto e colaborativo de sons de aves<sup class="cite">[<a href="#ref-4" aria-label="Referência 4">4</a>]</sup>. Para conhecer mais, veja o WikiAves<sup class="cite">[<a href="#ref-5" aria-label="Referência 5">5</a>]</sup>. O espectrograma é calculado no seu navegador, a partir do áudio, e é uma representação simplificada.</p>
+        </section>
+
+        <section class="block" id="palavras">
+          <div class="block-n">04</div>
+          <h2>Palavras novas</h2>
+          <dl class="gloss" id="gloss"></dl>
+        </section>
+
+        <section class="block" id="teste">
+          <div class="block-n">05</div>
+          <h2>Teste rápido</h2>
+          <p>Sem nota. Se errar, tente de novo.</p>
+          <div class="quiz">
+<div class="q" data-why="A siringe fica na base da traqueia e é exclusiva das aves." data-hint="Começa com S.">
+  <h3>Como se chama o órgão de voz das aves?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Siringe</button><button class="chip">Laringe</button><button class="chip">Moela</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="Quanto mais alto no desenho, mais agudo o som. O tempo corre na horizontal." data-hint="Reveja o bloco 3.">
+  <h3>No espectrograma, o que a posição vertical de uma mancha indica?</h3>
+  <div class="choices"><button class="chip" data-ok="1">A altura do som (frequência)</button><button class="chip">A distância da ave</button><button class="chip">A cor da ave</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="As aves canoras aprendem o canto; a maioria das outras aves tem sons instintivos." data-hint="Lembre do bloco 2.">
+  <h3>Qual ave costuma aprender o canto ouvindo os adultos?</h3>
+  <div class="choices"><button class="chip" data-ok="1">As aves canoras</button><button class="chip">Nenhuma ave aprende</button><button class="chip">Só as aves pernaltas</button></div>
+  <div class="fb" role="status"></div>
+</div>
+</div>
+        </section>
+        <section class="block" id="referencias">
+          <div class="block-n">06</div>
+          <h2>Referências e leitura complementar</h2>
+          <p>Onde conferir o que foi dito nesta aula. Os números entre colchetes no texto levam a estas fontes. Os links abrem em outra aba.</p>
+          <ol class="refs">
+<li id="ref-1"><a href="https://academy.allaboutbirds.org/birdsong/" target="_blank" rel="noopener noreferrer">Bird Song</a><span class="ref-by">Bird Academy · Cornell Lab of Ornithology · inglês</span><span class="ref-note">Canto, chamados e como as aves aprendem a cantar.</span></li>
+<li id="ref-2"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2896990/" target="_blank" rel="noopener noreferrer">Peripheral mechanisms for vocal production in birds – differences and similarities to human speech and singing</a><span class="ref-by">PubMed Central (artigo científico) · inglês · leitura complementar</span><span class="ref-note">A siringe: dois “geradores de som”, um em cada brônquio.</span></li>
+<li id="ref-3"><a href="https://www.nature.com/articles/347473a0" target="_blank" rel="noopener noreferrer">Contributions to birdsong from the left and right sides of the intact syrinx</a><span class="ref-by">Nature · inglês · leitura complementar</span><span class="ref-note">Estudo clássico sobre os dois lados da siringe.</span></li>
+<li id="ref-4"><a href="https://xeno-canto.org/" target="_blank" rel="noopener noreferrer">xeno-canto: Sharing wildlife sounds from around the world</a><span class="ref-by">Fundação Xeno-canto · inglês</span><span class="ref-note">Acervo aberto e colaborativo de gravações de aves do mundo todo, com muitas do Brasil.</span></li>
+<li id="ref-5"><a href="https://www.wikiaves.com.br/" target="_blank" rel="noopener noreferrer">WikiAves: A Enciclopédia das Aves do Brasil</a><span class="ref-by">WikiAves · português</span><span class="ref-note">Maior base de registros de aves do Brasil, com fotos e sons enviados por observadores.</span></li>
+          </ol>
+          <p class="diagram-note">Os endereços foram abertos e conferidos em 29/09/2026. Alguns sites de revistas científicas e de órgãos oficiais exigem verificação humana e não puderam ser testados por robô. Sites externos podem mudar ou sair do ar.</p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band" id="levar">
+    <div class="container take">
+      <div><p class="label">Para levar</p><h2 class="h-section" style="margin-top:var(--space-4)">Em três frases</h2></div>
+      <div>
+        <ul>
+          <li>A siringe é o órgão de voz das aves. Nas aves canoras, tem duas fontes de som que podem ser controladas em separado.</li>
+          <li>Aves canoras aprendem o canto; a maioria das outras espécies tem sons mais simples e instintivos.</li>
+          <li>O espectrograma mostra o som como imagem: o tempo na horizontal, a frequência na vertical.</li>
+        </ul>
+        <div class="next">
+          <button class="btn btn-outline-band done-btn" id="done" type="button" data-lesson="21" aria-pressed="false">Marcar como concluída</button>
+          <a class="btn btn-band" href="22-vida-social.html">Próxima: aula 22, Vida social <span data-i="arrow" data-cls="icon-arrow"></span></a>
+        </div>
+        <div class="next" style="margin-top:var(--space-4)"><a class="btn btn-outline-band" href="20-cor-e-exibicao.html">Anterior: aula 20, Cor e exibição</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-in">
+    <div><div class="brand-big">Ornitologia do zero</div><p style="margin-top:var(--space-3)"><a href="../index.html#trilha">Todas as aulas</a> · <a href="../creditos.html">Créditos</a></p></div>
+    <a class="btn btn-ghost" href="#conteudo"><span data-i="up"></span> Voltar ao topo</a>
+  </div>
+</footer>
+<div class="toasts" aria-live="polite"></div>
+
+<script src="../assets/js/vendor/lenis.min.js"></script>
+<script src="../assets/js/credits.js"></script>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/extras.js"></script>
+<script src="../assets/js/motion.js"></script>
+<script src="../assets/js/spectro.js"></script>
+</body>
+</html>

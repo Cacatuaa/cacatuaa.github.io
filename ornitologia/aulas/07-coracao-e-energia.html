@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 7 · Coração e energia · Ornitologia do zero</title>
+<meta name="description" content="Coração de quatro câmaras, sangue quente e o gasto de energia do beija-flor.">
+<script>
+  document.documentElement.className = "js";
+  (function () { var t; try { t = JSON.parse(localStorage.getItem("orn-theme")); } catch (e) {}
+    if (!t) t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    document.documentElement.dataset.theme = t; })();
+</script>
+<link rel="preload" href="../assets/fonts/cormorant-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/lessons.css"><style>
+.blood-pt { stroke: var(--bg); stroke-width: 1.5; pointer-events: none; }
+.blood-ctrl { margin-top: var(--space-3); }
+.diag .arrow { fill: none; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; transition: opacity var(--dur-hover) var(--ease-soft), stroke-width var(--dur-hover) var(--ease-soft); }
+.diag .low { stroke: var(--info); }
+.diag .rich { stroke: var(--terra-text); }
+.diag[data-on] .arrow { opacity: 0.18; }
+.diag[data-on~="p1"] .a1, .diag[data-on~="p2"] .a2, .diag[data-on~="p3"] .a3, .diag[data-on~="p4"] .a4 { opacity: 1; stroke-width: 7; }
+.diag .room { fill: var(--surface-2); stroke: var(--muted); stroke-width: 2; }
+.heart { width: 132px; height: 120px; transform-origin: 50% 55%; animation: beat var(--bt, 1.2s) var(--ease-soft) infinite; }
+.heart path { fill: var(--terra-fill); stroke: var(--terra-text); stroke-width: 2; }
+@keyframes beat { 0%, 100% { transform: scale(1); } 12% { transform: scale(1.14); } 26% { transform: scale(1); } 38% { transform: scale(1.08); } 52% { transform: scale(1); } }
+/* movimento reduzido: o coração não cresce, só pulsa em brilho, no mesmo ritmo */
+@media (prefers-reduced-motion: reduce) { .heart { animation-name: beat-fade; } }
+@keyframes beat-fade { 0%, 100% { opacity: 1; } 12% { opacity: 0.55; } 26% { opacity: 1; } 38% { opacity: 0.7; } 52% { opacity: 1; } }
+.bpm { font: 300 var(--step-5) / 1 var(--font-serif); font-variant-numeric: lining-nums; color: var(--terra-text); }
+.hearts { display: flex; gap: var(--space-6); align-items: center; }
+</style>
+</head>
+<body data-root="../">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand" href="../index.html">Ornitologia do zero</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a class="link" href="../index.html#trilha">Todas as aulas</a>
+      <a class="link" href="../creditos.html">Créditos</a>
+    </nav>
+    <div class="nav-tools">
+      <button class="icon-btn" id="theme" type="button" aria-label="Mudar tema"></button>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mmenu"><span data-i="menu"></span></button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+<div class="mmenu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="mmenu-top"><span class="brand">Ornitologia do zero</span><button class="icon-btn" id="menu-close" type="button" aria-label="Fechar menu"><span data-i="x"></span></button></div>
+  <nav aria-label="Menu do celular"><a href="../index.html#trilha">Todas as aulas</a><a href="../creditos.html">Créditos</a></nav>
+</div>
+
+<main id="conteudo">
+  <section class="l-hero">
+    <div class="container l-hero-grid">
+      <div>
+        <p class="crumbs label"><a href="../index.html#trilha">Módulo 2</a> <span aria-hidden="true">·</span> <span>Aula 7</span></p>
+        <h1 data-split>Coração e energia</h1>
+        <p class="lede rv" style="--i:3">Uma ave voa, mantém o corpo quente e ainda cresce rápido. Tudo isso custa energia, e o coração é a bomba que a entrega.</p>
+        <ul class="goals rv" style="--i:4" aria-label="O que você vai aprender">
+          <li><span data-i="check"></span>Como o coração de quatro câmaras separa dois tipos de sangue</li>
+          <li><span data-i="check"></span>Por que o coração de um beija-flor bate tão depressa</li>
+          <li><span data-i="check"></span>O que é torpor e por que ele existe</li>
+        </ul>
+      </div>
+      <figure class="ave-card rv rv-grow" style="--i:2">
+        <img src="../assets/img/photos/beijaflor.webp" width="1400" height="853" alt="Beija-flor-tesoura pousado em um galho fino, de frente, com penas azul-escuras brilhantes" style="aspect-ratio:3 / 2;object-position:62% 30%" fetchpriority="high">
+        <figcaption>
+          <p class="ave-name"><span class="label">Ave da aula</span><br><strong>Beija-flor-tesoura</strong> <em>Eupetomena macroura</em></p>
+          <p class="credit" data-credit="beijaflor"></p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:var(--space-12)">
+    <div class="container l-body">
+      <aside class="toc" aria-label="Nesta aula">
+        <details open>
+          <summary>Nesta aula <span data-i="down"></span></summary>
+          <ol>
+            <li><a href="#coracao">Quatro câmaras</a></li>
+            <li><a href="#ritmo">O ritmo do coração</a></li>
+            <li><a href="#energia">Custo de ser quente</a></li>
+            <li><a href="#torpor">Torpor</a></li>
+            <li><a href="#palavras">Palavras novas</a></li>
+            <li><a href="#teste">Teste rápido</a></li>
+            <li><a href="#referencias">Referências</a></li>
+          </ol>
+        </details>
+      </aside>
+      <div>
+
+        <section class="block" id="coracao">
+          <div class="block-n">01</div>
+          <h2>Quatro câmaras</h2>
+          <p class="rv">O coração de uma ave tem quatro câmaras, como o dos mamíferos<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>]</sup>. As duas da direita bombeiam o sangue pobre em oxigênio até os pulmões. As duas da esquerda recebem o sangue rico em oxigênio e o mandam ao corpo. Como as duas metades não se misturam, o corpo recebe sempre sangue carregado de oxigênio, o que é essencial para quem gasta tanta energia.</p>
+          <figure class="fig">
+            <div class="diagram">
+              <p class="hint"><span data-i="pointer"></span> As bolinhas mostram o sangue circulando, tudo ao mesmo tempo. Azul é sangue pobre em oxigênio, laranja é rico. Escolha uma etapa para destacá-la.</p>
+              <div class="layers" data-target="heartd" data-idle="Esquema didático, sem escala.">
+                <button class="chip" data-k="p1" data-text="1. O sangue pobre em oxigênio volta do corpo e entra no lado direito do coração.">Do corpo ao coração</button>
+                <button class="chip" data-k="p2" data-text="2. O ventrículo direito bombeia o sangue para os pulmões.">Para os pulmões</button>
+                <button class="chip" data-k="p3" data-text="3. Com oxigênio, o sangue volta ao lado esquerdo do coração.">Dos pulmões ao coração</button>
+                <button class="chip" data-k="p4" data-text="4. O ventrículo esquerdo bombeia o sangue rico em oxigênio para o corpo.">Para o corpo</button>
+              </div>
+              
+<svg id="heartd" class="diag" viewBox="0 0 620 340" role="img" aria-label="Esquema do coração de quatro câmaras e o caminho do sangue: corpo, coração, pulmões, coração, corpo">
+  <defs><marker id="mk-low" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="13" markerHeight="13" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" style="fill:var(--info)"/></marker><marker id="mk-rich" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="13" markerHeight="13" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" style="fill:var(--terra-text)"/></marker></defs>
+  <rect class="part room p1" x="215" y="80" width="90" height="80" rx="16"/><text x="260" y="124" text-anchor="middle">átrio</text><text x="260" y="142" text-anchor="middle" class="sub">direito</text>
+  <rect class="part room p1 p2" x="215" y="176" width="90" height="90" rx="16"/><text x="260" y="226" text-anchor="middle">ventrículo</text><text x="260" y="244" text-anchor="middle" class="sub">direito</text>
+  <rect class="part room p3" x="325" y="80" width="90" height="80" rx="16"/><text x="370" y="124" text-anchor="middle">átrio</text><text x="370" y="142" text-anchor="middle" class="sub">esquerdo</text>
+  <rect class="part room p3 p4" x="325" y="176" width="90" height="90" rx="16"/><text x="370" y="226" text-anchor="middle">ventrículo</text><text x="370" y="244" text-anchor="middle" class="sub">esquerdo</text>
+  <ellipse class="part room p2 p3" cx="310" cy="311" rx="100" ry="22"/><text x="310" y="316" text-anchor="middle">pulmões</text>
+  <ellipse class="part room" cx="60" cy="170" rx="46" ry="34" style="stroke:var(--line)"/><text x="60" y="175" text-anchor="middle">corpo</text>
+  <ellipse class="part room" cx="560" cy="170" rx="46" ry="34" style="stroke:var(--line)"/><text x="560" y="175" text-anchor="middle">corpo</text>
+  <path class="arrow low a1" marker-end="url(#mk-low)" d="M 104 150 C 150 120, 170 120, 212 122"/>
+  <path class="arrow low a1" marker-end="url(#mk-low)" d="M 260 162 L 260 174"/>
+  <path class="arrow low a2" marker-end="url(#mk-low)" d="M 250 268 C 250 290, 262 296, 288 300"/>
+  <path class="arrow rich a3" marker-end="url(#mk-rich)" d="M 400 300 C 440 298, 450 288, 450 258 L 450 132 C 450 124, 442 121, 420 121"/>
+  <path class="arrow rich a3" marker-end="url(#mk-rich)" d="M 370 162 L 370 174"/>
+  <path class="arrow rich a4" marker-end="url(#mk-rich)" d="M 418 230 C 470 230, 500 210, 520 190"/>
+</svg>
+              <div class="blood-ctrl"><button class="chip" id="heart-play" type="button" aria-pressed="false">Pausar o sangue</button></div>
+              <p class="diagram-note" aria-live="polite">Esquema didático, sem escala.</p>
+            </div>
+          </figure>
+        </section>
+
+        <section class="block" id="ritmo">
+          <div class="block-n">02</div>
+          <h2>O ritmo do coração</h2>
+          <p class="rv">O coração dos beija-flores é famoso por sua velocidade. Compare três situações. As animações estão em câmera lenta, mas mantêm a proporção entre os ritmos.</p>
+          <div class="tabs"><div class="tabs-nav" role="tablist"><button class="chip" role="tab" data-k="rep">Em repouso</button><button class="chip" role="tab" data-k="voo">Em voo</button><button class="chip" role="tab" data-k="tor">Em torpor</button></div><div class="tabpanel solo" role="tabpanel" data-k="rep"><div class="tp-body"><div class="hearts play-inview"><div style="--bt:1.2s"><svg class="heart" viewBox="0 0 132 120" aria-hidden="true"><path d="M66 112 C 20 80, 6 50, 6 34 C 6 16, 20 6, 36 6 C 50 6, 60 14, 66 26 C 72 14, 82 6, 96 6 C 112 6, 126 16, 126 34 C 126 50, 112 80, 66 112 Z"/></svg></div><div><div class="bpm">225</div><div class="label">batimentos por minuto</div></div></div><p class="muted" style="margin-top:var(--space-3)">Beija-flor norte-americano <i>Archilochus colubris</i> (em inglês, ruby-throated hummingbird), em repouso.</p><p>Mesmo parado, o coração bate várias vezes por segundo<sup class="cite">[<a href="#ref-3" aria-label="Referência 3">3</a>]</sup>.</p></div></div><div class="tabpanel solo" role="tabpanel" data-k="voo"><div class="tp-body"><div class="hearts play-inview"><div style="--bt:0.225s"><svg class="heart" viewBox="0 0 132 120" aria-hidden="true"><path d="M66 112 C 20 80, 6 50, 6 34 C 6 16, 20 6, 36 6 C 50 6, 60 14, 66 26 C 72 14, 82 6, 96 6 C 112 6, 126 16, 126 34 C 126 50, 112 80, 66 112 Z"/></svg></div><div><div class="bpm">mais de 1.200</div><div class="label">batimentos por minuto</div></div></div><p class="muted" style="margin-top:var(--space-3)">A mesma espécie, voando.</p><p>No voo, o ritmo chega a mais de cinco vezes o de repouso<sup class="cite">[<a href="#ref-3" aria-label="Referência 3">3</a>]</sup>.</p></div></div><div class="tabpanel solo" role="tabpanel" data-k="tor"><div class="tp-body"><div class="hearts play-inview"><div style="--bt:2.4s"><svg class="heart" viewBox="0 0 132 120" aria-hidden="true"><path d="M66 112 C 20 80, 6 50, 6 34 C 6 16, 20 6, 36 6 C 50 6, 60 14, 66 26 C 72 14, 82 6, 96 6 C 112 6, 126 16, 126 34 C 126 50, 112 80, 66 112 Z"/></svg></div><div><div class="bpm">50 a 180</div><div class="label">batimentos por minuto</div></div></div><p class="muted" style="margin-top:var(--space-3)">Beija-flor norte-americano <i>Lampornis clemenciae</i> (em inglês, blue-throated hummingbird), em torpor. Fora do torpor, o ritmo chega a 1.260.</p><p>No torpor, o ritmo cai a uma fração do normal<sup class="cite">[<a href="#ref-4" aria-label="Referência 4">4</a>]</sup>.</p></div></div></div>
+          <p class="diagram-note">Dados de espécies norte-americanas, medidos em estudos. O beija-flor-tesoura, ave da aula, é uma espécie sul-americana da mesma família.</p>
+        </section>
+
+        <section class="block" id="energia">
+          <div class="block-n">03</div>
+          <h2>O custo de ser quente</h2>
+          <p class="rv">Como vimos na aula 1, a ave é <button class="term" data-def="Produz o próprio calor e mantém a temperatura do corpo quase constante.">endotérmica</button><sup class="cite">[<a href="#ref-2" aria-label="Referência 2">2</a>]</sup>. Isso tem um preço: quem produz calor por dentro precisa de combustível o dia todo. O beija-flor, que dispensa até a camada de penugem para poupar peso, compensa comendo sem parar: consome em néctar duas a três vezes o próprio peso por dia<sup class="cite">[<a href="#ref-5" aria-label="Referência 5">5</a>]</sup>. Por isso o néctar, que é açúcar concentrado, funciona como um combustível de alto rendimento<sup class="cite">[<a href="#ref-5" aria-label="Referência 5">5</a>]</sup>.</p>
+        </section>
+
+        <section class="block" id="torpor">
+          <div class="block-n">04</div>
+          <h2>Torpor: dormir em economia</h2>
+          <p class="rv">De noite, o beija-flor não tem como se alimentar. Então ele faz algo radical: entra em <button class="term" data-def="Estado de sono profundo em que o metabolismo e a temperatura do corpo ficam muito baixos, para poupar energia.">torpor</button><sup class="cite">[<a href="#ref-3" aria-label="Referência 3">3</a>]</sup>. A temperatura do corpo pode cair de cerca de 42 °C para perto de 9 °C, e o metabolismo pode diminuir até 95% numa noite muito fria<sup class="cite">[<a href="#ref-4" aria-label="Referência 4">4</a>, <a href="#ref-5" aria-label="Referência 5">5</a>]</sup>. Se durasse muito tempo, seria hibernação. Os beija-flores entram em torpor em qualquer noite do ano em que o frio e a falta de comida pedirem<sup class="cite">[<a href="#ref-3" aria-label="Referência 3">3</a>]</sup>.</p>
+          <h3 style="font:500 var(--step-3)/1.1 var(--font-serif);margin:var(--space-8) 0 var(--space-3)">E as outras aves?</h3>
+          <p class="rv">O beija-flor é o exemplo mais conhecido, mas não é o único. Ao menos 29 espécies de aves reduzem o metabolismo e a temperatura do corpo por algum tempo<sup class="cite">[<a href="#ref-6" aria-label="Referência 6">6</a>]</sup>. Quase todas comem insetos, frutos ou néctar, e o motivo mais comum é a falta de comida ou o frio<sup class="cite">[<a href="#ref-6" aria-label="Referência 6">6</a>]</sup>. Entre os grupos com torpor estão os beija-flores, os pássaros-ratos (<i>mousebirds</i>) e a família dos bacuraus e curiangos<sup class="cite">[<a href="#ref-6" aria-label="Referência 6">6</a>]</sup>. As pombas também aparecem entre as aves com torpor breve<sup class="cite">[<a href="#ref-7" aria-label="Referência 7">7</a>]</sup>. O torpor não é um interruptor: ele tem graus, do mais suave ao mais profundo.</p>
+          <div class="tabs"><div class="tabs-nav" role="tablist"><button class="chip" role="tab" data-k="suave">Suave (chapins)</button><button class="chip" role="tab" data-k="andor">Andorinhões</button><button class="chip" role="tab" data-k="beija">Beija-flores</button><button class="chip" role="tab" data-k="poor">Poorwill (hibernação?)</button></div><div class="tabpanel" role="tabpanel" data-k="suave"><div><div class="pic-img"><img src="../assets/img/photos/chapim.webp" alt="Chapim-de-cabeça-preta pousado em um galho, de cabeça preta e faces brancas" style="--z:1.1;--ox:50%;--oy:50%" loading="lazy"></div><p class="credit" data-credit="chapim"></p></div><div class="tp-body"><h3>Versão suave</h3><p>O chapim-de-cabeça-preta (<i>Poecile atricapillus</i>), ave norte-americana pequena, entra em uma versão leve de hipotermia noturna: a temperatura cai alguns graus durante a noite e volta ao normal antes de amanhecer. Chapins que fazem isso sobrevivem melhor a ondas de frio<sup class="cite">[<a href="#ref-10" aria-label="Referência 10">10</a>]</sup>.</p><p class="muted">Esta é a forma mais comum e mais leve, e não tem o “desligamento” quase total do beija-flor em noites frias.</p></div></div><div class="tabpanel" role="tabpanel" data-k="andor"><div><div class="pic-img"><img src="../assets/img/photos/andorinhao.webp" alt="Andorinhão-comum em voo, de asas longas e finas" style="--z:1.2;--ox:50%;--oy:50%" loading="lazy"></div><p class="credit" data-credit="andorinhao"></p></div><div class="tp-body"><h3>Noites frias, sem hibernar</h3><p>Pesquisadores mediram andorinhões-comuns (<i>Apus apus</i>) livres, descansando em ninhos, e viram torpor noturno, com o gasto de energia cerca de 50% menor<sup class="cite">[<a href="#ref-9" aria-label="Referência 9">9</a>]</sup>. Em outras palavras: a economia é grande, mas por uma noite.</p></div></div><div class="tabpanel" role="tabpanel" data-k="beija"><div><div class="pic-img"><img src="../assets/img/photos/beijaflor.webp" alt="Beija-flor-tesoura pousado em um galho" style="--z:1.3;--ox:62%;--oy:30%" loading="lazy"></div><p class="credit" data-credit="beijaflor"></p></div><div class="tp-body"><h3>Torpor profundo, todas as noites que precisar</h3><p>Como vimos, o metabolismo pode cair até 95%<sup class="cite">[<a href="#ref-5" aria-label="Referência 5">5</a>]</sup>. Em um estudo com 17 espécies, a temperatura do corpo em torpor caiu até o nível do ambiente, sem descer de 18 a 20 °C; um beija-flor norte-americano chegou a 13 °C<sup class="cite">[<a href="#ref-6" aria-label="Referência 6">6</a>]</sup>.</p></div></div><div class="tabpanel" role="tabpanel" data-k="poor"><div><div class="pic-img"><img src="../assets/img/photos/poorwill.webp" alt="Poorwill segurado na mão, de plumagem manchada em marrom e preto, olho grande e cauda listrada" style="--z:1;--ox:50%;--oy:50%" loading="lazy"></div><p class="credit" data-credit="poorwill"></p></div><div class="tp-body"><h3>O caso extremo: o poorwill</h3><p>O poorwill (<i>Phalaenoptilus nuttallii</i>), parente dos bacuraus, do oeste da América do Norte, pode ficar horas ou até semanas em torpor no inverno<sup class="cite">[<a href="#ref-7" aria-label="Referência 7">7</a>]</sup>. Em um estudo, aves à sombra esquentaram ativamente depois de ao menos 3 dias seguidos em torpor. Segundo os autores, é a única ave que aparentemente hiberna<sup class="cite">[<a href="#ref-8" aria-label="Referência 8">8</a>]</sup>. Os autores também dizem que seu padrão lembra o de mamíferos que hibernam<sup class="cite">[<a href="#ref-8" aria-label="Referência 8">8</a>]</sup>.</p></div></div></div>
+          <p class="diagram-note">Os estudos citados são de espécies da América do Norte, da Europa e de laboratório. Não encontrei medições com aves brasileiras: aqui os bacuraus e curiangos são parentes das aves estudadas, mas isso não garante que façam o mesmo.</p>
+          <div class="callout"><p><strong>Valores de referência (beija-flores).</strong> A National Geographic cita 107 °F caindo para 48 °F, ou seja, de cerca de 42 °C para cerca de 9 °C<sup class="cite">[<a href="#ref-4" aria-label="Referência 4">4</a>]</sup>.</p></div>
+        </section>
+
+        <section class="block" id="palavras">
+          <div class="block-n">05</div>
+          <h2>Palavras novas</h2>
+          <dl class="gloss" id="gloss"></dl>
+        </section>
+
+        <section class="block" id="teste">
+          <div class="block-n">06</div>
+          <h2>Teste rápido</h2>
+          <p>Sem nota. Se errar, tente de novo.</p>
+          <div class="quiz">
+<div class="q" data-why="Com quatro câmaras, o lado direito trata o sangue pobre em oxigênio e o esquerdo trata o rico." data-hint="Reveja o desenho.">
+  <h3>Por que o sangue da ave não se mistura entre os dois lados do coração?</h3>
+  <div class="choices"><button class="chip" data-ok="1">O coração tem quatro câmaras, separadas em duas metades</button><button class="chip">O sangue é sempre igual</button><button class="chip">O coração tem só uma câmara</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="No voo, o ritmo do beija-flor chega a mais de cinco vezes o de repouso." data-hint="Volte à aba “Em voo”.">
+  <h3>O que acontece com o coração do beija-flor no voo, comparado ao repouso?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Bate bem mais depressa</button><button class="chip">Bate mais devagar</button><button class="chip">Para de bater</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="No torpor, o metabolismo e a temperatura caem, poupando energia." data-hint="Pense na noite.">
+  <h3>Para que serve o torpor?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Economizar energia quando falta comida ou faz frio</button><button class="chip">Digerir mais rápido</button><button class="chip">Aprender a voar</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="Chapins, andorinhões, pombas, pássaros-ratos e o poorwill também usam torpor, uns de forma leve e outros bem profunda." data-hint="Reveja “E as outras aves?”.">
+  <h3>Só o beija-flor entra em torpor?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Não: outras aves também, em graus diferentes</button><button class="chip">Sim, só ele</button><button class="chip">Nenhuma ave faz isso</button></div>
+  <div class="fb" role="status"></div>
+</div>
+</div>
+        </section>
+        <section class="block" id="referencias">
+          <div class="block-n">07</div>
+          <h2>Referências e leitura complementar</h2>
+          <p>Onde conferir o que foi dito nesta aula. Os números entre colchetes no texto levam a estas fontes. Os links abrem em outra aba.</p>
+          <ol class="refs">
+<li id="ref-1"><a href="https://www.britannica.com/question/What-are-the-unique-characteristics-of-birds" target="_blank" rel="noopener noreferrer">What are the unique characteristics of birds?</a><span class="ref-by">Encyclopaedia Britannica · inglês</span><span class="ref-note">Resumo dos traços que definem as aves: penas, sangue quente, ovo de casca dura, coração de quatro câmaras.</span></li>
+<li id="ref-2"><a href="https://www.britannica.com/science/warm-bloodedness" target="_blank" rel="noopener noreferrer">Warm-bloodedness</a><span class="ref-by">Encyclopaedia Britannica · inglês</span><span class="ref-note">O que é endotermia e como os animais mantêm a temperatura do corpo.</span></li>
+<li id="ref-3"><a href="https://nationalzoo.si.edu/migratory-birds/hummingbirds" target="_blank" rel="noopener noreferrer">Hummingbirds</a><span class="ref-by">Smithsonian's National Zoo and Conservation Biology Institute · inglês</span><span class="ref-note">Metabolismo, batimentos do coração e torpor dos beija-flores.</span></li>
+<li id="ref-4"><a href="https://www.nationalgeographic.com/animals/article/hummingbirds-winter-cold-weather" target="_blank" rel="noopener noreferrer">How the World's Smallest Birds Survive the Winter</a><span class="ref-by">National Geographic · inglês</span><span class="ref-note">O torpor noturno dos beija-flores.</span></li>
+<li id="ref-5"><a href="https://www.audubon.org/magazine/where-do-hummingbirds-get-all-energy" target="_blank" rel="noopener noreferrer">Where Do Hummingbirds Get All That Energy?</a><span class="ref-by">Audubon · inglês · leitura complementar</span><span class="ref-note">Como os beija-flores sustentam um gasto de energia tão alto.</span></li>
+<li id="ref-6"><a href="https://www.ornithology.org/adaptations/torpor-and-hibernation" target="_blank" rel="noopener noreferrer">Torpor and Hibernation</a><span class="ref-by">Ornithology Education (ornithology.org) · inglês</span><span class="ref-note">Ao menos 29 espécies de aves reduzem o metabolismo e a temperatura; quem faz e por quê.</span></li>
+<li id="ref-7"><a href="https://www.audubon.org/news/some-birds-enter-hibernation-state-called-torpor-survive-winters-chill" target="_blank" rel="noopener noreferrer">Some Birds Enter A Hibernation-Like State Called Torpor to Survive Winter's Chill</a><span class="ref-by">Audubon · BirdNote · inglês</span><span class="ref-note">Beija-flores, pombas e o bacurau-de-nuttall (poorwill) em torpor; o poorwill fica semanas.</span></li>
+<li id="ref-8"><a href="https://link.springer.com/article/10.1007/s00442-018-4306-0" target="_blank" rel="noopener noreferrer">The avian “hibernation” enigma: thermoregulatory patterns and roost choice of the common poorwill</a><span class="ref-by">Oecologia (Springer) · inglês · leitura complementar</span><span class="ref-note">Estudo científico: o poorwill é a única ave que aparentemente hiberna.</span></li>
+<li id="ref-9"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9006018/" target="_blank" rel="noopener noreferrer">Cool birds: first evidence of energy-saving nocturnal torpor in free-living common swifts Apus apus resting in their nests</a><span class="ref-by">Biology Letters · PubMed Central · inglês · leitura complementar</span><span class="ref-note">Andorinhões em ninhos, medidos em liberdade: torpor noturno com metabolismo cerca de 50% menor.</span></li>
+<li id="ref-10"><a href="https://www.thebirdinginsights.com/articles/winter-survival-adaptations-north-american-birds" target="_blank" rel="noopener noreferrer">Winter Survival Adaptations for North American Birds</a><span class="ref-by">The Birding Insights · inglês</span><span class="ref-note">Torpor em beija-flores, andorinhões, poorwill e a versão suave dos chapins.</span></li>
+          </ol>
+          <p class="diagram-note">Os endereços foram abertos e conferidos em 29/09/2026. Alguns sites de revistas científicas e de órgãos oficiais exigem verificação humana e não puderam ser testados por robô. Sites externos podem mudar ou sair do ar.</p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band" id="levar">
+    <div class="container take">
+      <div><p class="label">Para levar</p><h2 class="h-section" style="margin-top:var(--space-4)">Em três frases</h2></div>
+      <div>
+        <ul>
+          <li>O coração de quatro câmaras separa o sangue pobre em oxigênio do sangue rico, como nos mamíferos.</li>
+          <li>O coração do beija-flor bate muito mais depressa no voo do que em repouso.</li>
+          <li>Em noites frias, o beija-flor entra em torpor e reduz o gasto de energia.</li>
+          <li>O torpor tem graus: chapins fazem uma versão leve, andorinhões e beija-flores reduzem bastante o gasto por uma noite, e o poorwill fica dias em torpor.</li>
+        </ul>
+        <div class="next">
+          <button class="btn btn-outline-band done-btn" id="done" type="button" data-lesson="7" aria-pressed="false">Marcar como concluída</button>
+          <a class="btn btn-band" href="08-digestao.html">Próxima: aula 8, Digestão <span data-i="arrow" data-cls="icon-arrow"></span></a>
+        </div>
+        <div class="next" style="margin-top:var(--space-4)"><a class="btn btn-outline-band" href="06-respirar-para-voar.html">Anterior: aula 6, Respirar para voar</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-in">
+    <div><div class="brand-big">Ornitologia do zero</div><p style="margin-top:var(--space-3)"><a href="../index.html#trilha">Todas as aulas</a> · <a href="../creditos.html">Créditos</a></p></div>
+    <a class="btn btn-ghost" href="#conteudo"><span data-i="up"></span> Voltar ao topo</a>
+  </div>
+</footer>
+<div class="toasts" aria-live="polite"></div>
+
+<script src="../assets/js/vendor/lenis.min.js"></script>
+<script src="../assets/js/credits.js"></script>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/extras.js"></script>
+<script src="../assets/js/motion.js"></script>
+<script src="../assets/js/heart.js"></script>
+</body>
+</html>

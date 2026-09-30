@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 8 · Digestão · Ornitologia do zero</title>
+<meta name="description" content="Do bico à cloaca: papo, dois estômagos, moela, pedrinhas e as bolotas das corujas.">
+<script>
+  document.documentElement.className = "js";
+  (function () { var t; try { t = JSON.parse(localStorage.getItem("orn-theme")); } catch (e) {}
+    if (!t) t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    document.documentElement.dataset.theme = t; })();
+</script>
+<link rel="preload" href="../assets/fonts/cormorant-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/lessons.css">
+</head>
+<body data-root="../">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand" href="../index.html">Ornitologia do zero</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a class="link" href="../index.html#trilha">Todas as aulas</a>
+      <a class="link" href="../creditos.html">Créditos</a>
+    </nav>
+    <div class="nav-tools">
+      <button class="icon-btn" id="theme" type="button" aria-label="Mudar tema"></button>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mmenu"><span data-i="menu"></span></button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+<div class="mmenu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="mmenu-top"><span class="brand">Ornitologia do zero</span><button class="icon-btn" id="menu-close" type="button" aria-label="Fechar menu"><span data-i="x"></span></button></div>
+  <nav aria-label="Menu do celular"><a href="../index.html#trilha">Todas as aulas</a><a href="../creditos.html">Créditos</a></nav>
+</div>
+
+<main id="conteudo">
+  <section class="l-hero">
+    <div class="container l-hero-grid">
+      <div>
+        <p class="crumbs label"><a href="../index.html#trilha">Módulo 2</a> <span aria-hidden="true">·</span> <span>Aula 8</span></p>
+        <h1 data-split>Digestão</h1>
+        <p class="lede rv" style="--i:3">Sem dentes, sem uma barriga pesada: a ave tem um sistema digestório curto, com um “estômago que mói” e uma saída única para tudo.</p>
+        <ul class="goals rv" style="--i:4" aria-label="O que você vai aprender">
+          <li><span data-i="check"></span>O caminho do alimento, do bico à cloaca</li>
+          <li><span data-i="check"></span>Para que serve a moela e por que algumas aves engolem pedrinhas</li>
+          <li><span data-i="check"></span>O que são as bolotas das corujas</li>
+        </ul>
+      </div>
+      <figure class="ave-card rv rv-grow" style="--i:2">
+        <img src="../assets/img/photos/pombo-domestico.webp" width="1400" height="853" alt="Pombo-doméstico pousado, de perfil, comendo" style="aspect-ratio:3 / 2;object-position:50% 40%" fetchpriority="high">
+        <figcaption>
+          <p class="ave-name"><span class="label">Ave da aula</span><br><strong>Pombo-doméstico</strong> <em>Columba livia</em></p>
+          <p class="credit" data-credit="pombo-domestico"></p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:var(--space-12)">
+    <div class="container l-body">
+      <aside class="toc" aria-label="Nesta aula">
+        <details open>
+          <summary>Nesta aula <span data-i="down"></span></summary>
+          <ol>
+            <li><a href="#caminho">O caminho do alimento</a></li>
+            <li><a href="#moela">Moela e pedrinhas</a></li>
+            <li><a href="#bolotas">Bolotas de coruja</a></li>
+            <li><a href="#palavras">Palavras novas</a></li>
+            <li><a href="#teste">Teste rápido</a></li>
+            <li><a href="#referencias">Referências</a></li>
+          </ol>
+        </details>
+      </aside>
+      <div>
+
+        <section class="block" id="caminho">
+          <div class="block-n">01</div>
+          <h2>O caminho do alimento</h2>
+          <p class="rv">Como as aves não têm dentes<sup class="cite">[<a href="#ref-3" aria-label="Referência 3">3</a>]</sup>, elas engolem o alimento inteiro, ou em pedaços grandes. Depois ele segue por um caminho com quatro paradas<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>]</sup>. Toque em cada parte para saber o que ela faz.</p>
+          <figure class="fig">
+            <div class="diagram">
+              <p class="hint"><span data-i="pointer"></span> Escolha uma parte do caminho.</p>
+              <div class="layers" data-target="gut" data-idle="Esquema simplificado, de perfil, com a cabeça à esquerda.">
+                <button class="chip" data-k="p1" data-text="Bico: pega o alimento. Como a ave não tem dentes, ela engole inteiro ou em pedaços grandes.">Bico</button>
+                <button class="chip" data-k="p2" data-text="Esôfago e papo: o papo é uma bolsa do esôfago onde o alimento fica guardado até seguir adiante.">Esôfago e papo</button>
+                <button class="chip" data-k="p3" data-text="Proventrículo: o estômago químico. Solta ácido clorídrico e uma enzima, a pepsina, que começam a digestão.">Proventrículo</button>
+                <button class="chip" data-k="p4" data-text="Moela: o estômago mecânico, de músculos fortes. Tritura e mistura o alimento, às vezes com ajuda de pedrinhas.">Moela</button>
+                <button class="chip" data-k="p5" data-text="Intestino: onde os nutrientes passam para o sangue. O que sobra segue para a cloaca.">Intestino</button>
+                <button class="chip" data-k="p6" data-text="Cloaca: uma câmara única que recebe os restos da digestão e os produtos do sistema urinário e reprodutor.">Cloaca</button>
+              </div>
+              
+<svg id="gut" class="diag" viewBox="0 0 640 320" role="img" aria-label="Esquema do sistema digestório de uma ave, de perfil, do bico à cloaca">
+  <g style="fill:color-mix(in srgb, var(--surface-2) 60%, transparent);stroke:var(--line);stroke-width:2">
+    <path d="M 108 88 C 150 80, 212 56, 332 58 C 452 62, 562 106, 596 176 L 626 194 L 566 218 C 524 260, 432 268, 340 258 C 270 250, 200 232, 160 196 C 130 176, 112 140, 108 88 Z"/>
+    <circle cx="84" cy="94" r="32"/>
+    <line x1="330" y1="262" x2="322" y2="300"/><line x1="322" y1="300" x2="300" y2="304"/><line x1="322" y1="300" x2="344" y2="304"/>
+  </g>
+  <circle cx="90" cy="86" r="4" style="fill:var(--text)"/>
+  <path class="part p1 f" d="M 52 98 L 30 106 L 56 112 Z"/>
+  <path class="part p2 line" style="stroke-width:11" d="M 62 106 C 100 120, 128 140, 148 170"/>
+  <ellipse class="part p2 f" cx="164" cy="186" rx="34" ry="28"/>
+  <path class="part p2 line" style="stroke-width:9" d="M 186 200 C 210 210, 226 212, 250 210"/>
+  <ellipse class="part p3 f" cx="270" cy="208" rx="26" ry="20"/>
+  <path class="part p4 f" d="M 300 190 C 330 172, 384 176, 392 206 C 398 238, 350 250, 322 236 C 300 226, 292 206, 300 190 Z"/>
+  <path class="part p5 line" style="stroke-width:9" d="M 394 214 C 440 196, 470 224, 452 248 C 434 268, 480 274, 520 248 C 552 228, 540 212, 548 204"/>
+  <ellipse class="part p6 f" cx="566" cy="204" rx="18" ry="16"/>
+  <text x="24" y="132" class="sub">bico</text>
+  <text x="164" y="190" text-anchor="middle">papo</text>
+  <text x="270" y="256" text-anchor="middle" class="sub">proventrículo</text>
+  <text x="346" y="216" text-anchor="middle">moela</text>
+  <text x="470" y="290" text-anchor="middle" class="sub">intestino</text>
+  <text x="566" y="238" text-anchor="middle" class="sub">cloaca</text>
+</svg>
+              <p class="diagram-note" aria-live="polite">Esquema simplificado, de perfil, com a cabeça à esquerda.</p>
+            </div>
+            <p class="diagram-note">Descrição baseada em material didático de avicultura e em enciclopédia<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>, <a href="#ref-6" aria-label="Referência 6">6</a>]</sup>. Nem toda ave tem papo, e o formato varia de espécie para espécie.</p>
+          </figure>
+        </section>
+
+        <section class="block" id="moela">
+          <div class="block-n">02</div>
+          <h2>Moela e pedrinhas</h2>
+          <p class="rv">A <button class="term" data-def="Parte muscular do estômago das aves, com paredes grossas e fortes, que tritura o alimento.">moela</button> é um estômago feito de músculo. Suas paredes grossas trituram o que a ave engoliu<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>]</sup>. Em aves de moela grossa, comuns entre as que comem sementes, é frequente encontrar <button class="term" data-def="Pedrinhas, areia e conchas pequenas que a ave engole e que ficam na moela, ajudando a triturar o alimento.">cascalho</button>: as pedrinhas ajudam a moer<sup class="cite">[<a href="#ref-2" aria-label="Referência 2">2</a>, <a href="#ref-1" aria-label="Referência 1">1</a>]</sup>. A forma da moela depende do que a ave come<sup class="cite">[<a href="#ref-2" aria-label="Referência 2">2</a>]</sup>.</p>
+        </section>
+
+        <section class="block" id="bolotas">
+          <div class="block-n">03</div>
+          <h2>Bolotas de coruja</h2>
+          <p class="rv">As corujas engolem presas pequenas, como camundongos, inteiras. A moela separa o que pode ser digerido do que não pode. Ossos, dentes e pelos se juntam em uma massa compacta, a <button class="term" data-def="Bolo de ossos, pelos e outras partes duras que a coruja não digere e cospe pela boca.">bolota</button>, que a coruja regurgita pelo bico horas depois, muitas vezes no lugar onde dorme<sup class="cite">[<a href="#ref-4" aria-label="Referência 4">4</a>, <a href="#ref-5" aria-label="Referência 5">5</a>]</sup>.</p>
+          <figure class="photo-wide"><img src="../assets/img/photos/bolota-coruja.webp" width="1280" height="800" alt="Ossos pequenos de mamíferos separados de uma bolota de coruja, ao lado de uma moeda" style="" loading="lazy"><figcaption class="credit">Ossos separados de uma bolota, ao lado de uma moeda. Estudiosos usam as bolotas para saber o que a coruja comeu. <span data-credit="bolota-coruja"></span></figcaption></figure>
+        </section>
+
+        <section class="block" id="palavras">
+          <div class="block-n">04</div>
+          <h2>Palavras novas</h2>
+          <dl class="gloss" id="gloss"></dl>
+        </section>
+
+        <section class="block" id="teste">
+          <div class="block-n">05</div>
+          <h2>Teste rápido</h2>
+          <p>Sem nota. Se errar, tente de novo.</p>
+          <div class="quiz">
+<div class="q" data-why="A moela é o estômago mecânico. O papo apenas guarda o alimento." data-hint="Lembre do estômago mecânico.">
+  <h3>Qual parte do estômago da ave é feita de músculos e tritura o alimento?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Moela</button><button class="chip">Papo</button><button class="chip">Cloaca</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="As pedrinhas ficam na moela e ajudam a moer o alimento." data-hint="Pense em moer sementes sem dentes.">
+  <h3>Por que algumas aves engolem pedrinhas?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Para ajudar a triturar o alimento na moela</button><button class="chip">Para ficarem mais pesadas</button><button class="chip">Porque não têm outra comida</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="A coruja não digere ossos e pelos, que formam uma bolota expelida pela boca." data-hint="Reveja o bloco 3.">
+  <h3>O que é uma bolota de coruja?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Uma massa de ossos e pelos que a coruja não digere</button><button class="chip">Um ovo de coruja</button><button class="chip">Uma semente</button></div>
+  <div class="fb" role="status"></div>
+</div>
+</div>
+        </section>
+        <section class="block" id="referencias">
+          <div class="block-n">06</div>
+          <h2>Referências e leitura complementar</h2>
+          <p>Onde conferir o que foi dito nesta aula. Os números entre colchetes no texto levam a estas fontes. Os links abrem em outra aba.</p>
+          <ol class="refs">
+<li id="ref-1"><a href="https://poultry.extension.org/articles/poultry-anatomy/avian-digestive-system/" target="_blank" rel="noopener noreferrer">Avian Digestive System</a><span class="ref-by">eXtension · Small and Backyard Poultry · inglês</span><span class="ref-note">Papo, proventrículo, moela, pedrinhas e cloaca.</span></li>
+<li id="ref-2"><a href="https://www.allaboutbirds.org/news/do-all-birds-have-gizzards/" target="_blank" rel="noopener noreferrer">Do all birds have gizzards?</a><span class="ref-by">All About Birds · Cornell Lab of Ornithology · inglês</span><span class="ref-note">A moela e por que algumas aves engolem pedrinhas.</span></li>
+<li id="ref-3"><a href="https://ucmp.berkeley.edu/diapsids/birds/birdmm.html" target="_blank" rel="noopener noreferrer">Morphology of the Aves</a><span class="ref-by">UCMP · Universidade da Califórnia, Berkeley · inglês</span><span class="ref-note">Bico sem dentes, ossos ocos ligados aos sacos aéreos, quilha do esterno e fúrcula.</span></li>
+<li id="ref-4"><a href="https://www.allaboutbirds.org/news/what-are-owl-pellets/" target="_blank" rel="noopener noreferrer">What are owl pellets?</a><span class="ref-by">All About Birds · Cornell Lab of Ornithology · inglês</span><span class="ref-note">Por que as corujas cospem bolotas com ossos e pelos.</span></li>
+<li id="ref-5"><a href="https://www.audubon.org/news/what-owl-pellet" target="_blank" rel="noopener noreferrer">What Is an Owl Pellet?</a><span class="ref-by">Audubon · inglês · leitura complementar</span><span class="ref-note">Como a moela seleciona o que é digerido e o que vira bolota.</span></li>
+<li id="ref-6"><a href="https://www.britannica.com/animal/bird-animal/Muscles-and-organs" target="_blank" rel="noopener noreferrer">Bird – Muscles, Organs, Flight</a><span class="ref-by">Encyclopaedia Britannica · inglês · leitura complementar</span><span class="ref-note">Órgãos das aves: coração, digestão e outros.</span></li>
+          </ol>
+          <p class="diagram-note">Os endereços foram abertos e conferidos em 29/09/2026. Alguns sites de revistas científicas e de órgãos oficiais exigem verificação humana e não puderam ser testados por robô. Sites externos podem mudar ou sair do ar.</p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band" id="levar">
+    <div class="container take">
+      <div><p class="label">Para levar</p><h2 class="h-section" style="margin-top:var(--space-4)">Em três frases</h2></div>
+      <div>
+        <ul>
+          <li>O alimento passa pelo papo, pelo proventrículo e pela moela antes de chegar ao intestino.</li>
+          <li>Sem dentes, a ave tritura o alimento na moela, às vezes com a ajuda de pedrinhas.</li>
+          <li>As corujas cospem bolotas com o que não conseguem digerir, como ossos e pelos.</li>
+        </ul>
+        <div class="next">
+          <button class="btn btn-outline-band done-btn" id="done" type="button" data-lesson="8" aria-pressed="false">Marcar como concluída</button>
+          <a class="btn btn-band" href="09-sentidos.html">Próxima: aula 9, Sentidos <span data-i="arrow" data-cls="icon-arrow"></span></a>
+        </div>
+        <div class="next" style="margin-top:var(--space-4)"><a class="btn btn-outline-band" href="07-coracao-e-energia.html">Anterior: aula 7, Coração e energia</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-in">
+    <div><div class="brand-big">Ornitologia do zero</div><p style="margin-top:var(--space-3)"><a href="../index.html#trilha">Todas as aulas</a> · <a href="../creditos.html">Créditos</a></p></div>
+    <a class="btn btn-ghost" href="#conteudo"><span data-i="up"></span> Voltar ao topo</a>
+  </div>
+</footer>
+<div class="toasts" aria-live="polite"></div>
+
+<script src="../assets/js/vendor/lenis.min.js"></script>
+<script src="../assets/js/credits.js"></script>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/extras.js"></script>
+<script src="../assets/js/motion.js"></script>
+
+</body>
+</html>

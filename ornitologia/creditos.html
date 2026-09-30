@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Créditos das fotos · Ornitologia do zero</title>
+<script>
+  (function () { var t; try { t = JSON.parse(localStorage.getItem("orn-theme")); } catch (e) {}
+    if (!t) t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    document.documentElement.dataset.theme = t; })();
+</script>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body data-root="">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand" href="index.html">Ornitologia do zero</a>
+    <div class="nav-tools"><button class="icon-btn" id="theme" type="button" aria-label="Mudar tema"></button></div>
+  </div>
+</header>
+<main id="conteudo" class="section" style="padding-top:calc(64px + var(--space-16))">
+  <div class="container">
+    <p class="label">Créditos</p>
+    <h1 class="display" style="font-size:clamp(2.6rem,6vw,4.4rem);margin:var(--space-4) 0 var(--space-6)">Fotos e licenças</h1>
+    <p class="lede">Todas as fotos vêm da Wikimedia Commons, com licença livre. Cada uma mostra o autor e a licença abaixo e na própria aula. Desenhos em SVG foram feitos para este curso.</p>
+    <ul class="credits-list" id="list" style="margin-top:var(--space-12)"></ul>
+  </div>
+</main>
+<script src="assets/js/credits.js"></script>
+<script>
+  var ul = document.getElementById("list");
+  Object.keys(CREDITS).forEach(function (k) {
+    var c = CREDITS[k], li = document.createElement("li");
+    li.innerHTML = '<strong></strong><span class="muted"></span><a target="_blank" rel="noopener">Ver na Wikimedia Commons</a>';
+    li.children[0].textContent = c.title; li.children[1].textContent = c.author + " · " + c.license; li.children[2].href = c.page;
+    ul.appendChild(li);
+  });
+</script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

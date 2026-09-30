@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 13 · Maneiras de voar · Ornitologia do zero</title>
+<meta name="description" content="Bater asas, planar, subir em correntes de ar quente, pairar e mergulhar.">
+<script>
+  document.documentElement.className = "js";
+  (function () { var t; try { t = JSON.parse(localStorage.getItem("orn-theme")); } catch (e) {}
+    if (!t) t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    document.documentElement.dataset.theme = t; })();
+</script>
+<link rel="preload" href="../assets/fonts/cormorant-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/lessons.css"><style>
+/* o traço se desenha quando aparece e o ponto percorre o trajeto (motion.js) */
+.trace { fill: none; stroke: var(--accent); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.fly { width: 100%; max-width: 420px; height: auto; margin-top: var(--space-3); border-radius: var(--radius-md); background: var(--surface); border: 1px solid var(--line); }
+.fly text { fill: var(--muted); font: 500 13px var(--font-sans); }
+.fly .dot { fill: var(--terra-fill); stroke: var(--surface); stroke-width: 2; }
+</style>
+</head>
+<body data-root="../">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand" href="../index.html">Ornitologia do zero</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a class="link" href="../index.html#trilha">Todas as aulas</a>
+      <a class="link" href="../creditos.html">Créditos</a>
+    </nav>
+    <div class="nav-tools">
+      <button class="icon-btn" id="theme" type="button" aria-label="Mudar tema"></button>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mmenu"><span data-i="menu"></span></button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+<div class="mmenu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="mmenu-top"><span class="brand">Ornitologia do zero</span><button class="icon-btn" id="menu-close" type="button" aria-label="Fechar menu"><span data-i="x"></span></button></div>
+  <nav aria-label="Menu do celular"><a href="../index.html#trilha">Todas as aulas</a><a href="../creditos.html">Créditos</a></nav>
+</div>
+
+<main id="conteudo">
+  <section class="l-hero">
+    <div class="container l-hero-grid">
+      <div>
+        <p class="crumbs label"><a href="../index.html#trilha">Módulo 3</a> <span aria-hidden="true">·</span> <span>Aula 13</span></p>
+        <h1 data-split>Maneiras de voar</h1>
+        <p class="lede rv" style="--i:3">Voar não é uma coisa só. Uma mesma ave alterna entre bater asas, planar e subir no ar quente, e algumas fazem coisas que nenhum avião faz.</p>
+        <ul class="goals rv" style="--i:4" aria-label="O que você vai aprender">
+          <li><span data-i="check"></span>Cinco maneiras de voar e quando cada uma aparece</li>
+          <li><span data-i="check"></span>Como o urubu sobe sem bater as asas</li>
+          <li><span data-i="check"></span>O que o beija-flor faz para ficar parado no ar</li>
+        </ul>
+      </div>
+      <figure class="ave-card rv rv-grow" style="--i:2">
+        <img src="../assets/img/photos/urubu-cabeca-vermelha.webp" width="1400" height="853" alt="Urubu-de-cabeça-vermelha em voo visto de baixo, com as asas abertas" style="aspect-ratio:3 / 2;object-position:50% 50%" fetchpriority="high">
+        <figcaption>
+          <p class="ave-name"><span class="label">Ave da aula</span><br><strong>Urubu-de-cabeça-vermelha</strong> <em>Cathartes aura</em></p>
+          <p class="credit" data-credit="urubu-cabeca-vermelha"></p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:var(--space-12)">
+    <div class="container l-body">
+      <aside class="toc" aria-label="Nesta aula">
+        <details open>
+          <summary>Nesta aula <span data-i="down"></span></summary>
+          <ol>
+            <li><a href="#cinco">Cinco maneiras de voar</a></li>
+            <li><a href="#termica">O elevador de ar quente</a></li>
+            <li><a href="#palavras">Palavras novas</a></li>
+            <li><a href="#teste">Teste rápido</a></li>
+            <li><a href="#referencias">Referências</a></li>
+          </ol>
+        </details>
+      </aside>
+      <div>
+
+        <section class="block" id="cinco">
+          <div class="block-n">01</div>
+          <h2>Cinco maneiras de voar</h2>
+          <p class="rv">Escolha uma maneira e veja o percurso de uma ave, desenhado de forma esquemática.</p>
+          <div class="tabs"><div class="tabs-nav" role="tablist"><button class="chip" role="tab" data-k="bater">Bater asas</button><button class="chip" role="tab" data-k="planar">Planar</button><button class="chip" role="tab" data-k="termica">Subir no ar quente</button><button class="chip" role="tab" data-k="pairar">Pairar</button><button class="chip" role="tab" data-k="mergulhar">Mergulhar</button></div><div class="tabpanel" role="tabpanel" data-k="bater"><div><div class="pic-img"><img src="../assets/img/photos/jacana-2.webp" alt="Jaçanã em voo, batendo as asas amarelas" style="--z:1;--ox:50%;--oy:50%" loading="lazy"></div><p class="credit" data-credit="jacana-2"></p></div><div class="tp-body"><h3>Bater asas</h3><p>É a forma que dá o empuxo e a sustentação ao mesmo tempo. Gasta bastante energia, por isso muitas aves grandes só a usam para sair do chão ou para ir de um poleiro a outro, e depois planam<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>]</sup>.</p><svg class="fly" viewBox="0 0 360 190" role="img" aria-label="trajetória esquemática" data-move="even" data-dur="3600"><path class="trace" d="M 10 100 Q 40 50 70 100 T 130 100 T 190 100 T 250 100 T 310 100 T 350 100"/><circle class="dot" cx="350" cy="100" r="6"/><text x="12" y="180">trajetória esquemática</text></svg></div></div><div class="tabpanel" role="tabpanel" data-k="planar"><div><div class="pic-img"><img src="../assets/img/photos/atoba.webp" alt="Atobá-marrom planando sobre o mar" style="--z:1;--ox:50%;--oy:40%" loading="lazy"></div><p class="credit" data-credit="atoba"></p></div><div class="tp-body"><h3>Planar</h3><p>Com as asas abertas e paradas, a ave desce devagar, trocando altura por distância. É o que faz depois de subir em uma corrente de ar quente. Aumentar o ângulo de descida aumenta a velocidade<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>]</sup>.</p><svg class="fly" viewBox="0 0 360 190" role="img" aria-label="descida suave, sem bater asas" data-move="even" data-dur="4200"><path class="trace" d="M 20 40 L 340 140"/><circle class="dot" cx="340" cy="140" r="6"/><text x="12" y="180">descida suave, sem bater asas</text></svg></div></div><div class="tabpanel" role="tabpanel" data-k="termica"><div><div class="pic-img"><img src="../assets/img/photos/urubu-cabeca-vermelha.webp" alt="Urubu-de-cabeça-vermelha em voo, com as asas largas abertas" style="--z:1;--ox:50%;--oy:45%" loading="lazy"></div><p class="credit" data-credit="urubu-cabeca-vermelha"></p></div><div class="tp-body"><h3>Subir no ar quente</h3><p>O sol esquenta o chão, e o ar quente sobe em colunas. Urubus e outras aves grandes entram nessas correntes e giram em círculos para subir sem gastar energia<sup class="cite">[<a href="#ref-2" aria-label="Referência 2">2</a>]</sup>. Veja o bloco seguinte.</p><svg class="fly" viewBox="0 0 360 190" role="img" aria-label="subindo em espiral" data-move="even" data-dur="5200"><path class="trace" d="M 180 170 C 90 160, 90 130, 180 126 C 270 122, 270 92, 180 88 C 110 84, 110 58, 180 54 C 240 50, 240 30, 190 22"/><circle class="dot" cx="190" cy="22" r="6"/><text x="12" y="180">subindo em espiral</text></svg></div></div><div class="tabpanel" role="tabpanel" data-k="pairar"><div><div class="pic-img"><img src="../assets/img/photos/beija-flor-voo.webp" alt="Beija-flor pairando no ar, de asas abertas, ao lado de uma flor" style="--z:1;--ox:50%;--oy:50%" loading="lazy"></div><p class="credit" data-credit="beija-flor-voo"></p></div><div class="tp-body"><h3>Pairar</h3><p>Beija-flores ficam parados no ar. Para isso, invertem a asa na subida e, assim, geram sustentação tanto na descida quanto na subida<sup class="cite">[<a href="#ref-4" aria-label="Referência 4">4</a>, <a href="#ref-6" aria-label="Referência 6">6</a>]</sup>. A descida fornece a maior parte do sustento: em um estudo, cerca de 2,5 vezes mais que a subida<sup class="cite">[<a href="#ref-5" aria-label="Referência 5">5</a>]</sup>.</p><svg class="fly" viewBox="0 0 360 190" role="img" aria-label="movimento da asa, esquemático" data-move="even" data-dur="2600"><path class="trace" d="M 180 100 C 230 50, 290 50, 290 100 C 290 150, 230 150, 180 100 C 130 50, 70 50, 70 100 C 70 150, 130 150, 180 100"/><circle class="dot" cx="180" cy="100" r="6"/><text x="12" y="180">movimento da asa, esquemático</text></svg></div></div><div class="tabpanel" role="tabpanel" data-k="mergulhar"><div><div class="pic-img"><img src="../assets/img/photos/falcao-peregrino.webp" alt="Falcão-peregrino em voo, de asas afiladas" style="--z:1;--ox:50%;--oy:40%" loading="lazy"></div><p class="credit" data-credit="falcao-peregrino"></p></div><div class="tp-body"><h3>Mergulhar</h3><p>O falcão-peregrino ataca de cima, em um mergulho rápido e controlado, o <i>stoop</i>. Ao cair de mais de 1 km de altura, pode chegar a cerca de 320 km/h<sup class="cite">[<a href="#ref-7" aria-label="Referência 7">7</a>, <a href="#ref-8" aria-label="Referência 8">8</a>]</sup>. Em viagem normal, a média fica entre 40 e 55 km/h<sup class="cite">[<a href="#ref-7" aria-label="Referência 7">7</a>]</sup>.</p><svg class="fly" viewBox="0 0 360 190" role="img" aria-label="mergulho, com aumento de velocidade" data-move="accel" data-dur="2600"><path class="trace" d="M 30 20 Q 130 30, 210 96 T 338 168"/><circle class="dot" cx="338" cy="168" r="6"/><text x="12" y="180">mergulho, com aumento de velocidade</text></svg></div></div></div>
+        </section>
+
+        <section class="block" id="termica">
+          <div class="block-n">02</div>
+          <h2>O elevador de ar quente</h2>
+          <p class="rv">Uma <button class="term" data-def="Coluna de ar quente que sobe do chão aquecido pelo sol.">térmica</button> é uma coluna de ar quente que sobe. Quem entra nela é levado para cima. Aves grandes, que gastariam muita energia batendo as asas, giram dentro da coluna para se manter no elevador<sup class="cite">[<a href="#ref-2" aria-label="Referência 2">2</a>]</sup>. Perto do chão, as térmicas são pequenas e fracas, e os urubus inclinam mais o corpo nas curvas; conforme sobem e a coluna se alarga, inclinam menos<sup class="cite">[<a href="#ref-3" aria-label="Referência 3">3</a>]</sup>. No fim da subida, a ave sai planando para procurar a próxima<sup class="cite">[<a href="#ref-2" aria-label="Referência 2">2</a>]</sup>.</p>
+          <div class="callout"><p><strong>As quatro forças, de novo.</strong> Em todas essas maneiras de voar, as forças da aula 11 continuam valendo<sup class="cite">[<a href="#ref-9" aria-label="Referência 9">9</a>]</sup>. O que muda é de onde vem a energia: dos músculos, da gravidade (planando) ou do ar que sobe (térmicas).</p></div>
+        </section>
+
+        <section class="block" id="palavras">
+          <div class="block-n">03</div>
+          <h2>Palavras novas</h2>
+          <dl class="gloss" id="gloss"></dl>
+        </section>
+
+        <section class="block" id="teste">
+          <div class="block-n">04</div>
+          <h2>Teste rápido</h2>
+          <p>Sem nota. Se errar, tente de novo.</p>
+          <div class="quiz">
+<div class="q" data-why="As térmicas são colunas de ar quente que sobem. O urubu gira nelas e ganha altura." data-hint="Pense em um elevador de ar.">
+  <h3>Como o urubu sobe sem bater as asas?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Girando dentro de uma corrente de ar quente</button><button class="chip">Pulando de galho em galho</button><button class="chip">Usando as pernas</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="Invertendo a asa na subida, ele produz sustentação nas duas fases, com mais na descida." data-hint="Reveja a aba “Pairar”.">
+  <h3>O que o beija-flor faz para pairar?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Gera sustentação na descida e na subida da asa</button><button class="chip">Bate só a descida, sem subida</button><button class="chip">Usa uma corrente de ar quente</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="O falcão-peregrino mergulha sobre a presa e pode chegar a cerca de 320 km/h." data-hint="É a ave mais rápida em mergulho.">
+  <h3>Qual ave faz um mergulho de caça a velocidades altíssimas?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Falcão-peregrino</button><button class="chip">Beija-flor</button><button class="chip">Ema</button></div>
+  <div class="fb" role="status"></div>
+</div>
+</div>
+        </section>
+        <section class="block" id="referencias">
+          <div class="block-n">05</div>
+          <h2>Referências e leitura complementar</h2>
+          <p>Onde conferir o que foi dito nesta aula. Os números entre colchetes no texto levam a estas fontes. Os links abrem em outra aba.</p>
+          <ol class="refs">
+<li id="ref-1"><a href="https://www.britannica.com/animal/falconiform/Flapping-soaring-and-diving" target="_blank" rel="noopener noreferrer">Falconiform – Flapping, Soaring, Diving</a><span class="ref-by">Encyclopaedia Britannica · inglês</span><span class="ref-note">Como aves de rapina batem asas, planam e mergulham.</span></li>
+<li id="ref-2"><a href="https://www.audubon.org/news/a-closer-look-how-vultures-lazily-circle-air-1" target="_blank" rel="noopener noreferrer">A Closer Look at How Vultures Lazily Circle in the Air</a><span class="ref-by">Audubon · inglês</span><span class="ref-note">Como os urubus giram em correntes de ar quente.</span></li>
+<li id="ref-3"><a href="https://pubmed.ncbi.nlm.nih.gov/30337356/" target="_blank" rel="noopener noreferrer">Vultures respond to challenges of near-ground thermal soaring by varying bank angle</a><span class="ref-by">PubMed (artigo científico) · inglês · leitura complementar</span><span class="ref-note">Estudo sobre o ângulo de inclinação dos urubus ao subir em térmicas.</span></li>
+<li id="ref-4"><a href="https://nationalzoo.si.edu/migratory-birds/hummingbirds" target="_blank" rel="noopener noreferrer">Hummingbirds</a><span class="ref-by">Smithsonian's National Zoo and Conservation Biology Institute · inglês</span><span class="ref-note">Metabolismo, batimentos do coração e torpor dos beija-flores.</span></li>
+<li id="ref-5"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4233705/" target="_blank" rel="noopener noreferrer">Three-dimensional flow and lift characteristics of a hovering ruby-throated hummingbird</a><span class="ref-by">PubMed Central (artigo científico) · inglês</span><span class="ref-note">A sustentação do beija-flor no ar parado.</span></li>
+<li id="ref-6"><a href="https://www.nature.com/articles/nature03647" target="_blank" rel="noopener noreferrer">Aerodynamics of the hovering hummingbird</a><span class="ref-by">Nature · inglês · leitura complementar</span><span class="ref-note">Estudo clássico do voo pairado do beija-flor.</span></li>
+<li id="ref-7"><a href="https://www.allaboutbirds.org/guide/Peregrine_Falcon/overview" target="_blank" rel="noopener noreferrer">Peregrine Falcon Overview</a><span class="ref-by">All About Birds · Cornell Lab of Ornithology · inglês</span><span class="ref-note">O falcão-peregrino e seu mergulho de caça.</span></li>
+<li id="ref-8"><a href="https://www.britannica.com/animal/peregrine-falcon" target="_blank" rel="noopener noreferrer">Peregrine falcon</a><span class="ref-by">Encyclopaedia Britannica · inglês</span><span class="ref-note">Velocidade e biologia do falcão-peregrino.</span></li>
+<li id="ref-9"><a href="https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/four-forces-on-an-airplane/" target="_blank" rel="noopener noreferrer">Four Forces on an Airplane</a><span class="ref-by">NASA Glenn Research Center · inglês</span><span class="ref-note">Peso, sustentação, empuxo e arrasto, com desenhos.</span></li>
+          </ol>
+          <p class="diagram-note">Os endereços foram abertos e conferidos em 29/09/2026. Alguns sites de revistas científicas e de órgãos oficiais exigem verificação humana e não puderam ser testados por robô. Sites externos podem mudar ou sair do ar.</p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band" id="levar">
+    <div class="container take">
+      <div><p class="label">Para levar</p><h2 class="h-section" style="margin-top:var(--space-4)">Em três frases</h2></div>
+      <div>
+        <ul>
+          <li>As aves alternam bater as asas, planar, subir em correntes de ar quente, pairar e mergulhar.</li>
+          <li>Ao subir em uma corrente de ar quente, o urubu gira em círculos e ganha altura sem bater as asas.</li>
+          <li>O beija-flor paira com a asa produzindo sustentação na descida e, com menos força, na subida.</li>
+        </ul>
+        <div class="next">
+          <button class="btn btn-outline-band done-btn" id="done" type="button" data-lesson="13" aria-pressed="false">Marcar como concluída</button>
+          <a class="btn btn-band" href="14-leme-freio-e-detalhes.html">Próxima: aula 14, Leme, freio e detalhes <span data-i="arrow" data-cls="icon-arrow"></span></a>
+        </div>
+        <div class="next" style="margin-top:var(--space-4)"><a class="btn btn-outline-band" href="12-formas-de-asa.html">Anterior: aula 12, Formas de asa</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-in">
+    <div><div class="brand-big">Ornitologia do zero</div><p style="margin-top:var(--space-3)"><a href="../index.html#trilha">Todas as aulas</a> · <a href="../creditos.html">Créditos</a></p></div>
+    <a class="btn btn-ghost" href="#conteudo"><span data-i="up"></span> Voltar ao topo</a>
+  </div>
+</footer>
+<div class="toasts" aria-live="polite"></div>
+
+<script src="../assets/js/vendor/lenis.min.js"></script>
+<script src="../assets/js/credits.js"></script>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/extras.js"></script>
+<script src="../assets/js/motion.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 9 · Sentidos · Ornitologia do zero</title>
+<meta name="description" content="Visão em quatro cores, audição da coruja, olfato do urubu e a bússola magnética.">
+<script>
+  document.documentElement.className = "js";
+  (function () { var t; try { t = JSON.parse(localStorage.getItem("orn-theme")); } catch (e) {}
+    if (!t) t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    document.documentElement.dataset.theme = t; })();
+</script>
+<link rel="preload" href="../assets/fonts/cormorant-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/lessons.css"><style>
+.fov .fv { fill: color-mix(in srgb, var(--accent) 18%, transparent); stroke: var(--accent); stroke-width: 1.4; }
+.fov .fo { fill: color-mix(in srgb, var(--terra-fill) 38%, transparent); stroke: none; }
+.fov .hd { fill: var(--surface-2); stroke: var(--muted); stroke-width: 2; }
+.fov .ey { fill: var(--text); }
+.fov .bk { fill: var(--terra-fill); }
+.fov .tx { fill: var(--muted); font: 500 13px var(--font-sans); }
+</style>
+</head>
+<body data-root="../">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand" href="../index.html">Ornitologia do zero</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a class="link" href="../index.html#trilha">Todas as aulas</a>
+      <a class="link" href="../creditos.html">Créditos</a>
+    </nav>
+    <div class="nav-tools">
+      <button class="icon-btn" id="theme" type="button" aria-label="Mudar tema"></button>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mmenu"><span data-i="menu"></span></button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+<div class="mmenu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="mmenu-top"><span class="brand">Ornitologia do zero</span><button class="icon-btn" id="menu-close" type="button" aria-label="Fechar menu"><span data-i="x"></span></button></div>
+  <nav aria-label="Menu do celular"><a href="../index.html#trilha">Todas as aulas</a><a href="../creditos.html">Créditos</a></nav>
+</div>
+
+<main id="conteudo">
+  <section class="l-hero">
+    <div class="container l-hero-grid">
+      <div>
+        <p class="crumbs label"><a href="../index.html#trilha">Módulo 2</a> <span aria-hidden="true">·</span> <span>Aula 9</span></p>
+        <h1 data-split>Sentidos</h1>
+        <p class="lede rv" style="--i:3">A ave vive num mundo de cores, sons, cheiros e campos magnéticos que a gente só pode imaginar. Cada espécie enfatiza um sentido.</p>
+        <ul class="goals rv" style="--i:4" aria-label="O que você vai aprender">
+          <li><span data-i="check"></span>Como a posição dos olhos muda o campo de visão</li>
+          <li><span data-i="check"></span>Como a coruja localiza sons e o urubu acha comida pelo cheiro</li>
+          <li><span data-i="check"></span>Que sentidos as aves usam para se orientar</li>
+        </ul>
+      </div>
+      <figure class="ave-card rv rv-grow" style="--i:2">
+        <img src="../assets/img/photos/coruja-buraqueira-2.webp" width="1400" height="853" alt="Rosto de coruja-buraqueira de frente, com olhos amarelos grandes" style="aspect-ratio:3 / 2;object-position:50% 30%" fetchpriority="high">
+        <figcaption>
+          <p class="ave-name"><span class="label">Ave da aula</span><br><strong>Coruja-buraqueira</strong> <em>Athene cunicularia</em></p>
+          <p class="credit" data-credit="coruja-buraqueira-2"></p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:var(--space-12)">
+    <div class="container l-body">
+      <aside class="toc" aria-label="Nesta aula">
+        <details open>
+          <summary>Nesta aula <span data-i="down"></span></summary>
+          <ol>
+            <li><a href="#visao">Visão</a></li>
+            <li><a href="#audicao">Audição</a></li>
+            <li><a href="#olfato">Olfato</a></li>
+            <li><a href="#bussola">Bússola</a></li>
+            <li><a href="#palavras">Palavras novas</a></li>
+            <li><a href="#teste">Teste rápido</a></li>
+            <li><a href="#referencias">Referências</a></li>
+          </ol>
+        </details>
+      </aside>
+      <div>
+
+        <section class="block" id="visao">
+          <div class="block-n">01</div>
+          <h2>Visão</h2>
+          <p class="rv">A visão é o sentido principal da maioria das aves. A retina tem quatro tipos de células sensíveis à cor, os <button class="term" data-def="Células da retina sensíveis às cores. As aves têm quatro tipos, e nós, três.">cones</button>, contra três nos humanos, o que permite ver também o ultravioleta<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>]</sup>. Não dá para mostrar como uma ave vê, porque o ultravioleta está fora do que nossos olhos detectam.</p>
+          <p class="rv">O que dá para mostrar é <em>onde</em> a ave olha. As corujas têm os olhos na frente da cabeça, com um campo de visão largo compartilhado pelos dois olhos<sup class="cite">[<a href="#ref-2" aria-label="Referência 2">2</a>]</sup>. Em algumas aves de água, os olhos ficam quase nos lados e o campo de visão se estende por quase todo o redor<sup class="cite">[<a href="#ref-3" aria-label="Referência 3">3</a>]</sup>. Compare os dois esquemas.</p>
+          <div class="fov">
+          <div class="tabs"><div class="tabs-nav" role="tablist"><button class="chip" role="tab" data-k="coruja">Coruja (olhos à frente)</button><button class="chip" role="tab" data-k="pato">Ave de água (olhos nos lados)</button></div><div class="tabpanel solo" role="tabpanel" data-k="coruja"><div class="tp-body"><h3>Olhos à frente</h3><p>Os dois campos se sobrepõem bastante (região laranja). Ali a ave vê o mesmo ponto com os dois olhos, o que ajuda a avaliar distâncias. Em compensação, atrás da cabeça há uma grande região que a coruja não vê sem virar o pescoço.</p><div class="diagram" style="margin-top:var(--space-3)"><svg viewBox="0 0 400 320" role="img" aria-label="Vista de cima da cabeça de uma coruja, com os campos de visão dos dois olhos sobrepostos na frente"><path class="fv" d="M 186 182 L 36.6 195.1 A 150 150 0 0 1 265.5 54.8 Z"/><path class="fv" d="M 214 182 L 134.5 54.8 A 150 150 0 0 1 363.4 195.1 Z"/><path class="fo" d="M 186 182 L 106.5 54.8 A 150 150 0 0 1 265.5 54.8 Z"/><path class="fo" d="M 214 182 L 134.5 54.8 A 150 150 0 0 1 293.5 54.8 Z"/><ellipse cx="200" cy="200" rx="32" ry="40" class="hd"/><circle cx="186" cy="182" r="7" class="ey"/><circle cx="214" cy="182" r="7" class="ey"/><path d="M 200 160 l -6 -14 h 12 Z" class="bk"/><text x="200" y="26" text-anchor="middle" class="tx">o que os dois olhos veem juntos</text></svg></div></div></div><div class="tabpanel solo" role="tabpanel" data-k="pato"><div class="tp-body"><h3>Olhos nos lados</h3><p>Cada olho vê um lado. Juntos cobrem quase todo o redor, e a sobreposição é pequena. É útil para quem precisa notar predadores vindo de qualquer direção.</p><div class="diagram" style="margin-top:var(--space-3)"><svg viewBox="0 0 400 320" role="img" aria-label="Vista de cima da cabeça de uma ave de olhos laterais, com os campos de visão cobrindo quase todo o redor"><path class="fv" d="M 170 205 L 164.8 354.9 A 150 150 0 1 1 201.2 58.3 Z"/><path class="fv" d="M 230 205 L 198.8 58.3 A 150 150 0 1 1 235.2 354.9 Z"/><path class="fo" d="M 170 205 L 138.8 58.3 A 150 150 0 0 1 201.2 58.3 Z"/><path class="fo" d="M 230 205 L 198.8 58.3 A 150 150 0 0 1 261.2 58.3 Z"/><ellipse cx="200" cy="200" rx="34" ry="42" class="hd"/><circle cx="172" cy="205" r="7" class="ey"/><circle cx="228" cy="205" r="7" class="ey"/><path d="M 200 158 l -6 -14 h 12 Z" class="bk"/><text x="200" y="26" text-anchor="middle" class="tx">quase todo o redor</text></svg></div></div></div></div>
+          </div>
+          <p class="diagram-note">Esquemas sem escala, para comparar a posição dos olhos. Os ângulos reais variam de espécie para espécie.</p>
+        </section>
+
+        <section class="block" id="audicao">
+          <div class="block-n">02</div>
+          <h2>Audição</h2>
+          <p class="rv">O rosto redondo de muitas corujas é um funil de penas, o <button class="term" data-def="Disco de penas ao redor dos olhos das corujas. Conduz o som para os ouvidos.">disco facial</button>. Estudos com a coruja-das-torres (<i>Tyto alba</i>) mostram que as penas do disco ajudam a localizar de onde vem o som<sup class="cite">[<a href="#ref-4" aria-label="Referência 4">4</a>]</sup>. Os ouvidos também são assimétricos, o que ajuda a perceber se o som vem de cima ou de baixo, além de direita ou esquerda<sup class="cite">[<a href="#ref-5" aria-label="Referência 5">5</a>]</sup>.</p>
+          <figure class="photo-wide"><img src="../assets/img/photos/coruja-buraqueira.webp" width="1280" height="800" alt="Coruja-buraqueira em um galho, olhando de lado" style="max-height:560px;object-fit:cover" loading="lazy"><figcaption class="credit">Coruja-buraqueira. Os estudos citados foram feitos com a coruja-das-torres, outra espécie de coruja. <span data-credit="coruja-buraqueira"></span></figcaption></figure>
+        </section>
+
+        <section class="block" id="olfato">
+          <div class="block-n">03</div>
+          <h2>Olfato</h2>
+          <p class="rv">Durante muito tempo se achou que as aves quase não tinham olfato. Algumas têm, e muito. O urubu-de-cabeça-vermelha (<i>Cathartes aura</i>) usa o cheiro para achar carniça, inclusive em florestas onde a copa das árvores esconde o animal morto<sup class="cite">[<a href="#ref-6" aria-label="Referência 6">6</a>]</sup>. O bulbo olfatório dele, a parte do cérebro que processa cheiros, é quatro vezes maior que o do urubu-de-cabeça-preta, mesmo com o cérebro 20% menor<sup class="cite">[<a href="#ref-7" aria-label="Referência 7">7</a>]</sup>. Já o urubu-de-cabeça-preta (<i>Coragyps atratus</i>) depende mais da visão e costuma achar comida seguindo outros urubus<sup class="cite">[<a href="#ref-6" aria-label="Referência 6">6</a>]</sup>.</p>
+          <div class="fact-grid">
+            <div class="fact rv"><b>4×</b><span>o tamanho do bulbo olfatório do urubu-de-cabeça-vermelha em relação ao do urubu-de-cabeça-preta<sup class="cite">[<a href="#ref-7" aria-label="Referência 7">7</a>]</sup>.</span></div>
+            <div class="fact rv"><b>1938</b><span>ano em que uma empresa americana notou que urubus sobrevoavam vazamentos de um gás com cheiro de mercaptana, e passou a usá-los para achar os vazamentos<sup class="cite">[<a href="#ref-6" aria-label="Referência 6">6</a>]</sup>.</span></div>
+          </div>
+          <figure class="photo-wide"><img src="../assets/img/photos/urubu-cabeca-vermelha-2.webp" width="1280" height="800" alt="Urubu-de-cabeça-vermelha pousado, de perfil, com a cabeça vermelha e o corpo marrom-escuro" style="max-height:520px;object-fit:cover;object-position:50% 40%" loading="lazy"><figcaption class="credit">Urubu-de-cabeça-vermelha. <span data-credit="urubu-cabeca-vermelha-2"></span></figcaption></figure>
+        </section>
+
+        <section class="block" id="bussola">
+          <div class="block-n">04</div>
+          <h2>Bússola</h2>
+          <p class="rv">Aves migratórias cruzam continentes sem mapa. Para acertar a direção, usam o sol e as estrelas: na década de 1960 se descobriu que elas não decoram um mapa de estrelas, e sim percebem a rotação do céu para achar o norte e o sul<sup class="cite">[<a href="#ref-8" aria-label="Referência 8">8</a>]</sup>. Também usam o campo magnético da Terra: a existência de uma bússola magnética nas aves está bem documentada<sup class="cite">[<a href="#ref-9" aria-label="Referência 9">9</a>, <a href="#ref-8" aria-label="Referência 8">8</a>]</sup>. Voltamos ao tema na aula 15, sobre migração.</p>
+        </section>
+
+        <section class="block" id="palavras">
+          <div class="block-n">05</div>
+          <h2>Palavras novas</h2>
+          <dl class="gloss" id="gloss"></dl>
+        </section>
+
+        <section class="block" id="teste">
+          <div class="block-n">06</div>
+          <h2>Teste rápido</h2>
+          <p>Sem nota. Se errar, tente de novo.</p>
+          <div class="quiz">
+<div class="q" data-why="As aves têm quatro tipos de cones, o que inclui a visão de ultravioleta." data-hint="É um a mais que nós.">
+  <h3>Quantos tipos de cones as aves têm, em geral?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Quatro</button><button class="chip">Três, como nós</button><button class="chip">Um</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="O urubu-de-cabeça-vermelha tem o bulbo olfatório quatro vezes maior. O de cabeça preta segue outros urubus." data-hint="Reveja o bloco 3.">
+  <h3>Qual urubu tem olfato muito desenvolvido e acha carniça pelo cheiro?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Urubu-de-cabeça-vermelha</button><button class="chip">Urubu-de-cabeça-preta</button><button class="chip">Nenhum</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="Aves migratórias combinam pistas do céu e do campo magnético da Terra." data-hint="Pense em bússola.">
+  <h3>O que uma ave migratória usa para saber a direção?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Sol, estrelas e campo magnético</button><button class="chip">Placas de trânsito</button><button class="chip">Só a memória do caminho</button></div>
+  <div class="fb" role="status"></div>
+</div>
+</div>
+        </section>
+        <section class="block" id="referencias">
+          <div class="block-n">07</div>
+          <h2>Referências e leitura complementar</h2>
+          <p>Onde conferir o que foi dito nesta aula. Os números entre colchetes no texto levam a estas fontes. Os links abrem em outra aba.</p>
+          <ol class="refs">
+<li id="ref-1"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4947394/" target="_blank" rel="noopener noreferrer">Complementary shifts in photoreceptor spectral tuning unlock the full adaptive potential of ultraviolet vision in birds</a><span class="ref-by">PubMed Central (artigo científico) · inglês</span><span class="ref-note">As quatro células de cor (cones) das aves e a visão de ultravioleta.</span></li>
+<li id="ref-2"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10581762/" target="_blank" rel="noopener noreferrer">Binocular field configuration in owls: the role of foraging ecology</a><span class="ref-by">PubMed Central (artigo científico) · inglês</span><span class="ref-note">Os olhos frontais das corujas e o campo de visão que os dois olhos compartilham.</span></li>
+<li id="ref-3"><a href="https://www.sciencedirect.com/science/article/pii/S0960982222010272" target="_blank" rel="noopener noreferrer">Avian vision</a><span class="ref-by">Current Biology (ScienceDirect) · inglês</span><span class="ref-note">Revisão sobre a visão das aves: campo de visão, cores e adaptações.</span></li>
+<li id="ref-4"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2766829/" target="_blank" rel="noopener noreferrer">Improvements of Sound Localization Abilities by the Facial Ruff of the Barn Owl (Tyto alba) as Demonstrated by Virtual Ruff Removal</a><span class="ref-by">PubMed Central (artigo científico) · inglês</span><span class="ref-note">Como o disco facial da coruja ajuda a localizar sons.</span></li>
+<li id="ref-5"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5779116/" target="_blank" rel="noopener noreferrer">Combination of Interaural Level and Time Difference in Azimuthal Sound Localization in Owls</a><span class="ref-by">PubMed Central (artigo científico) · inglês · leitura complementar</span><span class="ref-note">Como a assimetria dos ouvidos ajuda a localizar sons na vertical e na horizontal.</span></li>
+<li id="ref-6"><a href="https://www.allaboutbirds.org/news/do-vultures-find-dead-animals-by-smell-or-by-tracking-predators-or-scavengers-on-the-ground/" target="_blank" rel="noopener noreferrer">Do vultures find dead animals by smell or by tracking predators or scavengers on the ground?</a><span class="ref-by">All About Birds · Cornell Lab of Ornithology · inglês</span><span class="ref-note">O olfato do urubu-de-cabeça-vermelha e como ele acha carniça.</span></li>
+<li id="ref-7"><a href="https://www.nature.com/articles/s41598-017-17794-0" target="_blank" rel="noopener noreferrer">Anatomical evidence for scent guided foraging in the turkey vulture</a><span class="ref-by">Scientific Reports (Nature) · inglês · leitura complementar</span><span class="ref-note">Estudo com o cérebro do urubu-de-cabeça-vermelha e seu bulbo olfatório grande.</span></li>
+<li id="ref-8"><a href="https://www.allaboutbirds.org/news/the-basics-migration-navigation/" target="_blank" rel="noopener noreferrer">Navigation: How Birds Find Their Way When They Migrate</a><span class="ref-by">All About Birds · Cornell Lab of Ornithology · inglês</span><span class="ref-note">Sol, estrelas e campo magnético na orientação das aves migratórias.</span></li>
+<li id="ref-9"><a href="https://www.nature.com/articles/347378a0" target="_blank" rel="noopener noreferrer">Calibration of the magnetic compass of a migratory bird by celestial rotation</a><span class="ref-by">Nature · inglês · leitura complementar</span><span class="ref-note">Estudo científico sobre a bússola magnética de uma ave migratória.</span></li>
+          </ol>
+          <p class="diagram-note">Os endereços foram abertos e conferidos em 29/09/2026. Alguns sites de revistas científicas e de órgãos oficiais exigem verificação humana e não puderam ser testados por robô. Sites externos podem mudar ou sair do ar.</p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band" id="levar">
+    <div class="container take">
+      <div><p class="label">Para levar</p><h2 class="h-section" style="margin-top:var(--space-4)">Em três frases</h2></div>
+      <div>
+        <ul>
+          <li>A maioria das aves enxerga em quatro cores, incluindo o ultravioleta, e a posição dos olhos define o que elas veem.</li>
+          <li>A coruja localiza sons com o disco facial e com ouvidos assimétricos, e o urubu-de-cabeça-vermelha acha carniça pelo cheiro.</li>
+          <li>Aves migratórias se orientam pelo sol, pelas estrelas e pelo campo magnético da Terra.</li>
+        </ul>
+        <div class="next">
+          <button class="btn btn-outline-band done-btn" id="done" type="button" data-lesson="9" aria-pressed="false">Marcar como concluída</button>
+          <a class="btn btn-band" href="10-ovos-e-ninhos.html">Próxima: aula 10, Ovos e ninhos <span data-i="arrow" data-cls="icon-arrow"></span></a>
+        </div>
+        <div class="next" style="margin-top:var(--space-4)"><a class="btn btn-outline-band" href="08-digestao.html">Anterior: aula 8, Digestão</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-in">
+    <div><div class="brand-big">Ornitologia do zero</div><p style="margin-top:var(--space-3)"><a href="../index.html#trilha">Todas as aulas</a> · <a href="../creditos.html">Créditos</a></p></div>
+    <a class="btn btn-ghost" href="#conteudo"><span data-i="up"></span> Voltar ao topo</a>
+  </div>
+</footer>
+<div class="toasts" aria-live="polite"></div>
+
+<script src="../assets/js/vendor/lenis.min.js"></script>
+<script src="../assets/js/credits.js"></script>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/extras.js"></script>
+<script src="../assets/js/motion.js"></script>
+
+</body>
+</html>

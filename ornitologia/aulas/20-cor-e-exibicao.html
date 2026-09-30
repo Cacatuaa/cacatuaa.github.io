@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 20 · Cor e exibição · Ornitologia do zero</title>
+<meta name="description" content="Pigmentos e cores estruturais, a iridescência do beija-flor e a dança do tangará.">
+<script>
+  document.documentElement.className = "js";
+  (function () { var t; try { t = JSON.parse(localStorage.getItem("orn-theme")); } catch (e) {}
+    if (!t) t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    document.documentElement.dataset.theme = t; })();
+</script>
+<link rel="preload" href="../assets/fonts/cormorant-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/lessons.css"><style>
+.swatch { height: 120px; border-radius: var(--radius-md); border: 1px solid var(--line); transition: background var(--dur-tap) var(--ease-soft); }
+</style>
+</head>
+<body data-root="../">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand" href="../index.html">Ornitologia do zero</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a class="link" href="../index.html#trilha">Todas as aulas</a>
+      <a class="link" href="../creditos.html">Créditos</a>
+    </nav>
+    <div class="nav-tools">
+      <button class="icon-btn" id="theme" type="button" aria-label="Mudar tema"></button>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mmenu"><span data-i="menu"></span></button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+<div class="mmenu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="mmenu-top"><span class="brand">Ornitologia do zero</span><button class="icon-btn" id="menu-close" type="button" aria-label="Fechar menu"><span data-i="x"></span></button></div>
+  <nav aria-label="Menu do celular"><a href="../index.html#trilha">Todas as aulas</a><a href="../creditos.html">Créditos</a></nav>
+</div>
+
+<main id="conteudo">
+  <section class="l-hero">
+    <div class="container l-hero-grid">
+      <div>
+        <p class="crumbs label"><a href="../index.html#trilha">Módulo 4</a> <span aria-hidden="true">·</span> <span>Aula 20</span></p>
+        <h1 data-split>Cor e exibição</h1>
+        <p class="lede rv" style="--i:3">Nem toda cor de ave é feita do mesmo jeito. Algumas vêm do que a ave come, outras vêm da forma da pena. E algumas são feitas para dançar diante de quem as admira.</p>
+        <ul class="goals rv" style="--i:4" aria-label="O que você vai aprender">
+          <li><span data-i="check"></span>A diferença entre cor de pigmento e cor estrutural</li>
+          <li><span data-i="check"></span>Por que o beija-flor muda de cor quando se mexe</li>
+          <li><span data-i="check"></span>Como o tangará usa a dança para atrair a fêmea</li>
+        </ul>
+      </div>
+      <figure class="ave-card rv rv-grow" style="--i:2">
+        <img src="../assets/img/photos/beija-flor-voo.webp" width="1400" height="800" alt="Beija-flor macho pairando no ar, com a garganta iridescente" style="aspect-ratio:3 / 2;object-position:50% 50%" fetchpriority="high">
+        <figcaption>
+          <p class="ave-name"><span class="label">Ave da aula</span><br><strong>Beija-flor</strong> <em>Trochilidae</em></p>
+          <p class="credit" data-credit="beija-flor-voo"></p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:var(--space-12)">
+    <div class="container l-body">
+      <aside class="toc" aria-label="Nesta aula">
+        <details open>
+          <summary>Nesta aula <span data-i="down"></span></summary>
+          <ol>
+            <li><a href="#pigmento">Cor de pigmento</a></li>
+            <li><a href="#estrutura">Cor de estrutura</a></li>
+            <li><a href="#danca">A dança do tangará</a></li>
+            <li><a href="#palavras">Palavras novas</a></li>
+            <li><a href="#teste">Teste rápido</a></li>
+            <li><a href="#referencias">Referências</a></li>
+          </ol>
+        </details>
+      </aside>
+      <div>
+
+        <section class="block" id="pigmento">
+          <div class="block-n">01</div>
+          <h2>Cor de pigmento</h2>
+          <p class="rv">A cor de uma pena pode vir de <button class="term" data-def="Substâncias que dão cor por absorverem parte da luz.">pigmentos</button>. As três grandes famílias de pigmentos das aves são os carotenoides, as melaninas e as porfirinas<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>]</sup>. Os carotenoides costumam dar amarelos, laranjas e vermelhos, e as melaninas, marrons, pretos e cinzas<sup class="cite">[<a href="#ref-2" aria-label="Referência 2">2</a>]</sup>. As aves não fabricam os carotenoides do zero: eles vêm da comida<sup class="cite">[<a href="#ref-2" aria-label="Referência 2">2</a>]</sup>.</p>
+          <p class="rv">O guará, de plumagem vermelha, come crustáceos, que são ricos em carotenoides<sup class="cite">[<a href="#ref-4" aria-label="Referência 4">4</a>, <a href="#ref-5" aria-label="Referência 5">5</a>]</sup>. Há um estudo sobre os carotenoides do guará<sup class="cite">[<a href="#ref-5" aria-label="Referência 5">5</a>]</sup>.</p>
+          <figure class="photo-wide"><img src="../assets/img/photos/guara.webp" width="1280" height="800" alt="Guará de plumagem vermelha viva, andando na beira da água" style="max-height:520px;object-fit:cover" loading="lazy"><figcaption class="credit">Guará. O vermelho vem de pigmentos que a ave obtém na dieta. <span data-credit="guara"></span></figcaption></figure>
+        </section>
+
+        <section class="block" id="estrutura">
+          <div class="block-n">02</div>
+          <h2>Cor de estrutura</h2>
+          <p class="rv">Outras cores não vêm de pigmento. Elas vêm da forma da pena: camadas microscópicas de queratina, melanina e ar interferem na luz e produzem cores brilhantes que mudam com o ângulo. É a <button class="term" data-def="Cor que muda conforme o ângulo em que se olha, produzida pela estrutura da pena.">iridescência</button><sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>, <a href="#ref-2" aria-label="Referência 2">2</a>]</sup>. Nos beija-flores, o brilho da garganta (o <button class="term" data-def="A mancha de penas brilhantes na garganta de muitos beija-flores machos.">gorjal</button>) vem de barbas com camadas de melanossomos separadas por queratina<sup class="cite">[<a href="#ref-3" aria-label="Referência 3">3</a>]</sup>. O brilho depende do ângulo da luz e do observador<sup class="cite">[<a href="#ref-3" aria-label="Referência 3">3</a>]</sup>, e as penas podem parecer quase pretas até a ave virar a cabeça para o sol<sup class="cite">[<a href="#ref-8" aria-label="Referência 8">8</a>]</sup>.</p>
+          <figure class="fig">
+            <div class="diagram">
+              <div class="ctrl"><label for="iris-range">Ângulo de observação <output id="iris-out" for="iris-range">0°</output></label><input id="iris-range" type="range" min="0" max="80" step="1" value="0"></div>
+              <div id="iris-swatch" class="swatch" role="img" aria-label="Amostra de cor que muda com o ângulo"></div>
+              <p class="diagram-note" id="iris-text" aria-live="polite"></p>
+            </div>
+            <p class="diagram-note">Modelo didático: as cores mostradas são ilustrativas, não medidas de uma espécie real<sup class="cite">[<a href="#ref-3" aria-label="Referência 3">3</a>]</sup>.</p>
+          </figure>
+          <figure class="photo-wide"><img src="../assets/img/photos/beijaflor.webp" width="1280" height="800" alt="Beija-flor-tesoura, com penas azuis brilhantes" style="max-height:480px;object-fit:cover;object-position:60% 30%" loading="lazy"><figcaption class="credit">Beija-flor-tesoura: o azul-escuro brilhante muda conforme a luz. <span data-credit="beijaflor"></span></figcaption></figure>
+        </section>
+
+        <section class="block" id="danca">
+          <div class="block-n">03</div>
+          <h2>A dança do tangará</h2>
+          <p class="rv">Cor e movimento também servem para atrair parceiros. O tangará-dançarino (<i>Chiroxiphia caudata</i>), da Mata Atlântica, é famoso por isso. Grupos de 4 a 6 machos usam o mesmo local de exibição, e existe uma hierarquia entre eles<sup class="cite">[<a href="#ref-6" aria-label="Referência 6">6</a>]</sup>. Quando uma fêmea chega, dois ou três machos fazem juntos uma dança de pulos; depois, um só macho, em geral o dominante, faz a exibição final<sup class="cite">[<a href="#ref-6" aria-label="Referência 6">6</a>]</sup>. Estudos recentes analisam a consistência dessa dança e como a fêmea escolhe<sup class="cite">[<a href="#ref-7" aria-label="Referência 7">7</a>]</sup>.</p>
+          <div class="tabs"><div class="tabs-nav" role="tablist"><button class="chip" role="tab" data-k="macho">Macho</button><button class="chip" role="tab" data-k="femea">Fêmea</button></div><div class="tabpanel" role="tabpanel" data-k="macho"><div><div class="pic-img"><img src="../assets/img/photos/tangara.webp" alt="Tangará-dançarino macho, azul, com o topo da cabeça vermelho" style="--z:1;--ox:55%;--oy:40%" loading="lazy"></div><p class="credit" data-credit="tangara"></p></div><div class="tp-body"><h3>Macho</h3><p>Azul e preto, com um boné vermelho.</p></div></div><div class="tabpanel" role="tabpanel" data-k="femea"><div><div class="pic-img"><img src="../assets/img/photos/tangara-2.webp" alt="Tangará-dançarino fêmea, de tom verde-oliva, em um galho" style="--z:1;--ox:50%;--oy:50%" loading="lazy"></div><p class="credit" data-credit="tangara-2"></p></div><div class="tp-body"><h3>Fêmea</h3><p>Verde-oliva, discreta. Machos e fêmeas têm aparências bem diferentes nesta espécie, um caso de <button class="term" data-def="Diferença de aparência entre machos e fêmeas da mesma espécie.">dimorfismo sexual</button>.</p></div></div></div>
+        </section>
+
+        <section class="block" id="palavras">
+          <div class="block-n">04</div>
+          <h2>Palavras novas</h2>
+          <dl class="gloss" id="gloss"></dl>
+        </section>
+
+        <section class="block" id="teste">
+          <div class="block-n">05</div>
+          <h2>Teste rápido</h2>
+          <p>Sem nota. Se errar, tente de novo.</p>
+          <div class="quiz">
+<div class="q" data-why="As aves não fabricam carotenoides: eles vêm da dieta." data-hint="Pense no guará.">
+  <h3>De onde vêm os carotenoides das penas?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Da comida da ave</button><button class="chip">Da água</button><button class="chip">De um banho de sol</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="Camadas microscópicas dentro da pena fazem a cor variar com o ângulo." data-hint="Reveja o controle deslizante.">
+  <h3>Por que o gorjal do beija-flor muda de cor?</h3>
+  <div class="choices"><button class="chip" data-ok="1">A cor é estrutural e depende do ângulo da luz</button><button class="chip">É pintura</button><button class="chip">Ele troca de penas a cada minuto</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="No grupo, o macho dominante costuma fazer a exibição final e os acasalamentos." data-hint="Reveja o bloco 3.">
+  <h3>Quem faz a dança final para a fêmea no grupo do tangará?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Em geral, o macho dominante</button><button class="chip">Todas as fêmeas</button><button class="chip">O filhote</button></div>
+  <div class="fb" role="status"></div>
+</div>
+</div>
+        </section>
+        <section class="block" id="referencias">
+          <div class="block-n">06</div>
+          <h2>Referências e leitura complementar</h2>
+          <p>Onde conferir o que foi dito nesta aula. Os números entre colchetes no texto levam a estas fontes. Os links abrem em outra aba.</p>
+          <ol class="refs">
+<li id="ref-1"><a href="https://academy.allaboutbirds.org/how-birds-make-colorful-feathers/" target="_blank" rel="noopener noreferrer">How Birds Make Colorful Feathers</a><span class="ref-by">Bird Academy · Cornell Lab of Ornithology · inglês</span><span class="ref-note">Pigmentos, estrutura da pena e cor.</span></li>
+<li id="ref-2"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13405874/" target="_blank" rel="noopener noreferrer">Molecular and Evolutionary Basis of Avian Plumage Colour</a><span class="ref-by">PubMed Central (artigo científico) · inglês · leitura complementar</span><span class="ref-note">Pigmentos e cores estruturais nas penas.</span></li>
+<li id="ref-3"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6244987/" target="_blank" rel="noopener noreferrer">Iridescent colouration of male Anna's hummingbird (Calypte anna) caused by multilayered barbules</a><span class="ref-by">PubMed Central (artigo científico) · inglês</span><span class="ref-note">A iridescência do beija-flor vem de camadas dentro da pena.</span></li>
+<li id="ref-4"><a href="https://birdsoftheworld.org/bow/species/scaibi/cur/foodhabits" target="_blank" rel="noopener noreferrer">Diet and Foraging – Scarlet Ibis – Eudocimus ruber</a><span class="ref-by">Birds of the World · Cornell Lab of Ornithology · inglês</span><span class="ref-note">O guará come crustáceos, fonte dos pigmentos vermelhos.</span></li>
+<li id="ref-5"><a href="https://pubmed.ncbi.nlm.nih.gov/13959017" target="_blank" rel="noopener noreferrer">Carotenoids of the scarlet ibis</a><span class="ref-by">PubMed (artigo científico) · inglês · leitura complementar</span><span class="ref-note">Estudo dos carotenoides do guará.</span></li>
+<li id="ref-6"><a href="https://link.springer.com/article/10.1007/BF00302934" target="_blank" rel="noopener noreferrer">Cooperative behavior and social organization of the Swallow-tailed Manakin (Chiroxiphia caudata)</a><span class="ref-by">Behavioral Ecology and Sociobiology · inglês</span><span class="ref-note">O tangará-dançarino: machos em dupla dançam para a fêmea.</span></li>
+<li id="ref-7"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12567079/" target="_blank" rel="noopener noreferrer">Display consistency in swallow-tailed manakins: group size effects and implications for female choice</a><span class="ref-by">PubMed Central (artigo científico) · inglês · leitura complementar</span><span class="ref-note">Estudo sobre a dança em grupo do tangará.</span></li>
+<li id="ref-8"><a href="https://nationalzoo.si.edu/migratory-birds/hummingbirds" target="_blank" rel="noopener noreferrer">Hummingbirds</a><span class="ref-by">Smithsonian's National Zoo and Conservation Biology Institute · inglês</span><span class="ref-note">Metabolismo, batimentos do coração e torpor dos beija-flores.</span></li>
+          </ol>
+          <p class="diagram-note">Os endereços foram abertos e conferidos em 29/09/2026. Alguns sites de revistas científicas e de órgãos oficiais exigem verificação humana e não puderam ser testados por robô. Sites externos podem mudar ou sair do ar.</p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band" id="levar">
+    <div class="container take">
+      <div><p class="label">Para levar</p><h2 class="h-section" style="margin-top:var(--space-4)">Em três frases</h2></div>
+      <div>
+        <ul>
+          <li>A cor das penas vem de pigmentos, da estrutura da pena, ou de uma combinação dos dois.</li>
+          <li>Na cor estrutural, como a do beija-flor, camadas microscópicas dentro da pena fazem a cor mudar com o ângulo.</li>
+          <li>Em muitas espécies, a cor e a dança servem para atrair parceiros, como no caso do tangará.</li>
+        </ul>
+        <div class="next">
+          <button class="btn btn-outline-band done-btn" id="done" type="button" data-lesson="20" aria-pressed="false">Marcar como concluída</button>
+          <a class="btn btn-band" href="21-a-voz.html">Próxima: aula 21, A voz <span data-i="arrow" data-cls="icon-arrow"></span></a>
+        </div>
+        <div class="next" style="margin-top:var(--space-4)"><a class="btn btn-outline-band" href="19-quem-come-o-que.html">Anterior: aula 19, Quem come o quê</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-in">
+    <div><div class="brand-big">Ornitologia do zero</div><p style="margin-top:var(--space-3)"><a href="../index.html#trilha">Todas as aulas</a> · <a href="../creditos.html">Créditos</a></p></div>
+    <a class="btn btn-ghost" href="#conteudo"><span data-i="up"></span> Voltar ao topo</a>
+  </div>
+</footer>
+<div class="toasts" aria-live="polite"></div>
+
+<script src="../assets/js/vendor/lenis.min.js"></script>
+<script src="../assets/js/credits.js"></script>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/extras.js"></script>
+<script src="../assets/js/motion.js"></script>
+<script src="../assets/js/iris.js"></script>
+</body>
+</html>

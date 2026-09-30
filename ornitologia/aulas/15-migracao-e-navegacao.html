@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 15 · Migração e navegação · Ornitologia do zero</title>
+<meta name="description" content="A viagem do maçarico-de-papo-vermelho entre o Ártico e a Terra do Fogo, e como as aves acham o caminho.">
+<script>
+  document.documentElement.className = "js";
+  (function () { var t; try { t = JSON.parse(localStorage.getItem("orn-theme")); } catch (e) {}
+    if (!t) t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    document.documentElement.dataset.theme = t; })();
+</script>
+<link rel="preload" href="../assets/fonts/cormorant-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/lessons.css"><style>
+.route { fill: none; stroke: var(--terra-text); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 8 8; }
+.wp { fill: var(--bg); stroke: var(--terra-text); stroke-width: 3; }
+.diag[data-on] .wp { opacity: 0.3; }
+.diag[data-on~="p1"] .p1, .diag[data-on~="p2"] .p2, .diag[data-on~="p3"] .p3, .diag[data-on~="p4"] .p4, .diag[data-on~="p5"] .p5 { opacity: 1; fill: var(--terra-fill); stroke: var(--bg); stroke-width: 3; }
+.map-lab { fill: #12241a; font: 600 15px var(--font-sans); paint-order: stroke; stroke: #ffffff; stroke-width: 4px; stroke-linejoin: round; }
+#map { max-width: 560px; margin-inline: auto; display: block; background: #fff; border-radius: var(--radius-md); }
+</style>
+</head>
+<body data-root="../">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand" href="../index.html">Ornitologia do zero</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a class="link" href="../index.html#trilha">Todas as aulas</a>
+      <a class="link" href="../creditos.html">Créditos</a>
+    </nav>
+    <div class="nav-tools">
+      <button class="icon-btn" id="theme" type="button" aria-label="Mudar tema"></button>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mmenu"><span data-i="menu"></span></button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+<div class="mmenu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="mmenu-top"><span class="brand">Ornitologia do zero</span><button class="icon-btn" id="menu-close" type="button" aria-label="Fechar menu"><span data-i="x"></span></button></div>
+  <nav aria-label="Menu do celular"><a href="../index.html#trilha">Todas as aulas</a><a href="../creditos.html">Créditos</a></nav>
+</div>
+
+<main id="conteudo">
+  <section class="l-hero">
+    <div class="container l-hero-grid">
+      <div>
+        <p class="crumbs label"><a href="../index.html#trilha">Módulo 3</a> <span aria-hidden="true">·</span> <span>Aula 15</span></p>
+        <h1 data-split>Migração e navegação</h1>
+        <p class="lede rv" style="--i:3">Algumas aves cruzam continentes duas vezes por ano. O maçarico-de-papo-vermelho faz uma das maiores viagens conhecidas, e o Brasil é parada obrigatória.</p>
+        <ul class="goals rv" style="--i:4" aria-label="O que você vai aprender">
+          <li><span data-i="check"></span>Como é a rota do maçarico-de-papo-vermelho</li>
+          <li><span data-i="check"></span>Por que o litoral brasileiro importa para aves migratórias</li>
+          <li><span data-i="check"></span>Que pistas as aves usam para achar o caminho</li>
+        </ul>
+      </div>
+      <figure class="ave-card rv rv-grow" style="--i:2">
+        <img src="../assets/img/photos/macarico.webp" width="1400" height="853" alt="Maçarico-de-papo-vermelho caminhando na beira da água, com peito cor de ferrugem" style="aspect-ratio:3 / 2;object-position:50% 50%" fetchpriority="high">
+        <figcaption>
+          <p class="ave-name"><span class="label">Ave da aula</span><br><strong>Maçarico-de-papo-vermelho</strong> <em>Calidris canutus rufa</em></p>
+          <p class="credit" data-credit="macarico"></p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:var(--space-12)">
+    <div class="container l-body">
+      <aside class="toc" aria-label="Nesta aula">
+        <details open>
+          <summary>Nesta aula <span data-i="down"></span></summary>
+          <ol>
+            <li><a href="#rota">A rota do maçarico</a></li>
+            <li><a href="#brasil">O Brasil na rota</a></li>
+            <li><a href="#caminho">Como acham o caminho</a></li>
+            <li><a href="#palavras">Palavras novas</a></li>
+            <li><a href="#teste">Teste rápido</a></li>
+            <li><a href="#referencias">Referências</a></li>
+          </ol>
+        </details>
+      </aside>
+      <div>
+
+        <section class="block" id="rota">
+          <div class="block-n">01</div>
+          <h2>A rota do maçarico</h2>
+          <p class="rv">A subespécie <i>rufa</i> do maçarico-de-papo-vermelho se reproduz no Ártico canadense e passa o resto do ano em costas do sul dos Estados Unidos, do norte do Brasil e do extremo sul da América do Sul, principalmente na Terra do Fogo<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>]</sup>. Muitos indivíduos voam cerca de 19 mil milhas por ano entre as áreas de reprodução e de invernada<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>]</sup>, algo em torno de 30 mil quilômetros. Acompanhe a viagem no mapa ou escolha um ponto da rota.</p>
+          <figure class="fig">
+            <div class="diagram">
+              <p class="hint"><span data-i="pointer"></span> Escolha um ponto da rota.</p>
+              <div class="layers" data-target="map" data-idle="Rota esquemática. As linhas são só uma ideia do caminho; as aves seguem a costa e fazem paradas.">
+                <button class="chip" data-k="p1" data-text="Ártico canadense: onde a subespécie se reproduz no verão.">Ártico canadense</button>
+                <button class="chip" data-k="p2" data-text="Baía de Delaware (EUA): a principal parada de reabastecimento. Na primavera, as aves comem ovos de caranguejo-ferradura.">Baía de Delaware</button>
+                <button class="chip" data-k="p3" data-text="Litoral do Maranhão: uma das áreas onde grupos menores, mas importantes, passam o inverno.">Maranhão</button>
+                <button class="chip" data-k="p4" data-text="Lagoa do Peixe (RS): parada para engordar antes da longa viagem ao norte.">Lagoa do Peixe</button>
+                <button class="chip" data-k="p5" data-text="Terra do Fogo: a maior população passa o inverno na região, em especial em Bahía Lomas, no Chile.">Terra do Fogo</button>
+              </div>
+              
+<svg id="map" class="diag" viewBox="0 0 550 550" role="img" aria-label="Mapa das Américas com a rota esquemática do maçarico-de-papo-vermelho, do Ártico canadense à Terra do Fogo">
+  <image href="../assets/img/maps/mapa-americas.svg" x="0" y="0" width="550" height="550"/>
+  <path class="route" d="M 305 520 C 340 500, 380 480, 395 457 C 420 420, 425 360, 410 316 C 390 270, 330 230, 292 160 C 280 120, 262 100, 255 72"/>
+  <circle class="part wp p1" cx="255" cy="72" r="9"/><circle class="part wp p2" cx="292" cy="160" r="9"/><circle class="part wp p3" cx="410" cy="316" r="9"/><circle class="part wp p4" cx="395" cy="457" r="9"/><circle class="part wp p5" cx="305" cy="520" r="9"/>
+  <text class="map-lab" x="267" y="66">Ártico</text>
+  <text class="map-lab" x="306" y="164">Delaware</text>
+  <text class="map-lab" x="424" y="310">Maranhão</text>
+  <text class="map-lab" x="409" y="461">Lagoa do Peixe</text>
+  <text class="map-lab" x="319" y="524">Terra do Fogo</text>
+</svg>
+              <p class="diagram-note" aria-live="polite">Rota esquemática. As linhas são só uma ideia do caminho; as aves seguem a costa e fazem paradas.</p>
+            </div>
+            <p class="credit" data-credit="mapa-americas"></p>
+          </figure>
+        </section>
+
+        <section class="block" id="brasil">
+          <div class="block-n">02</div>
+          <h2>O Brasil na rota</h2>
+          <p class="rv">O Brasil aparece duas vezes na viagem. Ao norte, o litoral do Maranhão recebe grupos que passam o inverno na região<sup class="cite">[<a href="#ref-3" aria-label="Referência 3">3</a>]</sup>. Ao sul, a Lagoa do Peixe, no Rio Grande do Sul, é uma parada para engordar antes da viagem para o norte. Um estudo com transmissores por satélite acompanhou aves que saíram de lá: uma delas voou 8.300 km sem parar, da Lagoa do Peixe até a baía de Delaware, nos Estados Unidos; outras fizeram trechos de 1.600 a 3.600 km entre paradas, onde ficaram de 4 a 18 dias<sup class="cite">[<a href="#ref-4" aria-label="Referência 4">4</a>]</sup>.</p>
+          <div class="fact-grid">
+            <div class="fact rv"><b>8.300 km</b><span>de voo direto de uma ave, da Lagoa do Peixe à baía de Delaware<sup class="cite">[<a href="#ref-4" aria-label="Referência 4">4</a>]</sup>.</span></div>
+            <div class="fact rv"><b>4 a 18 dias</b><span>de descanso, nas paradas, para as aves que fizeram voos mais curtos<sup class="cite">[<a href="#ref-4" aria-label="Referência 4">4</a>]</sup>.</span></div>
+          </div>
+          <figure class="photo-wide"><img src="../assets/img/photos/macarico-2.webp" width="1280" height="853" alt="Maçarico-de-papo-vermelho em plumagem de reprodução, de peito ferrugem, sobre pedras" style="max-height:520px;object-fit:cover" loading="lazy"><figcaption class="credit">Maçarico-de-papo-vermelho em plumagem de reprodução. <span data-credit="macarico-2"></span></figcaption></figure>
+        </section>
+
+        <section class="block" id="caminho">
+          <div class="block-n">03</div>
+          <h2>Como acham o caminho</h2>
+          <p class="rv">Acertar a direção (orientação) e saber onde está (navegação) são coisas diferentes. Para a orientação, as aves usam pistas do céu e da Terra<sup class="cite">[<a href="#ref-5" aria-label="Referência 5">5</a>]</sup>.</p>
+          <div class="tabs"><div class="tabs-nav" role="tablist"><button class="chip" role="tab" data-k="sol">Sol</button><button class="chip" role="tab" data-k="estrelas">Estrelas</button><button class="chip" role="tab" data-k="campo">Campo magnético</button></div><div class="tabpanel solo" role="tabpanel" data-k="sol"><div class="tp-body"><h3>Sol</h3><p>Como os marinheiros antigos, aves migratórias usam o sol para saber a direção<sup class="cite">[<a href="#ref-5" aria-label="Referência 5">5</a>]</sup>.</p></div></div><div class="tabpanel solo" role="tabpanel" data-k="estrelas"><div class="tp-body"><h3>Estrelas</h3><p>Até a década de 1960, cientistas achavam que as aves tinham um conhecimento inato das estrelas, como um mapa. Depois se mostrou que elas percebem a rotação do céu e usam isso para achar o norte e o sul, o que é útil para quem migra à noite<sup class="cite">[<a href="#ref-5" aria-label="Referência 5">5</a>]</sup>.</p></div></div><div class="tabpanel solo" role="tabpanel" data-k="campo"><div class="tp-body"><h3>Campo magnético</h3><p>As aves também sentem o campo magnético da Terra. Uma bússola magnética nas aves está bem documentada<sup class="cite">[<a href="#ref-6" aria-label="Referência 6">6</a>]</sup>, embora ainda não se saiba bem onde ficam os receptores. As aves ajustam essa bússola com pistas do céu<sup class="cite">[<a href="#ref-6" aria-label="Referência 6">6</a>, <a href="#ref-5" aria-label="Referência 5">5</a>]</sup>.</p></div></div></div>
+        </section>
+
+        <section class="block" id="palavras">
+          <div class="block-n">04</div>
+          <h2>Palavras novas</h2>
+          <dl class="gloss" id="gloss"></dl>
+        </section>
+
+        <section class="block" id="teste">
+          <div class="block-n">05</div>
+          <h2>Teste rápido</h2>
+          <p>Sem nota. Se errar, tente de novo.</p>
+          <div class="quiz">
+<div class="q" data-why="Ele se reproduz no Ártico canadense e passa o resto do ano mais ao sul." data-hint="Pense no extremo norte.">
+  <h3>Onde o maçarico-de-papo-vermelho se reproduz?</h3>
+  <div class="choices"><button class="chip" data-ok="1">No Ártico canadense</button><button class="chip">Na Terra do Fogo</button><button class="chip">No Maranhão</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="As aves param na Lagoa do Peixe para reabastecer antes de seguir para o norte." data-hint="Reveja o bloco 2.">
+  <h3>Por que a Lagoa do Peixe é importante para a espécie?</h3>
+  <div class="choices"><button class="chip" data-ok="1">É parada para engordar antes da longa viagem para o norte</button><button class="chip">É onde ela se reproduz</button><button class="chip">Ninguém sabe</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="As aves combinam pistas do céu e do campo magnético da Terra." data-hint="Reveja as abas.">
+  <h3>Que pistas as aves migratórias usam para se orientar?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Sol, estrelas e campo magnético</button><button class="chip">Só o cheiro do mar</button><button class="chip">Placas nas rodovias</button></div>
+  <div class="fb" role="status"></div>
+</div>
+</div>
+        </section>
+        <section class="block" id="referencias">
+          <div class="block-n">06</div>
+          <h2>Referências e leitura complementar</h2>
+          <p>Onde conferir o que foi dito nesta aula. Os números entre colchetes no texto levam a estas fontes. Os links abrem em outra aba.</p>
+          <ol class="refs">
+<li id="ref-1"><a href="https://nationalzoo.si.edu/animals/red-knot" target="_blank" rel="noopener noreferrer">Red knot</a><span class="ref-by">Smithsonian's National Zoo and Conservation Biology Institute · inglês</span><span class="ref-note">O maçarico-de-papo-vermelho e sua migração.</span></li>
+<li id="ref-2"><a href="https://www.fws.gov/species/rufa-red-knot-calidris-canutus-rufa" target="_blank" rel="noopener noreferrer">Rufa Red Knot (Calidris canutus rufa)</a><span class="ref-by">U.S. Fish & Wildlife Service · inglês</span><span class="ref-note">Rota e ameaças da subespécie que passa pelo Brasil.</span></li>
+<li id="ref-3"><a href="https://animaldiversity.org/accounts/Calidris_canutus_rufa/" target="_blank" rel="noopener noreferrer">Calidris canutus rufa</a><span class="ref-by">Animal Diversity Web · Universidade de Michigan · inglês</span><span class="ref-note">Ficha da subespécie: áreas de reprodução e de invernada.</span></li>
+<li id="ref-4"><a href="https://www.cambridge.org/core/journals/bird-conservation-international/article/northward-migration-of-red-knots-calidris-canutus-rufa-and-environment-connectivity-of-southern-brazil-to-canada/A2CA68A858D202E5D9F934874BBB9370" target="_blank" rel="noopener noreferrer">Northward migration of Red Knots Calidris canutus rufa and environment connectivity of southern Brazil to Canada</a><span class="ref-by">Bird Conservation International · inglês · leitura complementar</span><span class="ref-note">Artigo científico sobre a parada do maçarico na Lagoa do Peixe, no Sul do Brasil.</span></li>
+<li id="ref-5"><a href="https://www.allaboutbirds.org/news/the-basics-migration-navigation/" target="_blank" rel="noopener noreferrer">Navigation: How Birds Find Their Way When They Migrate</a><span class="ref-by">All About Birds · Cornell Lab of Ornithology · inglês</span><span class="ref-note">Sol, estrelas e campo magnético na orientação das aves migratórias.</span></li>
+<li id="ref-6"><a href="https://www.nature.com/articles/347378a0" target="_blank" rel="noopener noreferrer">Calibration of the magnetic compass of a migratory bird by celestial rotation</a><span class="ref-by">Nature · inglês · leitura complementar</span><span class="ref-note">Estudo científico sobre a bússola magnética de uma ave migratória.</span></li>
+          </ol>
+          <p class="diagram-note">Os endereços foram abertos e conferidos em 29/09/2026. Alguns sites de revistas científicas e de órgãos oficiais exigem verificação humana e não puderam ser testados por robô. Sites externos podem mudar ou sair do ar.</p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band" id="levar">
+    <div class="container take">
+      <div><p class="label">Para levar</p><h2 class="h-section" style="margin-top:var(--space-4)">Em três frases</h2></div>
+      <div>
+        <ul>
+          <li>O maçarico-de-papo-vermelho se reproduz no Ártico canadense e passa o resto do ano em costas da América do Norte, do Brasil e do extremo sul.</li>
+          <li>No caminho, ele para em poucos lugares-chave, como a baía de Delaware e a Lagoa do Peixe, no Rio Grande do Sul, para reabastecer.</li>
+          <li>As aves se orientam pelo sol, pelas estrelas e pelo campo magnético da Terra.</li>
+        </ul>
+        <div class="next">
+          <button class="btn btn-outline-band done-btn" id="done" type="button" data-lesson="15" aria-pressed="false">Marcar como concluída</button>
+          <a class="btn btn-band" href="16-anatomia-do-bico.html">Próxima: aula 16, Anatomia do bico <span data-i="arrow" data-cls="icon-arrow"></span></a>
+        </div>
+        <div class="next" style="margin-top:var(--space-4)"><a class="btn btn-outline-band" href="14-leme-freio-e-detalhes.html">Anterior: aula 14, Leme, freio e detalhes</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-in">
+    <div><div class="brand-big">Ornitologia do zero</div><p style="margin-top:var(--space-3)"><a href="../index.html#trilha">Todas as aulas</a> · <a href="../creditos.html">Créditos</a></p></div>
+    <a class="btn btn-ghost" href="#conteudo"><span data-i="up"></span> Voltar ao topo</a>
+  </div>
+</footer>
+<div class="toasts" aria-live="polite"></div>
+
+<script src="../assets/js/vendor/lenis.min.js"></script>
+<script src="../assets/js/credits.js"></script>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/extras.js"></script>
+<script src="../assets/js/motion.js"></script>
+
+</body>
+</html>

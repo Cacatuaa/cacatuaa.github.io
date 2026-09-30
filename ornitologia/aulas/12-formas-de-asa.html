@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 12 · Formas de asa · Ornitologia do zero</title>
+<meta name="description" content="Razão de aspecto, carga alar e os quatro formatos clássicos de asa das aves.">
+<script>
+  document.documentElement.className = "js";
+  (function () { var t; try { t = JSON.parse(localStorage.getItem("orn-theme")); } catch (e) {}
+    if (!t) t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    document.documentElement.dataset.theme = t; })();
+</script>
+<link rel="preload" href="../assets/fonts/cormorant-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/lessons.css"><style>
+.wing-shape { fill: color-mix(in srgb, var(--accent) 28%, var(--surface-2)); stroke: var(--accent); stroke-width: 2; }
+.dim { stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 4 4; }
+.sil { width: 100%; max-width: 360px; height: auto; margin-top: var(--space-3); }
+.sil path { fill: color-mix(in srgb, var(--accent) 28%, var(--surface-2)); stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
+.bars { display: grid; gap: var(--space-3); margin-top: var(--space-3); }
+.bars label { display: flex; justify-content: space-between; font-weight: 500; margin-bottom: var(--space-1); }
+.bars .meter i { transition: transform var(--dur-tap) var(--ease-soft); }
+</style>
+</head>
+<body data-root="../">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand" href="../index.html">Ornitologia do zero</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a class="link" href="../index.html#trilha">Todas as aulas</a>
+      <a class="link" href="../creditos.html">Créditos</a>
+    </nav>
+    <div class="nav-tools">
+      <button class="icon-btn" id="theme" type="button" aria-label="Mudar tema"></button>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mmenu"><span data-i="menu"></span></button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+<div class="mmenu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="mmenu-top"><span class="brand">Ornitologia do zero</span><button class="icon-btn" id="menu-close" type="button" aria-label="Fechar menu"><span data-i="x"></span></button></div>
+  <nav aria-label="Menu do celular"><a href="../index.html#trilha">Todas as aulas</a><a href="../creditos.html">Créditos</a></nav>
+</div>
+
+<main id="conteudo">
+  <section class="l-hero">
+    <div class="container l-hero-grid">
+      <div>
+        <p class="crumbs label"><a href="../index.html#trilha">Módulo 3</a> <span aria-hidden="true">·</span> <span>Aula 12</span></p>
+        <h1 data-split>Formas de asa</h1>
+        <p class="lede rv" style="--i:3">Olhe a silhueta de uma ave no céu e você já sabe muita coisa sobre o jeito de voar dela. O formato da asa é uma troca entre economia e manobra.</p>
+        <ul class="goals rv" style="--i:4" aria-label="O que você vai aprender">
+          <li><span data-i="check"></span>O que é razão de aspecto e o que ela muda no voo</li>
+          <li><span data-i="check"></span>Os quatro formatos clássicos de asa</li>
+          <li><span data-i="check"></span>Como ler o formato da asa de uma ave em voo</li>
+        </ul>
+      </div>
+      <figure class="ave-card rv rv-grow" style="--i:2">
+        <img src="../assets/img/photos/fragata.webp" width="1400" height="853" alt="Duas fragatas voando no céu azul, de asas longas e finas" style="aspect-ratio:3 / 2;object-position:50% 50%" fetchpriority="high">
+        <figcaption>
+          <p class="ave-name"><span class="label">Ave da aula</span><br><strong>Fragata</strong> <em>Fregata magnificens</em></p>
+          <p class="credit" data-credit="fragata"></p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:var(--space-12)">
+    <div class="container l-body">
+      <aside class="toc" aria-label="Nesta aula">
+        <details open>
+          <summary>Nesta aula <span data-i="down"></span></summary>
+          <ol>
+            <li><a href="#razao">Razão de aspecto</a></li>
+            <li><a href="#formatos">Quatro formatos</a></li>
+            <li><a href="#carga">Carga alar</a></li>
+            <li><a href="#palavras">Palavras novas</a></li>
+            <li><a href="#teste">Teste rápido</a></li>
+            <li><a href="#referencias">Referências</a></li>
+          </ol>
+        </details>
+      </aside>
+      <div>
+
+        <section class="block" id="razao">
+          <div class="block-n">01</div>
+          <h2>Razão de aspecto</h2>
+          <p class="rv">A <button class="term" data-def="Comprimento da asa dividido pela largura dela. Asa longa e estreita tem razão de aspecto alta.">razão de aspecto</button> é o comprimento da asa dividido pela largura. Aumentá-la traz uma troca: o voo de cruzeiro fica mais eficiente, com menos arrasto, mas a asa fica mais difícil de manobrar e a decolagem, mais difícil<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>]</sup>. Mexa no controle e veja o efeito.</p>
+          <figure class="fig">
+            <div class="diagram">
+              <div class="ctrl"><label for="ar-range">Razão de aspecto <output id="ar-out" for="ar-range">6</output></label><input id="ar-range" type="range" min="2" max="12" step="1" value="6"></div>
+              <div id="ar-svg"></div>
+              <div class="bars">
+                <div><label>Economia no voo de cruzeiro</label><div class="meter"><i id="ar-eco"></i></div></div>
+                <div><label>Facilidade de manobrar e decolar</label><div class="meter warn"><i id="ar-man"></i></div></div>
+              </div>
+              <p class="diagram-note" id="ar-text" aria-live="polite"></p>
+            </div>
+            <p class="diagram-note">Modelo didático: as barras mostram apenas a tendência descrita nos estudos<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>]</sup>, sem valores reais.</p>
+          </figure>
+        </section>
+
+        <section class="block" id="formatos">
+          <div class="block-n">02</div>
+          <h2>Quatro formatos</h2>
+          <p class="rv">Um resumo usado para ensinar o assunto separa as asas das aves em quatro tipos<sup class="cite">[<a href="#ref-2" aria-label="Referência 2">2</a>]</sup>. Cada um tem uma silhueta reconhecível.</p>
+          <div class="tabs"><div class="tabs-nav" role="tablist"><button class="chip" role="tab" data-k="ell">Elíptica</button><button class="chip" role="tab" data-k="fast">Alta velocidade</button><button class="chip" role="tab" data-k="soar">Planeio ativo</button><button class="chip" role="tab" data-k="pass">Planeio passivo</button></div><div class="tabpanel" role="tabpanel" data-k="ell"><div><div class="pic-img"><img src="../assets/img/photos/sabia.webp" alt="Sabiá-laranjeira pousado, como exemplo de ave de mata e de jardim" style="--z:1.05;--ox:50%;--oy:50%" loading="lazy"></div><p class="credit" data-credit="sabia"></p></div><div class="tp-body"><h3>Elíptica</h3><p>Asa curta e arredondada. Dá arrancadas rápidas e boa manobra entre galhos, mas o ritmo não se mantém: a ave bate as asas com frequência<sup class="cite">[<a href="#ref-2" aria-label="Referência 2">2</a>]</sup>. É comum em muitas aves de mata e de jardim.</p><svg class="sil" viewBox="0 0 420 180" aria-hidden="true"><rect x="0" y="0" width="20" height="180" style="fill:var(--surface-2)"/><path d="M20 60 C 70 34, 150 30, 190 84 C 196 110, 150 148, 20 150 Z"/></svg></div></div><div class="tabpanel" role="tabpanel" data-k="fast"><div><div class="pic-img"><img src="../assets/img/photos/falcao-peregrino.webp" alt="Falcão-peregrino em voo, de asas longas e pontudas" style="--z:1;--ox:50%;--oy:40%" loading="lazy"></div><p class="credit" data-credit="falcao-peregrino"></p></div><div class="tp-body"><h3>Alta velocidade</h3><p>Asa longa, fina e pontuda. Permite velocidades altas, que a ave não sustenta batendo asas por muito tempo<sup class="cite">[<a href="#ref-2" aria-label="Referência 2">2</a>]</sup>. O falcão-peregrino é um exemplo<sup class="cite">[<a href="#ref-4" aria-label="Referência 4">4</a>]</sup>.</p><svg class="sil" viewBox="0 0 420 180" aria-hidden="true"><rect x="0" y="0" width="20" height="180" style="fill:var(--surface-2)"/><path d="M20 80 C 100 66, 200 44, 330 22 C 300 78, 180 118, 20 130 Z"/></svg></div></div><div class="tabpanel" role="tabpanel" data-k="soar"><div><div class="pic-img"><img src="../assets/img/photos/fragata.webp" alt="Fragata em voo, de asas muito longas e estreitas" style="--z:1;--ox:50%;--oy:55%" loading="lazy"></div><p class="credit" data-credit="fragata"></p></div><div class="tp-body"><h3>Planeio ativo</h3><p>Asa muito longa e estreita em relação ao corpo<sup class="cite">[<a href="#ref-2" aria-label="Referência 2">2</a>]</sup>. As fragatas planam sobre o mar quase sem bater as asas e usam a cauda longa como leme<sup class="cite">[<a href="#ref-3" aria-label="Referência 3">3</a>]</sup>.</p><svg class="sil" viewBox="0 0 420 180" aria-hidden="true"><rect x="0" y="0" width="20" height="180" style="fill:var(--surface-2)"/><path d="M20 84 C 160 76, 300 70, 408 66 C 408 84, 300 96, 20 110 Z"/></svg></div></div><div class="tabpanel" role="tabpanel" data-k="pass"><div><div class="pic-img"><img src="../assets/img/photos/urubu-cabeca-vermelha.webp" alt="Urubu-de-cabeça-vermelha em voo, de asas largas com as pontas em leque" style="--z:1;--ox:50%;--oy:50%" loading="lazy"></div><p class="credit" data-credit="urubu-cabeca-vermelha"></p></div><div class="tp-body"><h3>Planeio passivo</h3><p>Asa larga, com as penas das pontas separadas como dedos. Ajuda a subir em correntes de ar quente sem bater as asas. Essas “fendas” na ponta reduzem o arrasto<sup class="cite">[<a href="#ref-5" aria-label="Referência 5">5</a>]</sup>. Urubus, gaviões e águias têm asas assim<sup class="cite">[<a href="#ref-7" aria-label="Referência 7">7</a>]</sup>.</p><svg class="sil" viewBox="0 0 420 180" aria-hidden="true"><rect x="0" y="0" width="20" height="180" style="fill:var(--surface-2)"/><path d="M20 46 C 90 32, 160 32, 214 42 L 254 36 L 250 50 L 268 54 L 248 66 L 262 74 L 240 86 L 242 96 L 206 104 C 150 126, 80 134, 20 132 Z"/></svg></div></div></div>
+        </section>
+
+        <section class="block" id="carga">
+          <div class="block-n">03</div>
+          <h2>Carga alar</h2>
+          <p class="rv">Outra medida que ajuda a explicar o voo é a <button class="term" data-def="Peso da ave dividido pela área das asas. Quanto maior, mais rápido a ave precisa voar e mais aberta é sua curva.">carga alar</button>: o peso dividido pela área das asas. Uma ave com carga alar alta precisa voar mais depressa e faz curvas mais abertas, o que pede correntes de ar quente maiores para ganhar altura<sup class="cite">[<a href="#ref-6" aria-label="Referência 6">6</a>]</sup>. Uma com carga alar baixa faz curvas fechadas e sobe mesmo em correntes fracas.</p>
+        </section>
+
+        <section class="block" id="palavras">
+          <div class="block-n">04</div>
+          <h2>Palavras novas</h2>
+          <dl class="gloss" id="gloss"></dl>
+        </section>
+
+        <section class="block" id="teste">
+          <div class="block-n">05</div>
+          <h2>Teste rápido</h2>
+          <p>Sem nota. Se errar, tente de novo.</p>
+          <div class="quiz">
+<div class="q" data-why="Razão de aspecto alta reduz o arrasto e favorece o voo de cruzeiro, mas dificulta a manobra e a decolagem." data-hint="Pense na fragata.">
+  <h3>Uma asa longa e estreita, com razão de aspecto alta, é boa para:</h3>
+  <div class="choices"><button class="chip" data-ok="1">Voar economizando energia por muito tempo</button><button class="chip">Decolar dentro de uma mata fechada</button><button class="chip">Dar arrancadas curtas entre galhos</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="As pontas “em dedos” ajudam em voos de planeio passivo, subindo em correntes de ar quente." data-hint="Volte à aba “Planeio passivo”.">
+  <h3>Qual asa tem as penas das pontas separadas como dedos?</h3>
+  <div class="choices"><button class="chip" data-ok="1">A de planeio passivo, como a do urubu</button><button class="chip">A elíptica</button><button class="chip">A de alta velocidade</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="Carga alar é o peso da ave dividido pela área das asas." data-hint="É uma divisão.">
+  <h3>O que é carga alar?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Peso dividido pela área das asas</button><button class="chip">O comprimento da asa</button><button class="chip">A cor das penas</button></div>
+  <div class="fb" role="status"></div>
+</div>
+</div>
+        </section>
+        <section class="block" id="referencias">
+          <div class="block-n">06</div>
+          <h2>Referências e leitura complementar</h2>
+          <p>Onde conferir o que foi dito nesta aula. Os números entre colchetes no texto levam a estas fontes. Os links abrem em outra aba.</p>
+          <ol class="refs">
+<li id="ref-1"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4394594/" target="_blank" rel="noopener noreferrer">Qualitative skeletal correlates of wing shape in extant birds (Aves: Neoaves)</a><span class="ref-by">PubMed Central (artigo científico) · inglês · leitura complementar</span><span class="ref-note">Estudo sobre formatos de asa e razão de aspecto.</span></li>
+<li id="ref-2"><a href="https://www.audubon.org/news/these-paper-airplanes-fly-birds" target="_blank" rel="noopener noreferrer">These Paper Airplanes Fly Like Birds</a><span class="ref-by">Audubon · inglês</span><span class="ref-note">Os quatro tipos de asa (elíptica, de alta velocidade, de planeio ativo e de planeio passivo) explicados com aviões de papel.</span></li>
+<li id="ref-3"><a href="https://www.allaboutbirds.org/guide/Magnificent_Frigatebird/lifehistory" target="_blank" rel="noopener noreferrer">Magnificent Frigatebird Life History</a><span class="ref-by">All About Birds · Cornell Lab of Ornithology · inglês · leitura complementar</span><span class="ref-note">Voo e comportamento da fragata.</span></li>
+<li id="ref-4"><a href="https://www.allaboutbirds.org/guide/Peregrine_Falcon/overview" target="_blank" rel="noopener noreferrer">Peregrine Falcon Overview</a><span class="ref-by">All About Birds · Cornell Lab of Ornithology · inglês</span><span class="ref-note">O falcão-peregrino e seu mergulho de caça.</span></li>
+<li id="ref-5"><a href="https://royalsocietypublishing.org/doi/10.1098/rsif.2017.0099" target="_blank" rel="noopener noreferrer">Multi-cored vortices support function of slotted wing tips of birds in gliding and flapping flight</a><span class="ref-by">Journal of The Royal Society Interface · inglês</span><span class="ref-note">As pontas de asa com “dedos” reduzem o arrasto.</span></li>
+<li id="ref-6"><a href="https://arxiv.org/pdf/1012.0434" target="_blank" rel="noopener noreferrer">Thermal soaring flight of birds and unmanned aerial vehicles</a><span class="ref-by">arXiv (artigo científico) · inglês · leitura complementar</span><span class="ref-note">Artigo sobre como aves planam em correntes de ar quente e o papel da carga alar.</span></li>
+<li id="ref-7"><a href="https://www.britannica.com/animal/falconiform/Flapping-soaring-and-diving" target="_blank" rel="noopener noreferrer">Falconiform – Flapping, Soaring, Diving</a><span class="ref-by">Encyclopaedia Britannica · inglês</span><span class="ref-note">Como aves de rapina batem asas, planam e mergulham.</span></li>
+          </ol>
+          <p class="diagram-note">Os endereços foram abertos e conferidos em 29/09/2026. Alguns sites de revistas científicas e de órgãos oficiais exigem verificação humana e não puderam ser testados por robô. Sites externos podem mudar ou sair do ar.</p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band" id="levar">
+    <div class="container take">
+      <div><p class="label">Para levar</p><h2 class="h-section" style="margin-top:var(--space-4)">Em três frases</h2></div>
+      <div>
+        <ul>
+          <li>Asas longas e estreitas gastam pouca energia para se manter no ar, mas manobram pior; asas curtas e largas fazem o contrário.</li>
+          <li>Os quatro formatos clássicos são elíptica, de alta velocidade, de planeio ativo e de planeio passivo.</li>
+          <li>A carga alar, peso dividido pela área da asa, também ajuda a explicar como cada ave voa.</li>
+        </ul>
+        <div class="next">
+          <button class="btn btn-outline-band done-btn" id="done" type="button" data-lesson="12" aria-pressed="false">Marcar como concluída</button>
+          <a class="btn btn-band" href="13-maneiras-de-voar.html">Próxima: aula 13, Maneiras de voar <span data-i="arrow" data-cls="icon-arrow"></span></a>
+        </div>
+        <div class="next" style="margin-top:var(--space-4)"><a class="btn btn-outline-band" href="11-as-quatro-forcas.html">Anterior: aula 11, As quatro forças</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-in">
+    <div><div class="brand-big">Ornitologia do zero</div><p style="margin-top:var(--space-3)"><a href="../index.html#trilha">Todas as aulas</a> · <a href="../creditos.html">Créditos</a></p></div>
+    <a class="btn btn-ghost" href="#conteudo"><span data-i="up"></span> Voltar ao topo</a>
+  </div>
+</footer>
+<div class="toasts" aria-live="polite"></div>
+
+<script src="../assets/js/vendor/lenis.min.js"></script>
+<script src="../assets/js/credits.js"></script>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/extras.js"></script>
+<script src="../assets/js/motion.js"></script>
+<script src="../assets/js/aspect.js"></script>
+</body>
+</html>

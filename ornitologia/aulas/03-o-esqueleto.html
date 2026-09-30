@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 3 · O esqueleto · Ornitologia do zero</title>
+<meta name="description" content="Ossos ocos, quilha, fúrcula e pescoço longo: o esqueleto da ave, comparado ao nosso.">
+<script>
+  document.documentElement.className = "js";
+  (function () { var t; try { t = JSON.parse(localStorage.getItem("orn-theme")); } catch (e) {}
+    if (!t) t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    document.documentElement.dataset.theme = t; })();
+</script>
+<link rel="preload" href="../assets/fonts/cormorant-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/lessons.css">
+</head>
+<body data-root="../">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand" href="../index.html">Ornitologia do zero</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a class="link" href="../index.html#trilha">Todas as aulas</a>
+      <a class="link" href="../creditos.html">Créditos</a>
+    </nav>
+    <div class="nav-tools">
+      <button class="icon-btn" id="theme" type="button" aria-label="Mudar tema"></button>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mmenu"><span data-i="menu"></span></button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+<div class="mmenu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="mmenu-top"><span class="brand">Ornitologia do zero</span><button class="icon-btn" id="menu-close" type="button" aria-label="Fechar menu"><span data-i="x"></span></button></div>
+  <nav aria-label="Menu do celular"><a href="../index.html#trilha">Todas as aulas</a><a href="../creditos.html">Créditos</a></nav>
+</div>
+
+<main id="conteudo">
+  <section class="l-hero">
+    <div class="container l-hero-grid">
+      <div>
+        <p class="crumbs label"><a href="../index.html#trilha">Módulo 1</a> <span aria-hidden="true">·</span> <span>Aula 3</span></p>
+        <h1 data-split>O esqueleto</h1>
+        <p class="lede rv" style="--i:3">Por dentro, uma ave é uma máquina leve. Quase todos os ossos que você tem, ela tem também, só que fundidos, alongados ou ocos.</p>
+        <ul class="goals rv" style="--i:4" aria-label="O que você vai aprender">
+          <li><span data-i="check"></span>Os principais ossos de uma ave e onde ficam</li>
+          <li><span data-i="check"></span>Por que o esqueleto é leve, mas forte</li>
+          <li><span data-i="check"></span>Como a asa se compara ao nosso braço</li>
+        </ul>
+      </div>
+      <figure class="ave-card rv rv-grow" style="--i:2">
+        <img src="../assets/img/photos/garca.webp" width="1400" height="1867" alt="Garça-branca-grande com o pescoço longo e curvado, o bico amarelo tocando as penas do peito" style="aspect-ratio:1 / 1;object-position:62% 22%" fetchpriority="high">
+        <figcaption>
+          <p class="ave-name"><span class="label">Ave da aula</span><br><strong>Garça-branca-grande</strong> <em>Ardea alba</em></p>
+          <p class="credit" data-credit="garca"></p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:var(--space-12)">
+    <div class="container l-body">
+      <aside class="toc" aria-label="Nesta aula">
+        <details open>
+          <summary>Nesta aula <span data-i="down"></span></summary>
+          <ol>
+            <li><a href="#mapa">Mapa do esqueleto</a></li>
+            <li><a href="#braco">Seu braço, a asa dela</a></li>
+            <li><a href="#oco">Ossos ocos</a></li>
+            <li><a href="#pescoco">Pescoço e coluna</a></li>
+            <li><a href="#palavras">Palavras novas</a></li>
+            <li><a href="#teste">Teste rápido</a></li>
+            <li><a href="#referencias">Referências</a></li>
+          </ol>
+        </details>
+      </aside>
+      <div>
+
+        <section class="block" id="mapa">
+          <div class="block-n">01</div>
+          <h2>Mapa do esqueleto</h2>
+          <p class="rv">Este é um esqueleto esquemático de ave, visto de baixo, com as asas abertas e a cabeça para cima. Assim as asas ficam separadas do corpo e dá para ver cada osso. Ele não representa uma espécie específica. Os nomes seguem as fontes <sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>, <a href="#ref-2" aria-label="Referência 2">2</a>]</sup>. Use os botões para destacar uma região e toque nos pontos para ver os nomes.</p>
+          <figure class="fig">
+            <p class="hint"><span data-i="pointer"></span> Escolha uma região e toque nos pontos do desenho.</p>
+            <div class="layers" data-target="sk" data-idle="Nenhuma região destacada.">
+              <button class="chip" data-k="head" data-text="Cabeça e pescoço: crânio leve, bico e uma coluna do pescoço longa e flexível.">Cabeça e pescoço</button>
+              <button class="chip" data-k="trunk" data-text="Tronco: coluna rígida, costelas, quilha e a bacia fundida ao sinsacro.">Tronco</button>
+              <button class="chip" data-k="wing" data-text="Asa: o mesmo plano do braço humano, com a mão reduzida e fundida.">Asa</button>
+              <button class="chip" data-k="leg" data-text="Perna: um osso longo sem penas (o tarsometatarso) faz a ave parecer ter um joelho para trás.">Perna</button>
+            </div>
+            <p class="diagram-note" style="min-height:0;margin:0 0 var(--space-3)">Nenhuma região destacada.</p>
+            <div class="hs" data-list>
+              
+<svg id="sk" class="sk" viewBox="0 0 800 530" role="img" aria-label="Esqueleto esquemático de uma ave com as asas abertas, visto de baixo: cabeça e pescoço, tronco, asas e pernas">
+  <g class="g g-wing">
+    <path class="sil" d="M448 176 C 520 150, 640 132, 770 150 C 776 200, 740 232, 700 236 C 620 246, 520 262, 452 262 Z"/>
+    <line class="l" x1="448" y1="178" x2="540" y2="214"/>
+    <line class="l" style="stroke-width:4" x1="540" y1="214" x2="640" y2="190"/><line class="l" style="stroke-width:4" x1="543" y1="224" x2="642" y2="198"/>
+    <line class="l" style="stroke-width:5" x1="640" y1="190" x2="704" y2="172"/><line class="l" style="stroke-width:3" x1="704" y1="172" x2="744" y2="160"/>
+    <line class="l" style="stroke-width:3" x1="640" y1="190" x2="662" y2="166"/>
+    <circle class="b" cx="448" cy="178" r="8"/><circle class="b" cx="540" cy="214" r="8"/><circle class="b" cx="640" cy="190" r="8"/><g transform="translate(800 0) scale(-1 1)">
+    <path class="sil" d="M448 176 C 520 150, 640 132, 770 150 C 776 200, 740 232, 700 236 C 620 246, 520 262, 452 262 Z"/>
+    <line class="l" x1="448" y1="178" x2="540" y2="214"/>
+    <line class="l" style="stroke-width:4" x1="540" y1="214" x2="640" y2="190"/><line class="l" style="stroke-width:4" x1="543" y1="224" x2="642" y2="198"/>
+    <line class="l" style="stroke-width:5" x1="640" y1="190" x2="704" y2="172"/><line class="l" style="stroke-width:3" x1="704" y1="172" x2="744" y2="160"/>
+    <line class="l" style="stroke-width:3" x1="640" y1="190" x2="662" y2="166"/>
+    <circle class="b" cx="448" cy="178" r="8"/><circle class="b" cx="540" cy="214" r="8"/><circle class="b" cx="640" cy="190" r="8"/></g></g>
+  <g class="g g-leg">
+    <line class="l" x1="436" y1="396" x2="462" y2="428"/>
+    <line class="l" x1="462" y1="428" x2="446" y2="478"/>
+    <line class="l" x1="446" y1="478" x2="438" y2="506"/>
+    <line class="l" style="stroke-width:4" x1="438" y1="506" x2="416" y2="518"/><line class="l" style="stroke-width:4" x1="438" y1="506" x2="434" y2="522"/>
+    <line class="l" style="stroke-width:4" x1="438" y1="506" x2="452" y2="521"/><line class="l" style="stroke-width:4" x1="438" y1="506" x2="466" y2="512"/>
+    <circle class="b" cx="462" cy="428" r="7"/><circle class="b" cx="446" cy="478" r="6"/><g transform="translate(800 0) scale(-1 1)">
+    <line class="l" x1="436" y1="396" x2="462" y2="428"/>
+    <line class="l" x1="462" y1="428" x2="446" y2="478"/>
+    <line class="l" x1="446" y1="478" x2="438" y2="506"/>
+    <line class="l" style="stroke-width:4" x1="438" y1="506" x2="416" y2="518"/><line class="l" style="stroke-width:4" x1="438" y1="506" x2="434" y2="522"/>
+    <line class="l" style="stroke-width:4" x1="438" y1="506" x2="452" y2="521"/><line class="l" style="stroke-width:4" x1="438" y1="506" x2="466" y2="512"/>
+    <circle class="b" cx="462" cy="428" r="7"/><circle class="b" cx="446" cy="478" r="6"/></g></g>
+  <g class="g g-trunk">
+    <path class="l" style="stroke-width:3" d="M404 198 Q 440 200 458 228"/><path class="l" style="stroke-width:3" d="M404 222 Q 440 224 458 252"/><path class="l" style="stroke-width:3" d="M404 246 Q 440 248 458 276"/><path class="l" style="stroke-width:3" d="M404 270 Q 440 272 458 300"/><g transform="translate(800 0) scale(-1 1)"><path class="l" style="stroke-width:3" d="M404 198 Q 440 200 458 228"/><path class="l" style="stroke-width:3" d="M404 222 Q 440 224 458 252"/><path class="l" style="stroke-width:3" d="M404 246 Q 440 248 458 276"/><path class="l" style="stroke-width:3" d="M404 270 Q 440 272 458 300"/></g>
+    <line class="l" style="stroke-width:5" x1="448" y1="178" x2="424" y2="238"/><g transform="translate(800 0) scale(-1 1)"><line class="l" style="stroke-width:5" x1="448" y1="178" x2="424" y2="238"/></g>
+    <path class="l" style="stroke-width:4" d="M366 166 Q 372 222 400 236 Q 428 222 434 166"/>
+    <path class="b" d="M374 240 L426 240 Q 440 300 422 356 L 378 356 Q 360 300 374 240 Z"/>
+    <line class="l" x1="400" y1="246" x2="400" y2="350"/>
+    <path class="b" d="M366 362 Q 400 348 434 362 L 444 410 Q 400 424 356 410 Z"/>
+    <path class="b" d="M392 414 L408 414 L400 446 Z"/>
+  </g>
+  <g class="g g-head">
+    <path class="v" d="M400 94 L400 176"/>
+    <ellipse class="b" cx="400" cy="72" rx="26" ry="22"/>
+    <circle class="hole" cx="386" cy="74" r="6"/><circle class="hole" cx="414" cy="74" r="6"/>
+    <path class="b" d="M388 54 L400 10 L412 54 Z"/>
+  </g>
+</svg>
+              <button class="hs-dot" style="--x:50;--y:13.6" data-name="Crânio" data-text="A caixa óssea que protege o cérebro. É leve e, nos adultos, os ossos são fundidos. Os olhos são grandes e ocupam boa parte dele." aria-label="Crânio" aria-pressed="false"></button>
+              <button class="hs-dot" style="--x:50;--y:5.7" data-name="Bico" data-text="Ossos da maxila e da mandíbula cobertos por queratina. Não há dentes." aria-label="Bico" aria-pressed="false"></button>
+              <button class="hs-dot" style="--x:50;--y:25.5" data-name="Vértebras do pescoço" data-text="O pescoço tem muitas vértebras, mais do que as sete do pescoço humano, e é muito flexível. O número varia de espécie para espécie." aria-label="Vértebras do pescoço" aria-pressed="false"></button>
+              <button class="hs-dot" style="--x:46.5;--y:37" data-name="Fúrcula" data-text="Osso em forma de U, formado pela união das clavículas. Reforça a região dos ombros durante o voo." aria-label="Fúrcula" aria-pressed="false"></button>
+              <button class="hs-dot" style="--x:54.5;--y:39.2" data-name="Coracoide" data-text="Osso forte que liga o ombro ao esterno. Aguenta o impacto do bater das asas." aria-label="Coracoide" aria-pressed="false"></button>
+              <button class="hs-dot" style="--x:50;--y:56.6" data-name="Quilha" data-text="Crista de osso no meio do peito (esterno), onde se prendem os grandes músculos que movem as asas." aria-label="Quilha" aria-pressed="false"></button>
+              <button class="hs-dot" style="--x:55.8;--y:45.3" data-name="Costelas" data-text="Formam a caixa que protege o coração e os pulmões. Têm pequenas projeções que as prendem umas às outras." aria-label="Costelas" aria-pressed="false"></button>
+              <button class="hs-dot" style="--x:50;--y:73.2" data-name="Sinsacro" data-text="Vértebras do quadril fundidas ao osso da bacia. Formam uma base firme para as pernas." aria-label="Sinsacro" aria-pressed="false"></button>
+              <button class="hs-dot" style="--x:50;--y:81.9" data-name="Pigóstilo" data-text="Pequeno osso no fim da coluna. É onde se prendem as penas da cauda." aria-label="Pigóstilo" aria-pressed="false"></button>
+              <button class="hs-dot" style="--x:61.8;--y:37" data-name="Úmero" data-text="O osso do “braço”, igual ao nosso úmero. Liga o ombro ao cotovelo." aria-label="Úmero" aria-pressed="false"></button>
+              <button class="hs-dot" style="--x:73.8;--y:38.3" data-name="Rádio e ulna" data-text="Os dois ossos do “antebraço”, como nos humanos. As penas secundárias se prendem à ulna." aria-label="Rádio e ulna" aria-pressed="false"></button>
+              <button class="hs-dot" style="--x:84;--y:34.2" data-name="Carpometacarpo" data-text="Os ossos da “mão” fundidos em um só. As penas primárias se prendem a ele." aria-label="Carpometacarpo" aria-pressed="false"></button>
+              <button class="hs-dot" style="--x:90.5;--y:31.3" data-name="Dedos da asa" data-text="Restos dos dedos, muito reduzidos. O menor, o “polegar”, sustenta a álula." aria-label="Dedos da asa" aria-pressed="false"></button>
+              <button class="hs-dot" style="--x:56.1;--y:77.7" data-name="Fêmur" data-text="O osso da coxa, curto e escondido sob as penas do corpo." aria-label="Fêmur" aria-pressed="false"></button>
+              <button class="hs-dot" style="--x:56.8;--y:85.3" data-name="Tibiotarso" data-text="A “canela” da ave, muitas vezes coberta de penas. O “joelho” que dobra para trás, na verdade, é o tornozelo." aria-label="Tibiotarso" aria-pressed="false"></button>
+              <button class="hs-dot" style="--x:55.3;--y:92.8" data-name="Tarsometatarso" data-text="Osso longo e sem penas, formado por ossos do pé fundidos. Na maioria das aves é o que parece ser a “perna”." aria-label="Tarsometatarso" aria-pressed="false"></button>
+              <button class="hs-dot" style="--x:55;--y:97" data-name="Dedos do pé" data-text="Geralmente três dedos para a frente e um para trás. Terminam em garras." aria-label="Dedos do pé" aria-pressed="false"></button>
+            </div>
+            <div class="hs-panel" aria-live="polite"><h3>Escolha um ponto</h3><p>O nome e a função do osso aparecem aqui.</p></div>
+            <p class="diagram-note">Desenho esquemático feito para o curso. A forma e o tamanho dos ossos variam muito entre as espécies.</p>
+          </figure>
+        </section>
+
+        <section class="block" id="braco">
+          <div class="block-n">02</div>
+          <h2>Seu braço, a asa dela</h2>
+          <p class="rv">A asa não é um órgão novo: é o mesmo membro da frente que você usa para segurar um copo. Repare como cada parte tem correspondente.</p>
+          <ul class="rules">
+            <li class="rv"><strong>Úmero</strong><span>O osso do braço. Na ave, é curto e forte, e liga a asa ao ombro.</span></li>
+            <li class="rv"><strong>Rádio e ulna</strong><span>Os dois ossos do antebraço. Na asa, a ulna carrega as penas secundárias.</span></li>
+            <li class="rv"><strong>Carpometacarpo</strong><span>A “mão”: vários ossos fundidos em um só. Carrega as penas primárias.</span></li>
+          </ul>
+        </section>
+
+        <section class="block" id="oco">
+          <div class="block-n">03</div>
+          <h2>Ossos ocos, e mesmo assim fortes</h2>
+          <p class="rv">Em muitas aves, alguns ossos são <button class="term" data-def="Ossos com espaços cheios de ar por dentro, ligados ao sistema respiratório. Deixam o esqueleto mais leve.">pneumáticos</button>: têm espaços internos cheios de ar. Por dentro, finas travas de osso, como vigas, dão resistência<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>, <a href="#ref-2" aria-label="Referência 2">2</a>]</sup>. É o mesmo princípio de um tubo de alumínio: pouco material, forma bem pensada.</p>
+          <figure class="fig">
+            <div class="diagram">
+<svg class="bone-cut" viewBox="0 0 640 230" role="img" aria-label="Corte de um osso maciço e de um osso oco com travas internas">
+  <circle class="sol" cx="170" cy="105" r="70"/>
+  <text x="170" y="205">Osso maciço</text>
+  <text class="sub" x="170" y="224">pesado</text>
+  <circle class="wall" cx="470" cy="105" r="70"/>
+  <circle class="hole" cx="470" cy="105" r="56"/>
+  <line class="strut" x1="470" y1="105" x2="470" y2="52"/><line class="strut" x1="470" y1="105" x2="425" y2="132"/><line class="strut" x1="470" y1="105" x2="516" y2="132"/>
+  <line class="strut" x1="440" y1="70" x2="500" y2="140" style="opacity:.55"/>
+  <text x="470" y="205">Osso oco, com travas</text>
+  <text class="sub" x="470" y="224">leve e resistente</text>
+</svg></div>
+            <p class="diagram-note">Corte esquemático, sem escala. Nem todos os ossos são ocos: aves que mergulham costumam ter ossos mais densos.</p>
+          </figure>
+        </section>
+
+        <section class="block" id="pescoco">
+          <div class="block-n">04</div>
+          <h2>Pescoço e coluna</h2>
+          <p class="rv">A garça mostra bem a divisão<sup class="cite">[<a href="#ref-2" aria-label="Referência 2">2</a>]</sup>: o pescoço tem muitas vértebras e vira em curvas, mas o tronco é firme. Na região do <button class="term" data-def="Vértebras do quadril fundidas entre si e ao osso da bacia. Dão firmeza ao tronco.">sinsacro</button>, as vértebras se fundem e formam uma base rígida para as pernas e as asas. No fim da coluna, o <button class="term" data-def="Pequeno osso no fim da coluna, onde as penas da cauda se prendem.">pigóstilo</button> segura as penas da cauda.</p>
+          <p class="rv">A <button class="term" data-def="Crista de osso no meio do peito, onde se prendem os grandes músculos do voo.">quilha</button> é uma crista no osso do peito. Ela aumenta a área onde se prendem os músculos mais fortes do corpo, os que batem as asas. E a <button class="term" data-def="Osso em forma de U, formado pela união das clavículas. Popularmente chamado de “osso da sorte”.">fúrcula</button> funciona como uma trava elástica entre os ombros<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>, <a href="#ref-3" aria-label="Referência 3">3</a>]</sup>.</p>
+          <figure class="photo-wide rv rv-grow">
+            <img src="../assets/img/photos/esqueleto-museu.webp" width="1400" height="885" alt="Esqueleto de uma ave de pescoço longo suspenso em um museu, com bico, coluna, costelas e pernas visíveis" loading="lazy">
+            <figcaption class="credit">Esqueleto de ave de pescoço longo em exposição num museu. A espécie não é identificada na fonte. <span data-credit="esqueleto-museu"></span></figcaption>
+          </figure>
+          <figure class="photo-wide rv rv-grow" style="margin-top:var(--space-4)">
+            <img src="../assets/img/photos/garca.webp" width="1400" height="1867" alt="Garça-branca-grande com o pescoço curvado, mostrando o comprimento e a flexibilidade" style="max-height:640px;object-fit:cover;object-position:60% 30%" loading="lazy">
+            <figcaption class="credit">A foto mostra uma subespécie de outro continente (<i>Ardea alba modesta</i>); no Brasil vive a subespécie <i>egretta</i>, da mesma espécie. <span data-credit="garca"></span></figcaption>
+          </figure>
+        </section>
+
+        <section class="block" id="palavras">
+          <div class="block-n">05</div>
+          <h2>Palavras novas</h2>
+          <dl class="gloss" id="gloss"></dl>
+        </section>
+
+        <section class="block" id="teste">
+          <div class="block-n">06</div>
+          <h2>Teste rápido</h2>
+          <p>Sem nota. Se errar, tente de novo.</p>
+          <div class="quiz">
+<div class="q" data-why="Ossos com espaços de ar e travas internas dão resistência com pouco peso." data-hint="Pense no corte do osso oco.">
+  <h3>Por que o esqueleto de uma ave é leve, apesar de resistente?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Muitos ossos são ocos e reforçados por travas internas</button><button class="chip">Os ossos das aves são feitos de plástico</button><button class="chip">Elas não têm coluna vertebral</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="A quilha aumenta a área onde se fixam os músculos do voo." data-hint="É uma crista no osso do peito.">
+  <h3>Para que serve a quilha, no peito da ave?</h3>
+  <div class="choices"><button class="chip">Guardar comida</button><button class="chip" data-ok="1">Prender os músculos que batem as asas</button><button class="chip">Proteger os olhos</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="O carpometacarpo reúne os ossos da mão em uma só peça e carrega as penas primárias." data-hint="É a ponta da asa, onde ficam as penas primárias.">
+  <h3>Qual parte da asa corresponde à nossa mão?</h3>
+  <div class="choices"><button class="chip">Úmero</button><button class="chip" data-ok="1">Carpometacarpo</button><button class="chip">Fúrcula</button></div>
+  <div class="fb" role="status"></div>
+</div>
+</div>
+        </section>
+        <section class="block" id="referencias">
+          <div class="block-n">07</div>
+          <h2>Referências e leitura complementar</h2>
+          <p>Onde conferir o que foi dito nesta aula. Os números entre colchetes no texto levam a estas fontes. Os links abrem em outra aba.</p>
+          <ol class="refs">
+<li id="ref-1"><a href="https://ucmp.berkeley.edu/diapsids/birds/birdmm.html" target="_blank" rel="noopener noreferrer">Morphology of the Aves</a><span class="ref-by">UCMP · Universidade da Califórnia, Berkeley · inglês</span><span class="ref-note">Bico sem dentes, ossos ocos ligados aos sacos aéreos, quilha do esterno e fúrcula.</span></li>
+<li id="ref-2"><a href="https://www.britannica.com/animal/bird-animal/Skeleton" target="_blank" rel="noopener noreferrer">Bird – Skeleton</a><span class="ref-by">Encyclopaedia Britannica · inglês</span><span class="ref-note">O esqueleto da ave: fusão de ossos, pneumatização, quilha, fúrcula e número de vértebras do pescoço.</span></li>
+<li id="ref-3"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3364262/" target="_blank" rel="noopener noreferrer">Functional Morphometric Analysis of the Furcula in Mesozoic Birds</a><span class="ref-by">PubMed Central (artigo científico) · inglês · leitura complementar</span><span class="ref-note">Estudo científico sobre a função da fúrcula no voo. Leitura mais técnica.</span></li>
+<li id="ref-4"><a href="https://academy.allaboutbirds.org/all-about-bird-anatomy/" target="_blank" rel="noopener noreferrer">All About Bird Anatomy</a><span class="ref-by">Bird Academy · Cornell Lab of Ornithology · inglês</span><span class="ref-note">Partes do corpo da ave e o vocabulário usado por quem as observa.</span></li>
+          </ol>
+          <p class="diagram-note">Os endereços foram abertos e conferidos em 29/09/2026. Alguns sites de revistas científicas e de órgãos oficiais exigem verificação humana e não puderam ser testados por robô. Sites externos podem mudar ou sair do ar.</p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band" id="levar">
+    <div class="container take">
+      <div><p class="label">Para levar</p><h2 class="h-section" style="margin-top:var(--space-4)">Em três frases</h2></div>
+      <div>
+        <ul>
+          <li>O esqueleto da ave tem os mesmos grupos de ossos que o nosso, mas fundidos, alongados ou ocos para poupar peso.</li>
+          <li>A quilha, no peito, e a fúrcula, nos ombros, sustentam os músculos e os ombros no voo.</li>
+          <li>A asa é o braço da ave: o úmero, o rádio e a ulna são reconhecíveis, e a mão fica reduzida a poucos ossos fundidos.</li>
+        </ul>
+        <div class="next">
+          <button class="btn btn-outline-band done-btn" id="done" type="button" data-lesson="3" aria-pressed="false">Marcar como concluída</button>
+          <a class="btn btn-band" href="04-as-penas.html">Próxima: aula 4, As penas <span data-i="arrow" data-cls="icon-arrow"></span></a>
+        </div>
+        <div class="next" style="margin-top:var(--space-4)"><a class="btn btn-outline-band" href="02-o-corpo-por-fora.html">Anterior: aula 2, O corpo por fora</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-in">
+    <div><div class="brand-big">Ornitologia do zero</div><p style="margin-top:var(--space-3)"><a href="../index.html#trilha">Todas as aulas</a> · <a href="../creditos.html">Créditos</a></p></div>
+    <a class="btn btn-ghost" href="#conteudo"><span data-i="up"></span> Voltar ao topo</a>
+  </div>
+</footer>
+<div class="toasts" aria-live="polite"></div>
+
+<script src="../assets/js/vendor/lenis.min.js"></script>
+<script src="../assets/js/credits.js"></script>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/extras.js"></script>
+<script src="../assets/js/motion.js"></script>
+
+</body>
+</html>

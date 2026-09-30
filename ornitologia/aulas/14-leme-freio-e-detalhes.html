@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 14 · Leme, freio e detalhes · Ornitologia do zero</title>
+<meta name="description" content="A cauda como leme e freio, a álula e as pontas de asa com fendas.">
+<script>
+  document.documentElement.className = "js";
+  (function () { var t; try { t = JSON.parse(localStorage.getItem("orn-theme")); } catch (e) {}
+    if (!t) t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    document.documentElement.dataset.theme = t; })();
+</script>
+<link rel="preload" href="../assets/fonts/cormorant-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/lessons.css"><style>
+.bird { fill: var(--surface-2); stroke: var(--muted); stroke-width: 2; stroke-linejoin: round; }
+.tail { fill: color-mix(in srgb, var(--accent) 30%, var(--surface-2)); stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
+#tail-svg svg { width: 100%; max-width: 420px; height: auto; display: block; margin-inline: auto; }
+.bars { display: grid; gap: var(--space-3); margin-top: var(--space-3); }
+.bars label { display: flex; justify-content: space-between; font-weight: 500; margin-bottom: var(--space-1); }
+</style>
+</head>
+<body data-root="../">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand" href="../index.html">Ornitologia do zero</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a class="link" href="../index.html#trilha">Todas as aulas</a>
+      <a class="link" href="../creditos.html">Créditos</a>
+    </nav>
+    <div class="nav-tools">
+      <button class="icon-btn" id="theme" type="button" aria-label="Mudar tema"></button>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mmenu"><span data-i="menu"></span></button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+<div class="mmenu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="mmenu-top"><span class="brand">Ornitologia do zero</span><button class="icon-btn" id="menu-close" type="button" aria-label="Fechar menu"><span data-i="x"></span></button></div>
+  <nav aria-label="Menu do celular"><a href="../index.html#trilha">Todas as aulas</a><a href="../creditos.html">Créditos</a></nav>
+</div>
+
+<main id="conteudo">
+  <section class="l-hero">
+    <div class="container l-hero-grid">
+      <div>
+        <p class="crumbs label"><a href="../index.html#trilha">Módulo 3</a> <span aria-hidden="true">·</span> <span>Aula 14</span></p>
+        <h1 data-split>Leme, freio e detalhes</h1>
+        <p class="lede rv" style="--i:3">Além das asas, a ave voa com a cauda e com pequenos detalhes nas penas. Eles decidem a diferença entre uma curva bem feita e uma queda.</p>
+        <ul class="goals rv" style="--i:4" aria-label="O que você vai aprender">
+          <li><span data-i="check"></span>Como a cauda funciona como leme e freio</li>
+          <li><span data-i="check"></span>Para que serve a álula</li>
+          <li><span data-i="check"></span>O que são as pontas de asa com fendas</li>
+        </ul>
+      </div>
+      <figure class="ave-card rv rv-grow" style="--i:2">
+        <img src="../assets/img/photos/gaviao-voo.webp" width="1400" height="1062" alt="Gavião-carijó em voo entre folhas, com as asas semiabertas e a cauda estendida" style="aspect-ratio:4 / 3;object-position:58% 55%" fetchpriority="high">
+        <figcaption>
+          <p class="ave-name"><span class="label">Ave da aula</span><br><strong>Gavião-carijó</strong> <em>Rupornis magnirostris</em></p>
+          <p class="credit" data-credit="gaviao-voo"></p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:var(--space-12)">
+    <div class="container l-body">
+      <aside class="toc" aria-label="Nesta aula">
+        <details open>
+          <summary>Nesta aula <span data-i="down"></span></summary>
+          <ol>
+            <li><a href="#cauda">A cauda</a></li>
+            <li><a href="#alula">Álula</a></li>
+            <li><a href="#pontas">Pontas com fendas</a></li>
+            <li><a href="#palavras">Palavras novas</a></li>
+            <li><a href="#teste">Teste rápido</a></li>
+            <li><a href="#referencias">Referências</a></li>
+          </ol>
+        </details>
+      </aside>
+      <div>
+
+        <section class="block" id="cauda">
+          <div class="block-n">01</div>
+          <h2>A cauda</h2>
+          <p class="rv">A cauda de uma ave não é enfeite. Um estudo clássico de aerodinâmica mostrou que a sustentação que ela gera cresce com o quadrado da largura máxima da cauda, e não com a área, como numa asa comum<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>]</sup>. Uma cauda em forquilha, aberta em um triângulo de pouco mais de 120°, é muito eficiente para controlar a subida, a descida e as curvas<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>]</sup>. As fragatas, por exemplo, usam a cauda longa para dirigir<sup class="cite">[<a href="#ref-5" aria-label="Referência 5">5</a>]</sup>. Experimente abrir e fechar a cauda do desenho.</p>
+          <figure class="fig">
+            <div class="diagram">
+              <div class="ctrl"><label for="tail-range">Abertura da cauda <output id="tail-out" for="tail-range">40°</output></label><input id="tail-range" type="range" min="0" max="120" step="1" value="40"></div>
+              <div id="tail-svg"></div>
+              <div class="bars">
+                <div><label>Arrasto (freio)</label><div class="meter warn"><i id="tail-drag"></i></div></div>
+                <div><label>Facilidade de ir depressa</label><div class="meter"><i id="tail-speed"></i></div></div>
+              </div>
+              <p class="diagram-note" id="tail-text" aria-live="polite"></p>
+            </div>
+            <p class="diagram-note">Modelo didático. Só a tendência é real: os valores não são medidas<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>, <a href="#ref-2" aria-label="Referência 2">2</a>]</sup>.</p>
+          </figure>
+        </section>
+
+        <section class="block" id="alula">
+          <div class="block-n">02</div>
+          <h2>Álula</h2>
+          <p class="rv">Na frente da asa, perto do pulso, há um pequeno grupo de penas presas ao “polegar” da ave: a <button class="term" data-def="Pequeno grupo de penas na parte da frente da asa, presas ao “polegar”.">álula</button>. Ela é conhecida por ajudar em voos lentos e em ângulos altos, como na hora de pousar, quando a asa está muito inclinada e corre o risco de estol<sup class="cite">[<a href="#ref-3" aria-label="Referência 3">3</a>]</sup>. Estudos mostram que ela aumenta a sustentação e muitas vezes atrasa o estol, mas o mecanismo exato ainda é discutido<sup class="cite">[<a href="#ref-3" aria-label="Referência 3">3</a>]</sup>.</p>
+          <figure class="fig">
+            <div class="diagram">
+              <p class="hint"><span data-i="pointer"></span> Escolha um grupo de penas.</p>
+              <div class="layers" data-target="wing" data-idle="Esquema didático de uma asa aberta, vista de cima.">
+                <button class="chip" data-k="alula" data-text="Álula: pequeno grupo de penas na frente da asa. Ajuda em voo lento e na hora de pousar.">Álula</button>
+                <button class="chip" data-k="prim" data-text="Primárias: as penas mais longas, presas à “mão”. Nas pontas, em muitas aves, elas se separam em fendas.">Primárias</button>
+              </div>
+              <div id="wing" class="wing"></div>
+              <p class="diagram-note" aria-live="polite">Esquema didático de uma asa aberta, vista de cima.</p>
+            </div>
+          </figure>
+        </section>
+
+        <section class="block" id="pontas">
+          <div class="block-n">03</div>
+          <h2>Pontas com fendas</h2>
+          <p class="rv">Olhe a ponta da asa de um urubu ou de um gavião: as penas se abrem como dedos. Essas penas têm um recorte nas bordas, a <button class="term" data-def="Recorte na borda da pena, mais estreito na ponta, que ajuda a separar as penas da ponta da asa.">emarginação</button>, que permite que elas se separem. Esse formato reduz o arrasto que a ponta da asa cria quando ela gera sustentação<sup class="cite">[<a href="#ref-4" aria-label="Referência 4">4</a>]</sup>. Curiosamente, aves de planeio muito especializadas, como as de asas longas e estreitas, costumam resolver o mesmo problema com asas longas em vez de fendas, e há aves com fendas que nem planam<sup class="cite">[<a href="#ref-4" aria-label="Referência 4">4</a>]</sup>.</p>
+          <figure class="photo-wide"><img src="../assets/img/photos/gaviao-voo.webp" width="1280" height="1062" alt="Gavião-carijó em voo, com as penas das asas separadas" style="max-height:560px;object-fit:cover;object-position:60% 50%" loading="lazy"><figcaption class="credit">Gavião-carijó em voo: as penas das asas aparecem separadas na ponta. <span data-credit="gaviao-voo"></span></figcaption></figure>
+          <figure class="photo-wide"><img src="../assets/img/photos/urubu-cabeca-vermelha.webp" width="1280" height="853" alt="Urubu-de-cabeça-vermelha em voo, com as penas das pontas das asas abertas em dedos" style="max-height:520px;object-fit:cover" loading="lazy"><figcaption class="credit">Urubu-de-cabeça-vermelha: pontas das asas em leque. <span data-credit="urubu-cabeca-vermelha"></span></figcaption></figure>
+        </section>
+
+        <section class="block" id="palavras">
+          <div class="block-n">04</div>
+          <h2>Palavras novas</h2>
+          <dl class="gloss" id="gloss"></dl>
+        </section>
+
+        <section class="block" id="teste">
+          <div class="block-n">05</div>
+          <h2>Teste rápido</h2>
+          <p>Sem nota. Se errar, tente de novo.</p>
+          <div class="quiz">
+<div class="q" data-why="Aberta, a cauda oferece mais superfície ao ar, gerando mais arrasto e mais controle em voo lento." data-hint="Reveja o controle deslizante.">
+  <h3>O que acontece quando a ave abre bem a cauda?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Aumenta a superfície e o arrasto, servindo de freio</button><button class="chip">Ela voa mais depressa, sempre</button><button class="chip">Nada muda</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="A álula é um pequeno grupo de penas presas ao “polegar”, na frente da asa." data-hint="É um detalhe da asa.">
+  <h3>Onde fica a álula?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Na frente da asa, perto do pulso</button><button class="chip">Na ponta da cauda</button><button class="chip">No pé</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="As penas separadas na ponta reduzem o arrasto induzido em muitas aves." data-hint="Pense no urubu.">
+  <h3>Para que servem as pontas de asa com fendas?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Reduzir o arrasto gerado pela ponta da asa</button><button class="chip">Aumentar o peso</button><button class="chip">Cantar melhor</button></div>
+  <div class="fb" role="status"></div>
+</div>
+</div>
+        </section>
+        <section class="block" id="referencias">
+          <div class="block-n">06</div>
+          <h2>Referências e leitura complementar</h2>
+          <p>Onde conferir o que foi dito nesta aula. Os números entre colchetes no texto levam a estas fontes. Os links abrem em outra aba.</p>
+          <ol class="refs">
+<li id="ref-1"><a href="https://royalsocietypublishing.org/doi/10.1098/rstb.1993.0079" target="_blank" rel="noopener noreferrer">On the aerodynamics of birds' tails</a><span class="ref-by">Philosophical Transactions of the Royal Society B (1993) · inglês</span><span class="ref-note">Estudo clássico sobre a cauda como leme, freio e fonte de sustentação.</span></li>
+<li id="ref-2"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7033732/" target="_blank" rel="noopener noreferrer">High aerodynamic lift from the tail reduces drag in gliding raptors</a><span class="ref-by">PubMed Central (artigo científico) · inglês · leitura complementar</span><span class="ref-note">Como a cauda ajuda a planar.</span></li>
+<li id="ref-3"><a href="https://www.nature.com/articles/srep09914" target="_blank" rel="noopener noreferrer">The Function of the Alula in Avian Flight</a><span class="ref-by">Scientific Reports (Nature) · inglês · leitura complementar</span><span class="ref-note">Estudo sobre como a álula ajuda no voo lento e adia o estol.</span></li>
+<li id="ref-4"><a href="https://royalsocietypublishing.org/doi/10.1098/rsif.2017.0099" target="_blank" rel="noopener noreferrer">Multi-cored vortices support function of slotted wing tips of birds in gliding and flapping flight</a><span class="ref-by">Journal of The Royal Society Interface · inglês</span><span class="ref-note">As pontas de asa com “dedos” reduzem o arrasto.</span></li>
+<li id="ref-5"><a href="https://www.allaboutbirds.org/guide/Magnificent_Frigatebird/lifehistory" target="_blank" rel="noopener noreferrer">Magnificent Frigatebird Life History</a><span class="ref-by">All About Birds · Cornell Lab of Ornithology · inglês · leitura complementar</span><span class="ref-note">Voo e comportamento da fragata.</span></li>
+<li id="ref-6"><a href="https://academy.allaboutbirds.org/feathers-article/" target="_blank" rel="noopener noreferrer">Everything You Need To Know About Feathers</a><span class="ref-by">Bird Academy · Cornell Lab of Ornithology · inglês</span><span class="ref-note">Estrutura da pena: cálamo, raque, barbas e bárbulas, e os tipos de pena.</span></li>
+          </ol>
+          <p class="diagram-note">Os endereços foram abertos e conferidos em 29/09/2026. Alguns sites de revistas científicas e de órgãos oficiais exigem verificação humana e não puderam ser testados por robô. Sites externos podem mudar ou sair do ar.</p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band" id="levar">
+    <div class="container take">
+      <div><p class="label">Para levar</p><h2 class="h-section" style="margin-top:var(--space-4)">Em três frases</h2></div>
+      <div>
+        <ul>
+          <li>A cauda funciona como leme e como freio: aberta, oferece mais superfície ao ar.</li>
+          <li>A álula, um pequeno grupo de penas na frente da asa, ajuda em voos lentos e em ângulos altos, como na hora de pousar.</li>
+          <li>As penas das pontas das asas, separadas em fendas, ajudam a reduzir o arrasto em muitas aves.</li>
+        </ul>
+        <div class="next">
+          <button class="btn btn-outline-band done-btn" id="done" type="button" data-lesson="14" aria-pressed="false">Marcar como concluída</button>
+          <a class="btn btn-band" href="15-migracao-e-navegacao.html">Próxima: aula 15, Migração e navegação <span data-i="arrow" data-cls="icon-arrow"></span></a>
+        </div>
+        <div class="next" style="margin-top:var(--space-4)"><a class="btn btn-outline-band" href="13-maneiras-de-voar.html">Anterior: aula 13, Maneiras de voar</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-in">
+    <div><div class="brand-big">Ornitologia do zero</div><p style="margin-top:var(--space-3)"><a href="../index.html#trilha">Todas as aulas</a> · <a href="../creditos.html">Créditos</a></p></div>
+    <a class="btn btn-ghost" href="#conteudo"><span data-i="up"></span> Voltar ao topo</a>
+  </div>
+</footer>
+<div class="toasts" aria-live="polite"></div>
+
+<script src="../assets/js/vendor/lenis.min.js"></script>
+<script src="../assets/js/credits.js"></script>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/extras.js"></script>
+<script src="../assets/js/motion.js"></script>
+<script src="../assets/js/tail.js"></script><script src="../assets/js/wing.js"></script>
+</body>
+</html>

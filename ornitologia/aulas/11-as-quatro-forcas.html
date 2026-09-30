@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 11 · As quatro forças · Ornitologia do zero</title>
+<meta name="description" content="Peso, sustentação, empuxo e arrasto: como o ar segura uma ave, com um túnel de vento didático.">
+<script>
+  document.documentElement.className = "js";
+  (function () { var t; try { t = JSON.parse(localStorage.getItem("orn-theme")); } catch (e) {}
+    if (!t) t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    document.documentElement.dataset.theme = t; })();
+</script>
+<link rel="preload" href="../assets/fonts/cormorant-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/lessons.css">
+</head>
+<body data-root="../">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand" href="../index.html">Ornitologia do zero</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a class="link" href="../index.html#trilha">Todas as aulas</a>
+      <a class="link" href="../creditos.html">Créditos</a>
+    </nav>
+    <div class="nav-tools">
+      <button class="icon-btn" id="theme" type="button" aria-label="Mudar tema"></button>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mmenu"><span data-i="menu"></span></button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+<div class="mmenu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="mmenu-top"><span class="brand">Ornitologia do zero</span><button class="icon-btn" id="menu-close" type="button" aria-label="Fechar menu"><span data-i="x"></span></button></div>
+  <nav aria-label="Menu do celular"><a href="../index.html#trilha">Todas as aulas</a><a href="../creditos.html">Créditos</a></nav>
+</div>
+
+<main id="conteudo">
+  <section class="l-hero">
+    <div class="container l-hero-grid">
+      <div>
+        <p class="crumbs label"><a href="../index.html#trilha">Módulo 3</a> <span aria-hidden="true">·</span> <span>Aula 11</span></p>
+        <h1 data-split>As quatro forças</h1>
+        <p class="lede rv" style="--i:3">Para voar, a ave precisa vencer o próprio peso. Quatro forças decidem se ela sobe, plana ou cai. A boa notícia: dá para entender todas com um desenho.</p>
+        <ul class="goals rv" style="--i:4" aria-label="O que você vai aprender">
+          <li><span data-i="check"></span>As quatro forças que atuam sobre uma ave em voo</li>
+          <li><span data-i="check"></span>Por que a asa tem um formato curvo</li>
+          <li><span data-i="check"></span>O que é o ângulo de ataque e o que é estol</li>
+        </ul>
+      </div>
+      <figure class="ave-card rv rv-grow" style="--i:2">
+        <img src="../assets/img/photos/gaviao.webp" width="1400" height="933" alt="Gavião-carijó pousado em um galho, de frente e de lado, com o olhar dirigido para a câmera" style="aspect-ratio:3 / 2;object-position:50% 25%" fetchpriority="high">
+        <figcaption>
+          <p class="ave-name"><span class="label">Ave da aula</span><br><strong>Gavião-carijó</strong> <em>Rupornis magnirostris</em></p>
+          <p class="credit" data-credit="gaviao"></p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:var(--space-12)">
+    <div class="container l-body">
+      <aside class="toc" aria-label="Nesta aula">
+        <details open>
+          <summary>Nesta aula <span data-i="down"></span></summary>
+          <ol>
+            <li><a href="#forcas">As quatro forças</a></li>
+            <li><a href="#asa">Por que a asa é curva</a></li>
+            <li><a href="#tunel">Túnel de vento</a></li>
+            <li><a href="#real">Aves de verdade</a></li>
+            <li><a href="#palavras">Palavras novas</a></li>
+            <li><a href="#teste">Teste rápido</a></li>
+            <li><a href="#referencias">Referências</a></li>
+          </ol>
+        </details>
+      </aside>
+      <div>
+
+        <section class="block" id="forcas">
+          <div class="block-n">01</div>
+          <h2>As quatro forças</h2>
+          <p class="rv"><sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>]</sup> Imagine uma ave voando em linha reta, sem subir nem descer. Quatro forças agem sobre ela. Escolha uma e veja de onde ela vem.</p>
+          <figure class="fig">
+            <div class="diagram">
+              <div class="layers" data-target="forces" data-idle="Escolha uma força para destacá-la.">
+                <button class="chip" data-k="lift" data-text="Sustentação: empurra a ave para cima. Nasce do ar que passa pela asa.">Sustentação</button>
+                <button class="chip" data-k="weight" data-text="Peso: a gravidade puxa a ave para baixo. É a força que a asa precisa vencer.">Peso</button>
+                <button class="chip" data-k="thrust" data-text="Empuxo: empurra a ave para a frente. A ave o produz batendo as asas.">Empuxo</button>
+                <button class="chip" data-k="drag" data-text="Arrasto: a resistência do ar, que empurra a ave para trás. Formas lisas e afiladas reduzem o arrasto.">Arrasto</button>
+              </div>
+              
+<svg id="forces" class="forces" viewBox="0 0 640 320" role="img" aria-label="Uma asa em corte com quatro setas: sustentação para cima, peso para baixo, empuxo para a frente e arrasto para trás">
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" style="fill:var(--terra-text)"/></marker></defs>
+  <g transform="translate(320 160)"><path class="airfoil" d="M -130 0 C -120 -30, -40 -42, 40 -30 C 90 -22, 120 -8, 130 4 C 100 10, 20 16, -50 12 C -100 8, -125 6, -130 0 Z"/></g>
+  <g class="fa lift"><line x1="320" y1="130" x2="320" y2="34" style="stroke:var(--terra-text);stroke-width:4" marker-end="url(#ah)"/><text class="ftag" x="336" y="48">Sustentação</text></g>
+  <g class="fa weight"><line x1="320" y1="190" x2="320" y2="286" style="stroke:var(--terra-text);stroke-width:4" marker-end="url(#ah)"/><text class="ftag" x="336" y="280">Peso</text></g>
+  <g class="fa thrust"><line x1="470" y1="160" x2="580" y2="160" style="stroke:var(--terra-text);stroke-width:4" marker-end="url(#ah)"/><text class="ftag" x="500" y="146">Empuxo</text></g>
+  <g class="fa drag"><line x1="170" y1="160" x2="60" y2="160" style="stroke:var(--terra-text);stroke-width:4" marker-end="url(#ah)"/><text class="ftag" x="70" y="146">Arrasto</text></g>
+</svg>
+              <p class="diagram-note" aria-live="polite">Escolha uma força para destacá-la.</p>
+            </div>
+          </figure>
+          <p class="rv" style="margin-top:var(--space-6)">Em voo nivelado e constante, as forças se equilibram: <strong>sustentação igual ao peso</strong> e <strong>empuxo igual ao arrasto</strong><sup class="cite">[<a href="#ref-2" aria-label="Referência 2">2</a>]</sup>. Se a sustentação passa do peso, a ave sobe. Se o empuxo passa do arrasto, ela acelera.</p>
+        </section>
+
+        <section class="block" id="asa">
+          <div class="block-n">02</div>
+          <h2>Por que a asa é curva</h2>
+          <p class="rv">O corte de uma asa se chama <button class="term" data-def="Forma de uma asa vista em corte: curva em cima, mais reta embaixo. Faz o ar criar sustentação ao passar.">aerofólio</button>. É arredondado na frente, mais fino atrás e curvo na parte de cima. Quando o ar passa por ele, acontecem duas coisas ao mesmo tempo: a asa empurra o ar para baixo na parte de trás e o ar que corre por cima tem pressão mais baixa que o de baixo. Elas são duas maneiras de contar a mesma história, e ambas empurram a asa para cima<sup class="cite">[<a href="#ref-3" aria-label="Referência 3">3</a>, <a href="#ref-4" aria-label="Referência 4">4</a>]</sup>.</p>
+          <p class="rv">O que decide quanto empurra é o <button class="term" data-def="Ângulo entre a asa e o ar que chega. Quanto maior, mais sustentação, até certo limite.">ângulo de ataque</button>: a inclinação da asa em relação ao ar que vem de frente<sup class="cite">[<a href="#ref-5" aria-label="Referência 5">5</a>]</sup>.</p>
+        </section>
+
+        <section class="block" id="tunel">
+          <div class="block-n">03</div>
+          <h2>Túnel de vento</h2>
+          <p class="rv">Mexa nos controles e veja o que muda. Este é um modelo didático: as linhas mostram a ideia geral do escoamento, não medidas reais.</p>
+          <figure class="fig">
+            <p class="hint"><span data-i="pointer"></span> Aumente o ângulo devagar até passar de 15° e observe o que acontece.</p>
+            
+<div id="wind" class="sim">
+  <div class="sim-stage">
+    <svg viewBox="0 0 800 420" role="img" aria-label="Túnel de vento didático: linhas de ar passam por uma asa em corte. O ângulo da asa pode ser mudado.">
+      <defs><marker id="ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" style="fill:var(--terra-text)"/></marker></defs>
+      <g id="streams"></g>
+      <g id="foil" transform="translate(400 210)"><path class="airfoil" d="M -130 0 C -120 -30, -40 -42, 40 -30 C 90 -22, 120 -8, 130 4 C 100 10, 20 16, -50 12 C -100 8, -125 6, -130 0 Z"/></g>
+      <line id="weight-arrow" x1="400" y1="250" x2="400" y2="322" style="stroke:var(--terra-text);stroke-width:4" marker-end="url(#ah)"/>
+      <text class="ftag" x="414" y="318">Peso</text>
+      <line id="lift-arrow" x1="400" y1="180" x2="400" y2="100" style="stroke:var(--terra-text);stroke-width:4" marker-end="url(#ah)"/>
+      <text id="lift-tag" class="ftag" x="414" y="90">Sustentação</text>
+    </svg>
+  </div>
+  <div class="ctrls">
+    <div class="ctrl"><label for="alpha">Ângulo da asa <output id="alpha-out" for="alpha">8°</output></label><input id="alpha" type="range" min="0" max="25" step="1" value="8"></div>
+    <div class="ctrl"><label for="speed">Velocidade do ar <output id="speed-out" for="speed">15 m/s</output></label><input id="speed" type="range" min="4" max="20" step="1" value="15"></div>
+    <div class="ctrl"><label>Sustentação (relativa)</label><div class="meter" id="lift-box"><i id="lift-meter"></i><span class="tick" title="Peso da ave"></span></div><p class="diagram-note" style="min-height:0;margin-top:var(--space-1)">A marca vertical é o peso da ave neste modelo.</p></div>
+    <div class="status" id="status"><svg class="icon" viewBox="0 0 24 24" id="status-icon" aria-hidden="true"></svg><p id="status-text" aria-live="polite"></p></div>
+    <button class="chip" id="pause" type="button" aria-pressed="false">Pausar o fluxo de ar</button>
+  </div>
+</div>
+            <p class="diagram-note">Modelo ilustrativo. O ponto de estol e a força de sustentação de uma asa real dependem do formato dela e da espécie.</p>
+          </figure>
+          <p class="rv" style="margin-top:var(--space-6)">Perceba três coisas. Primeiro, com mais ângulo a sustentação cresce. Segundo, com mais velocidade ela cresce ainda mais. Terceiro, passando de certo ângulo o ar se solta da parte de cima da asa<sup class="cite">[<a href="#ref-6" aria-label="Referência 6">6</a>, <a href="#ref-5" aria-label="Referência 5">5</a>]</sup>. É o <button class="term" data-def="Perda repentina de sustentação: o ar deixa de acompanhar a asa e forma redemoinhos.">estol</button>: as linhas ficam bagunçadas e a sustentação despenca. Por isso, aves e aviões evitam inclinar demais a asa quando voam devagar.</p>
+        </section>
+
+        <section class="block" id="real">
+          <div class="block-n">04</div>
+          <h2>Aves de verdade</h2>
+          <p class="rv">O gavião-carijó tem asas largas e arredondadas, boas para manobrar perto de árvores. Na foto abaixo, uma ave em voo curto entre as folhas, com as penas de voo separadas em leque.</p>
+          <figure class="photo-wide rv rv-grow">
+            <img src="../assets/img/photos/gaviao-voo.webp" width="1400" height="1062" alt="Gavião-carijó em voo entre folhas verdes, com as asas semiabertas e as penas de voo separadas" style="max-height:560px;object-fit:cover" loading="lazy">
+            <figcaption class="credit">Gavião-carijó em voo. <span data-credit="gaviao-voo"></span></figcaption>
+          </figure>
+          <p class="rv" style="margin-top:var(--space-6)">Já o biguá, quando seca as asas, mostra a superfície da asa como uma lâmina ampla e contínua, feita de penas que se sobrepõem.</p>
+          <figure class="photo-wide rv rv-grow">
+            <img src="../assets/img/photos/bigua.webp" width="1200" height="900" alt="Biguá pousado com as duas asas abertas para secar, mostrando as fileiras de penas de voo" style="max-height:560px;object-fit:cover" loading="lazy">
+            <figcaption class="credit">Biguá secando as asas. Na aula 12, vamos comparar formatos de asa. <span data-credit="bigua"></span></figcaption>
+          </figure>
+        </section>
+
+        <section class="block" id="palavras">
+          <div class="block-n">05</div>
+          <h2>Palavras novas</h2>
+          <dl class="gloss" id="gloss"></dl>
+        </section>
+
+        <section class="block" id="teste">
+          <div class="block-n">06</div>
+          <h2>Teste rápido</h2>
+          <p>Sem nota. Se errar, tente de novo.</p>
+          <div class="quiz">
+<div class="q" data-why="Se a sustentação fosse maior, a ave subiria. Se fosse menor, cairia. Em voo nivelado elas se igualam." data-hint="Pense em uma ave que não sobe nem desce.">
+  <h3>Em voo nivelado e constante, como estão a sustentação e o peso?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Equilibrados: uma é igual à outra</button><button class="chip">A sustentação é sempre maior</button><button class="chip">O peso desaparece no ar</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="No estol o ar deixa de acompanhar a asa e a sustentação diminui muito." data-hint="Volte ao túnel de vento e passe de 15°.">
+  <h3>O que acontece no estol?</h3>
+  <div class="choices"><button class="chip">A ave ganha velocidade</button><button class="chip" data-ok="1">O ar se solta da asa e a sustentação cai</button><button class="chip">O empuxo aumenta</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="Bater as asas gera empuxo e também sustentação. O peso e o arrasto vêm de fora." data-hint="A força que empurra para a frente.">
+  <h3>Qual força a ave produz principalmente batendo as asas?</h3>
+  <div class="choices"><button class="chip">Peso</button><button class="chip" data-ok="1">Empuxo, que a empurra para a frente</button><button class="chip">Arrasto</button></div>
+  <div class="fb" role="status"></div>
+</div>
+</div>
+        </section>
+        <section class="block" id="referencias">
+          <div class="block-n">07</div>
+          <h2>Referências e leitura complementar</h2>
+          <p>Onde conferir o que foi dito nesta aula. Os números entre colchetes no texto levam a estas fontes. Os links abrem em outra aba.</p>
+          <ol class="refs">
+<li id="ref-1"><a href="https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/four-forces-on-an-airplane/" target="_blank" rel="noopener noreferrer">Four Forces on an Airplane</a><span class="ref-by">NASA Glenn Research Center · inglês</span><span class="ref-note">Peso, sustentação, empuxo e arrasto, com desenhos.</span></li>
+<li id="ref-2"><a href="https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/airplane-cruise-balanced-forces/" target="_blank" rel="noopener noreferrer">Airplane Cruise – Balanced Forces</a><span class="ref-by">NASA Glenn Research Center · inglês</span><span class="ref-note">Em voo nivelado e constante, sustentação e peso se equilibram, e empuxo e arrasto também.</span></li>
+<li id="ref-3"><a href="https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/lift-3/" target="_blank" rel="noopener noreferrer">Lift</a><span class="ref-by">NASA Glenn Research Center · inglês</span><span class="ref-note">Como a asa gera sustentação ao desviar o ar.</span></li>
+<li id="ref-4"><a href="https://www.grc.nasa.gov/www/k-12/VirtualAero/BottleRocket/airplane/wrong1.html" target="_blank" rel="noopener noreferrer">Incorrect Lift Theory</a><span class="ref-by">NASA Glenn Research Center · inglês · leitura complementar</span><span class="ref-note">Por que a explicação do “mesmo tempo de trajeto” em cima e embaixo da asa está errada.</span></li>
+<li id="ref-5"><a href="https://www.grc.nasa.gov/www/k-12/VirtualAero/BottleRocket/airplane/incline.html" target="_blank" rel="noopener noreferrer">Inclination Effects on Lift</a><span class="ref-by">NASA Glenn Research Center · inglês</span><span class="ref-note">Como a inclinação da asa muda a sustentação, e o que ocorre com ângulos muito altos.</span></li>
+<li id="ref-6"><a href="https://www.grc.nasa.gov/WWW/k-12/WindTunnel/WTExpKids/tsld006.htm" target="_blank" rel="noopener noreferrer">Lift vs. Angle of Attack</a><span class="ref-by">NASA Glenn Research Center · inglês · leitura complementar</span><span class="ref-note">Gráfico: a sustentação cresce com o ângulo até o estol e depois cai.</span></li>
+          </ol>
+          <p class="diagram-note">Os endereços foram abertos e conferidos em 29/09/2026. Alguns sites de revistas científicas e de órgãos oficiais exigem verificação humana e não puderam ser testados por robô. Sites externos podem mudar ou sair do ar.</p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band" id="levar">
+    <div class="container take">
+      <div><p class="label">Para levar</p><h2 class="h-section" style="margin-top:var(--space-4)">Em três frases</h2></div>
+      <div>
+        <ul>
+          <li>Quatro forças atuam sobre a ave: peso e sustentação (na vertical), empuxo e arrasto (na horizontal).</li>
+          <li>A asa curva desvia o ar para baixo e cria uma diferença de pressão: é assim que nasce a sustentação.</li>
+          <li>Inclinar a asa aumenta a sustentação até um limite. Passando dele, o ar se solta da asa e ocorre o estol.</li>
+        </ul>
+        <div class="next">
+          <button class="btn btn-outline-band done-btn" id="done" type="button" data-lesson="11" aria-pressed="false">Marcar como concluída</button>
+          <a class="btn btn-band" href="12-formas-de-asa.html">Próxima: aula 12, Formas de asa <span data-i="arrow" data-cls="icon-arrow"></span></a>
+        </div>
+        <div class="next" style="margin-top:var(--space-4)"><a class="btn btn-outline-band" href="10-ovos-e-ninhos.html">Anterior: aula 10, Ovos e ninhos</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-in">
+    <div><div class="brand-big">Ornitologia do zero</div><p style="margin-top:var(--space-3)"><a href="../index.html#trilha">Todas as aulas</a> · <a href="../creditos.html">Créditos</a></p></div>
+    <a class="btn btn-ghost" href="#conteudo"><span data-i="up"></span> Voltar ao topo</a>
+  </div>
+</footer>
+<div class="toasts" aria-live="polite"></div>
+
+<script src="../assets/js/vendor/lenis.min.js"></script>
+<script src="../assets/js/credits.js"></script>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/extras.js"></script>
+<script src="../assets/js/motion.js"></script>
+<script src="../assets/js/wind.js"></script>
+</body>
+</html>

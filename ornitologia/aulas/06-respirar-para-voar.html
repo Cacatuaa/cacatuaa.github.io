@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 6 · Respirar para voar · Ornitologia do zero</title>
+<meta name="description" content="Pulmões e sacos aéreos: como o ar passa pela ave sempre no mesmo sentido.">
+<script>
+  document.documentElement.className = "js";
+  (function () { var t; try { t = JSON.parse(localStorage.getItem("orn-theme")); } catch (e) {}
+    if (!t) t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    document.documentElement.dataset.theme = t; })();
+</script>
+<link rel="preload" href="../assets/fonts/cormorant-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/lessons.css"><style>
+.flow { width: 100%; height: auto; display: block; }
+.fl-box { fill: var(--surface-2); stroke: var(--muted); stroke-width: 2; }
+.fl-lung { fill: color-mix(in srgb, var(--accent) 22%, var(--surface-2)); stroke: var(--accent); stroke-width: 2.5; }
+.fl-in { fill: none; stroke: var(--accent); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.fl-out { fill: none; stroke: var(--terra-text); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.fl-num.in { fill: var(--accent); } .fl-num.out { fill: var(--terra-fill); }
+.fl-n { fill: var(--bg); font: 700 15px var(--font-sans); }
+.fl-t { fill: var(--muted); font: 500 14px var(--font-sans); } .fl-t.big { fill: var(--text); font-size: 16px; } .fl-t.in { fill: var(--accent); font-weight: 600; } .fl-t.out { fill: var(--terra-text); font-weight: 600; }
+.flow-grid { display: grid; gap: var(--space-6); margin-top: var(--space-6); }
+@media (min-width: 900px) { .flow-grid { grid-template-columns: 1fr 1fr; } }
+.flow-card h3 { font: 500 var(--step-3) / 1.1 var(--font-serif); }
+.flow-steps { list-style: none; margin: var(--space-3) 0 0; padding: 0; display: grid; gap: var(--space-2); }
+.flow-steps li { display: flex; gap: var(--space-3); align-items: flex-start; }
+.dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; flex: none; margin-top: 7px; }
+.diagram-note .dot { margin-top: 0; vertical-align: middle; }
+.air-pt { fill: var(--accent); stroke: var(--bg); stroke-width: 2; pointer-events: none; } .air-pt.out { fill: var(--terra-fill); }
+.fl-in, .fl-out { transition: opacity var(--dur-tap) var(--ease-soft); }
+.flow-ctrl { display: flex; gap: var(--space-2); flex-wrap: wrap; margin-top: var(--space-4); }
+.flow-steps li { padding: var(--space-1) var(--space-2); margin-inline: calc(var(--space-2) * -1); border-radius: var(--radius-sm); transition: background-color var(--dur-tap) var(--ease-soft); }
+.flow-steps li.on { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.dot.in { background: var(--accent); } .dot.out { background: var(--terra-fill); }
+</style>
+</head>
+<body data-root="../">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand" href="../index.html">Ornitologia do zero</a>
+    <nav class="nav-links" aria-label="Principal">
+      <a class="link" href="../index.html#trilha">Todas as aulas</a>
+      <a class="link" href="../creditos.html">Créditos</a>
+    </nav>
+    <div class="nav-tools">
+      <button class="icon-btn" id="theme" type="button" aria-label="Mudar tema"></button>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mmenu"><span data-i="menu"></span></button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+<div class="mmenu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="mmenu-top"><span class="brand">Ornitologia do zero</span><button class="icon-btn" id="menu-close" type="button" aria-label="Fechar menu"><span data-i="x"></span></button></div>
+  <nav aria-label="Menu do celular"><a href="../index.html#trilha">Todas as aulas</a><a href="../creditos.html">Créditos</a></nav>
+</div>
+
+<main id="conteudo">
+  <section class="l-hero">
+    <div class="container l-hero-grid">
+      <div>
+        <p class="crumbs label"><a href="../index.html#trilha">Módulo 2</a> <span aria-hidden="true">·</span> <span>Aula 6</span></p>
+        <h1 data-split>Respirar para voar</h1>
+        <p class="lede rv" style="--i:3">Voar exige muito oxigênio. As aves resolveram isso com um sistema de respiração diferente do nosso, feito de pulmões firmes e sacos cheios de ar que funcionam como foles.</p>
+        <ul class="goals rv" style="--i:4" aria-label="O que você vai aprender">
+          <li><span data-i="check"></span>Onde ficam os pulmões e os sacos aéreos</li>
+          <li><span data-i="check"></span>Como o ar circula em duas respirações</li>
+          <li><span data-i="check"></span>Por que esse sistema é tão eficiente</li>
+        </ul>
+      </div>
+      <figure class="ave-card rv rv-grow" style="--i:2">
+        <img src="../assets/img/photos/urubu-preto.webp" width="1400" height="853" alt="Urubu-de-cabeça-preta pousado em um campo, de perfil" style="aspect-ratio:3 / 2;object-position:50% 40%" fetchpriority="high">
+        <figcaption>
+          <p class="ave-name"><span class="label">Ave da aula</span><br><strong>Urubu-de-cabeça-preta</strong> <em>Coragyps atratus</em></p>
+          <p class="credit" data-credit="urubu-preto"></p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:var(--space-12)">
+    <div class="container l-body">
+      <aside class="toc" aria-label="Nesta aula">
+        <details open>
+          <summary>Nesta aula <span data-i="down"></span></summary>
+          <ol>
+            <li><a href="#pulmao">Pulmão e sacos aéreos</a></li>
+            <li><a href="#passo">O ar, passo a passo</a></li>
+            <li><a href="#comparacao">Comparando com o nosso</a></li>
+            <li><a href="#ossos">Ar dentro dos ossos</a></li>
+            <li><a href="#palavras">Palavras novas</a></li>
+            <li><a href="#teste">Teste rápido</a></li>
+            <li><a href="#referencias">Referências</a></li>
+          </ol>
+        </details>
+      </aside>
+      <div>
+
+        <section class="block" id="pulmao">
+          <div class="block-n">01</div>
+          <h2>Pulmão e sacos aéreos</h2>
+          <p class="rv">O nosso pulmão é um saco elástico que enche e esvazia. O da ave é diferente: é um órgão firme, onde o sangue troca gases com o ar, ligado a uma série de <button class="term" data-def="Bolsas finas e cheias de ar ligadas ao pulmão. Elas não trocam gases: só empurram o ar, como foles.">sacos aéreos</button>. Os pulmões servem para trocar gases, e os sacos aéreos funcionam como ventiladores<sup class="cite">[<a href="#ref-2" aria-label="Referência 2">2</a>]</sup>. Somados, o volume do sistema respiratório da ave chega a cerca do dobro do de um mamífero de tamanho parecido<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>]</sup>.</p>
+          <figure class="fig">
+            <div class="diagram">
+              <p class="hint"><span data-i="pointer"></span> Escolha uma parte para destacá-la.</p>
+              <div class="layers" data-target="air" data-idle="Esquema simplificado, de perfil. A cabeça fica à esquerda.">
+                <button class="chip" data-k="p1" data-text="Traqueia: o tubo por onde o ar entra e sai.">Traqueia</button>
+                <button class="chip" data-k="p3" data-text="Pulmão: firme e pouco elástico. É onde o oxigênio passa para o sangue.">Pulmão</button>
+                <button class="chip" data-k="p2" data-text="Sacos da frente: recebem o ar que já passou pelo pulmão.">Sacos da frente</button>
+                <button class="chip" data-k="p4" data-text="Sacos de trás: recebem o ar novo, antes de ele ir ao pulmão.">Sacos de trás</button>
+              </div>
+              
+<svg id="air" class="diag" viewBox="0 0 620 310" role="img" aria-label="Esquema do sistema respiratório de uma ave, de perfil: traqueia, pulmão e dois grupos de sacos aéreos">
+  <g style="fill:color-mix(in srgb, var(--surface-2) 60%, transparent);stroke:var(--line);stroke-width:2">
+    <path d="M 108 90 C 150 82, 212 58, 332 60 C 452 64, 562 108, 596 178 L 628 196 L 566 220 C 524 262, 432 270, 340 260 C 270 252, 200 234, 160 198 C 130 178, 112 140, 108 90 Z"/>
+    <circle cx="84" cy="96" r="32"/><path d="M 56 90 L 20 100 L 58 110 Z"/>
+    <line x1="330" y1="262" x2="322" y2="300"/><line x1="322" y1="300" x2="300" y2="304"/><line x1="322" y1="300" x2="344" y2="304"/>
+  </g>
+  <circle cx="90" cy="88" r="4" style="fill:var(--text)"/>
+  <path class="part p1 line" style="stroke-width:8" d="M 60 102 C 110 112, 180 132, 252 140"/>
+  <line class="part p1 line" style="stroke-width:5" x1="252" y1="140" x2="292" y2="138"/>
+  <ellipse class="part p3 f" cx="335" cy="136" rx="64" ry="32"/>
+  <ellipse class="part p2 f" cx="248" cy="198" rx="44" ry="34"/>
+  <ellipse class="part p4 f" cx="450" cy="188" rx="62" ry="48"/>
+  <line class="part p2 line" x1="300" y1="160" x2="268" y2="178"/>
+  <line class="part p4 line" x1="385" y1="156" x2="424" y2="170"/>
+  <text x="128" y="150" class="sub">traqueia</text>
+  <text x="335" y="139" text-anchor="middle">pulmão</text>
+  <text x="248" y="201" text-anchor="middle">sacos</text><text x="248" y="217" text-anchor="middle" class="sub">da frente</text>
+  <text x="450" y="191" text-anchor="middle">sacos</text><text x="450" y="207" text-anchor="middle" class="sub">de trás</text>
+</svg>
+              <p class="diagram-note" aria-live="polite">Esquema simplificado, de perfil. A cabeça fica à esquerda.</p>
+            </div>
+          </figure>
+        </section>
+
+        <section class="block" id="passo">
+          <div class="block-n">02</div>
+          <h2>O ar, passo a passo</h2>
+          <p class="rv">Para uma porção de ar entrar, passar pelo pulmão e sair, a ave leva duas respirações completas. A bolinha é essa porção de ar: acompanhe o caminho dela, etapa por etapa, ou toque em uma etapa para ir direto a ela. Atenção: a ave respira sem parar, então, enquanto essa porção segue adiante, já está entrando outra atrás dela (veja a comparação logo abaixo)<sup class="cite">[<a href="#ref-7" aria-label="Referência 7">7</a>]</sup>.</p>
+          <figure class="fig">
+            <div class="diagram">
+              <div class="layers" data-target="air2" data-idle="Escolha uma etapa.">
+                <button class="chip" data-k="p1 p4" data-text="1ª inspiração: o ar novo desce pela traqueia e vai para os sacos de trás.">1ª inspiração</button>
+                <button class="chip" data-k="p4 p3" data-text="1ª expiração: o ar dos sacos de trás passa para o pulmão, onde o oxigênio entra no sangue.">1ª expiração</button>
+                <button class="chip" data-k="p3 p2" data-text="2ª inspiração: o ar que estava no pulmão segue para os sacos da frente.">2ª inspiração</button>
+                <button class="chip" data-k="p2 p1" data-text="2ª expiração: o ar dos sacos da frente sai pela traqueia.">2ª expiração</button>
+              </div>
+              
+<svg id="air2" class="diag" viewBox="0 0 620 310" role="img" aria-label="Esquema do sistema respiratório de uma ave, de perfil: traqueia, pulmão e dois grupos de sacos aéreos">
+  <g style="fill:color-mix(in srgb, var(--surface-2) 60%, transparent);stroke:var(--line);stroke-width:2">
+    <path d="M 108 90 C 150 82, 212 58, 332 60 C 452 64, 562 108, 596 178 L 628 196 L 566 220 C 524 262, 432 270, 340 260 C 270 252, 200 234, 160 198 C 130 178, 112 140, 108 90 Z"/>
+    <circle cx="84" cy="96" r="32"/><path d="M 56 90 L 20 100 L 58 110 Z"/>
+    <line x1="330" y1="262" x2="322" y2="300"/><line x1="322" y1="300" x2="300" y2="304"/><line x1="322" y1="300" x2="344" y2="304"/>
+  </g>
+  <circle cx="90" cy="88" r="4" style="fill:var(--text)"/>
+  <path class="part p1 line" style="stroke-width:8" d="M 60 102 C 110 112, 180 132, 252 140"/>
+  <line class="part p1 line" style="stroke-width:5" x1="252" y1="140" x2="292" y2="138"/>
+  <ellipse class="part p3 f" cx="335" cy="136" rx="64" ry="32"/>
+  <ellipse class="part p2 f" cx="248" cy="198" rx="44" ry="34"/>
+  <ellipse class="part p4 f" cx="450" cy="188" rx="62" ry="48"/>
+  <line class="part p2 line" x1="300" y1="160" x2="268" y2="178"/>
+  <line class="part p4 line" x1="385" y1="156" x2="424" y2="170"/>
+  <text x="128" y="150" class="sub">traqueia</text>
+  <text x="335" y="139" text-anchor="middle">pulmão</text>
+  <text x="248" y="201" text-anchor="middle">sacos</text><text x="248" y="217" text-anchor="middle" class="sub">da frente</text>
+  <text x="450" y="191" text-anchor="middle">sacos</text><text x="450" y="207" text-anchor="middle" class="sub">de trás</text>
+</svg>
+              <p class="diagram-note" aria-live="polite">Escolha uma etapa.</p>
+            </div>
+            <p class="diagram-note">Acompanhamos uma só porção de ar. A sequência segue a descrição usada em livros e artigos de fisiologia das aves<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>, <a href="#ref-2" aria-label="Referência 2">2</a>]</sup>. Os sacos aéreos são mais numerosos e complexos do que no desenho.</p>
+          </figure>
+        </section>
+
+        <section class="block" id="comparacao">
+          <div class="block-n">03</div>
+          <h2>Comparando com o nosso</h2>
+          <p class="rv">Nos mamíferos, o ar entra e sai pelo mesmo caminho: o fluxo é de ida e volta. Nas aves, o pulmão é ventilado sempre no mesmo sentido, tanto na inspiração quanto na expiração<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>, <a href="#ref-3" aria-label="Referência 3">3</a>]</sup>. Os sacos aéreos são inflados e esvaziados em sequência, como foles interligados<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>]</sup>. O resultado é uma troca de gases bem mais eficiente: gansos foram observados sobrevoando o Himalaia, onde o ar tem pouco oxigênio<sup class="cite">[<a href="#ref-1" aria-label="Referência 1">1</a>]</sup>.</p>
+          <div class="flow-grid">
+            <div class="flow-card"><h3>Mamífero</h3><p class="muted">Fluxo de ida e volta</p><div class="diagram"><svg class="flow" viewBox="0 0 360 300" role="img" aria-label="Mamífero: o ar desce por um tubo até um saco e sobe de volta pelo mesmo tubo"><defs><marker id="mi" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" style="fill:var(--accent)"/></marker><marker id="me" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" style="fill:var(--terra-text)"/></marker></defs>
+  <rect x="160" y="20" width="40" height="82" rx="10" class="fl-box"/><text x="180" y="9" text-anchor="middle" class="fl-t" style="font-size:13px">tubo (traqueia)</text>
+  <ellipse cx="180" cy="196" rx="120" ry="80" class="fl-box"/><text x="180" y="204" text-anchor="middle" class="fl-t big">pulmão</text><text x="180" y="224" text-anchor="middle" class="fl-t">um saco que enche e esvazia</text>
+  <path d="M 168 30 L 168 120" class="fl-in" marker-end="url(#mi)"/><path d="M 192 120 L 192 30" class="fl-out" marker-end="url(#me)"/>
+  <circle cx="116" cy="70" r="13" class="fl-num in"/><text x="116" y="75" text-anchor="middle" class="fl-n">1</text><text x="8" y="112" class="fl-t in">Inspirar: o ar entra</text>
+  <circle cx="228" cy="70" r="13" class="fl-num out"/><text x="228" y="75" text-anchor="middle" class="fl-n">2</text><text x="226" y="112" class="fl-t out">Expirar: sai</text><text x="226" y="128" class="fl-t out">pelo mesmo tubo</text>
+</svg></div>
+              <ol class="flow-steps"><li><span class="dot in"></span>Ao inspirar, o ar desce pelo tubo e enche o pulmão.</li><li><span class="dot out"></span>Ao expirar, o ar sobe pelo mesmo tubo. O caminho é o mesmo, na ida e na volta.</li></ol></div>
+            <div class="flow-card"><h3>Ave</h3><p class="muted">Fluxo em um só sentido</p><div class="diagram"><svg class="flow" viewBox="0 0 360 300" role="img" aria-label="Ave: o ar entra pelo tubo, vai aos sacos de trás, passa pelo pulmão e segue para os sacos da frente, sempre na mesma direção"><defs><marker id="mi" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" style="fill:var(--accent)"/></marker><marker id="me" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 z" style="fill:var(--terra-text)"/></marker></defs>
+  <rect x="20" y="20" width="76" height="34" rx="10" class="fl-box"/><text x="58" y="42" text-anchor="middle" class="fl-t">tubo</text>
+  <rect x="14" y="130" width="104" height="84" rx="14" class="fl-box"/><text x="66" y="168" text-anchor="middle" class="fl-t big">sacos</text><text x="66" y="188" text-anchor="middle" class="fl-t">de trás</text>
+  <rect x="140" y="130" width="90" height="84" rx="14" class="fl-lung"/><text x="185" y="176" text-anchor="middle" class="fl-t big">pulmão</text>
+  <rect x="252" y="130" width="94" height="84" rx="14" class="fl-box"/><text x="299" y="168" text-anchor="middle" class="fl-t big">sacos</text><text x="299" y="188" text-anchor="middle" class="fl-t">da frente</text>
+  <path d="M 58 56 L 58 126" class="fl-in" marker-end="url(#mi)"/>
+  <path d="M 122 160 L 136 160" class="fl-out" marker-end="url(#me)" style="stroke-width:4"/>
+  <path d="M 234 160 L 248 160" class="fl-in" marker-end="url(#mi)" style="stroke-width:4"/>
+  <path d="M 299 126 L 299 60 Q 299 37 276 37 L 100 37" class="fl-out" marker-end="url(#me)"/>
+  <circle cx="34" cy="92" r="13" class="fl-num in"/><text x="34" y="97" text-anchor="middle" class="fl-n">1</text>
+  <circle cx="129" cy="118" r="13" class="fl-num out"/><text x="129" y="123" text-anchor="middle" class="fl-n">2</text>
+  <circle cx="241" cy="118" r="13" class="fl-num in"/><text x="241" y="123" text-anchor="middle" class="fl-n">3</text>
+  <circle cx="322" cy="92" r="13" class="fl-num out"/><text x="322" y="97" text-anchor="middle" class="fl-n">4</text>
+  <text x="185" y="250" text-anchor="middle" class="fl-t big">o ar atravessa o pulmão sempre nesta direção  →</text>
+</svg></div>
+              <ol class="flow-steps"><li><span class="dot in"></span><span><strong>Inspirar, duas coisas ao mesmo tempo:</strong> (1) o ar novo entra e vai aos sacos de trás; (3) o ar que já estava no pulmão segue para os sacos da frente.</span></li><li><span class="dot out"></span><span><strong>Expirar, duas coisas ao mesmo tempo:</strong> (2) o ar dos sacos de trás passa pelo pulmão; (4) o ar dos sacos da frente sai pelo tubo.</span></li></ol></div>
+          </div>
+          <div class="flow-ctrl"><button class="chip" id="flow-play" type="button" aria-pressed="false">Pausar</button><button class="chip" id="flow-step" type="button">Próxima etapa</button></div>
+          <p class="diagram-note"><span class="dot in"></span> verde: inspirar &nbsp; <span class="dot out"></span> laranja: expirar. Os números 1 a 4 ligam o desenho ao texto. Esquemas simplificados: os sacos aéreos reais são mais numerosos.</p>
+        </section>
+
+        <section class="block" id="ossos">
+          <div class="block-n">04</div>
+          <h2>Ar dentro dos ossos</h2>
+          <p class="rv">Em muitas aves, os sacos aéreos se estendem por dentro de alguns ossos, que ficam ocos, os ossos pneumáticos que vimos na aula 3<sup class="cite">[<a href="#ref-4" aria-label="Referência 4">4</a>, <a href="#ref-5" aria-label="Referência 5">5</a>]</sup>. É uma vantagem dupla: o esqueleto fica mais leve e o sistema respiratório se distribui por todo o corpo.</p>
+        </section>
+
+        <section class="block" id="palavras">
+          <div class="block-n">05</div>
+          <h2>Palavras novas</h2>
+          <dl class="gloss" id="gloss"></dl>
+        </section>
+
+        <section class="block" id="teste">
+          <div class="block-n">06</div>
+          <h2>Teste rápido</h2>
+          <p>Sem nota. Se errar, tente de novo.</p>
+          <div class="quiz">
+<div class="q" data-why="Os sacos aéreos ventilam o pulmão. A troca de gases acontece no pulmão." data-hint="Pense em foles.">
+  <h3>Qual é a função principal dos sacos aéreos?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Empurrar o ar, como foles</button><button class="chip">Trocar gases com o sangue</button><button class="chip">Guardar comida</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="O pulmão da ave é ventilado em um só sentido, na inspiração e na expiração." data-hint="Compare os dois desenhos.">
+  <h3>Como o ar passa pelo pulmão da ave?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Sempre no mesmo sentido</button><button class="chip">Vai e volta, como no nosso</button><button class="chip">Não passa: o pulmão é fechado</button></div>
+  <div class="fb" role="status"></div>
+</div>
+<div class="q" data-why="São duas: o ar novo vai aos sacos de trás, passa ao pulmão, segue para os sacos da frente e sai." data-hint="Reveja o passo a passo.">
+  <h3>Quantas respirações a ave leva para o ar novo passar pelo pulmão e sair?</h3>
+  <div class="choices"><button class="chip" data-ok="1">Duas</button><button class="chip">Uma</button><button class="chip">Dez</button></div>
+  <div class="fb" role="status"></div>
+</div>
+</div>
+        </section>
+        <section class="block" id="referencias">
+          <div class="block-n">07</div>
+          <h2>Referências e leitura complementar</h2>
+          <p>Onde conferir o que foi dito nesta aula. Os números entre colchetes no texto levam a estas fontes. Os links abrem em outra aba.</p>
+          <ol class="refs">
+<li id="ref-1"><a href="https://www.britannica.com/science/respiratory-system/Birds" target="_blank" rel="noopener noreferrer">Respiratory system – Birds</a><span class="ref-by">Encyclopaedia Britannica · inglês</span><span class="ref-note">Pulmões e sacos aéreos das aves.</span></li>
+<li id="ref-2"><a href="https://pubmed.ncbi.nlm.nih.gov/40010395/" target="_blank" rel="noopener noreferrer">Structure and function of the avian respiratory system</a><span class="ref-by">Philosophical Transactions of the Royal Society B · PubMed · inglês</span><span class="ref-note">Resumo do artigo: pulmões trocam gases, sacos aéreos ventilam, e o ar passa pelo pulmão de trás para a frente, sem parar.</span></li>
+<li id="ref-3"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11864834/" target="_blank" rel="noopener noreferrer">Avian air sacs and neopulmo: their evolution, form and function</a><span class="ref-by">PubMed Central (artigo científico) · inglês · leitura complementar</span><span class="ref-note">Artigo científico sobre os sacos aéreos. Leitura técnica.</span></li>
+<li id="ref-4"><a href="https://ucmp.berkeley.edu/diapsids/birds/birdmm.html" target="_blank" rel="noopener noreferrer">Morphology of the Aves</a><span class="ref-by">UCMP · Universidade da Califórnia, Berkeley · inglês</span><span class="ref-note">Bico sem dentes, ossos ocos ligados aos sacos aéreos, quilha do esterno e fúrcula.</span></li>
+<li id="ref-5"><a href="https://www.britannica.com/animal/bird-animal/Skeleton" target="_blank" rel="noopener noreferrer">Bird – Skeleton</a><span class="ref-by">Encyclopaedia Britannica · inglês</span><span class="ref-note">O esqueleto da ave: fusão de ossos, pneumatização, quilha, fúrcula e número de vértebras do pescoço.</span></li>
+<li id="ref-6"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11864838/" target="_blank" rel="noopener noreferrer">Unidirectional airflow, air sacs or the horizontal septum: what does it take to make a bird lung?</a><span class="ref-by">PubMed Central (artigo científico) · inglês · leitura complementar</span><span class="ref-note">Artigo científico sobre o fluxo de ar em um só sentido no pulmão das aves.</span></li>
+<li id="ref-7"><a href="https://bio.libretexts.org/Bookshelves/Introductory_and_General_Biology/General_Biology_1e_(OpenStax)/7%3A_Animal_Structure_and_Function/39%3A_The_Respiratory_System/39.3%3A_Breathing" target="_blank" rel="noopener noreferrer">39.3: Breathing (OpenStax General Biology)</a><span class="ref-by">Biology LibreTexts · inglês</span><span class="ref-note">Livro didático: nas aves o ar flui em um só sentido, dos sacos de trás ao pulmão e aos sacos da frente, e são necessárias duas respirações para tirar o ar do pulmão.</span></li>
+          </ol>
+          <p class="diagram-note">Os endereços foram abertos e conferidos em 29/09/2026. Alguns sites de revistas científicas e de órgãos oficiais exigem verificação humana e não puderam ser testados por robô. Sites externos podem mudar ou sair do ar.</p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band" id="levar">
+    <div class="container take">
+      <div><p class="label">Para levar</p><h2 class="h-section" style="margin-top:var(--space-4)">Em três frases</h2></div>
+      <div>
+        <ul>
+          <li>O pulmão da ave troca gases e os sacos aéreos funcionam como foles que empurram o ar.</li>
+          <li>O ar passa pelo pulmão sempre no mesmo sentido, na inspiração e na expiração.</li>
+          <li>Os sacos aéreos se estendem por dentro de alguns ossos, o que ajuda a deixar o esqueleto leve.</li>
+        </ul>
+        <div class="next">
+          <button class="btn btn-outline-band done-btn" id="done" type="button" data-lesson="6" aria-pressed="false">Marcar como concluída</button>
+          <a class="btn btn-band" href="07-coracao-e-energia.html">Próxima: aula 7, Coração e energia <span data-i="arrow" data-cls="icon-arrow"></span></a>
+        </div>
+        <div class="next" style="margin-top:var(--space-4)"><a class="btn btn-outline-band" href="05-diversidade-brasileira.html">Anterior: aula 5, Diversidade brasileira</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-in">
+    <div><div class="brand-big">Ornitologia do zero</div><p style="margin-top:var(--space-3)"><a href="../index.html#trilha">Todas as aulas</a> · <a href="../creditos.html">Créditos</a></p></div>
+    <a class="btn btn-ghost" href="#conteudo"><span data-i="up"></span> Voltar ao topo</a>
+  </div>
+</footer>
+<div class="toasts" aria-live="polite"></div>
+
+<script src="../assets/js/vendor/lenis.min.js"></script>
+<script src="../assets/js/credits.js"></script>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/extras.js"></script>
+<script src="../assets/js/motion.js"></script>
+<script src="../assets/js/flow.js"></script>
+</body>
+</html>
