@@ -115,24 +115,35 @@
                 <button class="chip" data-k="p4" data-text="Sacos de trás: recebem o ar novo, antes de ele ir ao pulmão.">Sacos de trás</button>
               </div>
               
-<svg id="air" class="diag" viewBox="0 0 620 310" role="img" aria-label="Esquema do sistema respiratório de uma ave, de perfil: traqueia, pulmão e dois grupos de sacos aéreos">
-  <g style="fill:color-mix(in srgb, var(--surface-2) 60%, transparent);stroke:var(--line);stroke-width:2">
-    <path d="M 108 90 C 150 82, 212 58, 332 60 C 452 64, 562 108, 596 178 L 628 196 L 566 220 C 524 262, 432 270, 340 260 C 270 252, 200 234, 160 198 C 130 178, 112 140, 108 90 Z"/>
-    <circle cx="84" cy="96" r="32"/><path d="M 56 90 L 20 100 L 58 110 Z"/>
-    <line x1="330" y1="262" x2="322" y2="300"/><line x1="322" y1="300" x2="300" y2="304"/><line x1="322" y1="300" x2="344" y2="304"/>
+<svg id="air" class="diag" viewBox="0 0 640 320" role="img" aria-label="Esquema do sistema respiratório de uma ave, de perfil: narina, traqueia com anéis, pulmão formado por tubinhos paralelos e dois grupos de sacos aéreos, cada um com mais de uma bolsa">
+  
+  <g class="bird-base" aria-hidden="true">
+    <path class="bb-body" d="M 18 104 L 54 88 C 60 68, 80 58, 98 62 C 112 65, 122 74, 130 82 C 170 62, 250 52, 340 56 C 440 60, 520 92, 566 140 C 590 160, 612 176, 632 188 L 624 212 C 604 216, 584 220, 566 224 C 530 274, 440 290, 340 276 C 262 266, 190 248, 146 212 C 122 192, 112 160, 106 130 C 94 126, 76 120, 58 114 Z"/>
+    <path class="bb-line" d="M 188 104 C 280 84, 420 104, 548 176 C 470 200, 330 198, 232 160 C 208 148, 192 128, 188 104 Z"/>
+    <path class="bb-line" d="M 300 120 C 380 124, 460 150, 520 180 M 268 136 C 340 150, 420 172, 486 190"/>
+    <path class="bb-line" d="M 572 150 L 628 196 M 566 176 L 624 206 M 562 200 L 622 212"/>
+    <path class="bb-leg" d="M 330 276 L 322 296 L 314 306 M 322 296 L 296 302 M 322 296 L 344 304 M 322 296 L 332 306"/>
+    <path class="bb-leg" d="M 372 276 L 366 294 L 360 304 M 366 294 L 344 298 M 366 294 L 388 302" style="opacity:.5"/>
+    <path class="bb-beak" d="M 54 88 L 18 104 L 58 114 Z"/><path class="bb-line" d="M 20 104 L 60 102" style="stroke-dasharray:none"/>
+    <circle class="bb-eye" cx="90" cy="86" r="5"/><circle class="bb-eye-ring" cx="90" cy="86" r="9"/>
   </g>
-  <circle cx="90" cy="88" r="4" style="fill:var(--text)"/>
-  <path class="part p1 line" style="stroke-width:8" d="M 60 102 C 110 112, 180 132, 252 140"/>
+  <ellipse class="part p2 f" cx="224" cy="196" rx="30" ry="27"/>
+  <ellipse class="part p2 f" cx="270" cy="204" rx="30" ry="24"/>
+  <ellipse class="part p4 f" cx="412" cy="184" rx="40" ry="36"/>
+  <ellipse class="part p4 f" cx="478" cy="194" rx="52" ry="42"/>
+  <path class="part p1 line" style="stroke-width:9" d="M 60 102 C 110 112, 180 132, 252 140"/>
+  <path class="rings" d="M 60 102 C 110 112, 180 132, 252 140"/>
   <line class="part p1 line" style="stroke-width:5" x1="252" y1="140" x2="292" y2="138"/>
   <ellipse class="part p3 f" cx="335" cy="136" rx="64" ry="32"/>
-  <ellipse class="part p2 f" cx="248" cy="198" rx="44" ry="34"/>
-  <ellipse class="part p4 f" cx="450" cy="188" rx="62" ry="48"/>
+  <line class="part p3 line" style="stroke-width:1.2" x1="292" y1="118" x2="378" y2="118"/><line class="part p3 line" style="stroke-width:1.2" x1="284" y1="127" x2="386" y2="127"/><line class="part p3 line" style="stroke-width:1.2" x1="281" y1="136" x2="389" y2="136"/><line class="part p3 line" style="stroke-width:1.2" x1="284" y1="145" x2="386" y2="145"/><line class="part p3 line" style="stroke-width:1.2" x1="292" y1="154" x2="378" y2="154"/>
   <line class="part p2 line" x1="300" y1="160" x2="268" y2="178"/>
   <line class="part p4 line" x1="385" y1="156" x2="424" y2="170"/>
-  <text x="128" y="150" class="sub">traqueia</text>
-  <text x="335" y="139" text-anchor="middle">pulmão</text>
-  <text x="248" y="201" text-anchor="middle">sacos</text><text x="248" y="217" text-anchor="middle" class="sub">da frente</text>
-  <text x="450" y="191" text-anchor="middle">sacos</text><text x="450" y="207" text-anchor="middle" class="sub">de trás</text>
+  <circle class="part p1 f" cx="50" cy="97" r="2.5"/>
+  <g class="lab"><path d="M 50 94 L 50 44 L 70 44"/><text x="74" y="48" class="sub">narina</text></g>
+  <text x="128" y="152" class="sub">traqueia</text>
+  <text x="335" y="100" text-anchor="middle">pulmão</text>
+  <text x="248" y="250" text-anchor="middle">sacos <tspan class="sub">da frente</tspan></text>
+  <text x="450" y="254" text-anchor="middle">sacos <tspan class="sub">de trás</tspan></text>
 </svg>
               <p class="diagram-note" aria-live="polite">Esquema simplificado, de perfil. A cabeça fica à esquerda.</p>
             </div>
@@ -152,24 +163,35 @@
                 <button class="chip" data-k="p2 p1" data-text="2ª expiração: o ar dos sacos da frente sai pela traqueia.">2ª expiração</button>
               </div>
               
-<svg id="air2" class="diag" viewBox="0 0 620 310" role="img" aria-label="Esquema do sistema respiratório de uma ave, de perfil: traqueia, pulmão e dois grupos de sacos aéreos">
-  <g style="fill:color-mix(in srgb, var(--surface-2) 60%, transparent);stroke:var(--line);stroke-width:2">
-    <path d="M 108 90 C 150 82, 212 58, 332 60 C 452 64, 562 108, 596 178 L 628 196 L 566 220 C 524 262, 432 270, 340 260 C 270 252, 200 234, 160 198 C 130 178, 112 140, 108 90 Z"/>
-    <circle cx="84" cy="96" r="32"/><path d="M 56 90 L 20 100 L 58 110 Z"/>
-    <line x1="330" y1="262" x2="322" y2="300"/><line x1="322" y1="300" x2="300" y2="304"/><line x1="322" y1="300" x2="344" y2="304"/>
+<svg id="air2" class="diag" viewBox="0 0 640 320" role="img" aria-label="Esquema do sistema respiratório de uma ave, de perfil: narina, traqueia com anéis, pulmão formado por tubinhos paralelos e dois grupos de sacos aéreos, cada um com mais de uma bolsa">
+  
+  <g class="bird-base" aria-hidden="true">
+    <path class="bb-body" d="M 18 104 L 54 88 C 60 68, 80 58, 98 62 C 112 65, 122 74, 130 82 C 170 62, 250 52, 340 56 C 440 60, 520 92, 566 140 C 590 160, 612 176, 632 188 L 624 212 C 604 216, 584 220, 566 224 C 530 274, 440 290, 340 276 C 262 266, 190 248, 146 212 C 122 192, 112 160, 106 130 C 94 126, 76 120, 58 114 Z"/>
+    <path class="bb-line" d="M 188 104 C 280 84, 420 104, 548 176 C 470 200, 330 198, 232 160 C 208 148, 192 128, 188 104 Z"/>
+    <path class="bb-line" d="M 300 120 C 380 124, 460 150, 520 180 M 268 136 C 340 150, 420 172, 486 190"/>
+    <path class="bb-line" d="M 572 150 L 628 196 M 566 176 L 624 206 M 562 200 L 622 212"/>
+    <path class="bb-leg" d="M 330 276 L 322 296 L 314 306 M 322 296 L 296 302 M 322 296 L 344 304 M 322 296 L 332 306"/>
+    <path class="bb-leg" d="M 372 276 L 366 294 L 360 304 M 366 294 L 344 298 M 366 294 L 388 302" style="opacity:.5"/>
+    <path class="bb-beak" d="M 54 88 L 18 104 L 58 114 Z"/><path class="bb-line" d="M 20 104 L 60 102" style="stroke-dasharray:none"/>
+    <circle class="bb-eye" cx="90" cy="86" r="5"/><circle class="bb-eye-ring" cx="90" cy="86" r="9"/>
   </g>
-  <circle cx="90" cy="88" r="4" style="fill:var(--text)"/>
-  <path class="part p1 line" style="stroke-width:8" d="M 60 102 C 110 112, 180 132, 252 140"/>
+  <ellipse class="part p2 f" cx="224" cy="196" rx="30" ry="27"/>
+  <ellipse class="part p2 f" cx="270" cy="204" rx="30" ry="24"/>
+  <ellipse class="part p4 f" cx="412" cy="184" rx="40" ry="36"/>
+  <ellipse class="part p4 f" cx="478" cy="194" rx="52" ry="42"/>
+  <path class="part p1 line" style="stroke-width:9" d="M 60 102 C 110 112, 180 132, 252 140"/>
+  <path class="rings" d="M 60 102 C 110 112, 180 132, 252 140"/>
   <line class="part p1 line" style="stroke-width:5" x1="252" y1="140" x2="292" y2="138"/>
   <ellipse class="part p3 f" cx="335" cy="136" rx="64" ry="32"/>
-  <ellipse class="part p2 f" cx="248" cy="198" rx="44" ry="34"/>
-  <ellipse class="part p4 f" cx="450" cy="188" rx="62" ry="48"/>
+  <line class="part p3 line" style="stroke-width:1.2" x1="292" y1="118" x2="378" y2="118"/><line class="part p3 line" style="stroke-width:1.2" x1="284" y1="127" x2="386" y2="127"/><line class="part p3 line" style="stroke-width:1.2" x1="281" y1="136" x2="389" y2="136"/><line class="part p3 line" style="stroke-width:1.2" x1="284" y1="145" x2="386" y2="145"/><line class="part p3 line" style="stroke-width:1.2" x1="292" y1="154" x2="378" y2="154"/>
   <line class="part p2 line" x1="300" y1="160" x2="268" y2="178"/>
   <line class="part p4 line" x1="385" y1="156" x2="424" y2="170"/>
-  <text x="128" y="150" class="sub">traqueia</text>
-  <text x="335" y="139" text-anchor="middle">pulmão</text>
-  <text x="248" y="201" text-anchor="middle">sacos</text><text x="248" y="217" text-anchor="middle" class="sub">da frente</text>
-  <text x="450" y="191" text-anchor="middle">sacos</text><text x="450" y="207" text-anchor="middle" class="sub">de trás</text>
+  <circle class="part p1 f" cx="50" cy="97" r="2.5"/>
+  <g class="lab"><path d="M 50 94 L 50 44 L 70 44"/><text x="74" y="48" class="sub">narina</text></g>
+  <text x="128" y="152" class="sub">traqueia</text>
+  <text x="335" y="100" text-anchor="middle">pulmão</text>
+  <text x="248" y="250" text-anchor="middle">sacos <tspan class="sub">da frente</tspan></text>
+  <text x="450" y="254" text-anchor="middle">sacos <tspan class="sub">de trás</tspan></text>
 </svg>
               <p class="diagram-note" aria-live="polite">Escolha uma etapa.</p>
             </div>

@@ -33,13 +33,32 @@
   function paintIcons(root) { $$("[data-i]", root).forEach(function (el) { el.outerHTML = icon(el.dataset.i, el.dataset.cls); }); }
   paintIcons();
 
+  /* ---------- preparo para as animações (moldura das fotos de abertura, texto que rola nos botões) ---------- */
+  $$(".hero-photo img, .ave-card img, .photo-wide img").forEach(function (img) {
+    var f = document.createElement("span"); f.className = "frame"; img.parentNode.insertBefore(f, img); f.appendChild(img);
+  });
+  $$("a.btn").forEach(function (b) {
+    Array.prototype.slice.call(b.childNodes).forEach(function (n) {
+      var t = n.nodeType === 3 && n.textContent.trim(); if (!t) return;
+      var o = document.createElement("span"), i = document.createElement("span");
+      o.className = "roll"; i.textContent = t; i.setAttribute("data-t", t); o.appendChild(i); b.replaceChild(o, n);
+    });
+  });
+
   /* ---------- tema ---------- */
   var root = document.documentElement;
   function applyTheme(t) { root.dataset.theme = t; store.set("orn-theme", t); syncThemeBtn(); }
   // troca com um fade único da página (quando o navegador permite); sem isso, cada cor mudaria num tempo diferente
+  // com movimento permitido, o tema novo se abre em círculo a partir do botão (o CSS usa --vx, --vy e --vr)
   function setTheme(t) {
-    if (document.startViewTransition) document.startViewTransition(function () { applyTheme(t); });
-    else applyTheme(t);
+    if (!document.startViewTransition) { applyTheme(t); return; }
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) { document.startViewTransition(function () { applyTheme(t); }); return; }
+    var b = themeBtn.getBoundingClientRect(), x = b.left + b.width / 2, y = b.top + b.height / 2;
+    root.style.setProperty("--vx", x + "px"); root.style.setProperty("--vy", y + "px");
+    root.style.setProperty("--vr", Math.ceil(Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))) + "px");
+    root.classList.add("theme-vt");
+    var end = function () { root.classList.remove("theme-vt"); };
+    document.startViewTransition(function () { applyTheme(t); }).finished.then(end, end);
   }
   function syncThemeBtn() {
     var btn = $("#theme"); if (!btn) return;
@@ -61,7 +80,7 @@
   var nav = $(".nav"), lastY = 0, bar = $(".progress");
   function onScroll() {
     var y = window.scrollY;
-    if (nav) nav.classList.toggle("hide", y > lastY && y > 120);
+    if (nav) { nav.classList.toggle("hide", y > lastY && y > 120); nav.classList.toggle("at-top", y < 8); }
     lastY = y;
     if (bar) { var h = document.documentElement.scrollHeight - innerHeight; bar.style.transform = "scaleX(" + (h > 0 ? Math.min(1, y / h) : 0) + ")"; }
   }
@@ -97,7 +116,7 @@
   /* ---------- rolagem suave (só desktop, sem movimento reduzido) ---------- */
   var lenis = null;
   if (window.Lenis && fine && !reduced) {
-    lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+    lenis = new Lenis({ lerp: 0.1, smoothWheel: true }); // segue a roda do mouse de perto, sem a sensação de "flutuar"
     (function raf(t) { lenis.raf(t); requestAnimationFrame(raf); })(0);
     // links internos (índice, "voltar ao topo", citações): mesma rolagem suave, respeitando a barra do topo
     document.addEventListener("click", function (e) {
@@ -173,12 +192,12 @@
   if (trail && window.COURSE) {
     var d = done(), total = 0;
     trail.innerHTML = COURSE.map(function (m) {
-      var rows = m.lessons.map(function (l) {
+      var rows = m.lessons.map(function (l, k) {
         total++;
         var ok = d.indexOf(l.n) > -1;
         var inner = '<span class="num">' + l.n + '</span><span class="name">' + l.title + "</span>" +
           (l.file ? (ok ? '<span class="tag done">' + icon("check") + '<span class="sr-only">Concluída</span></span>' : icon("arrow", "icon-arrow")) : '<span class="tag">Em breve</span>');
-        return "<li>" + (l.file ? '<a class="lesson-row" href="aulas/' + l.file + '">' + inner + "</a>" : '<div class="lesson-row soon">' + inner + "</div>") + "</li>";
+        return '<li style="--k:' + Math.min(5, k) + '">' + (l.file ? '<a class="lesson-row" href="aulas/' + l.file + '">' + inner + "</a>" : '<div class="lesson-row soon">' + inner + "</div>") + "</li>";
       }).join("");
       return '<li class="mod rv"><div class="mod-n">' + String(m.n).padStart(2, "0") + "</div><div><h3>" + m.title + '</h3><p class="mod-goal">' + m.goal + '</p></div><ul class="lessons">' + rows + "</ul></li>";
     }).join("");
@@ -278,8 +297,15 @@
     var det = $("details", toc), wide = matchMedia("(min-width: 1024px)");
     function syncDet() { det.open = wide.matches; } syncDet(); wide.addEventListener("change", syncDet);
     var links = $$("a", toc), secs = links.map(function (a) { return $(a.getAttribute("href")); });
+    // marcador que desliza até a seção atual, no lugar de a borda trocar de cor de repente
+    var mark = document.createElement("i"); mark.className = "toc-mark"; mark.setAttribute("aria-hidden", "true"); $("ol", toc).appendChild(mark); toc.classList.add("has-mark");
+    function moveMark() {
+      var a = $("a.on", toc); if (!a || !a.offsetHeight) { mark.style.transform = "scaleY(0)"; return; }
+      mark.style.left = a.offsetLeft + "px"; mark.style.transform = "translateY(" + a.offsetTop + "px) scaleY(" + a.offsetHeight + ")";
+    }
+    det.addEventListener("toggle", moveMark); addEventListener("resize", moveMark);
     var spy = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (e.isIntersecting) { links.forEach(function (a) { a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id); }); } });
+      es.forEach(function (e) { if (e.isIntersecting) { links.forEach(function (a) { a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id); }); moveMark(); } });
     }, { rootMargin: "-30% 0px -60% 0px" });
     secs.forEach(function (s) { if (s) spy.observe(s); });
     links.forEach(function (a) { a.addEventListener("click", function () { if (!wide.matches) det.open = false; }); });

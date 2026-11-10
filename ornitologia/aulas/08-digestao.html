@@ -94,27 +94,38 @@
                 <button class="chip" data-k="p6" data-text="Cloaca: uma câmara única que recebe os restos da digestão e os produtos do sistema urinário e reprodutor.">Cloaca</button>
               </div>
               
-<svg id="gut" class="diag" viewBox="0 0 640 320" role="img" aria-label="Esquema do sistema digestório de uma ave, de perfil, do bico à cloaca">
-  <g style="fill:color-mix(in srgb, var(--surface-2) 60%, transparent);stroke:var(--line);stroke-width:2">
-    <path d="M 108 88 C 150 80, 212 56, 332 58 C 452 62, 562 106, 596 176 L 626 194 L 566 218 C 524 260, 432 268, 340 258 C 270 250, 200 232, 160 196 C 130 176, 112 140, 108 88 Z"/>
-    <circle cx="84" cy="94" r="32"/>
-    <line x1="330" y1="262" x2="322" y2="300"/><line x1="322" y1="300" x2="300" y2="304"/><line x1="322" y1="300" x2="344" y2="304"/>
+<svg id="gut" class="diag" viewBox="0 0 640 320" role="img" aria-label="Esquema do sistema digestório de uma ave, de perfil, do bico à cloaca: esôfago com o papo, proventrículo com glândulas, moela de parede grossa com pedrinhas, intestino em alças e cloaca">
+  
+  <g class="bird-base" aria-hidden="true">
+    <path class="bb-body" d="M 18 104 L 54 88 C 60 68, 80 58, 98 62 C 112 65, 122 74, 130 82 C 170 62, 250 52, 340 56 C 440 60, 520 92, 566 140 C 590 160, 612 176, 632 188 L 624 212 C 604 216, 584 220, 566 224 C 530 274, 440 290, 340 276 C 262 266, 190 248, 146 212 C 122 192, 112 160, 106 130 C 94 126, 76 120, 58 114 Z"/>
+    <path class="bb-line" d="M 188 104 C 280 84, 420 104, 548 176 C 470 200, 330 198, 232 160 C 208 148, 192 128, 188 104 Z"/>
+    <path class="bb-line" d="M 300 120 C 380 124, 460 150, 520 180 M 268 136 C 340 150, 420 172, 486 190"/>
+    <path class="bb-line" d="M 572 150 L 628 196 M 566 176 L 624 206 M 562 200 L 622 212"/>
+    <path class="bb-leg" d="M 330 276 L 322 296 L 314 306 M 322 296 L 296 302 M 322 296 L 344 304 M 322 296 L 332 306"/>
+    <path class="bb-leg" d="M 372 276 L 366 294 L 360 304 M 366 294 L 344 298 M 366 294 L 388 302" style="opacity:.5"/>
+    
+    <circle class="bb-eye" cx="90" cy="86" r="5"/><circle class="bb-eye-ring" cx="90" cy="86" r="9"/>
   </g>
-  <circle cx="90" cy="86" r="4" style="fill:var(--text)"/>
-  <path class="part p1 f" d="M 52 98 L 30 106 L 56 112 Z"/>
+  <path class="part p1 f" d="M 54 88 L 18 104 L 58 114 Z"/>
   <path class="part p2 line" style="stroke-width:11" d="M 62 106 C 100 120, 128 140, 148 170"/>
   <ellipse class="part p2 f" cx="164" cy="186" rx="34" ry="28"/>
   <path class="part p2 line" style="stroke-width:9" d="M 186 200 C 210 210, 226 212, 250 210"/>
   <ellipse class="part p3 f" cx="270" cy="208" rx="26" ry="20"/>
-  <path class="part p4 f" d="M 300 190 C 330 172, 384 176, 392 206 C 398 238, 350 250, 322 236 C 300 226, 292 206, 300 190 Z"/>
+  <circle class="part p3 dotm" cx="258" cy="200" r="1.8"/><circle class="part p3 dotm" cx="270" cy="196" r="1.8"/><circle class="part p3 dotm" cx="282" cy="201" r="1.8"/><circle class="part p3 dotm" cx="262" cy="212" r="1.8"/><circle class="part p3 dotm" cx="278" cy="214" r="1.8"/><circle class="part p3 dotm" cx="270" cy="220" r="1.8"/>
+  <path class="part p4 f" style="stroke-width:3" d="M 300 190 C 330 172, 384 176, 392 206 C 398 238, 350 250, 322 236 C 300 226, 292 206, 300 190 Z"/>
+  <ellipse class="part p4 line" style="stroke-width:1.2" cx="346" cy="210" rx="34" ry="21"/>
+  <line class="part p4 line" style="stroke-width:1.2" x1="304" y1="200" x2="314" y2="204"/><line class="part p4 line" style="stroke-width:1.2" x1="310" y1="226" x2="320" y2="221"/><line class="part p4 line" style="stroke-width:1.2" x1="346" y1="180" x2="346" y2="189"/><line class="part p4 line" style="stroke-width:1.2" x1="384" y1="198" x2="376" y2="202"/><line class="part p4 line" style="stroke-width:1.2" x1="378" y1="234" x2="370" y2="227"/><line class="part p4 line" style="stroke-width:1.2" x1="346" y1="242" x2="346" y2="231"/>
+  <circle class="part p4 dotm" cx="328" cy="223" r="2.2"/><circle class="part p4 dotm" cx="338" cy="226" r="2.2"/><circle class="part p4 dotm" cx="349" cy="227" r="2.2"/><circle class="part p4 dotm" cx="360" cy="225" r="2.2"/><circle class="part p4 dotm" cx="368" cy="220" r="2.2"/><circle class="part p4 dotm" cx="333" cy="219" r="2.2"/>
   <path class="part p5 line" style="stroke-width:9" d="M 394 214 C 440 196, 470 224, 452 248 C 434 268, 480 274, 520 248 C 552 228, 540 212, 548 204"/>
   <ellipse class="part p6 f" cx="566" cy="204" rx="18" ry="16"/>
-  <text x="24" y="132" class="sub">bico</text>
+  <g class="lab"><path d="M 36 110 L 36 150"/><text x="24" y="166" class="sub">bico</text></g>
+  <g class="lab"><path d="M 104 124 L 96 176"/><text x="60" y="192" class="sub">esôfago</text></g>
   <text x="164" y="190" text-anchor="middle">papo</text>
-  <text x="270" y="256" text-anchor="middle" class="sub">proventrículo</text>
-  <text x="346" y="216" text-anchor="middle">moela</text>
-  <text x="470" y="290" text-anchor="middle" class="sub">intestino</text>
-  <text x="566" y="238" text-anchor="middle" class="sub">cloaca</text>
+  <g class="lab"><path d="M 268 228 L 262 250"/><text x="236" y="266" text-anchor="middle" class="sub">proventrículo</text></g>
+  <text x="346" y="214" text-anchor="middle">moela</text>
+  <g class="lab"><path d="M 352 228 L 372 262"/><text x="376" y="276" class="sub">pedrinhas</text></g>
+  <g class="lab"><path d="M 498 262 L 510 284"/><text x="486" y="300" class="sub">intestino</text></g>
+  <g class="lab"><path d="M 574 220 L 584 244"/><text x="566" y="260" class="sub">cloaca</text></g>
 </svg>
               <p class="diagram-note" aria-live="polite">Esquema simplificado, de perfil, com a cabeça à esquerda.</p>
             </div>

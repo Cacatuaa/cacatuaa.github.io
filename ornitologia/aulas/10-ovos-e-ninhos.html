@@ -14,7 +14,7 @@
 <link rel="preload" href="../assets/fonts/cormorant-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="../assets/css/site.css">
-<link rel="stylesheet" href="../assets/css/lessons.css"><style>.diag .f { stroke-linejoin: round; } #egg { max-width: 440px; margin-inline: auto; }</style>
+<link rel="stylesheet" href="../assets/css/lessons.css"><style>.diag .f { stroke-linejoin: round; } #egg { max-width: 560px; margin-inline: auto; }</style>
 </head>
 <body data-root="../">
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -95,17 +95,26 @@
                 <button class="chip" data-k="p7" data-text="Disco germinal: a pequena região da gema onde o embrião começa a se formar.">Disco germinal</button>
               </div>
               
-<svg id="egg" class="diag" viewBox="0 0 420 380" role="img" aria-label="Corte esquemático de um ovo de ave, com casca, membranas, clara, gema, chalazas e câmara de ar">
-  <ellipse class="part p1 f" cx="210" cy="200" rx="138" ry="166" style="stroke-width:7"/>
-  <ellipse class="part p2 line" cx="210" cy="200" rx="129" ry="157" style="stroke-width:2.5"/>
-  <ellipse class="part p3 f" cx="210" cy="200" rx="122" ry="150" style="fill-opacity:.55"/>
-  <path class="part p6 f" d="M 118 90 Q 210 30 302 90 Q 210 62 118 90 Z"/>
-  <path class="part p5 line" style="stroke-width:3" d="M 210 145 C 196 120, 224 100, 208 66 M 210 255 C 224 280, 196 304, 212 338"/>
-  <circle class="part p4 f" cx="210" cy="200" r="58" style="fill:color-mix(in srgb, var(--terra-fill) 55%, var(--surface-2))"/>
-  <ellipse class="part p7 f" cx="210" cy="152" rx="14" ry="7" style="fill:var(--bg)"/>
-  <text x="210" y="205" text-anchor="middle">gema</text>
-  <text x="290" y="132" class="sub">clara</text>
-  <text x="332" y="64" class="sub">câmara de ar</text>
+<svg id="egg" class="diag" viewBox="0 0 560 400" role="img" aria-label="Corte esquemático de um ovo de ave, com a ponta larga para cima: casca, duas membranas que se separam para formar a câmara de ar, clara fluida e clara espessa, gema em camadas com o disco germinal e duas chalazas torcidas">
+  <path class="part p1 f" style="stroke-width:7" d="M 200 30 C 292 30, 336 104, 336 196 C 336 300, 262 370, 200 370 C 138 370, 64 300, 64 196 C 64 104, 108 30, 200 30 Z"/>
+  <path class="part p3 f" style="fill-opacity:.4;stroke:none" d="M 304 110 C 322 136, 322 170, 322 196 C 322 290, 254 356, 200 356 C 146 356, 78 290, 78 196 C 78 170, 78 136, 96 110 Q 200 70 304 110 Z"/>
+  <ellipse class="part p3 f" style="fill-opacity:.55;stroke-width:1;stroke-dasharray:3 4" cx="200" cy="218" rx="94" ry="112"/>
+  <path class="part p6 f" d="M 96 110 C 118 62, 158 38, 200 38 C 242 38, 282 62, 304 110 Q 200 70 96 110 Z"/>
+  <path class="part p2 line" style="stroke-width:2" d="M 200 38 C 286 38, 328 108, 328 196 C 328 294, 258 362, 200 362 C 142 362, 72 294, 72 196 C 72 108, 114 38, 200 38 Z"/>
+  <path class="part p2 line" style="stroke-width:2" d="M 304 110 C 322 136, 322 170, 322 196 C 322 290, 254 356, 200 356 C 146 356, 78 290, 78 196 C 78 170, 78 136, 96 110 Q 200 70 304 110"/>
+  <path class="part p5 line" style="stroke-width:2.5" d="M 196 158 C 186 146, 214 136, 200 124 C 186 112, 214 102, 202 92 M 204 158 C 214 146, 186 136, 200 124 C 214 112, 186 102, 198 92"/>
+  <path class="part p5 line" style="stroke-width:2.5" d="M 196 272 C 186 284, 214 294, 200 306 C 186 318, 214 328, 202 344 M 204 272 C 214 284, 186 294, 200 306 C 214 318, 186 328, 198 344"/>
+  <circle class="part p4 f" cx="200" cy="214" r="58" style="fill:color-mix(in srgb, var(--terra-fill) 55%, var(--surface-2))"/>
+  <circle class="part p4 line" style="stroke-width:1;opacity:.5" cx="200" cy="214" r="44"/><circle class="part p4 line" style="stroke-width:1;opacity:.5" cx="200" cy="214" r="30"/><circle class="part p4 line" style="stroke-width:1;opacity:.5" cx="200" cy="214" r="15"/>
+  <ellipse class="part p7 f" cx="200" cy="166" rx="14" ry="7" style="fill:var(--bg)"/>
+  <text x="200" y="240" text-anchor="middle">gema</text>
+  <g class="part p6 lab"><path d="M 244 64 L 384 56"/><text x="392" y="60" class="sub">câmara de ar</text></g>
+  <g class="part p1 lab"><path d="M 322 122 L 384 96"/><text x="392" y="100" class="sub">casca</text></g>
+  <g class="part p2 lab"><path d="M 325 160 L 384 132"/><text x="392" y="136" class="sub">membranas</text></g>
+  <g class="part p7 lab"><path d="M 214 166 L 384 168"/><text x="392" y="172" class="sub">disco germinal</text></g>
+  <g class="part p3 lab"><path d="M 310 214 L 384 204"/><text x="392" y="208" class="sub">clara fluida</text></g>
+  <g class="part p3 lab"><path d="M 282 250 L 384 240"/><text x="392" y="244" class="sub">clara espessa</text></g>
+  <g class="part p5 lab"><path d="M 206 314 L 384 316"/><text x="392" y="320" class="sub">chalaza</text></g>
 </svg>
               <p class="diagram-note" aria-live="polite">Corte esquemático, sem escala.</p>
             </div>

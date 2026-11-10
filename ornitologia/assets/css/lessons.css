@@ -154,3 +154,26 @@ audio { width: 100%; max-width: 520px; }
 .spec-head { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity var(--dur-tap) var(--ease-soft); }
 .spec-head::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: var(--terra-text); box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg) 50%, transparent); }
 .spec-wrap.live .spec-head { opacity: 1; }
+
+/* corpo de ave de perfil (base dos esquemas internos) e rótulos com linha-guia */
+.bird-base .bb-body { fill: color-mix(in srgb, var(--surface-2) 60%, transparent); stroke: color-mix(in srgb, var(--muted) 55%, transparent); stroke-width: 2; stroke-linejoin: round; }
+.bird-base .bb-line { fill: none; stroke: color-mix(in srgb, var(--muted) 30%, transparent); stroke-width: 1.5; stroke-dasharray: 3 5; stroke-linecap: round; }
+.bird-base .bb-leg { fill: none; stroke: color-mix(in srgb, var(--muted) 55%, transparent); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.bird-base .bb-beak { fill: var(--surface-2); stroke: var(--muted); stroke-width: 1.6; stroke-linejoin: round; }
+.bird-base .bb-eye { fill: var(--text); }
+.bird-base .bb-eye-ring { fill: none; stroke: color-mix(in srgb, var(--muted) 55%, transparent); stroke-width: 1.5; }
+.diag text { stroke: none; }
+.diag tspan.sub { fill: var(--muted); font-weight: 400; font-size: 13px; }
+.diag .lab { stroke: var(--muted); }
+.diag .lab path, .diag .lab line { fill: none; stroke: inherit; stroke-width: 1; stroke-dasharray: 2 3; }
+.diag .dotm { fill: var(--muted); stroke: none; }
+.diag[data-on] .dotm { stroke: none !important; }
+.bone-cut .grain { fill: var(--muted); opacity: 0.55; }
+.bone-cut .lead { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 2 3; }
+.bone-cut .strut { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.bone-cut .sol, .bone-cut .wall { stroke-linejoin: round; }
+.diag .vane { stroke: var(--muted); }
+.diag .vane .barb { fill: none; stroke: inherit; stroke-width: 1.2; stroke-linecap: round; }
+.diag .vane .vane-bg { fill: var(--surface-2); fill-opacity: 0.45; stroke: none; }
+.diag[data-on~="p3"] .vane .vane-bg { fill: color-mix(in srgb, var(--accent) 22%, transparent); fill-opacity: 1; }
+.diag .rings { fill: none; stroke: var(--surface); stroke-width: 9; stroke-dasharray: 1.6 7; pointer-events: none; } /* anéis da traqueia */
